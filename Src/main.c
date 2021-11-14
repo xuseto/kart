@@ -49,6 +49,8 @@ heartbeat_cfg_t heartbeat =
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
 
+SMBUS_HandleTypeDef hsmbus2;
+
 UART_HandleTypeDef hlpuart1;
 
 RTC_HandleTypeDef hrtc;
@@ -74,6 +76,7 @@ static void MX_LPUART1_UART_Init(void);
 static void MX_RTC_Init(void);
 static void MX_UCPD1_Init(void);
 static void MX_USB_PCD_Init(void);
+static void MX_I2C2_SMBUS_Init(void);
 void StartDefaultTask(void *argument);
 
 /* USER CODE BEGIN PFP */
@@ -118,6 +121,7 @@ int main(void)
   MX_RTC_Init();
   MX_UCPD1_Init();
   MX_USB_PCD_Init();
+  MX_I2C2_SMBUS_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -285,6 +289,50 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
+
+}
+
+/**
+  * @brief I2C2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_I2C2_SMBUS_Init(void)
+{
+
+  /* USER CODE BEGIN I2C2_Init 0 */
+
+  /* USER CODE END I2C2_Init 0 */
+
+  /* USER CODE BEGIN I2C2_Init 1 */
+
+  /* USER CODE END I2C2_Init 1 */
+  hsmbus2.Instance = I2C2;
+  hsmbus2.Init.Timing = 0x40505681;
+  hsmbus2.Init.AnalogFilter = SMBUS_ANALOGFILTER_ENABLE;
+  hsmbus2.Init.OwnAddress1 = 2;
+  hsmbus2.Init.AddressingMode = SMBUS_ADDRESSINGMODE_7BIT;
+  hsmbus2.Init.DualAddressMode = SMBUS_DUALADDRESS_DISABLE;
+  hsmbus2.Init.OwnAddress2 = 0;
+  hsmbus2.Init.OwnAddress2Masks = SMBUS_OA2_NOMASK;
+  hsmbus2.Init.GeneralCallMode = SMBUS_GENERALCALL_DISABLE;
+  hsmbus2.Init.NoStretchMode = SMBUS_NOSTRETCH_DISABLE;
+  hsmbus2.Init.PacketErrorCheckMode = SMBUS_PEC_DISABLE;
+  hsmbus2.Init.PeripheralMode = SMBUS_PERIPHERAL_MODE_SMBUS_SLAVE;
+  hsmbus2.Init.SMBusTimeout = 0x0000853E;
+  if (HAL_SMBUS_Init(&hsmbus2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** configuration Alert Mode
+  */
+  if (HAL_SMBUS_EnableAlert_IT(&hsmbus2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN I2C2_Init 2 */
+
+  /* USER CODE END I2C2_Init 2 */
 
 }
 
@@ -468,6 +516,7 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOG_CLK_ENABLE();
   HAL_PWREx_EnableVddIO2();
