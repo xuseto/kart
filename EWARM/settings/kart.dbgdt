@@ -249,7 +249,7 @@
             <IarPane-34101>
                 <right_justify>0</right_justify>
                 <expressions>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>
@@ -279,7 +279,7 @@
             </BasePane-34107>
             <IarPane-34107>
                 <expressions>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>
@@ -606,7 +606,7 @@
             </BasePane-34058>
             <IarPane-34058>
                 <col-names>
-                    <item> </item>
+                    <item />
                     <item>Core</item>
                     <item>Cycles</item>
                     <item>PC</item>
