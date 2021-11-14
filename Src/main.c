@@ -146,6 +146,7 @@ int main(void)
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
+  /* Add thread heartbeat */
   heartbeat_init (&heartbeat);
   /* USER CODE END RTOS_THREADS */
 
