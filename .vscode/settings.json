@@ -1,0 +1,10 @@
+{
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 100,
+    "files.associations": {
+        "main.h": "c",
+        "pe_fsm_types.h": "c",
+        "gpio_api.h": "c",
+        "cmsis_os.h": "c"
+    }
+}
