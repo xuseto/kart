@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "heartbeat/heartbeat_api.h"
+#include "mcp4728/mcp4728_api.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -33,6 +34,12 @@ heartbeat_cfg_t heartbeat =
   .delay_ms = 1000, // 1 sg
   .gpio = LED_GREEN,
   .name = "HeartBeat"
+};
+
+mcp4728_cfg_t mcp4728_cfg =
+{
+  .name = "MCP4728",
+  .id_i2c = 2
 };
 
 /* USER CODE END PTD */
@@ -152,6 +159,7 @@ int main(void)
   /* USER CODE BEGIN RTOS_THREADS */
   /* Add thread heartbeat */
   heartbeat_init (&heartbeat);
+  mcp4728_init (&mcp4728_cfg);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */

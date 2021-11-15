@@ -1,18 +1,18 @@
 /***************************************************************************************************
- * @file heartbeat_api.h 
+ * @file mcp4728_api.h 
  * @author jnieto
  * @version 1.0.0.0.0 
- * @date Creation: 11/11/2021
- * @date Last modification 11/11/2021 by jnieto
- * @brief HeartBeat 
+ * @date Creation: 14/11/2021
+ * @date Last modification 14/11/2021 by jnieto
+ * @brief MCP4728 by Microchip 
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ***************************************************************************************************
 
-    @addtogroup FSM
+    @addtogroup MCP4728
     @{
-    @defgroup FSM_API  FSM object
+    @defgroup MCP4728_API  MCP4728 object
     @{
     @brief
     @details
@@ -20,33 +20,27 @@
 ***************************************************************************************************/
 
 /* Define to prevent recursive inclusion ---------------------------------------------------------*/
-#ifndef __HEARTBEAT_API_H
-#define __HEARTBEAT_API_H
+#ifndef __MCP4728_API_H
+#define __MCP4728_API_H
 
 /* Includes --------------------------------------------------------------------------------------*/
 #include <stdint.h>
 #include <def_common.h>
-#include "hwdr/gpio_api.h"
 
 /* Typedefs --------------------------------------------------------------------------------------*/
-/** Object of configuration of heartbeat */ 
-typedef struct  
+typedef struct mcp4728_cfg_s
 {
-  gpio_out_t gpio;      /**< Fixed the GPIO of LED */
-  uint32_t delay_ms;  /**< Time of delay for toggle led, in ms */
-  const char *name;    /**< name of thread */
-} heartbeat_cfg_t;
+    const char *name;    /**< name of thread */
+    uint16_t    id_i2c;  /**< number of i2c configurarted */
+}mcp4728_cfg_t;
+
+
+extern SMBUS_HandleTypeDef hsmbus2;
 
 /* Public Function -------------------------------------------------------------------------------*/
-/**
- * @brief Public function for configure the heartbeat thread
- *  
- * @param cfg \ref heartbeat_cfg_t
- * @return \ref ret_code_t
- */
-ret_code_t heartbeat_init (heartbeat_cfg_t *cfg);
+ret_code_t mcp4728_init (mcp4728_cfg_t *cfg);
 
-#endif /* __HEARTBEAT_API_H */
+#endif /* __MCP4728_API_H */
 
 /**
   * @}

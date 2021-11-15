@@ -1,85 +1,76 @@
 /***************************************************************************************************
- * @file heartbeat_api.h 
+ * @file mcp4728_api.h 
  * @author jnieto
  * @version 1.0.0.0.0 
  * @date Creation: 11/11/2021
  * @date Last modification 11/11/2021 by jnieto
- * @brief HeartBeat 
+ * @brief mcp4728 
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup HEARTBEAT_API
+    @addtogroup MCP4728_API
     @{
 
 */
-
 /* Includes --------------------------------------------------------------------------------------*/
-#include <heartbeat/heartbeat_api.h>
+#include <mcp4728/mcp4728_api.h>
 #include "cmsis_os2.h"
 #include <stdlib.h>
+
+#include "stm32l5xx_hal_i2c.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Private values --------------------------------------------------------------------------------*/
-/** data of heartbeat */
-typedef struct heartbeat_s
+/** data of mcp4728 */
+typedef struct mcp4728_s
 {
-  gpio_out_t gpio;      /**< Fixed the GPIO of LED */
-  uint32_t delay_ms;  /**< Time of delay for toggle led, in ms */
+  void *obj_com;      /**< Ptr obj of comunication */
   osThreadId_t id_thread; /**< ID of thread */
-} heartbeat_t;
+} mcp4728_t;
 
 /** Definitions for defaultTask */
-osThreadAttr_t heartbeat_task_attributes = {
-  .priority = (osPriority_t) osPriorityLow,
-  .stack_size = 0
+osThreadAttr_t mcp4728_task_attributes = {
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 2048
 };
+
 /* Private functions declaration -----------------------------------------------------------------*/
 /**
- * @brief Run task of heartbeat thread
- *  
- * @param argument \ref heartbeat_t
+ * @brief Run task of MCP4728 thread
+ * 
+ * @param argument \ref mcp4728_t
  */
-void heartbeat_task ( void *argument );
+void mcp4728_task (void *argument);
 
 /* Private functions -----------------------------------------------------------------------------*/
-void heartbeat_task ( void *argument )
+void mcp4728_task (void *argument)
 {
-  heartbeat_t *heartbeat = (heartbeat_t *)argument;
-
-  while (1)
-  {
-    osDelay(heartbeat->delay_ms);
-
-    gpio_toggle (heartbeat->gpio);
-  }
+  HAL_
+ 
 }
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t heartbeat_init (heartbeat_cfg_t *cfg)
+ret_code_t mcp4728_init (mcp4728_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
 
     if (!cfg) return ret;
 
-    heartbeat_t *heartbeat = (heartbeat_t *)calloc (1, sizeof(heartbeat_t));
-    ret = (heartbeat) ? RET_SUCCESS : RET_INT_ERROR;
+    mcp4728_t *mcp4728 = (mcp4728_t *)calloc (1, sizeof(mcp4728_t));
+    ret = (mcp4728) ? RET_SUCCESS : RET_INT_ERROR;
 
-    if (RET_SUCCESS == ret)
+    if (mcp4728)
     {
-      heartbeat->delay_ms = cfg->delay_ms;
-      heartbeat->gpio = cfg->gpio;
-      
       // Make thread
-      heartbeat_task_attributes.name = cfg->name ? cfg->name :  "unknown";
-      heartbeat->id_thread = osThreadNew(heartbeat_task, heartbeat, &heartbeat_task_attributes);
-      ret = (heartbeat->id_thread) ? RET_SUCCESS : RET_INT_ERROR ;
+      mcp4728_task_attributes.name = cfg->name ? cfg->name :  "unknown";
+      mcp4728->id_thread = osThreadNew(mcp4728_task, mcp4728, &mcp4728_task_attributes);
+      ret = (mcp4728->id_thread) ? RET_SUCCESS : RET_INT_ERROR ;
     }
 
     return ret;
-
 }
 
 /**
