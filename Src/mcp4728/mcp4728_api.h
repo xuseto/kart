@@ -26,16 +26,14 @@
 /* Includes --------------------------------------------------------------------------------------*/
 #include <stdint.h>
 #include <def_common.h>
+#include <hwdr/i2c_api.h>
 
-/* Typedefs --------------------------------------------------------------------------------------*/
+/* Typedefs --------------------------------------------------------------------------------------*//** Structure of configurantion of MC4728 */
 typedef struct mcp4728_cfg_s
 {
     const char *name;    /**< name of thread */
-    uint16_t    id_i2c;  /**< number of i2c configurarted */
+    i2c_number_t i2c_id;  /**< number of i2c configurarted */
 }mcp4728_cfg_t;
-
-
-extern SMBUS_HandleTypeDef hsmbus2;
 
 /* Public Function -------------------------------------------------------------------------------*/
 ret_code_t mcp4728_init (mcp4728_cfg_t *cfg);

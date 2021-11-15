@@ -9,9 +9,9 @@
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ****************************************************************************************************
-    @addtogroup FSM
+    @addtogroup GPIO
     @{
-    @defgroup FSM_API  FSM object
+    @defgroup GPIO_API  GPIO object
     @{
     @brief
     @details

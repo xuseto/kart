@@ -18,8 +18,7 @@
 #include <mcp4728/mcp4728_api.h>
 #include "cmsis_os2.h"
 #include <stdlib.h>
-
-#include "stm32l5xx_hal_i2c.h"
+#include <hwdr/i2c_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -27,7 +26,7 @@
 /** data of mcp4728 */
 typedef struct mcp4728_s
 {
-  void *obj_com;      /**< Ptr obj of comunication */
+  void *obj_com;          /**< Ptr obj of comunication */
   osThreadId_t id_thread; /**< ID of thread */
 } mcp4728_t;
 
@@ -48,8 +47,10 @@ void mcp4728_task (void *argument);
 /* Private functions -----------------------------------------------------------------------------*/
 void mcp4728_task (void *argument)
 {
-  HAL_
- 
+  mcp4728_t *mcp4728 = (mcp4728_t *)argument;
+  
+  
+  while (1); 
 }
 
 /* Public functions ------------------------------------------------------------------------------*/
@@ -64,6 +65,7 @@ ret_code_t mcp4728_init (mcp4728_cfg_t *cfg)
 
     if (mcp4728)
     {
+      mcp4728->obj_com = i2c_get_instance(cfg->i2c_id);
       // Make thread
       mcp4728_task_attributes.name = cfg->name ? cfg->name :  "unknown";
       mcp4728->id_thread = osThreadNew(mcp4728_task, mcp4728, &mcp4728_task_attributes);
