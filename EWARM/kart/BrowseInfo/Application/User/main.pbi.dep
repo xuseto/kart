@@ -72,4 +72,4 @@ D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\main.pbi: \
   D:\Proyectos\STM32\kart\EWARM\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   D:\Proyectos\STM32\kart\Src\heartbeat\heartbeat_api.h \
   D:\Proyectos\STM32\kart\EWARM\..\Inc\def_common.h \
-  D:\Proyectos\STM32\kart\Src\hwdr\gpio_api.h
+  D:\Proyectos\STM32\kart\Src\hdwr\gpio_api.h

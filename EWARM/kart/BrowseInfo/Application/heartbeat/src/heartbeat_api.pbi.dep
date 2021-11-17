@@ -8,7 +8,7 @@ D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbea
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Config_Full.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product.h \
   D:\Proyectos\STM32\kart\EWARM\..\Inc\def_common.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Src\hwdr\gpio_api.h \
+  D:\Proyectos\STM32\kart\EWARM\..\Src\hdwr\gpio_api.h \
   D:\Proyectos\STM32\kart\EWARM\..\Inc\main.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal.h \
   D:\Proyectos\STM32\kart\EWARM\..\Inc\stm32l5xx_hal_conf.h \

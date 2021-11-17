@@ -25,7 +25,7 @@
 
 #include <stdint.h>
 #include <def_common.h>
-#include "hwdr/gpio_api.h"
+#include "hdwr/gpio_api.h"
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** Object of configuration of heartbeat */ 

@@ -1441,15 +1441,15 @@
             </file>
         </group>
         <group>
-            <name>hwdr</name>
+            <name>hdwr</name>
             <group>
                 <name>src</name>
                 <file>
-                    <name>$PROJ_DIR$\..\Src\hwdr\src\gpio_api.c</name>
+                    <name>$PROJ_DIR$\..\Src\hdwr\src\gpio_api.c</name>
                 </file>
             </group>
             <file>
-                <name>$PROJ_DIR$\..\Src\hwdr\gpio_api.h</name>
+                <name>$PROJ_DIR$\..\Src\hdwr\gpio_api.h</name>
             </file>
         </group>
         <group>
@@ -1545,16 +1545,16 @@
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_rtc_ex.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_spi.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_spi_ex.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_tim.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_tim_ex.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_uart.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_uart_ex.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_ll_dma.c</name>

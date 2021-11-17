@@ -17,7 +17,7 @@
 */
 
 /* Includes --------------------------------------------------------------------------------------*/
-#include "hwdr/gpio_api.h"
+#include "hdwr/gpio_api.h"
 #include "main.h"
 #include <stm32l5xx_hal_gpio.h>
 
