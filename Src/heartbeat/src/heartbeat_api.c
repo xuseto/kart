@@ -69,12 +69,17 @@ ret_code_t heartbeat_init (heartbeat_cfg_t *cfg)
 void heartbeat_task ( void *argument )
 {
   heartbeat_t *heartbeat = (heartbeat_t *)argument;
+  uint32_t flag_thread;
 
   while (1)
   {
-    osDelay(heartbeat->delay_ms);
+    
+    flag_thread = osThreadFlagsWait (0x00, osFlagsWaitAny, heartbeat->delay_ms);
 
-    gpio_toggle (heartbeat->gpio);
+    if ((uint32_t)osErrorTimeout == flag_thread)
+    {
+        gpio_toggle (heartbeat->gpio);
+    }
   }
 }
 
