@@ -6,6 +6,9 @@
         "pe_fsm_types.h": "c",
         "gpio_api.h": "c",
         "cmsis_os.h": "c",
-        "heartbeat_api.h": "c"
+        "heartbeat_api.h": "c",
+        "stdlib.h": "c",
+        "stdint.h": "c",
+        "dac_api.h": "c"
     }
 }

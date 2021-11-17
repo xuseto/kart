@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "heartbeat/heartbeat_api.h"
+#include "dac/dac_api.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -33,6 +34,12 @@ heartbeat_cfg_t heartbeat =
   .delay_ms = 1000, // 1 sg
   .gpio = LED_GREEN,
   .name = "HeartBeat"
+};
+
+dac_cfg_t dac = 
+{
+  .name   = "DAC",
+  .id_spi = 2
 };
 
 /* USER CODE END PTD */
@@ -148,6 +155,7 @@ int main(void)
   /* USER CODE BEGIN RTOS_THREADS */
   /* Add thread heartbeat */
   heartbeat_init (&heartbeat);
+  dac_init (&dac);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */

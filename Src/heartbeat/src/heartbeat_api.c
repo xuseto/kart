@@ -3,14 +3,14 @@
  * @author jnieto
  * @version 1.0.0.0.0 
  * @date Creation: 11/11/2021
- * @date Last modification 11/11/2021 by jnieto
+ * @date Last modification 17/11/2021 by jnieto
  * @brief HeartBeat 
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup FSM_API
+    @addtogroup HEARTBEAT_API
     @{
 
 */
@@ -62,10 +62,16 @@ ret_code_t heartbeat_init (heartbeat_cfg_t *cfg)
       ret = (heartbeat->id_thread) ? RET_SUCCESS : RET_INT_ERROR ;
     }
 
+    if (RET_SUCCESS == ret)
+    {
+      printf ("Created thread : %s \n", cfg->name);
+    }
+     
     return ret;
 
 }
 
+//--------------------------------------------------------------------------------------------------
 void heartbeat_task ( void *argument )
 {
   heartbeat_t *heartbeat = (heartbeat_t *)argument;

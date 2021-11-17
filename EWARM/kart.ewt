@@ -1423,21 +1423,27 @@
     <group>
         <name>Application</name>
         <group>
-            <name>EWARM</name>
-            <file>
-                <name>$PROJ_DIR$\startup_stm32l552xx.s</name>
-            </file>
-        </group>
-        <group>
-            <name>heartbeat</name>
+            <name>dac</name>
             <group>
                 <name>src</name>
                 <file>
-                    <name>$PROJ_DIR$\..\Src\heartbeat\src\heartbeat_api.c</name>
+                    <name>$PROJ_DIR$\..\Src\dac\src\dac_api.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\dac\src\dac_thread.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\dac\src\dac_thread.h</name>
                 </file>
             </group>
             <file>
-                <name>$PROJ_DIR$\..\Src\heartbeat\heartbeat_api.h</name>
+                <name>$PROJ_DIR$\..\Src\dac\dac_api.h</name>
+            </file>
+        </group>
+        <group>
+            <name>EWARM</name>
+            <file>
+                <name>$PROJ_DIR$\startup_stm32l552xx.s</name>
             </file>
         </group>
         <group>
@@ -1450,6 +1456,18 @@
             </group>
             <file>
                 <name>$PROJ_DIR$\..\Src\hdwr\gpio_api.h</name>
+            </file>
+        </group>
+        <group>
+            <name>heartbeat</name>
+            <group>
+                <name>src</name>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\heartbeat\src\heartbeat_api.c</name>
+                </file>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\Src\heartbeat\heartbeat_api.h</name>
             </file>
         </group>
         <group>
