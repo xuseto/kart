@@ -39,13 +39,13 @@ D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_i2c.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_i2c_ex.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_icache.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_pcd.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_usb.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_pcd_ex.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_pwr.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_pwr_ex.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_rtc.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_rtc_ex.h \
+<<<<<<< HEAD
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_spi.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_spi_ex.h \
+=======
+>>>>>>> i2c
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_bus.h

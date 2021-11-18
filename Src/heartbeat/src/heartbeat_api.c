@@ -37,9 +37,25 @@ osThreadAttr_t heartbeat_task_attributes = {
   .stack_size = 0
 };
 /* Private functions declaration -----------------------------------------------------------------*/
+/**
+ * @brief Run task of heartbeat thread
+ *  
+ * @param argument \ref heartbeat_t
+ */
+void heartbeat_task ( void *argument );
 
 /* Private functions -----------------------------------------------------------------------------*/
-void heartbeat_task ( void *argument );
+void heartbeat_task ( void *argument )
+{
+  heartbeat_t *heartbeat = (heartbeat_t *)argument;
+
+  while (1)
+  {
+    osDelay(heartbeat->delay_ms);
+
+    gpio_toggle (heartbeat->gpio);
+  }
+}
 
 /* Public functions ------------------------------------------------------------------------------*/
 ret_code_t heartbeat_init (heartbeat_cfg_t *cfg)
@@ -71,6 +87,7 @@ ret_code_t heartbeat_init (heartbeat_cfg_t *cfg)
 
 }
 
+<<<<<<< HEAD
 //--------------------------------------------------------------------------------------------------
 void heartbeat_task ( void *argument )
 {
@@ -90,6 +107,8 @@ void heartbeat_task ( void *argument )
 }
 
 
+=======
+>>>>>>> i2c
 /**
   * @}
   */

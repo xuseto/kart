@@ -8,7 +8,11 @@ D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbea
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Config_Full.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product.h \
   D:\Proyectos\STM32\kart\EWARM\..\Inc\def_common.h \
+<<<<<<< HEAD
   D:\Proyectos\STM32\kart\EWARM\..\Src\hdwr\gpio_api.h \
+=======
+  D:\Proyectos\STM32\kart\EWARM\..\Src\hwdr\gpio_api.h \
+>>>>>>> i2c
   D:\Proyectos\STM32\kart\EWARM\..\Inc\main.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal.h \
   D:\Proyectos\STM32\kart\EWARM\..\Inc\stm32l5xx_hal_conf.h \
@@ -42,15 +46,21 @@ D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbea
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_i2c.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_i2c_ex.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_icache.h \
+<<<<<<< HEAD
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_pcd.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_usb.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_pcd_ex.h \
+=======
+>>>>>>> i2c
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_pwr.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_pwr_ex.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_rtc.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_rtc_ex.h \
+<<<<<<< HEAD
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_spi.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_spi_ex.h \
+=======
+>>>>>>> i2c
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_ucpd.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_bus.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_cortex.h \

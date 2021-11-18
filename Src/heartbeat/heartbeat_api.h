@@ -23,6 +23,7 @@
 #ifndef __HEARTBEAT_API_H
 #define __HEARTBEAT_API_H
 
+/* Includes --------------------------------------------------------------------------------------*/
 #include <stdint.h>
 #include <def_common.h>
 #include "hdwr/gpio_api.h"

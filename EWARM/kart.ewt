@@ -1471,9 +1471,27 @@
                 <file>
                     <name>$PROJ_DIR$\..\Src\heartbeat\src\heartbeat_api.c</name>
                 </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\hwdr\src\i2c_api.c</name>
+                </file>
             </group>
             <file>
                 <name>$PROJ_DIR$\..\Src\heartbeat\heartbeat_api.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\hwdr\i2c_api.h</name>
+            </file>
+        </group>
+        <group>
+            <name>mcp4728</name>
+            <group>
+                <name>src</name>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\mcp4728\src\mcp4728_api.c</name>
+                </file>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\Src\mcp4728\mcp4728_api.h</name>
             </file>
         </group>
         <group>
@@ -1545,12 +1563,6 @@
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_icache.c</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_pcd.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_pcd_ex.c</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_pwr.c</name>
             </file>
             <file>
@@ -1575,12 +1587,15 @@
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_spi_ex.c</name>
             </file>
             <file>
+<<<<<<< HEAD
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_tim.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_tim_ex.c</name>
             </file>
             <file>
+=======
+>>>>>>> i2c
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_ll_dma.c</name>
             </file>
             <file>
@@ -1591,9 +1606,6 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_ll_ucpd.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_ll_usb.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_ll_utils.c</name>
