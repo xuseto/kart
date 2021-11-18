@@ -1,0 +1,53 @@
+/***************************************************************************************************
+ * @file spi_api.h 
+ * @author jnieto
+ * @version 1.0.0.0.0 
+ * @date Creation: 17/11/2021
+ * @date Last modification 17/11/2021 by jnieto
+ * @brief SPI
+ * @par
+ *  COPYRIGHT NOTICE: (c) jnieto
+ *  All rights reserved
+ ****************************************************************************************************
+    @addtogroup SPI
+    @{
+    @defgroup SPI_API  SPI object
+    @{
+    @brief
+    @details
+*/
+/* Define to prevent recursive inclusion ---------------------------------------------------------*/
+#ifndef __SPI_API_H
+#define __SPI_API_H
+
+/* Includes --------------------------------------------------------------------------------------*/
+
+/* Defines ---------------------------------------------------------------------------------------*/
+
+/* Typedefs --------------------------------------------------------------------------------------*/
+/** Types de SPI */
+typedef enum
+{
+    SPI_A,
+    SPI_B,
+    SPI_C,
+    SPI_MAX
+} num_spi_t;
+
+/* Private values --------------------------------------------------------------------------------*/
+
+/* Public functions ------------------------------------------------------------------------------*/
+/**
+ * @brief Init comunications with SPI
+ * 
+ * @param cfg \ref num_spi_t
+ * @return pointer of obj
+ */
+void *spi_init (num_spi_t cfg);
+
+#endif /* __SPI_API_H */
+/**
+  * @}
+  */
+
+/************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

@@ -39,7 +39,7 @@ heartbeat_cfg_t heartbeat =
 dac_cfg_t dac = 
 {
   .name   = "DAC",
-  .id_spi = 2
+  .id_spi = SPI_B,
 };
 
 /* USER CODE END PTD */

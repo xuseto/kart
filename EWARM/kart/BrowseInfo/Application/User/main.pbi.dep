@@ -1,4 +1,5 @@
 D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\main.pbi: \
+  D:\Proyectos\STM32\kart\Src\hdwr\spi_api.h \
   D:\Proyectos\STM32\kart\Src\dac\dac_api.h \
   D:\Proyectos\STM32\kart\Src\hdwr\gpio_api.h \
   D:\Proyectos\STM32\kart\EWARM\..\Inc\def_common.h \

@@ -1453,9 +1453,15 @@
                 <file>
                     <name>$PROJ_DIR$\..\Src\hdwr\src\gpio_api.c</name>
                 </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\hdwr\src\spi_api.c</name>
+                </file>
             </group>
             <file>
                 <name>$PROJ_DIR$\..\Src\hdwr\gpio_api.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\hdwr\spi_api.h</name>
             </file>
         </group>
         <group>

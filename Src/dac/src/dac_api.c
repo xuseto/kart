@@ -20,6 +20,7 @@
 #include <def_common.h>
 #include <stdio.h>
 
+#include "hdwr/spi_api.h"
 #include "dac/dac_api.h"
 #include <dac/src/dac_thread.h>
 
@@ -51,7 +52,12 @@ ret_code_t dac_init (dac_cfg_t *cfg)
 
     if (RET_SUCCESS == ret)
     {
-      printf ("Created thread : %s \n", cfg->name);
+       dac->obj_com =spi_init (cfg->id_spi);
+    }
+
+    if (RET_SUCCESS == ret)
+    {
+      printf ("Created thread : %s (0x%x)\n", cfg->name, dac);
     }
 
     return ret;

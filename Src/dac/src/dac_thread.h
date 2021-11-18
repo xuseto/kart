@@ -23,7 +23,7 @@
 typedef struct  
 {
   osThreadId_t id_thread; /**< ID of thread */
-  void *id_spi;           /**< Obj of SPI */
+  void *obj_com;           /**< Obj of SPI */
 } dac_t;
 
 /* Private values --------------------------------------------------------------------------------*/

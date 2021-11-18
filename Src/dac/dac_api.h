@@ -15,15 +15,16 @@
 
 */
 /* Includes --------------------------------------------------------------------------------------*/
+#include <hdwr/spi_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** Object of configuration of dac */ 
-typedef struct   
+typedef struct  
 {
-  uint8_t id_spi;      /**< number of SPI */
   const char *name;    /**< name of thread */
+  num_spi_t id_spi;      /**< number of SPI */
 } dac_cfg_t;
 
 /* Private values --------------------------------------------------------------------------------*/

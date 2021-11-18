@@ -13,5 +13,6 @@ D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\dac\src\dac_api.pbi: \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product_stdlib.h \
   D:\Proyectos\STM32\kart\EWARM\..\Inc\def_common.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdio.h \
+  D:\Proyectos\STM32\kart\EWARM\..\Src\hdwr\spi_api.h \
   D:\Proyectos\STM32\kart\EWARM\..\Src\dac\dac_api.h \
   D:\Proyectos\STM32\kart\EWARM\..\Src\dac\src\dac_thread.h
