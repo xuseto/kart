@@ -32,7 +32,8 @@ __attribute__((weak)) extern SPI_HandleTypeDef hspi1;
 __attribute__((weak)) extern SPI_HandleTypeDef hspi2;
 __attribute__((weak)) extern SPI_HandleTypeDef hspi3;
 
-/* Typedefs --------------------------------------------------------------------------------------*//** Redefine structures of HAL by STM32 */
+/* Typedefs --------------------------------------------------------------------------------------*/
+/** Redefine structures of HAL by STM32 */
 typedef struct spi_obj_hal_s
 {
     SPI_HandleTypeDef *spi_hal[SPI_MAX];

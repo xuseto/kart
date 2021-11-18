@@ -87,28 +87,6 @@ ret_code_t heartbeat_init (heartbeat_cfg_t *cfg)
 
 }
 
-<<<<<<< HEAD
-//--------------------------------------------------------------------------------------------------
-void heartbeat_task ( void *argument )
-{
-  heartbeat_t *heartbeat = (heartbeat_t *)argument;
-  uint32_t flag_thread;
-
-  while (1)
-  {
-    
-    flag_thread = osThreadFlagsWait (0x00, osFlagsWaitAny, heartbeat->delay_ms);
-
-    if ((uint32_t)osErrorTimeout == flag_thread)
-    {
-        gpio_toggle (heartbeat->gpio);
-    }
-  }
-}
-
-
-=======
->>>>>>> i2c
 /**
   * @}
   */

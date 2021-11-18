@@ -49,24 +49,11 @@ build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\h
   flags = D$:\Proyectos\STM32\kart\Src\heartbeat\src\heartbeat_api.c -D USE_FULL_LL_DRIVER -D USE_HAL_DRIVER -D STM32L552xx -o D$:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\heartbeat\src --debug --endian=little --cpu=Cortex-M33.no_dsp.no_se -e --fpu=VFPv5_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Full.h" -I D$:\Proyectos\STM32\kart\EWARM/../Inc\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/STM32L5xx_HAL_Driver/Inc\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/include\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/portable/IAR/ARM_CM33_NTZ/non_secure\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/CMSIS/Device/ST/STM32L5xx/Include\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/CMSIS/Include\ -I D$:\Proyectos\STM32\kart\EWARM\..\Src\ -Ohz --predef_macros D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbeat_api.tmp
   rspfile_name = D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbeat_api.xcl.rsp
 
-<<<<<<< HEAD
-=======
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\gpio_api.xcl : COMPILER_XCL 
-  xclcommand = -source_file D$:\Proyectos\STM32\kart\Src\hwdr\src\gpio_api.c -xcl_file D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\gpio_api.xcl -macro_file D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\gpio_api.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
-  flags = D$:\Proyectos\STM32\kart\Src\hwdr\src\gpio_api.c -D USE_FULL_LL_DRIVER -D USE_HAL_DRIVER -D STM32L552xx -o D$:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\hwdr\src --debug --endian=little --cpu=Cortex-M33.no_dsp.no_se -e --fpu=VFPv5_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Full.h" -I D$:\Proyectos\STM32\kart\EWARM/../Inc\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/STM32L5xx_HAL_Driver/Inc\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/include\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/portable/IAR/ARM_CM33_NTZ/non_secure\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/CMSIS/Device/ST/STM32L5xx/Include\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/CMSIS/Include\ -I D$:\Proyectos\STM32\kart\EWARM\..\Src\ -Ohz --predef_macros D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\gpio_api.tmp
-  rspfile_name = D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\gpio_api.xcl.rsp
-
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\i2c_api.xcl : COMPILER_XCL 
-  xclcommand = -source_file D$:\Proyectos\STM32\kart\Src\hwdr\src\i2c_api.c -xcl_file D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\i2c_api.xcl -macro_file D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\i2c_api.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
-  flags = D$:\Proyectos\STM32\kart\Src\hwdr\src\i2c_api.c -D USE_FULL_LL_DRIVER -D USE_HAL_DRIVER -D STM32L552xx -o D$:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\hwdr\src --debug --endian=little --cpu=Cortex-M33.no_dsp.no_se -e --fpu=VFPv5_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Full.h" -I D$:\Proyectos\STM32\kart\EWARM/../Inc\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/STM32L5xx_HAL_Driver/Inc\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/include\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/portable/IAR/ARM_CM33_NTZ/non_secure\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/CMSIS/Device/ST/STM32L5xx/Include\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/CMSIS/Include\ -I D$:\Proyectos\STM32\kart\EWARM\..\Src\ -Ohz --predef_macros D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\i2c_api.tmp
-  rspfile_name = D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\i2c_api.xcl.rsp
-
 build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.xcl : COMPILER_XCL 
   xclcommand = -source_file D$:\Proyectos\STM32\kart\Src\mcp4728\src\mcp4728_api.c -xcl_file D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.xcl -macro_file D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
   flags = D$:\Proyectos\STM32\kart\Src\mcp4728\src\mcp4728_api.c -D USE_FULL_LL_DRIVER -D USE_HAL_DRIVER -D STM32L552xx -o D$:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\mcp4728\src --debug --endian=little --cpu=Cortex-M33.no_dsp.no_se -e --fpu=VFPv5_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Full.h" -I D$:\Proyectos\STM32\kart\EWARM/../Inc\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/STM32L5xx_HAL_Driver/Inc\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/include\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/portable/IAR/ARM_CM33_NTZ/non_secure\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/CMSIS/Device/ST/STM32L5xx/Include\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/CMSIS/Include\ -I D$:\Proyectos\STM32\kart\EWARM\..\Src\ -Ohz --predef_macros D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.tmp
   rspfile_name = D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.xcl.rsp
 
->>>>>>> i2c
 build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.xcl : COMPILER_XCL 
   xclcommand = -source_file D$:\Proyectos\STM32\kart\Src\app_freertos.c -xcl_file D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.xcl -macro_file D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
   flags = D$:\Proyectos\STM32\kart\Src\app_freertos.c -D USE_FULL_LL_DRIVER -D USE_HAL_DRIVER -D STM32L552xx -o D$:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\User --debug --endian=little --cpu=Cortex-M33.no_dsp.no_se -e --fpu=VFPv5_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Full.h" -I D$:\Proyectos\STM32\kart\EWARM/../Inc\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/STM32L5xx_HAL_Driver/Inc\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/include\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2\ -I D$:\Proyectos\STM32\kart\EWARM/../Middlewares/Third_Party/FreeRTOS/Source/portable/IAR/ARM_CM33_NTZ/non_secure\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/CMSIS/Device/ST/STM32L5xx/Include\ -I D$:\Proyectos\STM32\kart\EWARM/../Drivers/CMSIS/Include\ -I D$:\Proyectos\STM32\kart\EWARM\..\Src\ -Ohz --predef_macros D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.tmp
@@ -307,21 +294,10 @@ build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\h
 D$:\Proyectos\STM32\kart\Src\heartbeat\src\heartbeat_api.c
   flags = -out=D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbeat_api.pbi -f D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbeat_api.xcl
 
-<<<<<<< HEAD
-=======
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\gpio_api.pbi : INDEXER D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\gpio_api.xcl |  $
-D$:\Proyectos\STM32\kart\Src\hwdr\src\gpio_api.c
-  flags = -out=D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\gpio_api.pbi -f D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\gpio_api.xcl
-
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\i2c_api.pbi : INDEXER D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\i2c_api.xcl |  $
-D$:\Proyectos\STM32\kart\Src\hwdr\src\i2c_api.c
-  flags = -out=D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\i2c_api.pbi -f D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\i2c_api.xcl
-
 build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.pbi : INDEXER D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.xcl |  $
 D$:\Proyectos\STM32\kart\Src\mcp4728\src\mcp4728_api.c
   flags = -out=D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.pbi -f D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.xcl
 
->>>>>>> i2c
 build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.pbi : INDEXER D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.xcl |  $
 D$:\Proyectos\STM32\kart\Src\app_freertos.c
   flags = -out=D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.pbi -f D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.xcl
@@ -501,131 +477,71 @@ D$:\Proyectos\STM32\kart\Middlewares\Third_Party\FreeRTOS\Source\timers.c
 build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart.pbw : MAKEBROWSE D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart.pbd
   flags = D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart.pbd -output D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart.pbw
 
-<<<<<<< HEAD
 build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part0.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\dac\src\dac_api.pbi |  $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\dac\src\dac_thread.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hdwr\src\gpio_api.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hdwr\src\spi_api.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbeat_api.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\main.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part0.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\dac\src\dac_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\dac\src\dac_thread.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hdwr\src\gpio_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hdwr\src\spi_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbeat_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\main.pbi
-
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part1.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_hal_msp.pbi |  $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_it.pbi $
-=======
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part0.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbeat_api.pbi |  $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\gpio_api.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\i2c_api.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\main.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_hal_msp.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part0.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbeat_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\gpio_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hwdr\src\i2c_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\main.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_hal_msp.pbi
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.pbi
+  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part0.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\dac\src\dac_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\dac\src\dac_thread.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hdwr\src\gpio_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\hdwr\src\spi_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbeat_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\mcp4728\src\mcp4728_api.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\app_freertos.pbi
 
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part1.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_it.pbi |  $
->>>>>>> i2c
+build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part1.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\main.pbi |  $
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_hal_msp.pbi $
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_it.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\CMSIS\system_stm32l5xx.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_adc.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_adc_ex.pbi $
-<<<<<<< HEAD
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_cortex.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part1.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_hal_msp.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_it.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\CMSIS\system_stm32l5xx.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_adc.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_adc_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_cortex.pbi
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_adc_ex.pbi
+  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part1.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\main.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_hal_msp.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_it.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\CMSIS\system_stm32l5xx.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_adc.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_adc_ex.pbi
 
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part2.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_dma.pbi |  $
+build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part2.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_cortex.pbi |  $
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_dma.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_dma_ex.pbi $
-=======
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_cortex.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_dma.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part1.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_it.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\CMSIS\system_stm32l5xx.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_adc.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_adc_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_cortex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_dma.pbi
-
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part2.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_dma_ex.pbi |  $
->>>>>>> i2c
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_exti.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash_ex.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash_ramfunc.pbi $
-<<<<<<< HEAD
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_gpio.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part2.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_dma.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_dma_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_exti.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash_ramfunc.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_gpio.pbi
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash_ramfunc.pbi
+  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part2.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_cortex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_dma.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_dma_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_exti.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash_ramfunc.pbi
 
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part3.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_i2c.pbi |  $
+build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part3.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_gpio.pbi |  $
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_i2c.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_i2c_ex.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_icache.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pcd.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pcd_ex.pbi $
-=======
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_gpio.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_i2c.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part2.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_dma_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_exti.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_flash_ramfunc.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_gpio.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_i2c.pbi
-
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part3.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_i2c_ex.pbi |  $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_icache.pbi $
->>>>>>> i2c
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pwr.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pwr_ex.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part3.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_i2c.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_i2c_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_icache.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pcd.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pcd_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pwr.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pwr_ex.pbi
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pwr_ex.pbi $
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rcc.pbi
+  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part3.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_gpio.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_i2c.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_i2c_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_icache.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pwr.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pwr_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rcc.pbi
 
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part4.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rcc.pbi |  $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rcc_ex.pbi $
-<<<<<<< HEAD
+build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part4.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rcc_ex.pbi |  $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rtc.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rtc_ex.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_spi.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_spi_ex.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part4.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rcc.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rcc_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rtc.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rtc_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_spi.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_spi_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim.pbi
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim.pbi $
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim_ex.pbi
+  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part4.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rcc_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rtc.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rtc_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_spi.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_spi_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim_ex.pbi
 
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part5.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim_ex.pbi |  $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_dma.pbi $
+build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part5.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_dma.pbi |  $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_exti.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_gpio.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_ucpd.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_usb.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_utils.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part5.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_dma.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_exti.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_gpio.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_ucpd.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_usb.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_utils.pbi
-
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part6.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\cmsis_os2.pbi |  $
-=======
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rtc.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part3.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_i2c_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_icache.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pwr.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_pwr_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rcc.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rcc_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rtc.pbi
-
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part4.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rtc_ex.pbi |  $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim_ex.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_dma.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_exti.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_gpio.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_ucpd.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part4.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_rtc_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_hal_tim_ex.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_dma.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_exti.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_gpio.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_ucpd.pbi
-
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part5.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_utils.pbi |  $
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_utils.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\cmsis_os2.pbi $
->>>>>>> i2c
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\croutine.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\event_groups.pbi $
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\croutine.pbi
+  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part5.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_dma.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_exti.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_gpio.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_ucpd.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_utils.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\cmsis_os2.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\croutine.pbi
+
+build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part6.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\event_groups.pbi |  $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\heap_4.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\list.pbi $
-<<<<<<< HEAD
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\port.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\queue.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part6.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\cmsis_os2.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\croutine.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\event_groups.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\heap_4.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\list.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\port.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\queue.pbi
-
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part7.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\stream_buffer.pbi |  $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\tasks.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\timers.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part7.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\stream_buffer.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\tasks.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\timers.pbi
-=======
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\port.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part5.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Drivers\STM32L5xx_HAL_Driver\stm32l5xx_ll_utils.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\cmsis_os2.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\croutine.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\event_groups.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\heap_4.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\list.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\port.pbi
-
-build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part6.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\queue.pbi |  $
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\queue.pbi $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\stream_buffer.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\tasks.pbi $
-D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\timers.pbi
-  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part6.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\queue.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\stream_buffer.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\tasks.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\timers.pbi
->>>>>>> i2c
+D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\tasks.pbi
+  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part6.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\event_groups.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\heap_4.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\list.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\port.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\queue.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\stream_buffer.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\tasks.pbi
+
+build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part7.pbi : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\timers.pbi
+  flags = -M D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part7.pbi D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Middlewares\FreeRTOS\timers.pbi
 
 build D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart.pbd : PDBLINK D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part0.pbi |  $
 D$:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\kart_part1.pbi $
