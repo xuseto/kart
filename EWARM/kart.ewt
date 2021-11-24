@@ -1477,6 +1477,18 @@
             </file>
         </group>
         <group>
+            <name>system</name>
+            <group>
+                <name>src</name>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\system\src\system_api.c</name>
+                </file>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\Src\system\system_api.h</name>
+            </file>
+        </group>
+        <group>
             <name>User</name>
             <file>
                 <name>$PROJ_DIR$\..\Src\app_freertos.c</name>

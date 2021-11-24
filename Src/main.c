@@ -23,25 +23,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdio.h>
-#include "heartbeat/heartbeat_api.h"
-#include "dac/dac_api.h"
+#include "system/system_api.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-heartbeat_cfg_t heartbeat = 
-{
-  .delay_ms = 1000, // 1 sg
-  .gpio = LED_GREEN,
-  .name = "HeartBeat"
-};
-
-dac_cfg_t dac = 
-{
-  .name   = "DAC",
-  .id_spi = SPI_B,
-};
 
 /* USER CODE END PTD */
 
@@ -147,12 +134,11 @@ int main(void)
 
   /* Create the thread(s) */
   /* creation of defaultTask */
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+ // defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* Add thread heartbeat */
-  heartbeat_init (&heartbeat);
-  dac_init (&dac);
+  system_init ();
 
   /* USER CODE END RTOS_THREADS */
 

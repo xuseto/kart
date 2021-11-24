@@ -37,11 +37,16 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Src/app_freertos.c \
+Src/dac/src/dac_api.c \
+Src/dac/src/dac_thread.c \
+Src/hdwr/src/gpio_api.c \
+Src/hdwr/src/spi_api.c \
 Src/heartbeat/src/heartbeat_api.c \
-Src/hwdr/src/gpio_api.c \
 Src/main.c \
 Src/stm32l5xx_hal_msp.c \
 Src/stm32l5xx_it.c \
+Src/system/src/system_api.c \
+Src/system/src/system_obj.c \
 Src/system_stm32l5xx.c
 
 
@@ -60,7 +65,7 @@ PREFIX = arm-none-eabi-
 POSTFIX = "
 # The gcc compiler bin path can be either defined in make command via GCC_PATH variable (> make GCC_PATH=xxx)
 # either it can be added to the PATH environment variable.
-GCC_PATH="c:/Users/xuseto/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/10.3.1-2.2.1/.content/bin
+
 ifdef GCC_PATH
 CXX = $(GCC_PATH)/$(PREFIX)g++$(POSTFIX)
 CC = $(GCC_PATH)/$(PREFIX)gcc$(POSTFIX)
@@ -106,8 +111,12 @@ AS_INCLUDES = \
 # C includes
 C_INCLUDES =  \
 -IInc \
+-ISrc/dac \
+-ISrc/dac/src \
+-ISrc/hdwr \
 -ISrc/heartbeat \
--ISrc/hwdr
+-ISrc/system \
+-ISrc/system/src
 
 
 
@@ -188,13 +197,13 @@ $(BUILD_DIR):
 # flash
 #######################################
 flash: $(BUILD_DIR)/$(TARGET).elf
-	"C:/USERS/XUSETO/APPDATA/ROAMING/CODE/USER/GLOBALSTORAGE/BMD.STM32-FOR-VSCODE/@XPACK-DEV-TOOLS/OPENOCD/0.11.0-2.1/.CONTENT/BIN/OPENOCD.EXE" -f ./openocd.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
+	openocd -f ./openocd.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
 
 #######################################
 # erase
 #######################################
 erase: $(BUILD_DIR)/$(TARGET).elf
-	"C:/USERS/XUSETO/APPDATA/ROAMING/CODE/USER/GLOBALSTORAGE/BMD.STM32-FOR-VSCODE/@XPACK-DEV-TOOLS/OPENOCD/0.11.0-2.1/.CONTENT/BIN/OPENOCD.EXE" -f ./openocd.cfg -c "init; reset halt;  mass_erase 0; exit"
+	openocd -f ./openocd.cfg -c "init; reset halt;  mass_erase 0; exit"
 
 #######################################
 # clean up

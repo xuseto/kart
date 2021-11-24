@@ -1,33 +1,28 @@
 /***************************************************************************************************
- * @file system_api.h 
+ * @file system_obj.h 
  * @author jnieto
  * @version 1.0.0.0.0 
  * @date Creation: 24/11/2021
  * @date Last modification 24/11/2021 by jnieto
- * @brief All System of the Kart
+ * @brief Define all objets of the system Kart
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup SYSTEM_API
+    @addtogroup SYSTEM_OBJ
     @{
 
 */
 
 /* Includes --------------------------------------------------------------------------------------*/
-#include <system/system_api.h>
+#include "system_obj.h"
 #include <heartbeat/heartbeat_api.h>
 #include <dac/dac_api.h>
-#include "cmsis_os2.h"
-#include "def_common.h"
-#include "hdwr/gpio_api.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Private values --------------------------------------------------------------------------------*/
-gpio_out_t gpio = LED_RED;      /**< Fixed the GPIO of LED */
-
 /** Struct of the HeartBeat */
 heartbeat_cfg_t heartbeat = 
 {
@@ -48,15 +43,7 @@ dac_cfg_t dac =
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-void system_init (void)
-{
-  //ret_code_t ret;
 
-  gpio_on (gpio);
-
-  heartbeat_init (&heartbeat);
-  dac_init (&dac);
-}
 
 /**
   * @}
