@@ -26,21 +26,20 @@
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Private values --------------------------------------------------------------------------------*/
-gpio_out_t gpio = LED_RED;      /**< Fixed the GPIO of LED */
+gpio_out_t gpio = LED_RED; /**< Fixed the GPIO of LED */
 
 /** Struct of the HeartBeat */
-heartbeat_cfg_t heartbeat = 
-{
-  .delay_ms = 1000, // 1 sg
-  .gpio = LED_GREEN,
-  .name = "HeartBeat"
-};
+heartbeat_cfg_t heartbeat =
+    {
+        .delay_ms = 1000, // 1 sg
+        .gpio = LED_GREEN,
+        .name = "HeartBeat"};
 
 /** Struct of the DAC */
-dac_cfg_t dac = 
-{
-  .name   = "DAC",
-  .id_spi = SPI_B,
+dac_cfg_t dac =
+    {
+        .name = "DAC",
+        .id_spi = SPI_B,
 };
 
 /* Private functions declaration -----------------------------------------------------------------*/
@@ -48,14 +47,19 @@ dac_cfg_t dac =
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-void system_init (void)
+void system_init(void)
 {
-  //ret_code_t ret;
+    ret_code_t ret;
 
-  gpio_on (gpio);
+    gpio_on(gpio);
 
-  heartbeat_init (&heartbeat);
-  dac_init (&dac);
+    ret = heartbeat_init(&heartbeat);
+    ret = dac_init(&dac);
+
+    if (RET_SUCCESS == ret)
+    {
+        gpio_off(gpio);
+    }
 }
 
 /**

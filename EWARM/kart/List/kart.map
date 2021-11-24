@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.10.2.313/W64 for ARM                  24/Nov/2021  20:15:30
+# IAR ELF Linker V9.10.2.313/W64 for ARM                  24/Nov/2021  20:19:20
 # Copyright 2007-2021 IAR Systems AB.
 #
 #    Output file  =  D:\Proyectos\STM32\kart\EWARM\kart\Exe\kart.out
@@ -105,7 +105,7 @@ initialize by copy { rw };
   .intvec               ro code   0x800'0000   0x1f4  startup_stm32l552xx.o [1]
                                 - 0x800'01f4   0x1f4
 
-"P1":                                         0x77a1
+"P1":                                         0x77b9
   .text                 ro code   0x800'01f4  0x1514  dlmalloc.o [10]
   .text                 ro code   0x800'1708     0x6  abort.o [10]
   .rodata               const     0x800'170e     0x2  xlocale_c.o [10]
@@ -165,60 +165,54 @@ initialize by copy { rw };
   .text                 ro code   0x800'66c8   0x11a  stm32l5xx_ll_gpio.o [8]
   .text                 ro code   0x800'67e4   0x206  stm32l5xx_hal_spi.o [8]
   .text                 ro code   0x800'69ec   0x1bc  cmsis_os2.o [9]
-  .text                 ro code   0x800'6ba8    0x20  system_api.o [6]
-  .text                 ro code   0x800'6bc8    0x10  stm32l5xx_hal_pwr.o [8]
-  .text                 ro code   0x800'6bd8    0xc8  system_stm32l5xx.o [7]
-  .text                 ro code   0x800'6ca0    0x6c  stm32l5xx_hal_dma.o [8]
-  .text                 ro code   0x800'6d0c     0x2  stm32l5xx_hal_spi.o [8]
-  .text                 ro code   0x800'6d10    0x44  gpio_api.o [4]
-  .text                 ro code   0x800'6d54    0x84  heartbeat_api.o [5]
-  .text                 ro code   0x800'6dd8    0x5c  dac_api.o [3]
-  .text                 ro code   0x800'6e34    0x28  printf.o [10]
-  .text                 ro code   0x800'6e5c    0x5c  dac_thread.o [3]
-  .text                 ro code   0x800'6eb8    0x66  spi_api.o [4]
-  .text                 ro code   0x800'6f1e    0x28  strncat.o [10]
-  .text                 ro code   0x800'6f46    0xd8  xfspos.o [10]
-  .text                 ro code   0x800'7020    0xac  fflush.o [10]
-  .text                 ro code   0x800'70cc     0xc  xfgpos.o [10]
-  .text                 ro code   0x800'70d8    0x4e  lseek.o [13]
-  .text                 ro code   0x800'7126    0x10  write.o [13]
-  .text                 ro code   0x800'7138    0xcc  XShHandles.o [10]
-  .text                 ro code   0x800'7204    0x1e  dwrite.o [13]
-  .text                 ro code   0x800'7222    0x20  iarwstd.o [13]
-  .text                 ro code   0x800'7242    0x22  iarwrite.o [13]
-  .text                 ro code   0x800'7264    0xb4  xfwprep.o [10]
-  .text                 ro code   0x800'7318    0x24  fseek.o [10]
-  .text                 ro code   0x800'733c    0x9c  xfofind.o [10]
-  .text                 ro code   0x800'73d8     0x4  heaptramp0.o [10]
-  .text                 ro code   0x800'73dc    0x7e  fclose.o [10]
-  .text                 ro code   0x800'745a    0x18  close.o [13]
-  .text                 ro code   0x800'7472    0x14  remove.o [13]
-  .text                 ro code   0x800'7486    0x78  lz77_init_single.o [12]
-  .text                 ro code   0x800'74fe    0x54  fputc.o [10]
-  .rodata               const     0x800'7554    0x40  system_stm32l5xx.o [7]
-  .text                 ro code   0x800'7594    0x40  xcloseall.o [10]
-  .text                 ro code   0x800'75d4    0x38  zero_init3.o [12]
-  .text                 ro code   0x800'760c    0x28  data_init.o [12]
-  .rodata               const     0x800'7634    0x24  spi_api.o [4]
-  .text                 ro code   0x800'7658    0x22  fpinit_M.o [11]
-  .iar.init_table       const     0x800'767c    0x20  - Linker created -
-  .text                 ro code   0x800'769c    0x1e  cmain.o [12]
-  .text                 ro code   0x800'76ba     0x4  low_level_init.o [10]
-  .text                 ro code   0x800'76be     0x4  exit.o [10]
-  .text                 ro code   0x800'76c4     0xe  cexit.o [12]
-  .text                 ro code   0x800'76d4    0x1c  cstartup_M.o [12]
-  .text                 ro code   0x800'76f0    0x18  stm32l5xx_it.o [2]
-  .text                 ro code   0x800'7708    0x16  xprout.o [10]
-  .text                 ro code   0x800'7720     0xc  putchar.o [10]
-  .text                 ro code   0x800'772c    0x10  startup_stm32l552xx.o [1]
-  .rodata               const     0x800'773c     0xc  system_api.o [6]
-  .rodata               const     0x800'7748     0x4  system_api.o [6]
-  .text                 ro code   0x800'774c     0x4  startup_stm32l552xx.o [1]
-  .text                 ro code   0x800'7750     0x4  startup_stm32l552xx.o [1]
-  .text                 ro code   0x800'7754     0x4  startup_stm32l552xx.o [1]
-  .text                 ro code   0x800'7758     0x4  startup_stm32l552xx.o [1]
-  .text                 ro code   0x800'775c     0x4  startup_stm32l552xx.o [1]
-  .text                 ro code   0x800'7760     0x4  startup_stm32l552xx.o [1]
+  .text                 ro code   0x800'6ba8    0x2c  system_api.o [6]
+  .text                 ro code   0x800'6bd4    0x10  stm32l5xx_hal_pwr.o [8]
+  .text                 ro code   0x800'6be4    0xc8  system_stm32l5xx.o [7]
+  .text                 ro code   0x800'6cac    0x6c  stm32l5xx_hal_dma.o [8]
+  .text                 ro code   0x800'6d18     0x2  stm32l5xx_hal_spi.o [8]
+  .text                 ro code   0x800'6d1c    0x50  gpio_api.o [4]
+  .text                 ro code   0x800'6d6c    0x84  heartbeat_api.o [5]
+  .text                 ro code   0x800'6df0    0x5c  dac_api.o [3]
+  .text                 ro code   0x800'6e4c    0x28  printf.o [10]
+  .text                 ro code   0x800'6e74    0x5c  dac_thread.o [3]
+  .text                 ro code   0x800'6ed0    0x66  spi_api.o [4]
+  .text                 ro code   0x800'6f36    0x28  strncat.o [10]
+  .text                 ro code   0x800'6f5e    0xd8  xfspos.o [10]
+  .text                 ro code   0x800'7038    0xac  fflush.o [10]
+  .text                 ro code   0x800'70e4     0xc  xfgpos.o [10]
+  .text                 ro code   0x800'70f0    0x4e  lseek.o [13]
+  .text                 ro code   0x800'713e    0x10  write.o [13]
+  .text                 ro code   0x800'7150    0xcc  XShHandles.o [10]
+  .text                 ro code   0x800'721c    0x1e  dwrite.o [13]
+  .text                 ro code   0x800'723a    0x20  iarwstd.o [13]
+  .text                 ro code   0x800'725a    0x22  iarwrite.o [13]
+  .text                 ro code   0x800'727c    0xb4  xfwprep.o [10]
+  .text                 ro code   0x800'7330    0x24  fseek.o [10]
+  .text                 ro code   0x800'7354    0x9c  xfofind.o [10]
+  .text                 ro code   0x800'73f0     0x4  heaptramp0.o [10]
+  .text                 ro code   0x800'73f4    0x7e  fclose.o [10]
+  .text                 ro code   0x800'7472    0x18  close.o [13]
+  .text                 ro code   0x800'748a    0x14  remove.o [13]
+  .text                 ro code   0x800'749e    0x78  lz77_init_single.o [12]
+  .text                 ro code   0x800'7516    0x54  fputc.o [10]
+  .rodata               const     0x800'756c    0x40  system_stm32l5xx.o [7]
+  .text                 ro code   0x800'75ac    0x40  xcloseall.o [10]
+  .text                 ro code   0x800'75ec    0x38  zero_init3.o [12]
+  .text                 ro code   0x800'7624    0x28  data_init.o [12]
+  .rodata               const     0x800'764c    0x24  spi_api.o [4]
+  .text                 ro code   0x800'7670    0x22  fpinit_M.o [11]
+  .iar.init_table       const     0x800'7694    0x20  - Linker created -
+  .text                 ro code   0x800'76b4    0x1e  cmain.o [12]
+  .text                 ro code   0x800'76d2     0x4  low_level_init.o [10]
+  .text                 ro code   0x800'76d6     0x4  exit.o [10]
+  .text                 ro code   0x800'76dc     0xe  cexit.o [12]
+  .text                 ro code   0x800'76ec    0x1c  cstartup_M.o [12]
+  .text                 ro code   0x800'7708    0x18  stm32l5xx_it.o [2]
+  .text                 ro code   0x800'7720    0x16  xprout.o [10]
+  .text                 ro code   0x800'7738     0xc  putchar.o [10]
+  .text                 ro code   0x800'7744    0x10  startup_stm32l552xx.o [1]
+  .rodata               const     0x800'7754     0xc  system_api.o [6]
+  .rodata               const     0x800'7760     0x4  system_api.o [6]
   .text                 ro code   0x800'7764     0x4  startup_stm32l552xx.o [1]
   .text                 ro code   0x800'7768     0x4  startup_stm32l552xx.o [1]
   .text                 ro code   0x800'776c     0x4  startup_stm32l552xx.o [1]
@@ -317,11 +311,17 @@ initialize by copy { rw };
   .text                 ro code   0x800'78e0     0x4  startup_stm32l552xx.o [1]
   .text                 ro code   0x800'78e4     0x4  startup_stm32l552xx.o [1]
   .text                 ro code   0x800'78e8     0x4  startup_stm32l552xx.o [1]
-  .text                 ro code   0x800'78ec     0x0  cstart_closeall.o [12]
-  .rodata               const     0x800'78ec     0x0  zero_init3.o [12]
-  .rodata               const     0x800'78ec     0x0  lz77_init_single.o [12]
-  Initializer bytes     const     0x800'78ec    0xa9  <for P2-P3-1>
-                                - 0x800'7995  0x77a1
+  .text                 ro code   0x800'78ec     0x4  startup_stm32l552xx.o [1]
+  .text                 ro code   0x800'78f0     0x4  startup_stm32l552xx.o [1]
+  .text                 ro code   0x800'78f4     0x4  startup_stm32l552xx.o [1]
+  .text                 ro code   0x800'78f8     0x4  startup_stm32l552xx.o [1]
+  .text                 ro code   0x800'78fc     0x4  startup_stm32l552xx.o [1]
+  .text                 ro code   0x800'7900     0x4  startup_stm32l552xx.o [1]
+  .text                 ro code   0x800'7904     0x0  cstart_closeall.o [12]
+  .rodata               const     0x800'7904     0x0  zero_init3.o [12]
+  .rodata               const     0x800'7904     0x0  lz77_init_single.o [12]
+  Initializer bytes     const     0x800'7904    0xa9  <for P2-P3-1>
+                                - 0x800'79ad  0x77b9
 
 "P2-P3", part 1 of 3:                          0x1e8
   P2-P3-1                        0x2000'0000   0x1e8  <Init block>
@@ -371,7 +371,7 @@ Unused ranges:
 
          From           To      Size
          ----           --      ----
-   0x800'7995   0x807'ffff  0x7'866b
+   0x800'79ad   0x807'ffff  0x7'8653
   0x2000'3938  0x2002'ffff  0x2'c6c8
 
 
@@ -387,7 +387,7 @@ Zero (__iar_zero_init3)
 
 Copy/lz77 (__iar_lz77_init_single3)
     1 source range, total size 0xa9 (34% of destination):
-           0x800'78ec    0xa9
+           0x800'7904    0xa9
     1 destination range, total size 0x1e8:
           0x2000'0000   0x1e8
 
@@ -422,10 +422,10 @@ D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\dac\src: [3]
     Total:                      184       12       36
 
 D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\hdwr\src: [4]
-    gpio_api.o                   68        8       24
+    gpio_api.o                   80        8       24
     spi_api.o                   102       49       36
     -------------------------------------------------
-    Total:                      170       57       60
+    Total:                      182       57       60
 
 D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\heartbeat\src: [5]
     heartbeat_api.o             132       13       36
@@ -433,9 +433,9 @@ D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\heartbeat\src: [5]
     Total:                      132       13       36
 
 D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\system\src: [6]
-    system_api.o                 32       24       24
+    system_api.o                 44       24       24
     -------------------------------------------------
-    Total:                       32       24       24
+    Total:                       44       24       24
 
 D:\Proyectos\STM32\kart\EWARM\kart\Obj\Drivers\CMSIS: [7]
     system_stm32l5xx.o          200       65        4
@@ -554,7 +554,7 @@ shb_l.a: [13]
     Gaps                         45        4
     Linker created                        32    1'536
 -----------------------------------------------------
-    Grand Total:             30'801      324   14'648
+    Grand Total:             30'825      324   14'648
 
 
 *******************************************************************************
@@ -563,21 +563,21 @@ shb_l.a: [13]
 
 Entry                       Address    Size  Type      Object
 -----                       -------    ----  ----      ------
-.iar.init_table$$Base    0x800'767c           --   Gb  - Linker created -
-.iar.init_table$$Limit   0x800'769c           --   Gb  - Linker created -
-?main                    0x800'769d          Code  Gb  cmain.o [12]
-AHBPrescTable            0x800'6c90    0x10  Data  Gb  system_stm32l5xx.o [7]
-BusFault_Handler         0x800'76f7     0x2  Code  Gb  stm32l5xx_it.o [2]
+.iar.init_table$$Base    0x800'7694           --   Gb  - Linker created -
+.iar.init_table$$Limit   0x800'76b4           --   Gb  - Linker created -
+?main                    0x800'76b5          Code  Gb  cmain.o [12]
+AHBPrescTable            0x800'6c9c    0x10  Data  Gb  system_stm32l5xx.o [7]
+BusFault_Handler         0x800'770f     0x2  Code  Gb  stm32l5xx_it.o [2]
 CSTACK$$Base            0x2000'3338           --   Gb  - Linker created -
 CSTACK$$Limit           0x2000'3738           --   Gb  - Linker created -
-DebugMon_Handler         0x800'76fb     0x2  Code  Gb  stm32l5xx_it.o [2]
+DebugMon_Handler         0x800'7713     0x2  Code  Gb  stm32l5xx_it.o [2]
 Error_Handler            0x800'6283     0x4  Code  Gb  main.o [2]
 HAL_ADCEx_MultiModeConfigChannel
                          0x800'6485    0xae  Code  Gb  stm32l5xx_hal_adc_ex.o [8]
 HAL_ADC_ConfigChannel    0x800'59a1   0x2fe  Code  Gb  stm32l5xx_hal_adc.o [8]
 HAL_ADC_Init             0x800'57e5   0x196  Code  Gb  stm32l5xx_hal_adc.o [8]
 HAL_ADC_MspInit          0x800'5d6b    0x78  Code  Gb  stm32l5xx_hal_msp.o [2]
-HAL_DMA_Abort_IT         0x800'6ca1    0x6c  Code  Gb  stm32l5xx_hal_dma.o [8]
+HAL_DMA_Abort_IT         0x800'6cad    0x6c  Code  Gb  stm32l5xx_hal_dma.o [8]
 HAL_GPIO_Init            0x800'6289   0x196  Code  Gb  stm32l5xx_hal_gpio.o [8]
 HAL_GPIO_TogglePin       0x800'6429    0x10  Code  Gb  stm32l5xx_hal_gpio.o [8]
 HAL_GPIO_WritePin        0x800'641f     0xa  Code  Gb  stm32l5xx_hal_gpio.o [8]
@@ -597,7 +597,7 @@ HAL_PWREx_GetVoltageRange
 HAL_PWREx_SMPS_GetEffectiveMode
                          0x800'3c95    0x1c  Code  Gb  stm32l5xx_hal_pwr_ex.o [8]
 HAL_PWR_EnableBkUpAccess
-                         0x800'6bc9     0xc  Code  Gb  stm32l5xx_hal_pwr.o [8]
+                         0x800'6bd5     0xc  Code  Gb  stm32l5xx_hal_pwr.o [8]
 HAL_RCCEx_PeriphCLKConfig
                          0x800'51fd   0x3d6  Code  Gb  stm32l5xx_hal_rcc_ex.o [8]
 HAL_RCC_ClockConfig      0x800'38a3   0x18e  Code  Gb  stm32l5xx_hal_rcc.o [8]
@@ -610,14 +610,14 @@ HAL_RTCEx_PrivilegeModeSet
 HAL_RTC_Init             0x800'6549    0x86  Code  Gb  stm32l5xx_hal_rtc.o [8]
 HAL_RTC_MspInit          0x800'5de3    0x50  Code  Gb  stm32l5xx_hal_msp.o [2]
 HAL_RTC_WaitForSynchro   0x800'65cf    0x2e  Code  Gb  stm32l5xx_hal_rtc.o [8]
-HAL_SPI_ErrorCallback    0x800'6d0d     0x2  Code  Gb  stm32l5xx_hal_spi.o [8]
+HAL_SPI_ErrorCallback    0x800'6d19     0x2  Code  Gb  stm32l5xx_hal_spi.o [8]
 HAL_SPI_IRQHandler       0x800'68b9    0xfa  Code  Gb  stm32l5xx_hal_spi.o [8]
 HAL_SPI_Init             0x800'67e5    0xd4  Code  Gb  stm32l5xx_hal_spi.o [8]
 HAL_SPI_MspInit          0x800'5e33    0xac  Code  Gb  stm32l5xx_hal_msp.o [2]
 HAL_SYSTICK_Config       0x800'3d4b    0x28  Code  Gb  stm32l5xx_hal_cortex.o [8]
 HEAP$$Base              0x2000'3738           --   Gb  - Linker created -
 HEAP$$Limit             0x2000'3938           --   Gb  - Linker created -
-HardFault_Handler        0x800'76f3     0x2  Code  Gb  stm32l5xx_it.o [2]
+HardFault_Handler        0x800'770b     0x2  Code  Gb  stm32l5xx_it.o [2]
 KernelState             0x2000'332c     0x4  Data  Lc  cmsis_os2.o [9]
 LL_ADC_GetOffsetChannel
                          0x800'57a1     0xe  Code  Lc  stm32l5xx_hal_adc.o [8]
@@ -627,9 +627,9 @@ LL_ADC_SetOffsetState    0x800'57af    0x12  Code  Lc  stm32l5xx_hal_adc.o [8]
 LL_AHB2_GRP1_EnableClock
                          0x800'5f25    0x16  Code  Lc  main.o [2]
 LL_GPIO_Init             0x800'66c9   0x11a  Code  Gb  stm32l5xx_ll_gpio.o [8]
-MSIRangeTable            0x800'7554    0x40  Data  Gb  system_stm32l5xx.o [7]
-MemManage_Handler        0x800'76f5     0x2  Code  Gb  stm32l5xx_it.o [2]
-NMI_Handler              0x800'76f1     0x2  Code  Gb  stm32l5xx_it.o [2]
+MSIRangeTable            0x800'756c    0x40  Data  Gb  system_stm32l5xx.o [7]
+MemManage_Handler        0x800'770d     0x2  Code  Gb  stm32l5xx_it.o [2]
+NMI_Handler              0x800'7709     0x2  Code  Gb  stm32l5xx_it.o [2]
 PendSV_Handler           0x800'4555          Code  Gb  portasm.o [9]
 RCCEx_PLLSAI1_Config     0x800'55fd    0xd6  Code  Lc  stm32l5xx_hal_rcc_ex.o [8]
 RCCEx_PLLSAI2_Config     0x800'56d9    0xa8  Code  Lc  stm32l5xx_hal_rcc_ex.o [8]
@@ -637,27 +637,27 @@ RCC_SetFlashLatencyFromMSIRange
                          0x800'3b11    0x78  Code  Lc  stm32l5xx_hal_rcc.o [8]
 RTC_EnterInitMode        0x800'65fd    0x40  Code  Gb  stm32l5xx_hal_rtc.o [8]
 RTC_ExitInitMode         0x800'663d    0x4c  Code  Gb  stm32l5xx_hal_rtc.o [8]
-Region$$Table$$Base      0x800'767c           --   Gb  - Linker created -
-Region$$Table$$Limit     0x800'769c           --   Gb  - Linker created -
-SPI2_IRQHandler          0x800'76fd     0x6  Code  Gb  stm32l5xx_it.o [2]
+Region$$Table$$Base      0x800'7694           --   Gb  - Linker created -
+Region$$Table$$Limit     0x800'76b4           --   Gb  - Linker created -
+SPI2_IRQHandler          0x800'7715     0x6  Code  Gb  stm32l5xx_it.o [2]
 SPI_DMAAbortOnError      0x800'69c5    0x10  Code  Lc  stm32l5xx_hal_spi.o [8]
 SVC_Handler              0x800'4599          Code  Gb  portasm.o [9]
 SysTick_Handler          0x800'69ed    0x1a  Code  Gb  cmsis_os2.o [9]
 SystemClock_Config       0x800'61c3    0x86  Code  Gb  main.o [2]
 SystemCoreClock         0x2000'00ac     0x4  Data  Gb  system_stm32l5xx.o [7]
-SystemCoreClockUpdate    0x800'6be5    0x8e  Code  Gb  system_stm32l5xx.o [7]
-SystemInit               0x800'6bd9     0xc  Code  Gb  system_stm32l5xx.o [7]
-UsageFault_Handler       0x800'76f9     0x2  Code  Gb  stm32l5xx_it.o [2]
-_Close_all               0x800'7595    0x40  Code  Gb  xcloseall.o [10]
+SystemCoreClockUpdate    0x800'6bf1    0x8e  Code  Gb  system_stm32l5xx.o [7]
+SystemInit               0x800'6be5     0xc  Code  Gb  system_stm32l5xx.o [7]
+UsageFault_Handler       0x800'7711     0x2  Code  Gb  stm32l5xx_it.o [2]
+_Close_all               0x800'75ad    0x40  Code  Gb  xcloseall.o [10]
 _Files                  0x2000'01c0    0x20  Data  Gb  xfiles.o [10]
-_Fofree                  0x800'733d    0x96  Code  Gb  xfofind.o [10]
-_Fspos                   0x800'6f47    0xd8  Code  Gb  xfspos.o [10]
-_Fwprep                  0x800'7265    0xb4  Code  Gb  xfwprep.o [10]
+_Fofree                  0x800'7355    0x96  Code  Gb  xfofind.o [10]
+_Fspos                   0x800'6f5f    0xd8  Code  Gb  xfspos.o [10]
+_Fwprep                  0x800'727d    0xb4  Code  Gb  xfwprep.o [10]
 _LitobFullNoMb           0x800'2525   0x10c  Code  Lc  xprintffull_nomb.o [10]
 _Locale_lconv           0x2000'00b0    0x38  Data  Lc  xlocale_c.o [10]
-_Nnl                     0x800'70cd     0xc  Code  Gb  xfgpos.o [10]
+_Nnl                     0x800'70e5     0xc  Code  Gb  xfgpos.o [10]
 _PrintfFullNoMb          0x800'17f1   0xd06  Code  Gb  xprintffull_nomb.o [10]
-_Prout                   0x800'7709    0x16  Code  Gb  xprout.o [10]
+_Prout                   0x800'7721    0x16  Code  Gb  xprout.o [10]
 _PutcharFullNoMb         0x800'2689    0x20  Code  Lc  xprintffull_nomb.o [10]
 _PutcharsFullNoMb        0x800'26a9    0x2e  Code  Lc  xprintffull_nomb.o [10]
 __NVIC_SetPriority       0x800'3cc5    0x1a  Code  Lc  stm32l5xx_hal_cortex.o [8]
@@ -678,14 +678,14 @@ __aeabi_memset4          0x800'4749          Code  Gb  ABImemset48.o [12]
 __aeabi_memset8          0x800'4749          Code  Gb  ABImemset48.o [12]
 __aeabi_ui2d             0x800'2f4d          Code  Gb  U32ToDbl.o [11]
 __aeabi_uldivmod         0x800'311d          Code  Gb  I64DivMod.o [12]
-__cexit_closeall         0x800'76c7          Code  Gb  cexit.o [12]
-__close                  0x800'745b    0x18  Code  Gb  close.o [13]
-__cmain                  0x800'769d          Code  Gb  cmain.o [12]
-__cstart_closeall        0x800'78ec          Data  Gb  cstart_closeall.o [12]
+__cexit_closeall         0x800'76df          Code  Gb  cexit.o [12]
+__close                  0x800'7473    0x18  Code  Gb  close.o [13]
+__cmain                  0x800'76b5          Code  Gb  cmain.o [12]
+__cstart_closeall        0x800'7904          Data  Gb  cstart_closeall.o [12]
 __data_GetMemChunk       0x800'1711    0x2c  Code  Gb  xgetmemchunk.o [10]
 __data_GetMemChunk::start
                         0x2000'3334     0x4  Data  Lc  xgetmemchunk.o [10]
-__dwrite                 0x800'7205    0x1e  Code  Gb  dwrite.o [13]
+__dwrite                 0x800'721d    0x1e  Code  Gb  dwrite.o [13]
 __exit                   0x800'1745    0x14  Code  Gb  exit.o [13]
 __iar_Fail_s             0x800'2739    0x1c  Code  Gb  xfail_s.o [10]
 __iar_Memchr             0x800'27b1          Code  Gb  memchr.o [12]
@@ -696,26 +696,26 @@ __iar_Stdin             0x2000'00e8    0x48  Data  Gb  xfiles.o [10]
 __iar_Stdout            0x2000'0130    0x48  Data  Gb  xfiles.o [10]
 __iar_Strchr             0x800'2721          Code  Gb  strchr.o [12]
 __iar_close_ttio         0x800'176d    0x2c  Code  Gb  iarttio.o [13]
-__iar_data_init3         0x800'760d    0x28  Code  Gb  data_init.o [12]
+__iar_data_init3         0x800'7625    0x28  Code  Gb  data_init.o [12]
 __iar_dlcalloc           0x800'16c5    0x3e  Code  Gb  dlmalloc.o [10]
 __iar_dlfree             0x800'1193   0x52c  Code  Gb  dlmalloc.o [10]
 __iar_dlmalloc           0x800'027d   0xf16  Code  Gb  dlmalloc.o [10]
 __iar_frexp              0x800'282d          Code  Gb  frexp.o [11]
 __iar_frexpl             0x800'282d          Code  Gb  frexp.o [11]
 __iar_get_ttio           0x800'1799    0x4c  Code  Gb  iarttio.o [13]
-__iar_init_vfp           0x800'7659          Code  Gb  fpinit_M.o [11]
+__iar_init_vfp           0x800'7671          Code  Gb  fpinit_M.o [11]
 __iar_ldexp64            0x800'28f9          Code  Gb  ldexp.o [11]
 __iar_lookup_ttioh       0x800'17e9     0x8  Code  Gb  XShttio.o [10]
 __iar_lz77_init_single3
-                         0x800'7487    0x78  Code  Gb  lz77_init_single.o [12]
-__iar_program_start      0x800'76d5          Code  Gb  cstartup_M.o [12]
+                         0x800'749f    0x78  Code  Gb  lz77_init_single.o [12]
+__iar_program_start      0x800'76ed          Code  Gb  cstartup_M.o [12]
 __iar_scalbln64          0x800'28f9          Code  Gb  ldexp.o [11]
 __iar_scalbn64           0x800'28f9          Code  Gb  ldexp.o [11]
-__iar_sh_Discard         0x800'7139    0x42  Code  Gb  XShHandles.o [10]
-__iar_sh_Move            0x800'717b    0x46  Code  Gb  XShHandles.o [10]
-__iar_sh_Pos             0x800'71c1    0x40  Code  Gb  XShHandles.o [10]
-__iar_sh_stdout          0x800'7223    0x20  Code  Gb  iarwstd.o [13]
-__iar_sh_write           0x800'7243    0x22  Code  Gb  iarwrite.o [13]
+__iar_sh_Discard         0x800'7151    0x42  Code  Gb  XShHandles.o [10]
+__iar_sh_Move            0x800'7193    0x46  Code  Gb  XShHandles.o [10]
+__iar_sh_Pos             0x800'71d9    0x40  Code  Gb  XShHandles.o [10]
+__iar_sh_stdout          0x800'723b    0x20  Code  Gb  iarwstd.o [13]
+__iar_sh_write           0x800'725b    0x22  Code  Gb  iarwrite.o [13]
 __iar_small_Memcpy       0x800'280d          Code  Gb  ABImemcpy_small.o [12]
 __iar_small_Memset       0x800'1759          Code  Gb  ABImemset_small.o [12]
 __iar_small_Memset_word
@@ -729,36 +729,37 @@ __iar_softfp___iar_frexp64
 __iar_softfp_frexp       0x800'2821          Code  Gb  frexp.o [11]
 __iar_softfp_frexpl      0x800'2821          Code  Gb  frexp.o [11]
 __iar_ttio_handles      0x2000'01e0     0x8  Data  Lc  XShttio.o [10]
-__iar_zero_init3         0x800'75d5    0x38  Code  Gb  zero_init3.o [12]
-__low_level_init         0x800'76bb     0x4  Code  Gb  low_level_init.o [10]
-__lseek                  0x800'70d9    0x4e  Code  Gb  lseek.o [13]
+__iar_zero_init3         0x800'75ed    0x38  Code  Gb  zero_init3.o [12]
+__low_level_init         0x800'76d3     0x4  Code  Gb  low_level_init.o [10]
+__lseek                  0x800'70f1    0x4e  Code  Gb  lseek.o [13]
 __vector_table           0x800'0000          Data  Gb  startup_stm32l552xx.o [1]
-__write                  0x800'7127    0x10  Code  Gb  write.o [13]
-_call_main               0x800'76a9          Code  Gb  cmain.o [12]
-_exit                    0x800'76c5          Code  Gb  cexit.o [12]
+__write                  0x800'713f    0x10  Code  Gb  write.o [13]
+_call_main               0x800'76c1          Code  Gb  cmain.o [12]
+_exit                    0x800'76dd          Code  Gb  cexit.o [12]
 _gm_                    0x2000'2d20   0x1d8  Data  Lc  dlmalloc.o [10]
 abort                    0x800'1709     0x6  Code  Gb  abort.o [10]
 dac                     0x2000'00a4     0x8  Data  Gb  system_api.o [6]
-dac_create_thread        0x800'6e75    0x1c  Code  Gb  dac_thread.o [3]
-dac_init                 0x800'6dd9    0x3e  Code  Gb  dac_api.o [3]
-dac_task                 0x800'6e5d    0x18  Code  Gb  dac_thread.o [3]
+dac_create_thread        0x800'6e8d    0x1c  Code  Gb  dac_thread.o [3]
+dac_init                 0x800'6df1    0x3e  Code  Gb  dac_api.o [3]
+dac_task                 0x800'6e75    0x18  Code  Gb  dac_thread.o [3]
 dac_task_attributes     0x2000'0000    0x24  Data  Gb  dac_thread.o [3]
 ebuf                    0x2000'3234    0x50  Data  Lc  xfiles.o [10]
-exit                     0x800'76bf     0x4  Code  Gb  exit.o [10]
-fclose                   0x800'73dd    0x7e  Code  Gb  fclose.o [10]
-fflush                   0x800'7095    0x34  Code  Gb  fflush.o [10]
-fflushOne                0x800'7021    0x74  Code  Lc  fflush.o [10]
-fputc                    0x800'74ff    0x54  Code  Gb  fputc.o [10]
-free                     0x800'73d9     0x4  Code  Gb  heaptramp0.o [10]
-fseek                    0x800'7319    0x24  Code  Gb  fseek.o [10]
+exit                     0x800'76d7     0x4  Code  Gb  exit.o [10]
+fclose                   0x800'73f5    0x7e  Code  Gb  fclose.o [10]
+fflush                   0x800'70ad    0x34  Code  Gb  fflush.o [10]
+fflushOne                0x800'7039    0x74  Code  Lc  fflush.o [10]
+fputc                    0x800'7517    0x54  Code  Gb  fputc.o [10]
+free                     0x800'73f1     0x4  Code  Gb  heaptramp0.o [10]
+fseek                    0x800'7331    0x24  Code  Gb  fseek.o [10]
 gpio                    0x2000'0094     0x1  Data  Gb  system_api.o [6]
 gpio_hal                0x2000'0024    0x18  Data  Gb  gpio_api.o [4]
-gpio_on                  0x800'6d11    0x10  Code  Gb  gpio_api.o [4]
-gpio_toggle              0x800'6d37    0x16  Code  Gb  gpio_api.o [4]
+gpio_off                 0x800'6d2d     0xe  Code  Gb  gpio_api.o [4]
+gpio_on                  0x800'6d1d    0x10  Code  Gb  gpio_api.o [4]
+gpio_toggle              0x800'6d51    0x16  Code  Gb  gpio_api.o [4]
 hadc1                   0x2000'3024    0x68  Data  Gb  main.o [2]
 heartbeat               0x2000'0098     0xc  Data  Gb  system_api.o [6]
-heartbeat_init           0x800'6d69    0x46  Code  Gb  heartbeat_api.o [5]
-heartbeat_task           0x800'6d55    0x12  Code  Gb  heartbeat_api.o [5]
+heartbeat_init           0x800'6d81    0x46  Code  Gb  heartbeat_api.o [5]
+heartbeat_task           0x800'6d6d    0x12  Code  Gb  heartbeat_api.o [5]
 heartbeat_task_attributes
                         0x2000'003c    0x24  Data  Gb  heartbeat_api.o [5]
 hrtc                    0x2000'30f0    0x28  Data  Gb  main.o [2]
@@ -778,7 +779,7 @@ osKernelInitialize       0x800'6a07    0x1a  Code  Gb  cmsis_os2.o [9]
 osKernelStart            0x800'6a29    0x2a  Code  Gb  cmsis_os2.o [9]
 osThreadFlagsWait        0x800'6af1    0x92  Code  Gb  cmsis_os2.o [9]
 osThreadNew              0x800'6a5f    0x92  Code  Gb  cmsis_os2.o [9]
-printf                   0x800'6e35    0x28  Code  Gb  printf.o [10]
+printf                   0x800'6e4d    0x28  Code  Gb  printf.o [10]
 prvAddCurrentTaskToDelayedList
                          0x800'4483    0x4e  Code  Lc  tasks.o [9]
 prvAddNewTaskToReadyList
@@ -808,7 +809,7 @@ prvSampleTimeNow::xLastTime
 prvTaskExitError         0x800'4815    0x22  Code  Lc  port.o [9]
 prvTimerTask             0x800'4a31   0x184  Code  Lc  timers.o [9]
 prvUnlockQueue           0x800'5111    0x68  Code  Lc  queue.o [9]
-putchar                  0x800'7721     0xc  Code  Gb  putchar.o [10]
+putchar                  0x800'7739     0xc  Code  Gb  putchar.o [10]
 pvPortMalloc             0x800'45b5    0xfe  Code  Gb  heap_4.o [9]
 pxCurrentTCB            0x2000'3140     0x4  Data  Gb  tasks.o [9]
 pxCurrentTimerList      0x2000'2ef8     0x4  Data  Lc  timers.o [9]
@@ -819,7 +820,7 @@ pxOverflowDelayedTaskList
 pxOverflowTimerList     0x2000'2efc     0x4  Data  Lc  timers.o [9]
 pxPortInitialiseStack    0x800'48c1    0x68  Code  Gb  port.o [9]
 pxReadyTasksLists       0x2000'2208   0x460  Data  Lc  tasks.o [9]
-remove                   0x800'7473    0x14  Code  Gb  remove.o [13]
+remove                   0x800'748b    0x14  Code  Gb  remove.o [13]
 sFileInfo               0x2000'31b4    0x80  Data  Lc  XShHandles.o [10]
 scalbln                  0x800'28f9          Code  Gb  ldexp.o [11]
 scalblnl                 0x800'28f9          Code  Gb  ldexp.o [11]
@@ -828,12 +829,12 @@ scalbnl                  0x800'28f9          Code  Gb  ldexp.o [11]
 scale                    0x800'2631    0x46  Code  Lc  xprintffull_nomb.o [10]
 sec_hand                0x2000'3330     0x4  Data  Lc  xfail_s.o [10]
 segment_holding          0x800'01f5    0x1c  Code  Lc  dlmalloc.o [10]
-spi_init                 0x800'6eb9    0x52  Code  Gb  spi_api.o [4]
+spi_init                 0x800'6ed1    0x52  Code  Gb  spi_api.o [4]
 spi_obj_hal             0x2000'0064    0x24  Data  Gb  spi_api.o [4]
 strchr                   0x800'2721          Code  Gb  strchr.o [12]
 strlen                   0x800'2779          Code  Gb  strlen.o [12]
-strncat                  0x800'6f1f    0x28  Code  Gb  strncat.o [10]
-system_init              0x800'6ba9    0x20  Code  Gb  system_api.o [6]
+strncat                  0x800'6f37    0x28  Code  Gb  strncat.o [10]
+system_init              0x800'6ba9    0x2c  Code  Gb  system_api.o [6]
 ucHeap                  0x2000'0208  0x2000  Data  Lc  heap_4.o [9]
 ulCriticalNesting       0x2000'0060     0x4  Data  Lc  port.o [9]
 ulSetInterruptMask       0x800'4531          Code  Gb  portasm.o [9]
@@ -953,7 +954,7 @@ xYieldPending           0x2000'3178     0x4  Data  Lc  tasks.o [9]
 [12] = rt7M_tl.a
 [13] = shb_l.a
 
-  30'801 bytes of readonly  code memory
+  30'825 bytes of readonly  code memory
      324 bytes of readonly  data memory
   14'648 bytes of readwrite data memory
 

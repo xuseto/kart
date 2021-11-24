@@ -3,12 +3,23 @@
     {
       "name": "STM32",
       "includePath": [
+        "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32L5xx/Include",
+        "${workspaceFolder}/Drivers/CMSIS/RTOS2/Include",
+        "${workspaceFolder}/Drivers/STM32L5xx_HAL_Driver/Inc",
+        "${workspaceFolder}/Src",
+        "${workspaceFolder}/Src/**/**",
         "Inc",
+        "Middlewares/Third_Party/FreeRTOS/Source/include/**",
+        "Src/dac",
+        "Src/dac/src",
+        "Src/hdwr",
         "Src/heartbeat",
-        "Src/hwdr"
+        "Src/system",
+        "Src/system/src"
       ],
       "defines": [],
-      "compilerPath": "C:\\USERS\\XUSETO\\APPDATA\\ROAMING\\CODE\\USER\\GLOBALSTORAGE\\BMD.STM32-FOR-VSCODE\\@XPACK-DEV-TOOLS\\ARM-NONE-EABI-GCC\\10.3.1-2.2.1\\.CONTENT\\BIN\\ARM-NONE-EABI-GCC.EXE"
+      "compilerPath": "C:\\PROGRAM FILES (X86)\\GNU ARM EMBEDDED TOOLCHAIN\\10 2021.10\\BIN\\ARM-NONE-EABI-GCC.EXE",
+      "cStandard": "c99"
     }
   ],
   "version": 4
