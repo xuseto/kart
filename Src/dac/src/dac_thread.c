@@ -28,9 +28,8 @@
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** Definitions for defaultTask */
 osThreadAttr_t dac_task_attributes = {
-  .priority = (osPriority_t) osPriorityLow,
-  .stack_size = 0
-};
+    .priority = (osPriority_t)osPriorityLow,
+    .stack_size = 1024};
 
 /* Private values --------------------------------------------------------------------------------*/
 
@@ -40,31 +39,31 @@ osThreadAttr_t dac_task_attributes = {
  * 
  * @param argument \ref dac_t
  */
-void dac_task ( void *argument );
+void dac_task(void *argument);
 
 /* Private functions -----------------------------------------------------------------------------*/
-void dac_task ( void *argument )
+void dac_task(void *argument)
 {
-  dac_t *dac = (dac_t *)argument;
-  uint32_t flag_thread;
+    dac_t *dac = (dac_t *)argument;
+    uint32_t flag_thread;
 
-  printf ("Enter thread of DAC \n");
-  while (1)
-  {
-    flag_thread = osThreadFlagsWait (0x00, osFlagsWaitAny, osWaitForever);
-  }
+    printf("Enter thread of DAC \n");
+    while (1)
+    {
+        flag_thread = osThreadFlagsWait(0x00, osFlagsWaitAny, osWaitForever);
+    }
 }
 /* Public functions ------------------------------------------------------------------------------*/
-osThreadId_t dac_create_thread (dac_cfg_t *cfg, void *arg)
+osThreadId_t dac_create_thread(dac_cfg_t *cfg, void *arg)
 {
     osThreadId_t ret = NULL;
 
-    if (!cfg || !arg) return ret;
+    if (!cfg || !arg)
+        return ret;
 
     // Make thread
-    dac_task_attributes.name = cfg->name ? cfg->name :  "unknown";
-    return ( osThreadNew(dac_task, arg, &dac_task_attributes) );
-
+    dac_task_attributes.name = cfg->name ? cfg->name : "unknown";
+    return (osThreadNew(dac_task, arg, &dac_task_attributes));
 }
 
 /**

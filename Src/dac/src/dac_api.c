@@ -35,33 +35,33 @@
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t dac_init (dac_cfg_t *cfg)
+ret_code_t dac_init(dac_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
 
-    if (!cfg) return ret;
+    if (!cfg)
+        return ret;
 
-    dac_t *dac = (dac_t *)calloc (1, sizeof(dac_t));
+    dac_t *dac = (dac_t *)calloc(1, sizeof(dac_t));
     ret = (dac) ? RET_SUCCESS : RET_INT_ERROR;
 
     if (RET_SUCCESS == ret)
     {
-      dac->id_thread = dac_create_thread (cfg, dac);
-      ret = (dac->id_thread) ? RET_SUCCESS : RET_INT_ERROR ;
+        dac->id_thread = dac_create_thread(cfg, dac);
+        ret = (dac->id_thread) ? RET_SUCCESS : RET_INT_ERROR;
     }
 
     if (RET_SUCCESS == ret)
     {
-       dac->obj_com =spi_init (cfg->id_spi);
+        dac->obj_com = spi_init(cfg->id_spi);
     }
 
     if (RET_SUCCESS == ret)
     {
-      printf ("Created thread : %s (0x%x)\n", cfg->name, dac);
+        printf("Created thread : %s (0x%x)\n", cfg->name, dac);
     }
 
     return ret;
-
 }
 
 /**

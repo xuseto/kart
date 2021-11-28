@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0 
  * @date Creation: 24/11/2021
- * @date Last modification 24/11/2021 by jnieto
+ * @date Last modification 28/11/2021 by jnieto
  * @brief All System of the Kart
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -54,7 +54,10 @@ void system_init(void)
     gpio_on(gpio);
 
     ret = heartbeat_init(&heartbeat);
-    ret = dac_init(&dac);
+    if (RET_SUCCESS == ret)
+    {
+        ret = dac_init(&dac);
+    }
 
     if (RET_SUCCESS == ret)
     {
