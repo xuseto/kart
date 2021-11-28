@@ -14,6 +14,10 @@
     @{
 
 */
+/* Define to prevent recursive inclusion ---------------------------------------------------------*/
+#ifndef __DAC_API_H
+#define __DAC_API_H
+
 /* Includes --------------------------------------------------------------------------------------*/
 #include <hdwr/spi_api.h>
 
@@ -43,8 +47,9 @@ typedef struct
  */
 ret_code_t dac_init(dac_cfg_t *cfg);
 
+#endif /* __DAC_API_H */
 /**
-  * @}
+ * @}
 */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

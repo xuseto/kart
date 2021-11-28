@@ -13,9 +13,11 @@
         "def_common.h": "c",
         "cmsis_os2.h": "c",
         "fifo_api.h": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "dac_dac8554.h": "c"
     },
     "cortex-debug.armToolchainPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.10\\bin",
     "cortex-debug.openocdPath": "C:\\xpack-openocd-0.11.0-2\\bin\\openocd",
-    "stm32-for-vscode.makePath": false
+    "stm32-for-vscode.makePath": false,
+    "C_Cpp.errorSquiggles": "Disabled"
 }

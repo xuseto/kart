@@ -1430,6 +1430,12 @@
                     <name>$PROJ_DIR$\..\Src\dac\src\dac_api.c</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\Src\dac\src\dac_dac8554.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\dac\src\dac_dac8554.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Src\dac\src\dac_thread.c</name>
                 </file>
                 <file>

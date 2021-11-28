@@ -47,7 +47,7 @@ ret_code_t dac_init(dac_cfg_t *cfg)
 
     if (RET_SUCCESS == ret)
     {
-        dac->id_thread = dac_create_thread(cfg, dac);
+        dac->id_thread = dac_create_thread(cfg->name, dac);
         ret = (dac->id_thread) ? RET_SUCCESS : RET_INT_ERROR;
     }
 

@@ -39,7 +39,8 @@ typedef enum
 typedef struct spi_cfg_s
 {
     num_spi_t spi;
-    fifo_cfg_t spi_fifo; /** FIFO configuration */
+    fifo_cfg_t spi_fifo_tx; /** FIFO configuration */
+    fifo_cfg_t spi_fifo_rx; /** FIFO configuration */
 } spi_cfg_t;
 
 /* Private values --------------------------------------------------------------------------------*/
@@ -57,9 +58,10 @@ void *spi_init(spi_cfg_t *cfg);
  * @brief Send new message by SPI
  * 
  * @param arg \ref spi_t
+ * @param msg Pointer of the a new message for send by SPI
  * @return ret_code_t \ref ret_code_t
  */
-ret_code_t spi_enqueue(void *arg);
+ret_code_t spi_enqueue(void *arg, void *msg);
 
 #endif /* __SPI_API_H */
        /**

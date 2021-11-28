@@ -29,27 +29,29 @@
 /* Typedefs --------------------------------------------------------------------------------------*/
 typedef enum
 {
-  LED_RED,
-  LED_GREEN,
-  LED_BLUE,
-  MAX_GPIO_OUT
-}gpio_out_t;
+    LED_RED,
+    LED_GREEN,
+    LED_BLUE,
+    MAX_GPIO_OUT
+} gpio_out_t;
 
 typedef enum
 {
-  MAX_GPIO_IN
-}gpio_in_t;
+    MAX_GPIO_IN
+} gpio_in_t;
 
 /* Private values --------------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-void gpio_on (gpio_out_t pin);
-void gpio_off (gpio_out_t pin);
-void gpio_toggle (gpio_out_t pin);
+void gpio_on(gpio_out_t pin);
+void gpio_off(gpio_out_t pin);
+void gpio_toggle(gpio_out_t pin);
 
 #endif /* __GPIO_API_H */
-/**
+       /**
   * @}
   */
-
-/************************* (C) COPYRIGHT ****** END OF FILE ***************************************/
+       /**
+  * @}
+  */
+       /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

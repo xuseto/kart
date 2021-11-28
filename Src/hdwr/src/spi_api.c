@@ -73,8 +73,10 @@ spi_obj_hal_t spi_obj_hal[] =
 typedef struct spi_s
 {
     char name[5];           /**< Name of thread */
+    uint16_t size_data;     /**< Sizeof data send o recived data from SPI */
     void *driver_hal;       /**< Pointer of object of driver HAL */
-    void *id_fifo;          /**< ID by FIFOs */
+    void *id_fifo_tx;       /**< ID by FIFOs */
+    void *id_fifo_rx;       /**< ID by FIFOs */
     osThreadId_t id_thread; /**< ID of thread */
 } spi_t;
 
@@ -91,12 +93,11 @@ void spi_task(void *aguments);
 /* Private functions -----------------------------------------------------------------------------*/
 void spi_task(void *arguments)
 {
-    uint8_t data[4] = {1, 2, 3, 4};
 
     if (arguments)
     {
         spi_t *spi = (spi_t *)arguments;
-        uint32_t flag_thread;
+        uint32_t flag_thread = 0x00;
 
         while (1)
         {
@@ -104,8 +105,12 @@ void spi_task(void *arguments)
 
             if (flag_thread == SPI_TX)
             {
-                printf("Send new message SPI\n");
-                HAL_SPI_Transmit(spi->driver_hal, &data[0], sizeof(data), 0x00);
+                void *data = fifo_dequeue_msg(spi->id_fifo_tx);
+
+                if (data)
+                {
+                    HAL_SPI_Transmit(spi->driver_hal, data, spi->size_data, 0x00);
+                }
             }
         }
     }
@@ -123,7 +128,7 @@ void *spi_init(spi_cfg_t *cfg)
 
     if (spi)
     {
-        char id_sci[] = "1";
+        char id_sci[] = "0";
         spi->driver_hal = &spi_obj_hal[cfg->spi];
 
         strncat(spi->name, NAME_SPI, sizeof(spi->name) - 1);
@@ -133,7 +138,9 @@ void *spi_init(spi_cfg_t *cfg)
         spi_task_attributes.name = (spi->name) ? spi->name : "unknown";
         spi->id_thread = osThreadNew(spi_task, spi, &spi_task_attributes);
 
-        spi->id_fifo = fifo_create_queue(&cfg->spi_fifo);
+        spi->id_fifo_tx = fifo_create_queue(&cfg->spi_fifo_tx);
+        spi->id_fifo_rx = fifo_create_queue(&cfg->spi_fifo_rx);
+        spi->size_data = cfg->spi_fifo_tx.size_msg;
 
         printf("Created SPI : %s (0x%x)\n", spi->name, spi);
     }
@@ -142,17 +149,17 @@ void *spi_init(spi_cfg_t *cfg)
 }
 
 //--------------------------------------------------------------------------------------------------
-ret_code_t spi_enqueue(void *arg)
+ret_code_t spi_enqueue(void *arg, void *msg)
 {
     ret_code_t ret = RET_PARAM_ERROR;
     spi_t *spi = (spi_t *)arg;
 
-    if (!spi || NULL == spi->id_thread)
+    if (!spi || NULL == spi->id_thread || !msg)
     {
         return ret;
     }
 
-    //jnieto encolar el mensaje a enviar
+    fifo_enqueue_msg(spi->id_fifo_tx, msg);
 
     ret = !(osThreadFlagsSet(spi->id_thread, SPI_TX))
               ? RET_SUCCESS

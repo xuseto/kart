@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * @file dac_thread.h 
+ * @file dac_dac8554.h 
  * @author jnieto
  * @version 1.0.0.0.0 
  * @date Creation: 17/11/2021
@@ -10,22 +10,51 @@
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup DAC_THREAD
+    @addtogroup DAC_DAC8554
     @{
 
 */
+/* Define to prevent recursive inclusion ---------------------------------------------------------*/
+#ifndef __DAC_DAC8554_H
+#define __DAC_DAC8554_H
+
 /* Includes --------------------------------------------------------------------------------------*/
-#include "cmsis_os2.h"
+#include <stdint.h>
+#include <def_common.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Typedefs --------------------------------------------------------------------------------------*/
-/** Object of configuration of dac */
-typedef struct
+/** Frame for DAC8554 */
+typedef struct dac8554_frame_s
 {
-    osThreadId_t id_thread; /**< ID of thread */
-    void *obj_com;          /**< Obj of SPI */
-} dac_t;
+    uint32_t all;
+    union
+    {
+        uint32_t a1 : 1;
+        uint32_t a0 : 1;
+        uint32_t ld1 : 1;
+        uint32_t ld0 : 1;
+        uint32_t dc : 1;      /**< Don´t care */
+        uint32_t select1 : 1; /**< DAC select 1 */
+        uint32_t select0 : 1; /**< DAC select 0 */
+        uint32_t pd0 : 1;
+        uint32_t data : 16;
+        uint32_t free : 8;
+
+    } db;
+
+} dac8554_frame_t;
+
+/** Number of DAC */
+typedef enum dac8554_select_e
+{
+    DAC_A,  /**< DAC Select A */
+    DAC_B,  /**< DAC Select B */
+    DAC_C,  /**< DAC Select C */
+    DAC_D,  /**< DAC Select D */
+    DAC_MAX /**< DAC maximum */
+} dac8554_select_t;
 
 /* Private values --------------------------------------------------------------------------------*/
 
@@ -35,16 +64,18 @@ typedef struct
 
 /* Public functions ------------------------------------------------------------------------------*/
 /**
- * @brief Create the thread for dac
+ * @brief write dac 
  * 
- * @param name_thread name for thread
- * @param arg \ref dac_t
- * @return osThreadId_t 
+ * @param dac \ref dac_t
+ * @param dac_sel \ref dac8554_select_t
+ * @param data 
+ * @return ret_code_t \ref ret_code_t
  */
-osThreadId_t dac_create_thread(const char *name_thread, void *arg);
+ret_code_t dac_dac8554_write_buffer(void *arg, dac8554_select_t dac_sel, uint16_t *data);
 
+#endif /* __DAC_DAC8554_H */
 /**
-  * @}
+ * @}
 */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

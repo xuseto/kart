@@ -20,8 +20,8 @@
 #include <def_common.h>
 #include <stdio.h>
 
-#include <dac/dac_api.h>
 #include "dac_thread.h"
+#include "dac_dac8554.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -46,25 +46,26 @@ void dac_task(void *argument)
 {
     dac_t *dac = (dac_t *)argument;
     uint32_t flag_thread;
+    uint16_t data = 5;
 
-    printf("Enter thread of DAC \n");
     while (1)
     {
         flag_thread = osThreadFlagsWait(0x00, osFlagsWaitAny, 500);
 
-        spi_enqueue(dac->obj_com);
+        dac_dac8554_write_buffer(dac, DAC_A, (uint16_t *)data);
     }
 }
-/* Public functions ------------------------------------------------------------------------------*/
-osThreadId_t dac_create_thread(dac_cfg_t *cfg, void *arg)
-{
-    osThreadId_t ret = NULL;
 
-    if (!cfg || !arg)
-        return ret;
+/* Public functions ------------------------------------------------------------------------------*/
+osThreadId_t dac_create_thread(const char *name_thread, void *arg)
+{
+    if (!name_thread || !arg)
+    {
+        return NULL;
+    }
 
     // Make thread
-    dac_task_attributes.name = cfg->name ? cfg->name : "unknown";
+    dac_task_attributes.name = name_thread ? name_thread : "unknown";
     return (osThreadNew(dac_task, arg, &dac_task_attributes));
 }
 

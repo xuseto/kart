@@ -23,7 +23,7 @@
 /* Includes --------------------------------------------------------------------------------------*/
 #include "cmsis_os2.h"
 #include <def_common.h>
-#include <stdint.h>
+//#include <stdint.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 #define fifo_t osMessageQueueId_t
