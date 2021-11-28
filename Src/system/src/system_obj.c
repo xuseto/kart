@@ -24,18 +24,26 @@
 
 /* Private values --------------------------------------------------------------------------------*/
 /** Struct of the HeartBeat */
-heartbeat_cfg_t heartbeat = 
-{
-  .delay_ms = 1000, // 1 sg
-  .gpio = LED_GREEN,
-  .name = "HeartBeat"
-};
+heartbeat_cfg_t heartbeat =
+    {
+        .delay_ms = 1000, // 1 sg
+        .gpio = LED_GREEN,
+        .name = "HeartBeat"};
 
 /** Struct of the DAC */
-dac_cfg_t dac = 
-{
-  .name   = "DAC",
-  .id_spi = SPI_B,
+dac_cfg_t dac =
+    {
+        .name = "DAC",
+        .id_spi =
+            {
+                .spi = SPI_B,
+                .spi_fifo =
+                    {
+                        .name = "SPI_B",
+                        .num_msg = 20,
+                        .size_msg = 10,
+                    },
+            },
 };
 
 /* Private functions declaration -----------------------------------------------------------------*/
@@ -43,7 +51,6 @@ dac_cfg_t dac =
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-
 
 /**
   * @}

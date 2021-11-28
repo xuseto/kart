@@ -22,6 +22,7 @@
 
 /* Includes --------------------------------------------------------------------------------------*/
 #include <def_common.h>
+#include <hdwr/fifo_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -35,6 +36,12 @@ typedef enum
     SPI_MAX
 } num_spi_t;
 
+typedef struct spi_cfg_s
+{
+    num_spi_t spi;
+    fifo_cfg_t spi_fifo; /** FIFO configuration */
+} spi_cfg_t;
+
 /* Private values --------------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
@@ -44,7 +51,7 @@ typedef enum
  * @param cfg \ref num_spi_t
  * @return pointer of obj
  */
-void *spi_init(num_spi_t cfg);
+void *spi_init(spi_cfg_t *cfg);
 
 /**
  * @brief Send new message by SPI
