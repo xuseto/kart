@@ -41,6 +41,11 @@ osThreadAttr_t spi_task_attributes =
         .priority = (osPriority_t)osPriorityNormal,
         .stack_size = 1024};
 
+/** define all falgs */
+#define SPI_TX (0x01U << 0)
+#define SPI_RX (0x01U << 1)
+#define SPI_ALL_FLAG (SPI_RX | SPI_TX)
+
 /** Redefine structures of HAL by STM32 */
 typedef struct spi_obj_hal_s
 {
@@ -75,16 +80,23 @@ void spi_task(void *aguments);
 /* Private functions -----------------------------------------------------------------------------*/
 void spi_task(void *arguments)
 {
-    if (!arguments)
-    {
-        return;
-    }
+    uint8_t data[4] = {1, 2, 3, 4};
 
-    uint32_t flag_thread;
-
-    while (1)
+    if (arguments)
     {
-        flag_thread = osThreadFlagsWait(0x00, osFlagsWaitAny, osWaitForever);
+        spi_t *spi = (spi_t *)arguments;
+        uint32_t flag_thread;
+
+        while (1)
+        {
+            flag_thread = osThreadFlagsWait(SPI_ALL_FLAG, osFlagsWaitAny, osWaitForever);
+
+            if (flag_thread == SPI_TX)
+            {
+                printf("Send new message SPI\n");
+                HAL_SPI_Transmit(spi->driver_hal, &data[0], sizeof(data), 0x00);
+            }
+        }
     }
 }
 /* Public functions ------------------------------------------------------------------------------*/
@@ -107,7 +119,7 @@ void *spi_init(num_spi_t cfg)
         id_sci[0] += cfg;
         strncat(spi->name, id_sci, 1);
 
-        spi_task_attributes.name = (spi->name) ? spi->name ? "unknown";
+        spi_task_attributes.name = (spi->name) ? spi->name : "unknown";
         spi->id_thread = osThreadNew(spi_task, spi, &spi_task_attributes);
 
         printf("Created comunication : %s (0x%x)\n", spi->name, spi);
@@ -116,6 +128,25 @@ void *spi_init(num_spi_t cfg)
     return spi;
 }
 
+//--------------------------------------------------------------------------------------------------
+ret_code_t spi_enqueue(void *arg)
+{
+    ret_code_t ret = RET_PARAM_ERROR;
+    spi_t *spi = (spi_t *)arg;
+
+    if (!spi || NULL == spi->id_thread)
+    {
+        return ret;
+    }
+
+    //jnieto encolar el mensaje a enviar
+
+    ret = !(osThreadFlagsSet(spi->id_thread, SPI_TX))
+              ? RET_SUCCESS
+              : RET_INT_ERROR;
+
+    return ret;
+}
 /**
   * @}
   */

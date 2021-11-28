@@ -39,7 +39,7 @@ heartbeat_cfg_t heartbeat =
 dac_cfg_t dac =
     {
         .name = "DAC",
-        .id_spi = SPI_B,
+        .id_spi = SPI_C,
 };
 
 /* Private functions declaration -----------------------------------------------------------------*/
@@ -53,7 +53,10 @@ void system_init(void)
 
     gpio_on(gpio);
 
+    /* Init herat Beat */
     ret = heartbeat_init(&heartbeat);
+
+    /* Init DAC */
     if (RET_SUCCESS == ret)
     {
         ret = dac_init(&dac);
