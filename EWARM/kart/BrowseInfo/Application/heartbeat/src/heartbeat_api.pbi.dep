@@ -1,19 +1,9 @@
 D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbeat_api.pbi: \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product_stdlib.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\ycheck.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdio.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product_stdlib.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdlib.h \
   D:\Proyectos\STM32\kart\EWARM\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_exti.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_dmamux.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_dma.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_gpio.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_pwr.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_utils.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_system.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_rcc.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_cortex.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_bus.h \
-  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_ucpd.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_spi_ex.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_spi.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_rtc_ex.h \

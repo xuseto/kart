@@ -19,6 +19,7 @@
 /* Includes --------------------------------------------------------------------------------------*/
 #include "hdwr/spi_api.h"
 
+#include <hdwr/fifo_api.h>
 #include <cmsis_os2.h>
 #include <stm32l5xx_hal.h>
 #include <def_common.h>
@@ -49,14 +50,23 @@ osThreadAttr_t spi_task_attributes =
 /** Redefine structures of HAL by STM32 */
 typedef struct spi_obj_hal_s
 {
-    SPI_HandleTypeDef *spi_hal[SPI_MAX];
+    SPI_HandleTypeDef *spi_hal[SPI_MAX]; /**< Struct HAL Drivers */
 } spi_obj_hal_t;
 
 spi_obj_hal_t spi_obj_hal[] =
     {
-        [SPI_A] = &hspi1,
-        [SPI_B] = &hspi2,
-        [SPI_C] = &hspi3,
+        [SPI_A] =
+            {
+                .spi_hal = &hspi1,
+            },
+        [SPI_B] =
+            {
+                .spi_hal = &hspi2,
+            },
+        [SPI_C] =
+            {
+                .spi_hal = &hspi3,
+            },
 };
 
 /** Structure internal of SPI */
@@ -64,6 +74,7 @@ typedef struct spi_s
 {
     char name[5];           /**< Name of thread */
     void *driver_hal;       /**< Pointer of object of driver HAL */
+    void *id_fifo;          /**< ID by FIFOs */
     osThreadId_t id_thread; /**< ID of thread */
 } spi_t;
 
@@ -100,10 +111,10 @@ void spi_task(void *arguments)
     }
 }
 /* Public functions ------------------------------------------------------------------------------*/
-void *spi_init(num_spi_t cfg)
+void *spi_init(spi_cfg_t *cfg)
 {
 
-    if (SPI_MAX < cfg)
+    if (SPI_MAX < cfg->spi)
     {
         return NULL;
     }
@@ -113,16 +124,18 @@ void *spi_init(num_spi_t cfg)
     if (spi)
     {
         char id_sci[] = "1";
-        spi->driver_hal = &spi_obj_hal[cfg];
+        spi->driver_hal = &spi_obj_hal[cfg->spi];
 
         strncat(spi->name, NAME_SPI, sizeof(spi->name) - 1);
-        id_sci[0] += cfg;
+        id_sci[0] += cfg->spi;
         strncat(spi->name, id_sci, 1);
 
         spi_task_attributes.name = (spi->name) ? spi->name : "unknown";
         spi->id_thread = osThreadNew(spi_task, spi, &spi_task_attributes);
 
-        printf("Created comunication : %s (0x%x)\n", spi->name, spi);
+        spi->id_fifo = fifo_create_queue(&cfg->spi_fifo);
+
+        printf("Created SPI : %s (0x%x)\n", spi->name, spi);
     }
 
     return spi;
