@@ -21,6 +21,7 @@
 #define __SPI_API_H
 
 /* Includes --------------------------------------------------------------------------------------*/
+#include <def_common.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -43,10 +44,18 @@ typedef enum
  * @param cfg \ref num_spi_t
  * @return pointer of obj
  */
-void *spi_init (num_spi_t cfg);
+void *spi_init(num_spi_t cfg);
+
+/**
+ * @brief Send new message by SPI
+ * 
+ * @param arg \ref spi_t
+ * @return ret_code_t \ref ret_code_t
+ */
+ret_code_t spi_enqueue(void *arg);
 
 #endif /* __SPI_API_H */
-/**
+       /**
   * @}
   */
 
