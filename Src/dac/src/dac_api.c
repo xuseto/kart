@@ -53,7 +53,7 @@ ret_code_t dac_init(dac_cfg_t *cfg)
 
     if (RET_SUCCESS == ret)
     {
-        dac->obj_com = spi_init(cfg->id_spi);
+        dac->obj_com = spi_init(&cfg->id_spi);
     }
 
     if (RET_SUCCESS == ret)

@@ -21,11 +21,11 @@
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 
-/** Object of configuration of dac */ 
-typedef struct  
+/** Object of configuration of dac */
+typedef struct
 {
-  const char *name;    /**< name of thread */
-  num_spi_t id_spi;      /**< number of SPI */
+    const char *name; /**< name of thread */
+    spi_cfg_t id_spi; /**< number of SPI */
 } dac_cfg_t;
 
 /* Private values --------------------------------------------------------------------------------*/
@@ -41,7 +41,7 @@ typedef struct
  * @param cfg \ref dac_cfg_t
  * @return ret_code_t \ref ret_code_t
  */
-ret_code_t dac_init (dac_cfg_t *cfg);
+ret_code_t dac_init(dac_cfg_t *cfg);
 
 /**
   * @}
