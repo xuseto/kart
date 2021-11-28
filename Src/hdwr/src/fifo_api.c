@@ -69,7 +69,7 @@ ret_code_t fifo_enqueue_msg(fifo_t fifo, void *msg)
         return ret;
     }
 
-    ret = (osOK == osMessageQueuePut(fifo, msg, NULL, NULL)) ? RET_SUCCESS : RET_INT_ERROR;
+    return ((osOK == osMessageQueuePut(fifo, msg, NULL, NULL)) ? RET_SUCCESS : RET_INT_ERROR);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ uint32_t fifo_get_space(fifo_t fifo)
 }
 
 //--------------------------------------------------------------------------------------------------
-uint32_t fifo_reset(fifo_t fifo)
+ret_code_t fifo_reset(fifo_t fifo)
 {
 
     if (!fifo)

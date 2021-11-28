@@ -79,6 +79,7 @@ uint32_t fifo_get_space(fifo_t fifo);
  * @return ret_code_t \ref ret_code_t 
  */
 ret_code_t fifo_reset(fifo_t fifo);
+
 #endif /* __FIFO_API_H */
 
 /**

@@ -19,6 +19,7 @@
 #include <heartbeat/heartbeat_api.h>
 #include "cmsis_os2.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
