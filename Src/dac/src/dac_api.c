@@ -1,10 +1,10 @@
 /***************************************************************************************************
- * @file dac_api.h 
+ * @file dac_api.h
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 17/11/2021
  * @date Last modification 17/11/2021 by jnieto
- * @brief dac 
+ * @brief dac
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <def_common.h>
 #include <stdio.h>
+#include <dac/src/dac8.h>
 
 #include "hdwr/spi_api.h"
 #include "dac/dac_api.h"
@@ -39,6 +40,8 @@ ret_code_t dac_init(dac_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
 
+    dac8_t dac8;
+
     if (!cfg)
         return ret;
 
@@ -51,10 +54,15 @@ ret_code_t dac_init(dac_cfg_t *cfg)
         ret = (dac->id_thread) ? RET_SUCCESS : RET_INT_ERROR;
     }
 
-    if (RET_SUCCESS == ret)
-    {
-        dac->obj_com = spi_init(&cfg->id_spi);
-    }
+    dac8_init(&dac8);
+
+    // INIT DAC8
+
+    /*   if (RET_SUCCESS == ret)
+       {
+           dac->obj_com = spi_init(&cfg->id_spi);
+       }
+       */
 
     if (RET_SUCCESS == ret)
     {
@@ -65,7 +73,7 @@ ret_code_t dac_init(dac_cfg_t *cfg)
 }
 
 /**
-  * @}
-*/
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

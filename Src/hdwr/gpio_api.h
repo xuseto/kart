@@ -1,7 +1,7 @@
 /***************************************************************************************************
- * @file gpio_api.h 
+ * @file gpio_api.h
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 11/11/2021
  * @date Last modification 17/11/2021 by jnieto
  * @brief GPIO
@@ -32,6 +32,8 @@ typedef enum
     LED_RED,
     LED_GREEN,
     LED_BLUE,
+    CS_SPI3,
+    LD,
     MAX_GPIO_OUT
 } gpio_out_t;
 
@@ -49,9 +51,9 @@ void gpio_toggle(gpio_out_t pin);
 
 #endif /* __GPIO_API_H */
        /**
-  * @}
-  */
+        * @}
+        */
        /**
-  * @}
-  */
+        * @}
+        */
        /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

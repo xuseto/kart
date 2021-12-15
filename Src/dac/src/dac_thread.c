@@ -21,7 +21,6 @@
 #include <stdio.h>
 
 #include "dac_thread.h"
-#include "dac_dac8554.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -50,9 +49,9 @@ void dac_task(void *argument)
 
     while (1)
     {
-        flag_thread = osThreadFlagsWait(0x00, osFlagsWaitAny, 500);
+        flag_thread = osThreadFlagsWait(0x00, osFlagsWaitAny, osWaitForever);
 
-        dac_dac8554_write_buffer(dac, DAC_A, (uint16_t *)data);
+        //dac_dac8554_write_buffer(dac, DAC_A, (uint16_t *)data);
     }
 }
 

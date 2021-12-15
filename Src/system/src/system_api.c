@@ -1,7 +1,7 @@
 /***************************************************************************************************
- * @file system_api.h 
+ * @file system_api.h
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 24/11/2021
  * @date Last modification 28/11/2021 by jnieto
  * @brief All System of the Kart
@@ -42,6 +42,7 @@ dac_cfg_t dac =
         .id_spi =
             {
                 .spi = SPI_C,
+                .cs = CS_SPI3,
                 .spi_fifo_tx =
                     {
                         .name = "SPI_TX",
@@ -84,7 +85,7 @@ void system_init(void)
 }
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

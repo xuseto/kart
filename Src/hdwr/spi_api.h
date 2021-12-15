@@ -1,7 +1,7 @@
 /***************************************************************************************************
- * @file spi_api.h 
+ * @file spi_api.h
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 17/11/2021
  * @date Last modification 17/11/2021 by jnieto
  * @brief SPI
@@ -41,6 +41,7 @@ typedef struct spi_cfg_s
     num_spi_t spi;
     fifo_cfg_t spi_fifo_tx; /** FIFO configuration */
     fifo_cfg_t spi_fifo_rx; /** FIFO configuration */
+    uint16_t   cs;          /** Chip Select of SPI */
 } spi_cfg_t;
 
 /* Private values --------------------------------------------------------------------------------*/
@@ -48,7 +49,7 @@ typedef struct spi_cfg_s
 /* Public functions ------------------------------------------------------------------------------*/
 /**
  * @brief Init comunications with SPI
- * 
+ *
  * @param cfg \ref num_spi_t
  * @return pointer of obj
  */
@@ -56,7 +57,7 @@ void *spi_init(spi_cfg_t *cfg);
 
 /**
  * @brief Send new message by SPI
- * 
+ *
  * @param arg \ref spi_t
  * @param msg Pointer of the a new message for send by SPI
  * @return ret_code_t \ref ret_code_t
@@ -65,7 +66,7 @@ ret_code_t spi_enqueue(void *arg, void *msg);
 
 #endif /* __SPI_API_H */
        /**
-  * @}
-  */
+        * @}
+        */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

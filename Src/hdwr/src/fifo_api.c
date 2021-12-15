@@ -40,7 +40,7 @@
 /* Public functions ------------------------------------------------------------------------------*/
 fifo_t fifo_create_queue(fifo_cfg_t *cfg)
 {
-    osMessageQueueAttr_t attr;
+
     char name_fifo[FIFO_MAX_NAME];
 
     if (!cfg)
@@ -54,9 +54,9 @@ fifo_t fifo_create_queue(fifo_cfg_t *cfg)
     {
         strncat(name_fifo, cfg->name, sizeof(cfg->name));
     }
-    attr.name = name_fifo;
+    //memcpy((void *)cfg->attr.name, name_fifo, FIFO_MAX_NAME);
 
-    return (osMessageQueueNew(cfg->num_msg, cfg->size_msg, &attr));
+    return (osMessageQueueNew(cfg->num_msg, cfg->size_msg, &cfg->attr));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -73,21 +73,19 @@ ret_code_t fifo_enqueue_msg(fifo_t fifo, void *msg)
 }
 
 //--------------------------------------------------------------------------------------------------
-void *fifo_dequeue_msg(fifo_t fifo)
+ret_code_t fifo_dequeue_msg(fifo_t fifo, void *msg)
 {
-    void *msg;
 
-    if (!fifo)
+    ret_code_t ret = RET_PARAM_ERROR;
+
+    if (!fifo || !msg)
     {
-        return NULL;
+        return ret;
     }
 
-    if (osOK != osMessageQueueGet(fifo, msg, NULL, NULL))
-    {
-        msg = NULL;
-    }
+    ret = (osOK == osMessageQueueGet(fifo, msg, NULL, NULL)) ? RET_SUCCESS : RET_INT_ERROR;
 
-    return msg;
+    return ret;
 }
 
 //--------------------------------------------------------------------------------------------------

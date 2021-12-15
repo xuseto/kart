@@ -1,8 +1,8 @@
 
 /***************************************************************************************************
- * @file gpio_api.c 
+ * @file gpio_api.c
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 11/11/2021
  * @date Last modification 11/11/2021 by jnieto
  * @brief GPIO
@@ -24,15 +24,17 @@
 /* Defines ---------------------------------------------------------------------------------------*/
 typedef struct gpio_hal_s
 {
-  void *port;
-  uint16_t pin;
-}gpio_hal_t;
+    void *port;
+    uint16_t pin;
+} gpio_hal_t;
 
 gpio_hal_t gpio_hal[] =
-{
-  [LED_RED] = {LED_RED_GPIO_Port, LED_RED_Pin},
-  [LED_GREEN] = {LED_GREEN_GPIO_Port, LED_GREEN_Pin},
-  [LED_BLUE] = {LED_BLUE_GPIO_Port, LED_BLUE_Pin},
+    {
+        [LED_RED] = {LED_RED_GPIO_Port, LED_RED_Pin},
+        [LED_GREEN] = {LED_GREEN_GPIO_Port, LED_GREEN_Pin},
+        [LED_BLUE] = {LED_BLUE_GPIO_Port, LED_BLUE_Pin},
+        [CS_SPI3] = {CS_SPI3_GPIO_Port, CS_SPI3_Pin},
+        [LD] = {LD_GPIO_Port, LD_Pin},
 };
 
 /* Private values --------------------------------------------------------------------------------*/
@@ -42,34 +44,34 @@ gpio_hal_t gpio_hal[] =
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-void gpio_on (gpio_out_t pin)
+void gpio_on(gpio_out_t pin)
 {
-  if (MAX_GPIO_OUT > pin)
-  {
-      HAL_GPIO_WritePin (gpio_hal[pin].port, gpio_hal[pin].pin, GPIO_PIN_SET);
-  }
+    if (MAX_GPIO_OUT > pin)
+    {
+        HAL_GPIO_WritePin(gpio_hal[pin].port, gpio_hal[pin].pin, GPIO_PIN_SET);
+    }
 }
 
 //--------------------------------------------------------------------------------------------------
-void gpio_off (gpio_out_t pin)
+void gpio_off(gpio_out_t pin)
 {
-  if (MAX_GPIO_OUT > pin)
-  {
-      HAL_GPIO_WritePin (gpio_hal[pin].port, gpio_hal[pin].pin, GPIO_PIN_RESET);
-  }
+    if (MAX_GPIO_OUT > pin)
+    {
+        HAL_GPIO_WritePin(gpio_hal[pin].port, gpio_hal[pin].pin, GPIO_PIN_RESET);
+    }
 }
 
 //--------------------------------------------------------------------------------------------------
-void gpio_toggle (gpio_out_t pin)
+void gpio_toggle(gpio_out_t pin)
 {
-  if (MAX_GPIO_OUT > pin)
-  {
-      HAL_GPIO_TogglePin (gpio_hal[pin].port, gpio_hal[pin].pin);
-  }
+    if (MAX_GPIO_OUT > pin)
+    {
+        HAL_GPIO_TogglePin(gpio_hal[pin].port, gpio_hal[pin].pin);
+    }
 }
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

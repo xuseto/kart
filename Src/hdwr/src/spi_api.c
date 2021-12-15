@@ -1,8 +1,8 @@
 
 /***************************************************************************************************
- * @file spi_api.h 
+ * @file spi_api.h
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 11/11/2021
  * @date Last modification 11/11/2021 by jnieto
  * @brief SPI
@@ -50,7 +50,7 @@ osThreadAttr_t spi_task_attributes =
 /** Redefine structures of HAL by STM32 */
 typedef struct spi_obj_hal_s
 {
-    SPI_HandleTypeDef *spi_hal[SPI_MAX]; /**< Struct HAL Drivers */
+    SPI_HandleTypeDef *spi_hal; /**< Struct HAL Drivers */
 } spi_obj_hal_t;
 
 spi_obj_hal_t spi_obj_hal[] =
@@ -72,12 +72,12 @@ spi_obj_hal_t spi_obj_hal[] =
 /** Structure internal of SPI */
 typedef struct spi_s
 {
-    char name[5];           /**< Name of thread */
-    uint16_t size_data;     /**< Sizeof data send o recived data from SPI */
-    void *driver_hal;       /**< Pointer of object of driver HAL */
-    void *id_fifo_tx;       /**< ID by FIFOs */
-    void *id_fifo_rx;       /**< ID by FIFOs */
-    osThreadId_t id_thread; /**< ID of thread */
+    uint16_t size_data;            /**< Sizeof data send o recived data from SPI */
+    SPI_HandleTypeDef *driver_hal; /**< Pointer of object of driver HAL */
+    void *id_fifo_tx;              /**< ID by FIFOs */
+    void *id_fifo_rx;              /**< ID by FIFOs */
+    void *msg;                     /**< Where save the value of the Message TX and RX */
+    osThreadId_t id_thread;        /**< ID of thread */
 } spi_t;
 
 /* Private values --------------------------------------------------------------------------------*/
@@ -85,7 +85,7 @@ typedef struct spi_s
 /* Private functions declaration -----------------------------------------------------------------*/
 /**
  * @brief Run Thread
- * 
+ *
  * @param aguments \ref spi_t
  */
 void spi_task(void *aguments);
@@ -98,18 +98,29 @@ void spi_task(void *arguments)
     {
         spi_t *spi = (spi_t *)arguments;
         uint32_t flag_thread = 0x00;
+        ret_code_t ret;
+
+
+ /*       gpio_on(CS_SPI3);
+        HAL_SPI_Transmit(&hspi3, (uint8_t *)&tx_buf, sizeof(data), 1000);
+        gpio_off(CS_SPI3);*/
 
         while (1)
         {
             flag_thread = osThreadFlagsWait(SPI_ALL_FLAG, osFlagsWaitAny, osWaitForever);
 
-            if (flag_thread == SPI_TX)
+            if (1) // flag_thread == SPI_TX)
             {
-                void *data = fifo_dequeue_msg(spi->id_fifo_tx);
+                // ret = fifo_dequeue_msg(spi->id_fifo_tx, spi->msg);
 
-                if (data)
+                if (1) // spi->msg && RET_SUCCESS == ret)
                 {
-                    HAL_SPI_Transmit(spi->driver_hal, data, spi->size_data, 0x00);
+                    /*                  uint16_t error = 0;
+                                      printf ("SPI : 0x%x ; HAL : 0x%x. \n",spi,spi->driver_hal);
+                                      error = (&HAL_SPI_Transmithspi3, spi->msg, spi->size_data, 300);
+                                      //error = HAL_SPI_Transmit(&hspi3,  (uint8_t *)&EEPROM_WREN, , 100);
+                                      while(HAL_SPI_GetState(&hspi3) != HAL_SPI_STATE_READY);
+                    */
                 }
             }
         }
@@ -118,6 +129,7 @@ void spi_task(void *arguments)
 /* Public functions ------------------------------------------------------------------------------*/
 void *spi_init(spi_cfg_t *cfg)
 {
+    char name[5]; /**< Name of thread */
 
     if (SPI_MAX < cfg->spi)
     {
@@ -129,20 +141,32 @@ void *spi_init(spi_cfg_t *cfg)
     if (spi)
     {
         char id_sci[] = "0";
-        spi->driver_hal = &spi_obj_hal[cfg->spi];
+        spi->driver_hal = spi_obj_hal[cfg->spi].spi_hal;
 
-        strncat(spi->name, NAME_SPI, sizeof(spi->name) - 1);
+        strncat(name, NAME_SPI, sizeof(name) - 1);
         id_sci[0] += cfg->spi;
-        strncat(spi->name, id_sci, 1);
+        strncat(name, id_sci, 1);
 
-        spi_task_attributes.name = (spi->name) ? spi->name : "unknown";
-        spi->id_thread = osThreadNew(spi_task, spi, &spi_task_attributes);
-
-        spi->id_fifo_tx = fifo_create_queue(&cfg->spi_fifo_tx);
-        spi->id_fifo_rx = fifo_create_queue(&cfg->spi_fifo_rx);
         spi->size_data = cfg->spi_fifo_tx.size_msg;
 
-        printf("Created SPI : %s (0x%x)\n", spi->name, spi);
+        spi->msg = (uint16_t *)calloc(spi->size_data, sizeof(uint16_t));
+        if (!spi->msg)
+            return NULL;
+
+        spi->id_fifo_tx = fifo_create_queue(&cfg->spi_fifo_tx);
+        if (!spi->id_fifo_tx)
+            return NULL;
+
+        spi->id_fifo_rx = fifo_create_queue(&cfg->spi_fifo_rx);
+        if (!spi->id_fifo_rx)
+            return NULL;
+
+        spi_task_attributes.name = (name) ? name : "unknown";
+        spi->id_thread = osThreadNew(spi_task, spi, &spi_task_attributes);
+        if (!spi->id_thread)
+            return NULL;
+
+        printf("Created SPI : %s (0x%x)\n", name, spi);
     }
 
     return spi;
@@ -159,16 +183,19 @@ ret_code_t spi_enqueue(void *arg, void *msg)
         return ret;
     }
 
-    fifo_enqueue_msg(spi->id_fifo_tx, msg);
+    ret = fifo_enqueue_msg(spi->id_fifo_tx, msg);
 
-    ret = !(osThreadFlagsSet(spi->id_thread, SPI_TX))
-              ? RET_SUCCESS
-              : RET_INT_ERROR;
+    if (RET_SUCCESS == ret)
+    {
+        ret = !(osThreadFlagsSet(spi->id_thread, SPI_TX))
+                  ? RET_SUCCESS
+                  : RET_INT_ERROR;
+    }
 
     return ret;
 }
 /**
-  * @}
-  */
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

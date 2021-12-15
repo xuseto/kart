@@ -35,6 +35,7 @@ typedef struct fifo_cfg_s
     uint32_t num_msg;  /**< Maximum number of messager for queue */
     uint32_t size_msg; /**< Sizeof every message */
     const char *name;  /**< Name of FIFO */
+    osMessageQueueAttr_t attr;
 } fifo_cfg_t;
 
 /* Private values --------------------------------------------------------------------------------*/
@@ -60,9 +61,10 @@ ret_code_t fifo_enqueue_msg(fifo_t fifo, void *msg);
  * @brief  Dequeue message from FIFO
  * 
  * @param fifo \ref osMessageQueueId_t
- * @return void* Pointer of message FIFO
+ * @param msg pointer of new message
+ * @return ret_code_t \ref ret_code_t
  */
-void *fifo_dequeue_msg(fifo_t fifo);
+ret_code_t fifo_dequeue_msg(fifo_t fifo, void *msg);
 
 /**
  * @brief Get number of available slots for messages

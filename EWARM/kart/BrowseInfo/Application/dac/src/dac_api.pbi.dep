@@ -3,6 +3,7 @@ D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\dac\src\dac_api.pbi: \
   D:\Proyectos\STM32\kart\EWARM\..\Src\dac\dac_api.h \
   D:\Proyectos\STM32\kart\EWARM\..\Src\hdwr\fifo_api.h \
   D:\Proyectos\STM32\kart\EWARM\..\Src\hdwr\spi_api.h \
+  D:\Proyectos\STM32\kart\EWARM\..\Src\dac\src\dac8.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\ycheck.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdio.h \
   D:\Proyectos\STM32\kart\EWARM\..\Inc\def_common.h \

@@ -70,6 +70,10 @@ void Error_Handler(void);
 #define ST_LINK_VCP_RX_GPIO_Port GPIOG
 #define LED_GREEN_Pin GPIO_PIN_7
 #define LED_GREEN_GPIO_Port GPIOC
+#define CS_SPI3_Pin GPIO_PIN_8
+#define CS_SPI3_GPIO_Port GPIOC
+#define LD_Pin GPIO_PIN_9
+#define LD_GPIO_Port GPIOC
 #define LED_RED_Pin GPIO_PIN_9
 #define LED_RED_GPIO_Port GPIOA
 #define UCPD_DBN_Pin GPIO_PIN_5
