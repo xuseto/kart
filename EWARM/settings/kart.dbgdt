@@ -247,7 +247,7 @@
                 <expressions>
                     <item>(spi_t *)0x20003788</item>
                     <item>(dac_t *)argument</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>
