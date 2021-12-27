@@ -1,10 +1,10 @@
 /***************************************************************************************************
- * @file dac_api.h 
+ * @file dac_api.h
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 17/11/2021
  * @date Last modification 17/11/2021 by jnieto
- * @brief dac 
+ * @brief dac
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
@@ -21,6 +21,7 @@
 #include <stdio.h>
 
 #include "hdwr/spi_api.h"
+#include "hdwr/pwm_api.h"
 #include "dac/dac_api.h"
 #include <dac/src/dac_thread.h>
 
@@ -29,15 +30,23 @@
 /* Typedefs --------------------------------------------------------------------------------------*/
 
 /* Private values --------------------------------------------------------------------------------*/
+pwm_cfg_t pwm_cfg_1 = {
+    .frequency = 10000, // 10KHz
+    .duty = 0,          // 0%
+    .pwm = PWM_3,
+    .channel = PWM_CHANNEL_1,
+};
 
 /* Private functions declaration -----------------------------------------------------------------*/
 
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t dac_init(dac_cfg_t *cfg)
+ret_code_t
+dac_init(dac_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
+    pwm_id_t pwm;
 
     if (!cfg)
         return ret;
@@ -56,6 +65,8 @@ ret_code_t dac_init(dac_cfg_t *cfg)
         dac->obj_com = spi_init(&cfg->id_spi);
     }
 
+    pwm = pwm_create(&pwm_cfg_1);
+
     if (RET_SUCCESS == ret)
     {
         printf("Created thread : %s (0x%x)\n", cfg->name, dac);
@@ -65,7 +76,7 @@ ret_code_t dac_init(dac_cfg_t *cfg)
 }
 
 /**
-  * @}
-*/
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/
