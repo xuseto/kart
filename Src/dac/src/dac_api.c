@@ -32,7 +32,7 @@
 /* Private values --------------------------------------------------------------------------------*/
 pwm_cfg_t pwm_cfg_1 = {
     .frequency = 10000, // 10KHz
-    .duty = 0,          // 0%
+    .duty = 80,          // 0%
     .pwm = PWM_3,
     .channel = PWM_CHANNEL_1,
 };

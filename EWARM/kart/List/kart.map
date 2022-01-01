@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.10.2.313/W64 for ARM                  27/Dec/2021  20:33:59
+# IAR ELF Linker V9.10.2.313/W64 for ARM                  01/Jan/2022  12:21:48
 # Copyright 2007-2021 IAR Systems AB.
 #
 #    Output file  =  D:\Proyectos\STM32\kart\EWARM\kart\Exe\kart.out
@@ -102,7 +102,7 @@ initialize by copy { rw };
   .intvec               ro code   0x800'0000   0x1f4  startup_stm32l552xx.o [1]
                                 - 0x800'01f4   0x1f4
 
-"P1":                                         0x860f
+"P1":                                         0x8613
   .text                 ro code   0x800'01f4  0x1514  dlmalloc.o [10]
   .text                 ro code   0x800'1708     0x6  abort.o [10]
   .rodata               const     0x800'170e     0x2  xlocale_c.o [10]
@@ -323,8 +323,8 @@ initialize by copy { rw };
   .text                 ro code   0x800'8740     0x0  cstart_closeall.o [12]
   .rodata               const     0x800'8740     0x0  zero_init3.o [12]
   .rodata               const     0x800'8740     0x0  lz77_init_single.o [12]
-  Initializer bytes     const     0x800'8740    0xc3  <for P2-P3-1>
-                                - 0x800'8803  0x860f
+  Initializer bytes     const     0x800'8740    0xc7  <for P2-P3-1>
+                                - 0x800'8807  0x8613
 
 "P2-P3", part 1 of 3:                          0x224
   P2-P3-1                        0x2000'0000   0x224  <Init block>
@@ -375,7 +375,7 @@ Unused ranges:
 
          From           To      Size
          ----           --      ----
-   0x800'8803   0x807'ffff  0x7'77fd
+   0x800'8807   0x807'ffff  0x7'77f9
   0x2000'33c4  0x2000'33c7       0x4
   0x2000'39c8  0x2002'ffff  0x2'c638
 
@@ -391,8 +391,8 @@ Zero (__iar_zero_init3)
           0x2000'0224  0x31a0
 
 Copy/lz77 (__iar_lz77_init_single3)
-    1 source range, total size 0xc3 (35% of destination):
-           0x800'8740    0xc3
+    1 source range, total size 0xc7 (36% of destination):
+           0x800'8740    0xc7
     1 destination range, total size 0x224:
           0x2000'0000   0x224
 
@@ -428,11 +428,11 @@ D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\dac\src: [3]
 
 D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\hdwr\src: [4]
     fifo_api.o                   60
-    gpio_api.o                   80        8       24
+    gpio_api.o                   80        9       24
     pwm_api.o                   282
     spi_api.o                   302       26       72
     -------------------------------------------------
-    Total:                      724       34       96
+    Total:                      724       35       96
 
 D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\heartbeat\src: [5]
     heartbeat_api.o             132       13       36
@@ -450,7 +450,7 @@ D:\Proyectos\STM32\kart\EWARM\kart\Obj\Drivers\CMSIS: [7]
     Total:                      200       65        4
 
 D:\Proyectos\STM32\kart\EWARM\kart\Obj\Drivers\STM32L5xx_HAL_Driver: [8]
-    stm32l5xx_hal.o             114        4       12
+    stm32l5xx_hal.o             114        5       12
     stm32l5xx_hal_adc.o       1'428
     stm32l5xx_hal_adc_ex.o      196
     stm32l5xx_hal_cortex.o      172
@@ -465,7 +465,7 @@ D:\Proyectos\STM32\kart\EWARM\kart\Obj\Drivers\STM32L5xx_HAL_Driver: [8]
     stm32l5xx_hal_tim.o       1'858
     stm32l5xx_hal_tim_ex.o      148
     -------------------------------------------------
-    Total:                    9'744        4       12
+    Total:                    9'744        5       12
 
 D:\Proyectos\STM32\kart\EWARM\kart\Obj\Middlewares\FreeRTOS: [9]
     cmsis_os2.o                 704             1'724
@@ -481,7 +481,7 @@ D:\Proyectos\STM32\kart\EWARM\kart\Obj\Middlewares\FreeRTOS: [9]
 
 dl7M_tlf.a: [10]
     XShHandles.o                204               128
-    XShttio.o                     8        3        8
+    XShttio.o                     8        2        8
     abort.o                       6
     dlmalloc.o                5'396               496
     exit.o                        4
@@ -497,16 +497,16 @@ dl7M_tlf.a: [10]
     xcloseall.o                  64
     xfail_s.o                    64                 4
     xfgpos.o                     12
-    xfiles.o                              89      408
+    xfiles.o                              90      408
     xfofind.o                   156
     xfspos.o                    216
     xfwprep.o                   180
     xgetmemchunk.o               44                 4
-    xlocale_c.o                   8       23       56
+    xlocale_c.o                   8       24       56
     xprintffull_nomb.o        3'886
     xprout.o                     22
     -------------------------------------------------
-    Total:                   10'788      115    1'104
+    Total:                   10'788      116    1'104
 
 m7M_tls.a: [11]
     DblAddSub.o                 590
@@ -560,9 +560,9 @@ shb_l.a: [13]
     Total:                      378
 
     Gaps                         43        4
-    Linker created                        32    1'536
+    Linker created                        33    1'536
 -----------------------------------------------------
-    Grand Total:             34'449      370   14'788
+    Grand Total:             34'449      374   14'788
 
 
 *******************************************************************************
@@ -1006,7 +1006,7 @@ xYieldPending           0x2000'3204     0x4  Data  Lc  tasks.o [9]
 [13] = shb_l.a
 
   34'449 bytes of readonly  code memory
-     370 bytes of readonly  data memory
+     374 bytes of readonly  data memory
   14'788 bytes of readwrite data memory
 
 Errors: none
