@@ -22,6 +22,7 @@
 #define __PERIODIC_DRIVER_H
 
 /* Includes --------------------------------------------------------------------------------------*/
+#include <periodic/periodic_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -54,6 +55,16 @@ void periodic_driver_every_500ms(void);
  *
  */
 void periodic_driver_every_1000ms(void);
+
+/**
+ * @brief Add new function to periodic
+ *
+ * @param timers \ref periodic_timers_t
+ * @param cllbck \ref periodic_cllbck
+ * @param arg pointer data of the function callback
+ * @return periodic_id_t
+ */
+periodic_id_t periodic_driver_register(periodic_timers_t timers, periodic_cllbck cllbck, void *arg);
 
 #endif /* __PERIODIC_DRIVER_H */
 

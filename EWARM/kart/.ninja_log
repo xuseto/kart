@@ -153,3 +153,11 @@
 3	97	6657871034492930	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/periodic/src/periodic_conductor.o	29978cf4a0b4d03e
 102	246	6657871035919119	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.out	d3492fca8e9fdd79
 264	276	6657871036344167	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.hex	1a28f39f6fcada30
+6	136	6657926278981447	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/periodic/src/periodic_api.o	64b01f01b80e3df1
+8	156	6657926279122037	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/periodic/src/periodic_conductor.o	29978cf4a0b4d03e
+3	84	6657927292647944	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/periodic/src/periodic_driver.o	17d5f43e4be72114
+89	250	6657927294248130	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.out	d3492fca8e9fdd79
+269	284	6657927294714498	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.hex	1a28f39f6fcada30
+4	88	6657927704548940	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/periodic/src/periodic_driver.o	17d5f43e4be72114
+96	241	6657927706034280	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.out	d3492fca8e9fdd79
+259	270	6657927706450887	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.hex	1a28f39f6fcada30

@@ -25,17 +25,27 @@
 
 /* Includes --------------------------------------------------------------------------------------*/
 #include <def_common.h>
+#include <stdint.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
+/** MAX of functions callback regsiter every periodic */
+#define MAX_PERIODIC_CLLBCK 3
+
+/** Enum of timer periodic */
 typedef enum periodic_timers_s
 {
-    PERIODIC_EVERY_100_MS,
+    PERIODIC_EVERY_100_MS = 1,
     PERIODIC_EVERY_200_MS,
     PERIODIC_EVERY_500_MS,
     PERIODIC_EVERY_1_SG,
 } periodic_timers_t;
 
 /* Typedefs --------------------------------------------------------------------------------------*/
+/** Typedef internal struct periodic */
+typedef uint32_t periodic_id_t;
+
+/** Typedef function callback in the module peridic */
+typedef void (*periodic_cllbck)(void *arg);
 
 /* Private values --------------------------------------------------------------------------------*/
 
@@ -49,6 +59,11 @@ typedef enum periodic_timers_s
  *
  */
 ret_code_t periodic_init(void);
+
+periodic_id_t periodic_register(periodic_timers_t timers, periodic_cllbck cllbck, void *arg);
+ret_code_t periodic_unregister(periodic_id_t periodic_id);
+ret_code_t periodic_start(periodic_id_t periodic_id);
+ret_code_t periodic_stop(periodic_id_t periodic_id);
 
 #endif /* __PERIODIC_API_H */
 
