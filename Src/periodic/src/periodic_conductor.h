@@ -22,6 +22,7 @@
 #define __PERIODIC_CONDUCTOR_H
 
 /* Includes --------------------------------------------------------------------------------------*/
+#include <def_common.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -34,6 +35,12 @@
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
+/**
+ * @brief Create periodic module
+ * @return \ref ret_code_t
+ *
+ */
+ret_code_t periodic_conductor_init(void);
 
 #endif /* __PERIODIC_CONDUCTOR_H */
 

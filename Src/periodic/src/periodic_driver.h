@@ -34,6 +34,26 @@
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
+/**
+ * @brief Callback functions every 100 ms
+ */
+void periodic_driver_every_100ms(void);
+
+/**
+ * @brief Callback functions every 200 ms
+ */
+void periodic_driver_every_200ms(void);
+
+/**
+ * @brief Callback functions every 500 ms
+ */
+void periodic_driver_every_500ms(void);
+
+/**
+ * @brief Callback functions every 1 sg
+ *
+ */
+void periodic_driver_every_1000ms(void);
 
 #endif /* __PERIODIC_DRIVER_H */
 

@@ -1126,6 +1126,30 @@
             </file>
         </group>
         <group>
+            <name>periodic</name>
+            <group>
+                <name>src</name>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\periodic\src\periodic_api.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\periodic\src\periodic_conductor.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\periodic\src\periodic_conductor.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\periodic\src\periodic_driver.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\periodic\src\periodic_driver.h</name>
+                </file>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\Src\periodic\periodic_api.h</name>
+            </file>
+        </group>
+        <group>
             <name>system</name>
             <group>
                 <name>src</name>

@@ -16,8 +16,14 @@
 */
 /* Includes --------------------------------------------------------------------------------------*/
 #include "periodic/periodic_api.h"
+#include "periodic/src/periodic_conductor.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
+/** Typedef internal struct periodic */
+#define periodic_id_t uint32_t
+
+/** Typedef function callback in the module peridic */
+typedef void periodic_cllbck(void *arg);
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 
@@ -30,6 +36,7 @@
 /* Public functions ------------------------------------------------------------------------------*/
 ret_code_t periodic_init(void)
 {
+    return periodic_conductor_init();
 }
 
 /**
