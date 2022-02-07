@@ -66,6 +66,10 @@ void periodic_driver_every_1000ms(void);
  */
 periodic_id_t periodic_driver_register(periodic_timers_t timers, periodic_cllbck cllbck, void *arg);
 
+ret_code_t periodic_driver_unregister(periodic_id_t periodic_id);
+
+ret_code_t periodic_driver_enable_function(periodic_id_t periodic_id, uint8_t enable);
+
 #endif /* __PERIODIC_DRIVER_H */
 
 /**

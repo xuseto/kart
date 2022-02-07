@@ -1511,6 +1511,9 @@
             <file>
                 <name>$PROJ_DIR$\..\Src\periodic\periodic_api.h</name>
             </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\periodic\periodic_config.h</name>
+            </file>
         </group>
         <group>
             <name>system</name>

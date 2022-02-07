@@ -1,10 +1,10 @@
 /***************************************************************************************************
- * @file heartbeat_api.h 
+ * @file heartbeat_api.h
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 11/11/2021
  * @date Last modification 17/11/2021 by jnieto
- * @brief HeartBeat 
+ * @brief HeartBeat
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
@@ -20,6 +20,7 @@
 #include "cmsis_os2.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <periodic/periodic_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -27,69 +28,55 @@
 /** data of heartbeat */
 typedef struct heartbeat_s
 {
-  gpio_out_t gpio;      /**< Fixed the GPIO of LED */
-  uint32_t delay_ms;  /**< Time of delay for toggle led, in ms */
-  osThreadId_t id_thread; /**< ID of thread */
+    gpio_out_t gpio; /**< Fixed the GPIO of LED */
 } heartbeat_t;
 
-/** Definitions for defaultTask */
-osThreadAttr_t heartbeat_task_attributes = {
-  .priority = (osPriority_t) osPriorityLow,
-  .stack_size = 0
-};
 /* Private functions declaration -----------------------------------------------------------------*/
 /**
- * @brief Run task of heartbeat thread
- *  
+ * @brief Run periodic of heartbeat thread
+ *
  * @param argument \ref heartbeat_t
  */
-void heartbeat_task ( void *argument );
+void heartbeat_periodic(void *arg);
 
 /* Private functions -----------------------------------------------------------------------------*/
-void heartbeat_task ( void *argument )
+void heartbeat_periodic(void *arg)
 {
-  heartbeat_t *heartbeat = (heartbeat_t *)argument;
+    heartbeat_t *heartbeat = (heartbeat_t *)arg;
 
-  while (1)
-  {
-    osDelay(heartbeat->delay_ms);
-
-    gpio_toggle (heartbeat->gpio);
-  }
+    gpio_toggle(heartbeat->gpio);
 }
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t heartbeat_init (heartbeat_cfg_t *cfg)
+ret_code_t heartbeat_init(heartbeat_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
+    periodic_id_t periodic_id = NULL;
 
-    if (!cfg) return ret;
+    if (!cfg)
+        return ret;
 
-    heartbeat_t *heartbeat = (heartbeat_t *)calloc (1, sizeof(heartbeat_t));
-    ret = (heartbeat) ? RET_SUCCESS : RET_INT_ERROR;
+    heartbeat_t *heartbeat = (heartbeat_t *)calloc(1, sizeof(heartbeat_t));
 
-    if (RET_SUCCESS == ret)
+    if (heartbeat)
     {
-      heartbeat->delay_ms = cfg->delay_ms;
-      heartbeat->gpio = cfg->gpio;
-      
-      // Make thread
-      heartbeat_task_attributes.name = cfg->name ? cfg->name :  "unknown";
-      heartbeat->id_thread = osThreadNew(heartbeat_task, heartbeat, &heartbeat_task_attributes);
-      ret = (heartbeat->id_thread) ? RET_SUCCESS : RET_INT_ERROR ;
+        heartbeat->gpio = cfg->gpio;
+
+        periodic_id = periodic_register((periodic_timers_t)cfg->delay_ms,
+                                        heartbeat_periodic,
+                                        heartbeat);
     }
 
-    if (RET_SUCCESS == ret)
+    if (periodic_id)
     {
-      printf ("Created thread : %s \n", cfg->name);
+        ret = periodic_start(periodic_id);
     }
-     
+
     return ret;
-
 }
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

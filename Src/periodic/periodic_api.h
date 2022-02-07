@@ -28,9 +28,6 @@
 #include <stdint.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
-/** MAX of functions callback regsiter every periodic */
-#define MAX_PERIODIC_CLLBCK 3
-
 /** Enum of timer periodic */
 typedef enum periodic_timers_s
 {

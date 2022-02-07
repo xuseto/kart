@@ -75,7 +75,7 @@ ret_code_t fifo_enqueue_msg(fifo_t fifo, void *msg)
 //--------------------------------------------------------------------------------------------------
 void *fifo_dequeue_msg(fifo_t fifo)
 {
-    void *msg;
+  void *msg = {0};
 
     if (!fifo)
     {

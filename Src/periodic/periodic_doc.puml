@@ -1,0 +1,43 @@
+@startuml periodic
+
+
+skinparam actorStyle awesome
+actor user as programmer
+
+package Public {
+    usecase "periodic_api"    as module_public1
+    usecase "periodic_config" as module_public2
+
+note left of (module_public1)
+    Functions publics:
+    - periodic_register: Register new task
+    - periodic_unregister: Un register a task
+    - periodic_start: Start task periodic
+    - periodic_stop: Stop task periodic
+end note
+note left of (module_public2)
+    Configure the module
+end note
+}
+
+package Private {
+    usecase "periodic_conductor" as module_private1
+    usecase "periodic_driver"    as module_private2
+
+note left of (module_private1)
+    Thread every 100 ms
+end note
+note left of (module_private2)
+    Logic and save dates
+end note
+}
+
+programmer      --> module_public1
+programmer      --> module_public2
+module_public2  --> Private
+module_public1  --> module_private1
+module_public1  --> module_private2
+module_private1 --> module_private2
+
+@enduml
+

@@ -17,6 +17,7 @@
 /* Includes --------------------------------------------------------------------------------------*/
 #include "periodic_driver.h"
 
+#include "periodic/periodic_config.h"
 #include "periodic/periodic_api.h"
 #include <stdio.h>
 #include <string.h>
@@ -27,13 +28,13 @@
 
 /* Private values --------------------------------------------------------------------------------*/
 /** Struct detect function callback with periodic_id_t */
-typedef struct periodic_id_frame_s
+typedef union
 {
     uint32_t all;
-    union
+    struct
     {
         uint32_t timers : 16; /** Select Timers ref periodic_timers_t*/
-        uint16_t id : 16;     /** Selectr position array of periodic_cllbck_register_t */
+        uint32_t id : 16;     /** Selectr position array of periodic_cllbck_register_t */
     } frame;
 } periodic_id_frame_t;
 
@@ -69,7 +70,7 @@ static uint8_t periodic_found_free_registers(periodic_cllbck_register_t *cllbck_
 /* Private functions -----------------------------------------------------------------------------*/
 static void periodic_cllbcks_registers(periodic_cllbck_register_t *cllbck_every_x_ms)
 {
-    for (uint8_t i = 0; MAX_PERIODIC_CLLBCK < i; i++)
+    for (uint8_t i = 0; MAX_PERIODIC_CLLBCK > i; i++)
     {
         if (*cllbck_every_x_ms[i].cllbck && cllbck_every_x_ms[i].enable)
         {
@@ -83,11 +84,12 @@ static uint8_t periodic_found_free_registers(periodic_cllbck_register_t *cllbck_
 {
     uint8_t id = UINT8_MAX;
 
-    for (uint8_t i = 0; MAX_PERIODIC_CLLBCK < i; i++)
+    for (uint8_t i = 0; MAX_PERIODIC_CLLBCK > i; i++)
     {
         if (!cllbck_every_x_ms[i].cllbck)
         {
             id = i;
+            i += MAX_PERIODIC_CLLBCK;
         }
     }
 
@@ -123,7 +125,7 @@ periodic_id_t periodic_driver_register(periodic_timers_t timers, periodic_cllbck
 {
     uint8_t id = UINT8_MAX;
     periodic_cllbck_register_t *periodic_cllbck_register;
-    periodic_id_frame_t ret;
+    periodic_id_frame_t ret = {0};
 
     switch (timers)
     {
@@ -159,7 +161,7 @@ periodic_id_t periodic_driver_register(periodic_timers_t timers, periodic_cllbck
         ret.all = NULL;
     }
 
-    return (periodic_id_t)ret.all;
+    return ret.all;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -168,7 +170,7 @@ ret_code_t periodic_driver_unregister(periodic_id_t periodic_id)
     periodic_id_frame_t id_frame;
     id_frame.all = periodic_id;
 
-    if (PERIODIC_EVERY_1_SG > id_frame.frame.timers || MAX_PERIODIC_CLLBCK > id_frame.frame.id)
+    if (PERIODIC_EVERY_1_SG < id_frame.frame.timers || MAX_PERIODIC_CLLBCK < id_frame.frame.id)
     {
         return RET_INT_ERROR;
     }
@@ -198,7 +200,7 @@ ret_code_t periodic_driver_enable_function(periodic_id_t periodic_id, uint8_t en
     periodic_id_frame_t id_frame;
     id_frame.all = periodic_id;
 
-    if (PERIODIC_EVERY_1_SG > id_frame.frame.timers || MAX_PERIODIC_CLLBCK > id_frame.frame.id)
+    if (PERIODIC_EVERY_1_SG < id_frame.frame.timers || MAX_PERIODIC_CLLBCK < id_frame.frame.id)
     {
         return RET_INT_ERROR;
     }

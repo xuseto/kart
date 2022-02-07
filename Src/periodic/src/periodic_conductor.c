@@ -50,7 +50,6 @@ void periodic_task(void *argument)
 {
     while (1)
     {
-
         osThreadFlagsWait(0x00, osFlagsWaitAny, 100);
 
         tick += 100;
@@ -65,13 +64,13 @@ void periodic_task(void *argument)
         }
 
         // Task every 500 ms
-        if ((tick % 500))
+        if (!(tick % 500))
         {
             periodic_driver_every_500ms();
         }
 
         // Task every 1000 ms
-        if ((tick % 1000))
+        if (!(tick % 1000))
         {
             periodic_driver_every_1000ms();
         }

@@ -22,6 +22,7 @@
 #include "cmsis_os2.h"
 #include "def_common.h"
 #include "hdwr/gpio_api.h"
+#include "periodic/periodic_api.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -31,9 +32,10 @@ gpio_out_t gpio = LED_RED; /**< Fixed the GPIO of LED */
 /** Struct of the HeartBeat */
 heartbeat_cfg_t heartbeat =
     {
-        .delay_ms = 1000, // 1 sg
+        .delay_ms = PERIODIC_EVERY_1_SG, // 1 sg
         .gpio = LED_GREEN,
-        .name = "HeartBeat"};
+        .name = "HeartBeat"
+    };
 
 /** Struct of the DAC */
 dac_cfg_t dac =
