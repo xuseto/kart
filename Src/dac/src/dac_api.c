@@ -32,7 +32,7 @@
 /* Private values --------------------------------------------------------------------------------*/
 pwm_cfg_t pwm_cfg_1 = {
     .frequency = 10000, // 10KHz
-    .duty = 80,          // 0%
+    .duty = 80,         // 0%
     .pwm = PWM_3,
     .channel = PWM_CHANNEL_1,
 };
@@ -42,8 +42,7 @@ pwm_cfg_t pwm_cfg_1 = {
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t
-dac_init(dac_cfg_t *cfg)
+ret_code_t dac_init(dac_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
     pwm_id_t pwm;

@@ -1,7 +1,7 @@
 /***************************************************************************************************
- * @file system_obj.h 
+ * @file system_obj.h
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 24/11/2021
  * @date Last modification 24/11/2021 by jnieto
  * @brief Define all objets of the system Kart
@@ -19,6 +19,7 @@
 #include "system_obj.h"
 #include <heartbeat/heartbeat_api.h>
 #include <dac/dac_api.h>
+#include <periodic/periodic_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -26,7 +27,7 @@
 /** Struct of the HeartBeat */
 heartbeat_cfg_t heartbeat =
     {
-        .delay_ms = 1000, // 1 sg
+        .delay_ms = PERIODIC_EVERY_1_SG, // 1 sg
         .gpio = LED_GREEN,
         .name = "HeartBeat"};
 
@@ -53,7 +54,7 @@ dac_cfg_t dac =
 /* Public functions ------------------------------------------------------------------------------*/
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

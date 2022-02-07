@@ -1,7 +1,7 @@
 /***************************************************************************************************
- * @file system_api.h 
+ * @file system_api.h
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 24/11/2021
  * @date Last modification 28/11/2021 by jnieto
  * @brief All System of the Kart
@@ -22,6 +22,7 @@
 #include "cmsis_os2.h"
 #include "def_common.h"
 #include "hdwr/gpio_api.h"
+#include "periodic/periodic_api.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -30,26 +31,26 @@ gpio_out_t gpio = LED_RED; /**< Fixed the GPIO of LED */
 
 /** Struct of the HeartBeat */
 heartbeat_cfg_t heartbeat =
-{
-    .delay_ms = 1000, // 1 sg
-    .gpio = LED_GREEN,
-    .name = "HeartBeat"
-};
+    {
+        .delay_ms = PERIODIC_EVERY_1_SG, // 1 sg
+        .gpio = LED_GREEN,
+        .name = "HeartBeat"
+    };
 
 /** Struct of the DAC */
 dac_cfg_t dac =
-{
-    .name = "DAC",
-    .id_spi =
-        {
-            .spi = SPI_C,
-            .spi_fifo =
-                {
-                    .name = "SPIC",
-                    .num_msg = 20,
-                    .size_msg = 10,
-                },
-        },
+    {
+        .name = "DAC",
+        .id_spi =
+            {
+                .spi = SPI_C,
+                .spi_fifo =
+                    {
+                        .name = "SPIC",
+                        .num_msg = 20,
+                        .size_msg = 10,
+                    },
+            },
 };
 
 /* Private functions declaration -----------------------------------------------------------------*/
@@ -59,18 +60,23 @@ dac_cfg_t dac =
 /* Public functions ------------------------------------------------------------------------------*/
 void system_init(void)
 {
-    ret_code_t ret;
 
     gpio_on(gpio);
 
-    /* Init herat Beat */
-    ret = heartbeat_init(&heartbeat);
+    /* Init periodic module */
+    ret_code_t ret = periodic_init();
 
-    /* Init DAC */
+    /* Init heartbeat module */
     if (RET_SUCCESS == ret)
     {
-        ret = dac_init(&dac);
+        ret = heartbeat_init(&heartbeat);
     }
+
+    //   /* Init DAC */
+    //   if (RET_SUCCESS == ret)
+    //   {
+    //       ret = dac_init(&dac);
+    //   }
 
     if (RET_SUCCESS == ret)
     {
@@ -79,7 +85,7 @@ void system_init(void)
 }
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/
