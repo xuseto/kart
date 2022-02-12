@@ -201,3 +201,7 @@
 5219	6006	6663816763046508	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Middlewares/FreeRTOS/cmsis_os2.o	e3c7f14d61c0858e
 6015	6712	6663816770004132	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.out	d3492fca8e9fdd79
 6730	6797	6663816771073619	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.hex	1a28f39f6fcada30
+7	309	6663824638241951	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/hdwr/src/adc_api.o	e77c14a01e69d73d
+2	349	6663824638619755	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/hdwr/src/gpio_api.o	ad86f7d947c76b9e
+357	540	6663824640560385	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.out	be1262e83c6c8110
+559	573	6663824640872812	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.hex	1a28f39f6fcada30

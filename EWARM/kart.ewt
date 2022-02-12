@@ -1451,6 +1451,9 @@
             <group>
                 <name>src</name>
                 <file>
+                    <name>$PROJ_DIR$\..\Src\hdwr\src\adc_api.c</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Src\hdwr\src\fifo_api.c</name>
                 </file>
                 <file>
@@ -1463,6 +1466,9 @@
                     <name>$PROJ_DIR$\..\Src\hdwr\src\spi_api.c</name>
                 </file>
             </group>
+            <file>
+                <name>$PROJ_DIR$\..\Src\hdwr\adc_api.h</name>
+            </file>
             <file>
                 <name>$PROJ_DIR$\..\Src\hdwr\fifo_api.h</name>
             </file>

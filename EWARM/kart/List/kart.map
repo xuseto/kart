@@ -1,13 +1,14 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.10.2.313/W64 for ARM                  12/Feb/2022  16:07:57
+# IAR ELF Linker V9.10.2.313/W64 for ARM                  12/Feb/2022  16:21:04
 # Copyright 2007-2021 IAR Systems AB.
 #
 #    Output file  =  D:\Proyectos\STM32\kart\EWARM\kart\Exe\kart.out
 #    Map file     =  D:\Proyectos\STM32\kart\EWARM\kart\List\kart.map
 #    Command line =
 #        -f D:\Proyectos\STM32\kart\EWARM\kart\Exe\kart.out.rsp
-#        (D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\User\app_freertos.o
+#        (D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\hdwr\src\adc_api.o
+#        D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\User\app_freertos.o
 #        D:\Proyectos\STM32\kart\EWARM\kart\Obj\Middlewares\FreeRTOS\cmsis_os2.o
 #        D:\Proyectos\STM32\kart\EWARM\kart\Obj\Middlewares\FreeRTOS\croutine.o
 #        D:\Proyectos\STM32\kart\EWARM\kart\Obj\Application\dac\src\dac_api.o
