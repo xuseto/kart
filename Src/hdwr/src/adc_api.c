@@ -19,16 +19,65 @@
 /* Includes --------------------------------------------------------------------------------------*/
 #include "hdwr/adc_api.h"
 #include <stm32l5xx_hal_adc.h>
+#include <stm32l552xx.h>
+#include "def_common.h"
 
+#include <stdio.h>
+
+extern ADC_HandleTypeDef hadc1;
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Private values --------------------------------------------------------------------------------*/
+uint32_t adc1_dma[ADC_MAX];
+uint32_t adc1_converted[ADC_MAX];
 
 /* Private functions declaration -----------------------------------------------------------------*/
 
 /* Private functions -----------------------------------------------------------------------------*/
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+    if (hadc1.Instance == ADC1)
+    {
+        for (uint16_t i = 0; i < ADC_MAX; i++)
+        {
+            adc1_converted[i] = (uint32_t)(((adc1_dma[i] * 4096.0) / 3.3) * 10);
+            printf("%s: ADC %d: %d >> %d V\n", __FUNCTION__, i, adc1_dma[i], adc1_converted[i]);
+        }
+    }
+}
 
 /* Public functions ------------------------------------------------------------------------------*/
+ret_code_t adc_init(void)
+{
+    HAL_NVIC_DisableIRQ(DMA1_Channel1_IRQn);
+
+    // Calibrate The ADC On Power-Up For Better Accuracy
+    HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
+
+    return ((HAL_OK == HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc1_dma, ADC_MAX)) ? RET_SUCCESS : RET_INT_ERROR);
+}
+
+//--------------------------------------------------------------------------------------------------
+float adc_get_value(adc_stm32_t adc_ch)
+{
+    float value;
+
+    if (ADC_MAX <= adc_ch)
+    {
+        value = UINT32_MAX;
+    }
+    else
+    {
+        value = ((adc1_dma[adc_ch] * 3.3) / 4096.0);
+        
+        if (adc_ch == ADC_T_MICRO)
+        {
+            value = (value - 0.76) / 0.0025 + 25;
+        }
+    }
+
+    return value;
+}
 
 /**
  * @}

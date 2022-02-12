@@ -1,4 +1,5 @@
 D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\heartbeat\src\heartbeat_api.pbi: \
+  D:\Proyectos\STM32\kart\EWARM\..\Src\hdwr\adc_api.h \
   D:\Proyectos\STM32\kart\EWARM\..\Src\periodic\periodic_api.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\ycheck.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdio.h \

@@ -23,14 +23,33 @@
 /* Includes --------------------------------------------------------------------------------------*/
 #include <main.h>
 #include <stdint.h>
+#include "def_common.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Typedefs --------------------------------------------------------------------------------------*/
+/** Enum ADCs configurated */
+typedef enum
+{
+    ADC_IN1,
+    ADC_IN2,
+    ADC_IN4,
+    ADC_IN5,
+    ADC_T_MICRO,
+    ADC_MAX
+} adc_stm32_t;
 
 /* Private values --------------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
+/**
+ * @brief Init ADC module
+ *
+ * @return \ref ret_code_t
+ */
+ret_code_t adc_init(void);
+
+float adc_get_value(adc_stm32_t adc_ch);
 
 #endif
 

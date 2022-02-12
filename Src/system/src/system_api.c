@@ -23,6 +23,7 @@
 #include "def_common.h"
 #include "hdwr/gpio_api.h"
 #include "periodic/periodic_api.h"
+#include "hdwr/adc_api.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -34,8 +35,7 @@ heartbeat_cfg_t heartbeat =
     {
         .delay_ms = PERIODIC_EVERY_1_SG, // 1 sg
         .gpio = LED_GREEN,
-        .name = "HeartBeat"
-    };
+        .name = "HeartBeat"};
 
 /** Struct of the DAC */
 dac_cfg_t dac =
@@ -77,6 +77,12 @@ void system_init(void)
     //   {
     //       ret = dac_init(&dac);
     //   }
+
+    /* Init ADCs module */
+    if (RET_SUCCESS == ret)
+    {
+        ret = adc_init();
+    }
 
     if (RET_SUCCESS == ret)
     {

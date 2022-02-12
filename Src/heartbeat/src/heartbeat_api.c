@@ -22,6 +22,8 @@
 #include <stdio.h>
 #include <periodic/periodic_api.h>
 
+#include "hdwr/adc_api.h"
+
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Private values --------------------------------------------------------------------------------*/
@@ -39,6 +41,7 @@ typedef struct heartbeat_s
  */
 void heartbeat_periodic(void *arg);
 
+volatile uint16_t i_adc = 0x00;
 /* Private functions -----------------------------------------------------------------------------*/
 void heartbeat_periodic(void *arg)
 {
