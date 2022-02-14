@@ -1447,6 +1447,39 @@
             </file>
         </group>
         <group>
+            <name>flight_controller</name>
+            <group>
+                <name>src</name>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\flight_controller\src\flight_controller_api.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\flight_controller\src\flight_controller_conductor.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\flight_controller\src\flight_controller_conductor.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\flight_controller\src\flight_controller_driver.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\flight_controller\src\flight_controller_driver.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\flight_controller\src\flight_controller_hdwr.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\flight_controller\src\flight_controller_hdwr.h</name>
+                </file>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\Src\flight_controller\flight_controller_api.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\flight_controller\flight_controller_config.h</name>
+            </file>
+        </group>
+        <group>
             <name>hdwr</name>
             <group>
                 <name>src</name>
