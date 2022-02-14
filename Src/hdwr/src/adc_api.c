@@ -34,17 +34,6 @@ uint32_t adc1_converted[ADC_MAX];
 /* Private functions declaration -----------------------------------------------------------------*/
 
 /* Private functions -----------------------------------------------------------------------------*/
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
-{
-    if (hadc1.Instance == ADC1)
-    {
-        for (uint16_t i = 0; i < ADC_MAX; i++)
-        {
-            adc1_converted[i] = (uint32_t)(((adc1_dma[i] * 4096.0) / 3.3) * 10);
-            printf("%s: ADC %d: %d >> %d V\n", __FUNCTION__, i, adc1_dma[i], adc1_converted[i]);
-        }
-    }
-}
 
 /* Public functions ------------------------------------------------------------------------------*/
 ret_code_t adc_init(void)
@@ -69,7 +58,7 @@ float adc_get_value(adc_stm32_t adc_ch)
     else
     {
         value = ((adc1_dma[adc_ch] * 3.3) / 4096.0);
-        
+
         if (adc_ch == ADC_T_MICRO)
         {
             value = (value - 0.76) / 0.0025 + 25;
