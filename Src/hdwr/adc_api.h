@@ -49,6 +49,12 @@ typedef enum
  */
 ret_code_t adc_init(void);
 
+/**
+ * @brief get value adc
+ *
+ * @param adc_ch \ref adc_stm32_t
+ * @return float 0-3.3 V
+ */
 float adc_get_value(adc_stm32_t adc_ch);
 
 #endif
