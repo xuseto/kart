@@ -12,10 +12,17 @@
 
     @addtogroup FLIGHT_CONTROLLER_API
     @{
+    @brief
+    @details
 
-*/
+***************************************************************************************************/
+
+/* Define to prevent recursive inclusion ---------------------------------------------------------*/
+#ifndef __FLIGHT_CONTROLLER_API_H
+#define __FLIGHT_CONTROLLER_API_H
+
 /* Includes --------------------------------------------------------------------------------------*/
-#include "flight_controller_config.h"
+#include "flight_controller/flight_controller_config.h"
 
 #include <cmsis_os2.h>
 #include <hdwr/adc_api.h>
@@ -25,17 +32,21 @@
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** Struct configurated this module */
-typedef struct flight_controller_cfg_s
+typedef struct
 {
+    const char *name;                            /**< name of thread */
     adc_stm32_t adc_channel[MAX_NUM_CONTROLLER]; /** Cfg numer of channel ADC input */
     periodic_timers_t periodic_timer;            /** Cfg timeout for periodic module */
 } flight_controller_cfg_t;
 
 /** Struct object data this module */
-typedef struct flight_controller_s
+typedef struct
 {
-    flight_controller_cfg_t *cfg; /** Ptr of cfg structure */
-    osThreadId_t thread_id;       /** ID for thread */
+    flight_controller_cfg_t *cfg;         /** Ptr of cfg structure */
+    osThreadId_t thread_id;               /** ID for thread */
+    periodic_id_t periodic_id;            /** ID for periodic */
+    float adc_values[MAX_NUM_CONTROLLER]; /** Values of de ADCs 0 - 3.3V */
+    float dac_values[MAX_NUM_CONTROLLER]; /** Values of de DACs 0 - 3.3V */
 } flight_controller_t;
 
 /* Private values --------------------------------------------------------------------------------*/
@@ -45,6 +56,15 @@ typedef struct flight_controller_s
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
+/**
+ * @brief init flight controller module
+ *
+ * @param cfg \ref flight_controller_cfg_t
+ * @return ret_code_t \ref ret_code_t
+ */
+ret_code_t flight_controller_init(flight_controller_cfg_t *cfg);
+
+#endif /* __FLIGHT_CONTROLLER_API_H */
 
 /**
  * @}

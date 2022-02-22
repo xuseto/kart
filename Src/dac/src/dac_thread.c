@@ -45,12 +45,11 @@ void dac_task(void *argument);
 void dac_task(void *argument)
 {
     dac_t *dac = (dac_t *)argument;
-    uint32_t flag_thread;
 
     printf("Enter thread of DAC \n");
     while (1)
     {
-        flag_thread = osThreadFlagsWait(0x00, osFlagsWaitAny, 500);
+        osThreadFlagsWait(0x00, osFlagsWaitAny, 500);
 
         spi_enqueue(dac->obj_com);
     }

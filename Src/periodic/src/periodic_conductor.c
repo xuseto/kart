@@ -30,7 +30,7 @@
 osThreadAttr_t periodic_task_attributes =
     {
         .priority = (osPriority_t)osPriorityNormal,
-        .name = "Periodic",
+        .name = "PERIODIC",
         .stack_size = 1024,
 };
 

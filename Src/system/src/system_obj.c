@@ -18,7 +18,8 @@
 /* Includes --------------------------------------------------------------------------------------*/
 #include "system_obj.h"
 #include <heartbeat/heartbeat_api.h>
-#include <dac/dac_api.h>
+//#include "flight_controller/flight_controller_api.h"
+#include <hdwr/adc_api.h>
 #include <periodic/periodic_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
@@ -29,23 +30,24 @@ heartbeat_cfg_t heartbeat =
     {
         .delay_ms = PERIODIC_EVERY_1_SG, // 1 sg
         .gpio = LED_GREEN,
-        .name = "HeartBeat"};
+        .name = "HeartBeat",
+};
+
+/** Struct of the flight controller */
+flight_controller_cfg_t flight_controller_cfg =
+    {
+        .name = "FLIGHT_CONTROLLER",
+        .adc_channel =
+            {
+                [0] = ADC_IN1,
+                [1] = ADC_IN2,
+                [2] = ADC_IN4,
+                [3] = ADC_IN5,
+            },
+        .periodic_timer = PERIODIC_EVERY_100_MS,
+};
 
 /** Struct of the DAC */
-dac_cfg_t dac =
-    {
-        .name = "DAC",
-        .id_spi =
-            {
-                .spi = SPI_B,
-                .spi_fifo =
-                    {
-                        .name = "SPI_B",
-                        .num_msg = 20,
-                        .size_msg = 10,
-                    },
-            },
-};
 
 /* Private functions declaration -----------------------------------------------------------------*/
 

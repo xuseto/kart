@@ -1561,6 +1561,12 @@
                 <file>
                     <name>$PROJ_DIR$\..\Src\system\src\system_api.c</name>
                 </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\system\src\system_obj.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\system\src\system_obj.h</name>
+                </file>
             </group>
             <file>
                 <name>$PROJ_DIR$\..\Src\system\system_api.h</name>

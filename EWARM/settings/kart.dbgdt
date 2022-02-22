@@ -249,7 +249,7 @@
                     <item>hadc1</item>
                     <item>value</item>
                     <item>adc_ch</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>

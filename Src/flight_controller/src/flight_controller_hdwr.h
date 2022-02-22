@@ -2,8 +2,8 @@
  * @file flight_controller_hdwr.h
  * @author jnieto
  * @version 1.0.0.0.0
- * @date Creation: 05/02/2022
- * @date Last modification 05/02/2022 by jnieto
+ * @date Creation: 14/02/2022
+ * @date Last modification 17/02/2022 by jnieto
  * @brief periodic
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -22,7 +22,9 @@
 #define __FLIGHT_CONTROLLER_HDWR_H
 
 /* Includes --------------------------------------------------------------------------------------*/
-#include <periodic/periodic_api.h>
+#include <def_common.h>
+#include "flight_controller/flight_controller_api.h"
+#include <stdbool.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -36,39 +38,21 @@
 
 /* Public functions ------------------------------------------------------------------------------*/
 /**
- * @brief Callback functions every 100 ms
- */
-void FLIGHT_CONTROLLER_HDWR_every_100ms(void);
-
-/**
- * @brief Callback functions every 200 ms
- */
-void FLIGHT_CONTROLLER_HDWR_every_200ms(void);
-
-/**
- * @brief Callback functions every 500 ms
- */
-void FLIGHT_CONTROLLER_HDWR_every_500ms(void);
-
-/**
- * @brief Callback functions every 1 sg
+ * @brief init hardware for this modules, ADCs and DAC
  *
+ * @param arg \ref flight_controller_t
+ * @return ret_code_t \ref ret_code_t
  */
-void FLIGHT_CONTROLLER_HDWR_every_1000ms(void);
+ret_code_t flight_controller_hdwr_init(flight_controller_t *arg);
 
 /**
- * @brief Add new function to periodic
+ * @brief check if change the ADCs
  *
- * @param timers \ref periodic_timers_t
- * @param cllbck \ref periodic_cllbck
- * @param arg pointer data of the function callback
- * @return periodic_id_t
+ * @param arg \ref flight_controller_t
+ * @return bool TRUE  = Do changes in the ADCs
+ *              FALSE = Don´t changes in the ADCs
  */
-periodic_id_t FLIGHT_CONTROLLER_HDWR_register(periodic_timers_t timers, periodic_cllbck cllbck, void *arg);
-
-ret_code_t FLIGHT_CONTROLLER_HDWR_unregister(periodic_id_t periodic_id);
-
-ret_code_t FLIGHT_CONTROLLER_HDWR_enable_function(periodic_id_t periodic_id, uint8_t enable);
+bool flight_controller_hdwr_check_adc(flight_controller_t *arg);
 
 #endif /* __FLIGHT_CONTROLLER_HDWR_H */
 

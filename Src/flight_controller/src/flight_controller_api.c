@@ -18,6 +18,7 @@
 #include "cmsis_os2.h"
 #include <stdlib.h>
 #include <def_common.h>
+#include <flight_controller/src/flight_controller_conductor.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -30,6 +31,15 @@
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
+ret_code_t flight_controller_init(flight_controller_cfg_t *cfg)
+{
+    if (!cfg)
+    {
+        return RET_PARAM_ERROR;
+    }
+
+    return flight_controller_conductor_init(cfg);
+}
 
 /**
  * @}

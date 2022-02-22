@@ -125,7 +125,7 @@ pwm_id_t pwm_create(pwm_cfg_t *cfg)
 
         /** Calculate frequency */
         uint32_t new_freq = CLOCK_FREQ / cfg->frequency;
-        uint32_t new_duty = new_freq * ((float)cfg->duty / 100.0);
+        uint32_t new_duty = new_freq * (uint32_t)((float)cfg->duty / 100.0);
 
         __HAL_TIM_SET_AUTORELOAD(pwm->htim, new_freq);
 

@@ -39,7 +39,7 @@ set(REFSRC src/BasicMathFunctions/abs.c
   src/FilteringFunctions/iir_lattice.c
   src/FilteringFunctions/lms.c
   src/HelperFunctions/mat_helper.c
-  src/HelperFunctions/ref_helper.c
+  src/HelperFunctions\ref_helper.c
   src/Intrinsics/intrinsics.c
   src/MatrixFunctions/mat_add.c
   src/MatrixFunctions/mat_cmplx_mult.c

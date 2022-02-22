@@ -1,7 +1,7 @@
 /***************************************************************************************************
- * @file system_obj.h 
+ * @file system_obj.h
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 24/11/2021
  * @date Last modification 24/11/2021 by jnieto
  * @brief Define all objets of the system Kart
@@ -26,20 +26,21 @@
 /* Includes --------------------------------------------------------------------------------------*/
 #include <def_common.h>
 #include <heartbeat/heartbeat_api.h>
-#include <dac/dac_api.h>
+#include "flight_controller/flight_controller_api.h"
 
 /* Typedefs --------------------------------------------------------------------------------------*/
+extern heartbeat_cfg_t heartbeat;
+extern flight_controller_cfg_t flight_controller_cfg;
 
 /* Public Function -------------------------------------------------------------------------------*/
-
 
 #endif /* __SYSTEM_OBJ_H */
 
 /**
-  * @}
-  */
+ * @}
+ */
 /**
-  * @}
-  */
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

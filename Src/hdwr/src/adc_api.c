@@ -23,13 +23,17 @@
 #include "def_common.h"
 
 #include <stdio.h>
+#include <stdbool.h>
 
 extern ADC_HandleTypeDef hadc1;
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Private values --------------------------------------------------------------------------------*/
+/** Values save adc converter and read from DMA */
 uint32_t adc1_dma[ADC_MAX];
-uint32_t adc1_converted[ADC_MAX];
+
+/** Flag check if configurated the ADC */
+bool configurated = false;
 
 /* Private functions declaration -----------------------------------------------------------------*/
 
@@ -38,12 +42,21 @@ uint32_t adc1_converted[ADC_MAX];
 /* Public functions ------------------------------------------------------------------------------*/
 ret_code_t adc_init(void)
 {
+    if (configurated)
+    {
+        return RET_SUCCESS;
+    }
+
     HAL_NVIC_DisableIRQ(DMA1_Channel1_IRQn);
 
     // Calibrate The ADC On Power-Up For Better Accuracy
     HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
 
-    return ((HAL_OK == HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc1_dma, ADC_MAX)) ? RET_SUCCESS : RET_INT_ERROR);
+    configurated = (HAL_OK == HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc1_dma, ADC_MAX))
+                       ? true
+                       : false;
+
+    return (configurated ? RET_SUCCESS : RET_INT_ERROR);
 }
 
 //--------------------------------------------------------------------------------------------------
