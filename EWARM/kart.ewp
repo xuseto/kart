@@ -1060,24 +1060,6 @@
     <group>
         <name>Application</name>
         <group>
-            <name>dac</name>
-            <group>
-                <name>src</name>
-                <file>
-                    <name>$PROJ_DIR$\..\Src\dac\src\dac_api.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Src\dac\src\dac_thread.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\Src\dac\src\dac_thread.h</name>
-                </file>
-            </group>
-            <file>
-                <name>$PROJ_DIR$\..\Src\dac\dac_api.h</name>
-            </file>
-        </group>
-        <group>
             <name>EWARM</name>
             <file>
                 <name>$PROJ_DIR$\startup_stm32l552xx.s</name>

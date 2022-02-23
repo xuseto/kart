@@ -45,7 +45,38 @@ flight_controller_cfg_t flight_controller_cfg =
                 [3] = ADC_IN5,
             },
         .periodic_timer = PERIODIC_EVERY_100_MS,
-};
+        .dac_cfg =
+            {
+                [0] = {
+                    .frequency = 10000, // 10KHz
+                    .duty = 0,          // 0%
+                    .pwm = PWM_3,
+                    .channel = PWM_CHANNEL_1,
+
+                },
+                [1] = {
+                    .frequency = 10000, // 10KHz
+                    .duty = 0,          // 0%
+                    .pwm = PWM_3,
+                    .channel = PWM_CHANNEL_2,
+
+                },
+                [2] = {
+                    .frequency = 10000, // 10KHz
+                    .duty = 0,          // 0%
+                    .pwm = PWM_3,
+                    .channel = PWM_CHANNEL_3,
+
+                },
+                [3] = {
+                    .frequency = 10000, // 10KHz
+                    .duty = 0,          // 0%
+                    .pwm = PWM_3,
+                    .channel = PWM_CHANNEL_4,
+
+                },
+
+            }};
 
 /** Struct of the DAC */
 

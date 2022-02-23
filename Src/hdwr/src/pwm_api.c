@@ -21,7 +21,8 @@
 #include <stm32l5xx_hal.h>
 #include <stdlib.h>
 
-#include <stdio.h>
+#include <def_common.h>
+#include <stdbool.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 #define CLOCK_FREQ 110000000 // 110 MHz
@@ -44,6 +45,8 @@ typedef struct pwm_hal_s
 {
     uint32_t duty;
     TIM_HandleTypeDef *htim;
+    pwm_channel_t channel; /** Numbewr of channel of PWM */
+    uint32_t freq;         /** Frequency of PWM */
 } pwm_hal_t;
 
 /* Private functions declaration -----------------------------------------------------------------*/
@@ -54,6 +57,15 @@ typedef struct pwm_hal_s
  * @return TIM_HandleTypeDef*
  */
 TIM_HandleTypeDef *pwm_get_handle_hal(pwm_number_t pwm);
+
+/**
+ * @brief Check if exist channel
+ *
+ * @param ch \ref pwm_channel_t
+ * @return true Channle OK
+ * @return false Channel no exist
+ */
+bool pwm_check_channel(pwm_channel_t ch);
 
 /* Private functions -----------------------------------------------------------------------------*/
 TIM_HandleTypeDef *pwm_get_handle_hal(pwm_number_t pwm)
@@ -99,48 +111,90 @@ TIM_HandleTypeDef *pwm_get_handle_hal(pwm_number_t pwm)
 
     return handler;
 }
+
+//--------------------------------------------------------------------------------------------------
+bool pwm_check_channel(pwm_channel_t ch)
+{
+    if (ch == PWM_CHANNEL_1 || ch == PWM_CHANNEL_2 || ch == PWM_CHANNEL_3 ||
+        ch == PWM_CHANNEL_4 || ch == PWM_CHANNEL_5 || ch == PWM_CHANNEL_6)
+    {
+        return true;
+    }
+
+    return false;
+}
+
 /* Public functions ------------------------------------------------------------------------------*/
 pwm_id_t pwm_create(pwm_cfg_t *cfg)
 {
     pwm_id_t ret = NULL;
 
     if (!cfg)
+    {
         return NULL;
+    }
     if (PWM_CHANNEL_MAX < cfg->channel)
+    {
         return NULL;
+    }
     if (PWM_MAX < cfg->pwm)
-        return NULL;
-
-    TIM_HandleTypeDef *handler = pwm_get_handle_hal(cfg->pwm);
-    if (!handler)
     {
         return NULL;
     }
 
     pwm_hal_t *pwm = calloc(1, sizeof(pwm_hal_t));
-    if (pwm)
+
+    if (pwm && pwm_check_channel(cfg->channel))
     {
-        pwm->htim = handler;
         pwm->duty = cfg->duty;
-
-        /** Calculate frequency */
-        uint32_t new_freq = CLOCK_FREQ / cfg->frequency;
-        uint32_t new_duty = new_freq * (uint32_t)((float)cfg->duty / 100.0);
-
-        __HAL_TIM_SET_AUTORELOAD(pwm->htim, new_freq);
-
-        __HAL_TIM_SET_COMPARE(pwm->htim, TIM_CHANNEL_1, new_duty);
-
-        HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-        HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
-        HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
-        HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
-
-        //__HAL_TIM_SET_COMPARE(pwm->htim, TIM_CHANNEL_1, new_duty);
+        pwm->channel = cfg->channel;
+        pwm->htim = pwm_get_handle_hal(cfg->pwm);
     }
 
-    ret = pwm ? (pwm_id_t)pwm : NULL;
+    if (pwm->htim)
+    {
+        /** Calculate frequency */
+        pwm->freq = CLOCK_FREQ / cfg->frequency;
+        uint32_t new_duty = pwm->freq * (uint32_t)((float)cfg->duty / 100.0);
+
+        __HAL_TIM_SET_AUTORELOAD(pwm->htim, pwm->freq);
+
+        __HAL_TIM_SET_COMPARE(pwm->htim, pwm->channel, new_duty);
+    }
+    // HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+
+    //__HAL_TIM_SET_COMPARE(pwm->htim, TIM_CHANNEL_1, new_duty);
+
+    ret = pwm && pwm->htim ? (pwm_id_t)pwm : NULL;
     return ret;
+}
+
+//--------------------------------------------------------------------------------------------------
+ret_code_t pwm_start(pwm_id_t arg)
+{
+    if (!arg)
+    {
+        return RET_INT_ERROR;
+    }
+
+    pwm_hal_t *pwm = (pwm_hal_t *)arg;
+
+    return (HAL_OK == HAL_TIM_PWM_Start(pwm->htim, pwm->channel) ? RET_SUCCESS : RET_INT_ERROR);
+}
+
+//--------------------------------------------------------------------------------------------------
+ret_code_t pwm_set_new_duty(pwm_id_t arg, uint16_t duty)
+{
+    if (!arg)
+    {
+        return RET_INT_ERROR;
+    }
+
+    pwm_hal_t *pwm = (pwm_hal_t *)arg;
+
+    __HAL_TIM_SET_COMPARE(pwm->htim, pwm->channel, duty);
+
+    return RET_SUCCESS;
 }
 
 /**

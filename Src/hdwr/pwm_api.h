@@ -23,6 +23,7 @@
 /* Includes --------------------------------------------------------------------------------------*/
 #include <main.h>
 #include <stdint.h>
+#include <def_common.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 /** CAN ID */
@@ -76,6 +77,23 @@ typedef struct pwm_cfg_s
  * @return pwm_id_t \ref pwm_id_t
  */
 pwm_id_t pwm_create(pwm_cfg_t *cfg);
+
+/**
+ * @brief Start PWMs
+ *
+ * @param arg \ref pwm_id_t
+ * @return \ref ret_code_t
+ */
+ret_code_t pwm_start(pwm_id_t arg);
+
+/**
+ * @brief Update  value duty of PWM
+ *
+ * @param arg \ref pwm_id_t
+ * @param duty new duty value 0% - 100%
+ * @return \ref ret_code_t
+ */
+ret_code_t pwm_set_new_duty(pwm_id_t arg, uint16_t duty);
 
 #endif /* __PWM_API_H */
 

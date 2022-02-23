@@ -54,10 +54,15 @@ static void fligth_controller_thread(void *arg)
     flight_controller_t *fligth_ctrl_thread = (flight_controller_t *)arg;
 
     flight_controller_driver_start_periodic(fligth_ctrl_thread);
+    flight_controller_hdwr_start(fligth_ctrl_thread);
 
     while (1)
     {
         osThreadFlagsWait(0x00, osFlagsWaitAny, osWaitForever);
+
+        if (flight_controller_hdwr_check_adc(fligth_ctrl_thread))
+        {
+        }
     }
 }
 

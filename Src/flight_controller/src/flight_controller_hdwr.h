@@ -54,6 +54,23 @@ ret_code_t flight_controller_hdwr_init(flight_controller_t *arg);
  */
 bool flight_controller_hdwr_check_adc(flight_controller_t *arg);
 
+/**
+ * @brief Start DACs
+ *
+ * @param arg \ref flight_controller_t
+ * @return \ref ret_code_t
+ */
+ret_code_t flight_controller_hdwr_start(flight_controller_t *arg);
+
+/**
+ * @brief Update value DAC
+ *
+ * @param arg \ref flight_controller_t
+ * @param value_dac new valure from DAC
+ * @return \ref ret_code_t
+ */
+ret_code_t flight_controller_hdwr_set_dac(flight_controller_t *arg, uint16_t value_dac);
+
 #endif /* __FLIGHT_CONTROLLER_HDWR_H */
 
 /**

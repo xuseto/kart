@@ -27,6 +27,7 @@
 #include <cmsis_os2.h>
 #include <hdwr/adc_api.h>
 #include <periodic/periodic_api.h>
+#include <hdwr/pwm_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -37,6 +38,7 @@ typedef struct
     const char *name;                            /**< name of thread */
     adc_stm32_t adc_channel[MAX_NUM_CONTROLLER]; /** Cfg numer of channel ADC input */
     periodic_timers_t periodic_timer;            /** Cfg timeout for periodic module */
+    pwm_cfg_t dac_cfg[MAX_NUM_CONTROLLER];
 } flight_controller_cfg_t;
 
 /** Struct object data this module */
@@ -47,6 +49,7 @@ typedef struct
     periodic_id_t periodic_id;            /** ID for periodic */
     float adc_values[MAX_NUM_CONTROLLER]; /** Values of de ADCs 0 - 3.3V */
     float dac_values[MAX_NUM_CONTROLLER]; /** Values of de DACs 0 - 3.3V */
+    pwm_id_t dac_id[MAX_NUM_CONTROLLER];  /** ID form PWM for DACs */
 } flight_controller_t;
 
 /* Private values --------------------------------------------------------------------------------*/

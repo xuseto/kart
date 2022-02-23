@@ -31,9 +31,14 @@
 /* Private functions declaration -----------------------------------------------------------------*/
 ret_code_t flight_controller_hdwr_init(flight_controller_t *arg)
 {
-    ret_code_t ret = RET_INT_ERROR;
+    ret_code_t ret = RET_SUCCESS;
 
-    ret = RET_SUCCESS;
+    for (uint8_t i = 0x00; i < MAX_NUM_CONTROLLER && RET_SUCCESS == ret; i++)
+    {
+        arg->dac_id[i] = pwm_create(&arg->cfg->dac_cfg[i]);
+        ret = (arg->dac_id[i]) ? RET_SUCCESS : RET_INT_ERROR;
+    }
+
     return ret;
 }
 
@@ -57,6 +62,24 @@ bool flight_controller_hdwr_check_adc(flight_controller_t *arg)
     return ret;
 }
 
+//--------------------------------------------------------------------------------------------------
+ret_code_t flight_controller_hdwr_start(flight_controller_t *arg)
+{
+    ret_code_t ret = RET_SUCCESS;
+
+    for (uint8_t i = 0x00; i < MAX_NUM_CONTROLLER && RET_SUCCESS == ret; i++)
+    {
+        ret = (RET_SUCCESS == pwm_start(arg->dac_id[i])) ? RET_SUCCESS : RET_INT_ERROR;
+    }
+
+    return ret;
+}
+
+//--------------------------------------------------------------------------------------------------
+ret_code_t flight_controller_hdwr_set_dac(flight_controller_t *arg, uint16_t value_dac)
+{
+    return pwm_set_new_duty(*arg->dac_id, value_dac);
+}
 /**
  * @}
  */
