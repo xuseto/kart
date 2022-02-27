@@ -19,6 +19,7 @@
 #include <def_common.h>
 #include "flight_controller_conductor.h"
 #include "flight_controller_driver.h"
+#include "flight_controller_hdwr.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -79,7 +80,7 @@ void flight_controller_driver_update_dac(flight_controller_t *arg)
 {
     for (uint8_t i = 0x00; i < MAX_NUM_CONTROLLER; i++)
     {
-        arg->dac_values[i] = (arg->adc_values[i] * 3.3) / 100;
+        arg->dac_values[i] = (uint16_t)(arg->adc_values[i] * 3.3) / 100;
         flight_controller_hdwr_set_dac(arg, arg->dac_values[i]);
     }
 }

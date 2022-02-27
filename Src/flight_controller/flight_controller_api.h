@@ -44,12 +44,12 @@ typedef struct
 /** Struct object data this module */
 typedef struct
 {
-    flight_controller_cfg_t *cfg;         /** Ptr of cfg structure */
-    osThreadId_t thread_id;               /** ID for thread */
-    periodic_id_t periodic_id;            /** ID for periodic */
-    float adc_values[MAX_NUM_CONTROLLER]; /** Values of de ADCs 0 - 3.3V */
-    float dac_values[MAX_NUM_CONTROLLER]; /** Values of de DACs 0 - 3.3V */
-    pwm_id_t dac_id[MAX_NUM_CONTROLLER];  /** ID form PWM for DACs */
+    flight_controller_cfg_t *cfg;            /** Ptr of cfg structure */
+    osThreadId_t thread_id;                  /** ID for thread */
+    periodic_id_t periodic_id;               /** ID for periodic */
+    float adc_values[MAX_NUM_CONTROLLER];    /** Values of de ADCs 0 - 3.3V */
+    uint16_t dac_values[MAX_NUM_CONTROLLER]; /** Values of de DACs */
+    pwm_id_t dac_id[MAX_NUM_CONTROLLER];     /** ID form PWM for DACs */
 } flight_controller_t;
 
 /* Private values --------------------------------------------------------------------------------*/
