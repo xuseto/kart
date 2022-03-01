@@ -23,6 +23,7 @@
 
 /* Includes --------------------------------------------------------------------------------------*/
 #include <def_common.h>
+#include <log/log_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -41,6 +42,16 @@
  *
  */
 ret_code_t log_conductor_init(void);
+
+/**
+ * @brief Save log and wake up the thread
+ *
+ * @param name_task show name of the task like add new log
+ * @param level_debug \ref log_level_debug_t
+ * @param info show info he cause of the log
+ * @return \ref ret_code_t
+ */
+ret_code_t log_conductor_new_msg(const char *name_task, log_level_debug_t level_debug, const char *info);
 
 #endif /* __LOG_CONDUCTOR_H */
 

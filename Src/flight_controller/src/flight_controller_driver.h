@@ -39,7 +39,7 @@
  * @brief Init data of flight controller
  *
  * @param arg \ref flight_controller_t
- * @return ret_code_t \ref ret_code_t
+ * @return \ref ret_code_t
  */
 ret_code_t flight_controller_driver_init(flight_controller_t *arg);
 
@@ -47,7 +47,7 @@ ret_code_t flight_controller_driver_init(flight_controller_t *arg);
  * @brief Start periodic function
  *
  * @param arg \ref flight_controller_t
- * @return ret_code_t \ref ret_code_t
+ * @return \ref ret_code_t
  */
 ret_code_t flight_controller_driver_start_periodic(flight_controller_t *arg);
 
@@ -55,9 +55,17 @@ ret_code_t flight_controller_driver_start_periodic(flight_controller_t *arg);
  * @brief Stop periodic function
  *
  * @param arg \ref flight_controller_t
- * @return ret_code_t \ref ret_code_t
+ * @return \ref ret_code_t
  */
 ret_code_t flight_controller_driver_stop_periodic(flight_controller_t *arg);
+
+/**
+ * @brief LOG create module
+ *
+ * @param arg \ref flight_controller_t
+ * @return \ref ret_code_t
+ */
+ret_code_t flight_controller_driver_log_init(flight_controller_t *arg);
 
 #endif /* __FLIGHT_CONTROLLER_DRIVER_H */
 

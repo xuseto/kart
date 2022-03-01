@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include <def_common.h>
 #include <stdio.h>
+#include "log/log_api.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -80,9 +81,15 @@ void periodic_task(void *argument)
 /* Public functions ------------------------------------------------------------------------------*/
 ret_code_t periodic_conductor_init(void)
 {
-    return (osThreadNew(periodic_task, NULL, &periodic_task_attributes)
-                ? RET_SUCCESS
-                : RET_INT_ERROR);
+    if (osThreadNew(periodic_task, NULL, &periodic_task_attributes))
+    {
+
+        char msg[] = "CREATED";
+
+        return (log_new_msg(periodic_task_attributes.name, LOG_DEBUG, msg));
+    }
+
+    return RET_INT_ERROR;
 }
 
 /**

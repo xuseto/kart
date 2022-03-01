@@ -15,6 +15,7 @@
 
 */
 /* Includes --------------------------------------------------------------------------------------*/
+#include "log_conductor.h"
 #include "cmsis_os2.h"
 #include <def_common.h>
 
@@ -26,8 +27,11 @@ osThreadAttr_t log_task_attributes =
     {
         .priority = (osPriority_t)osPriorityLow,
         .name = "LOG",
-        .stack_size = 1024,
+        .stack_size = 3072,
 };
+
+/** ID for thread */
+osThreadId_t thread_id;
 
 /* Private values --------------------------------------------------------------------------------*/
 
@@ -51,9 +55,27 @@ void log_task(void *argument)
 /* Public functions ------------------------------------------------------------------------------*/
 ret_code_t log_conductor_init(void)
 {
-    return (osThreadNew(log_task, NULL, &log_task_attributes)
-                ? RET_SUCCESS
-                : RET_INT_ERROR);
+    thread_id = osThreadNew(log_task, NULL, &log_task_attributes);
+
+    char msg[] = "CREATED";
+
+    if (thread_id)
+    {
+        return log_conductor_new_msg(log_task_attributes.name, LOG_DEBUG, msg);
+    }
+
+    return RET_INT_ERROR;
+}
+
+//--------------------------------------------------------------------------------------------------
+ret_code_t log_conductor_new_msg(const char *name_task, log_level_debug_t level_debug, const char *info)
+{
+
+    ret_code_t ret = log_driver_create_new_message(name_task, level_debug, info);
+
+    ret = (RET_SUCCESS == ret && thread_id) ? osThreadResume(thread_id) : RET_INT_ERROR;
+
+    return ret;
 }
 
 /**

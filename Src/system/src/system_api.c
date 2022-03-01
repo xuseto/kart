@@ -19,9 +19,10 @@
 #include "system/system_api.h"
 #include "system/src/system_obj.h"
 
-#include <heartbeat/heartbeat_api.h>
+#include "heartbeat/heartbeat_api.h"
 #include "hdwr/gpio_api.h"
 #include "periodic/periodic_api.h"
+#include "log/log_api.h"
 
 #include "cmsis_os2.h"
 #include "def_common.h"
@@ -29,10 +30,7 @@
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Private values --------------------------------------------------------------------------------*/
-gpio_out_t gpio = LED_RED; /**< Fixed the GPIO of LED */
-
-/** Import Objs Cfg of Syste */
-// extern heartbeat_cfg_t heartbeat;
+gpio_out_t gpio = LED_BLUE; /**< Fixed the GPIO of LED */
 
 /* Private functions declaration -----------------------------------------------------------------*/
 
@@ -44,21 +42,22 @@ void system_init(void)
 
     gpio_on(gpio);
 
+    /* init LOGs */
+    ret_code_t ret = log_init();
+
     /* Init periodic module */
-    ret_code_t ret = periodic_init();
+    ret = (RET_SUCCESS == ret) ? periodic_init() : ret;
+
+    osDelay(300);
 
     /* Init heartbeat module */
-    if (RET_SUCCESS == ret)
-    {
-        ret = heartbeat_init(&heartbeat);
-    }
+    ret = (RET_SUCCESS == ret) ? heartbeat_init(&heartbeat) : ret;
+    osDelay(300);
+    osDelay(300);
 
     /* Init flight controller module */
-    if (RET_SUCCESS == ret)
-    {
-        ret = flight_controller_init(&flight_controller_cfg);
-    }
-
+    ret = (RET_SUCCESS == ret) ? flight_controller_init(&flight_controller_cfg) : ret;
+    osDelay(300);
     if (RET_SUCCESS == ret)
     {
         gpio_off(gpio);

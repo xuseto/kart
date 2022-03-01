@@ -23,6 +23,7 @@
 #include <periodic/periodic_api.h>
 
 #include "hdwr/adc_api.h"
+#include "log/log_api.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -73,6 +74,12 @@ ret_code_t heartbeat_init(heartbeat_cfg_t *cfg)
     if (periodic_id)
     {
         ret = periodic_start(periodic_id);
+    }
+
+    if (RET_SUCCESS == ret)
+    {
+        char msg[] = "CREATED";
+        return (log_new_msg(cfg->name, LOG_DEBUG, msg));
     }
 
     return ret;

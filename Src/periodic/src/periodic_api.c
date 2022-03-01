@@ -41,11 +41,11 @@ ret_code_t periodic_init(void)
 periodic_id_t periodic_register(periodic_timers_t timers, periodic_cllbck cllbck, void *arg)
 {
 
-    if (PERIODIC_EVERY_1_SG > timers || !cllbck || !arg)
+    if (PERIODIC_EVERY_1_SG < timers || !cllbck || !arg)
     {
         return NULL;
     }
-    
+
     periodic_id_t periodic_id = periodic_driver_register(timers, cllbck, arg);
     return periodic_id;
 }
