@@ -1510,6 +1510,39 @@
             </file>
         </group>
         <group>
+            <name>log</name>
+            <group>
+                <name>src</name>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\log\src\log_api.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\log\src\log_conductor.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\log\src\log_conductor.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\log\src\log_driver.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\log\src\log_driver.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\log\src\log_hdwr.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\log\src\log_hdwr.h</name>
+                </file>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\Src\log\log_api.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\log\log_config.h</name>
+            </file>
+        </group>
+        <group>
             <name>periodic</name>
             <group>
                 <name>src</name>

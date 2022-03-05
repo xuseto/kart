@@ -1,16 +1,18 @@
 /***************************************************************************************************
- * @file flight_controller_driver.h
+ * @file log_api.h
  * @author jnieto
  * @version 1.0.0.0.0
- * @date Creation: 14/02/2022
- * @date Last modification 17/02/2022 by jnieto
- * @brief FLIGHT_CONTROLLER
+ * @date Creation: 27/02/2022
+ * @date Last modification 27/02/2022 by jnieto
+ * @brief LOG
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ***************************************************************************************************
 
-    @defgroup FLIGHT_CONTROLLER_DRIVER  FLIGHT_CONTROLLER object
+    @addtogroup LOG
+    @{
+    @defgroup LOG_API  LOG object
     @{
     @brief
     @details
@@ -18,15 +20,24 @@
 ***************************************************************************************************/
 
 /* Define to prevent recursive inclusion ---------------------------------------------------------*/
-#ifndef __FLIGHT_CONTROLLER_DRIVER_H
-#define __FLIGHT_CONTROLLER_DRIVER_H
+#ifndef __LOG_API_H
+#define __LOG_API_H
 
 /* Includes --------------------------------------------------------------------------------------*/
 #include <def_common.h>
+#include <stdint.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Typedefs --------------------------------------------------------------------------------------*/
+typedef enum log_level_debug_e
+{
+    LOG_DEBUG,
+    LOG_INFO,
+    LOG_WARNING,
+    LOG_ERROR,
+    LOG_MAX_LEVEL
+} log_level_debug_t;
 
 /* Private values --------------------------------------------------------------------------------*/
 
@@ -36,38 +47,34 @@
 
 /* Public functions ------------------------------------------------------------------------------*/
 /**
- * @brief Init data of flight controller
+ * @brief Init log module
  *
- * @param arg \ref flight_controller_t
  * @return \ref ret_code_t
  */
-ret_code_t flight_controller_driver_init(flight_controller_t *arg);
+ret_code_t log_init(void);
 
 /**
- * @brief Start periodic function
+ * @brief Log new message from other modules
  *
- * @param arg \ref flight_controller_t
+ * @param name_task show name of the task like add new log
+ * @param level_debug \ref log_level_debug_t
+ * @param info show info he cause of the log
  * @return \ref ret_code_t
  */
-ret_code_t flight_controller_driver_start_periodic(flight_controller_t *arg);
+ret_code_t log_new_msg(const char *name_task, log_level_debug_t level_debug, const char *info);
 
 /**
- * @brief Stop periodic function
- *
- * @param arg \ref flight_controller_t
- * @return \ref ret_code_t
+ * @brief  Función que transforma un int a una cadena de caracteres.
+ * @param  i valor entero que se quiere convertir en ASCII.
+ * @param  b[] puntero del array donde guardar el valor int en ASCII.
  */
-ret_code_t flight_controller_driver_stop_periodic(flight_controller_t *arg);
+char *itoa(int i, char b[]);
+
+#endif /* __LOG_API_H */
 
 /**
- * @brief LOG create module
- *
- * @param arg \ref flight_controller_t
- * @return \ref ret_code_t
+ * @}
  */
-ret_code_t flight_controller_driver_log_init(flight_controller_t *arg);
-
-#endif /* __FLIGHT_CONTROLLER_DRIVER_H */
 
 /**
  * @}

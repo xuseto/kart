@@ -1,16 +1,16 @@
 /***************************************************************************************************
- * @file flight_controller_driver.h
+ * @file log_conductor.h
  * @author jnieto
  * @version 1.0.0.0.0
- * @date Creation: 14/02/2022
- * @date Last modification 17/02/2022 by jnieto
- * @brief FLIGHT_CONTROLLER
+ * @date Creation: 27/02/2022
+ * @date Last modification 27/02/2022 by jnieto
+ * @brief LOG
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ***************************************************************************************************
 
-    @defgroup FLIGHT_CONTROLLER_DRIVER  FLIGHT_CONTROLLER object
+    @defgroup LOG_CONDUCTOR  LOG object
     @{
     @brief
     @details
@@ -18,11 +18,12 @@
 ***************************************************************************************************/
 
 /* Define to prevent recursive inclusion ---------------------------------------------------------*/
-#ifndef __FLIGHT_CONTROLLER_DRIVER_H
-#define __FLIGHT_CONTROLLER_DRIVER_H
+#ifndef __LOG_CONDUCTOR_H
+#define __LOG_CONDUCTOR_H
 
 /* Includes --------------------------------------------------------------------------------------*/
 #include <def_common.h>
+#include <log/log_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -36,38 +37,23 @@
 
 /* Public functions ------------------------------------------------------------------------------*/
 /**
- * @brief Init data of flight controller
- *
- * @param arg \ref flight_controller_t
+ * @brief Create LOG module
  * @return \ref ret_code_t
+ *
  */
-ret_code_t flight_controller_driver_init(flight_controller_t *arg);
+ret_code_t log_conductor_init(void);
 
 /**
- * @brief Start periodic function
+ * @brief Save log and wake up the thread
  *
- * @param arg \ref flight_controller_t
+ * @param name_task show name of the task like add new log
+ * @param level_debug \ref log_level_debug_t
+ * @param info show info he cause of the log
  * @return \ref ret_code_t
  */
-ret_code_t flight_controller_driver_start_periodic(flight_controller_t *arg);
+ret_code_t log_conductor_new_msg(const char *name_task, log_level_debug_t level_debug, const char *info);
 
-/**
- * @brief Stop periodic function
- *
- * @param arg \ref flight_controller_t
- * @return \ref ret_code_t
- */
-ret_code_t flight_controller_driver_stop_periodic(flight_controller_t *arg);
-
-/**
- * @brief LOG create module
- *
- * @param arg \ref flight_controller_t
- * @return \ref ret_code_t
- */
-ret_code_t flight_controller_driver_log_init(flight_controller_t *arg);
-
-#endif /* __FLIGHT_CONTROLLER_DRIVER_H */
+#endif /* __LOG_CONDUCTOR_H */
 
 /**
  * @}

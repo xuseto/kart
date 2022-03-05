@@ -30,7 +30,7 @@ heartbeat_cfg_t heartbeat =
     {
         .delay_ms = PERIODIC_EVERY_1_SG, // 1 sg
         .gpio = LED_GREEN,
-        .name = "HeartBeat",
+        .name = "HEARTBEAT",
 };
 
 /** Struct of the flight controller */
@@ -76,7 +76,8 @@ flight_controller_cfg_t flight_controller_cfg =
 
                 },
 
-            }};
+            },
+};
 
 /** Struct of the DAC */
 

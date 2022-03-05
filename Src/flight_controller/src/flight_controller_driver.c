@@ -19,6 +19,10 @@
 #include <def_common.h>
 #include "flight_controller_conductor.h"
 #include "flight_controller_driver.h"
+#include "flight_controller_hdwr.h"
+
+#include "log/log_api.h"
+#include <stdio.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -49,6 +53,7 @@ ret_code_t flight_controller_driver_init(flight_controller_t *arg)
     arg->periodic_id = periodic_register((periodic_timers_t)arg->cfg->periodic_timer,
                                          flight_controller_driver_periodic,
                                          arg);
+
     return (arg->periodic_id ? RET_SUCCESS : RET_INT_ERROR);
 }
 
@@ -79,9 +84,19 @@ void flight_controller_driver_update_dac(flight_controller_t *arg)
 {
     for (uint8_t i = 0x00; i < MAX_NUM_CONTROLLER; i++)
     {
-        arg->dac_values[i] = (arg->adc_values[i] * 3.3) / 100;
+        arg->dac_values[i] = (uint16_t)(arg->adc_values[i] * 3.3) / 100;
         flight_controller_hdwr_set_dac(arg, arg->dac_values[i]);
     }
+}
+
+//--------------------------------------------------------------------------------------------------
+ret_code_t flight_controller_driver_log_init(flight_controller_t *arg)
+{
+    char msg[20];
+
+    sprintf(msg, "CREATED 0x%x", arg);
+
+    return (log_new_msg(arg->cfg->name, LOG_DEBUG, msg));
 }
 
 /**
