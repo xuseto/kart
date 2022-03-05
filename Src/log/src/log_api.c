@@ -1,25 +1,22 @@
 /***************************************************************************************************
- * @file periodic_api.c
+ * @file log_api.c
  * @author jnieto
  * @version 1.0.0.0.0
- * @date Creation: 05/02/2022
- * @date Last modification 05/02/2022 by jnieto
- * @brief periodic functions
+ * @date Creation: 27/02/2022
+ * @date Last modification 27/02/2022 by jnieto
+ * @brief LOG functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup PERIODIC_API
+    @addtogroup LOG_API
     @{
 
 */
 /* Includes --------------------------------------------------------------------------------------*/
-#include "periodic/periodic_api.h"
-#include "periodic/src/periodic_conductor.h"
-#include <periodic/src/periodic_driver.h>
-
-#include <stdlib.h>
+#include "log/log_api.h"
+#include <def_common.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -32,55 +29,54 @@
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t periodic_init(void)
+ret_code_t log_init()
 {
-    return periodic_conductor_init();
+    return log_conductor_init();
 }
 
 //--------------------------------------------------------------------------------------------------
-periodic_id_t periodic_register(periodic_timers_t timers, periodic_cllbck cllbck, void *arg)
+ret_code_t log_new_msg(const char *name_task, log_level_debug_t level_debug, const char *info)
 {
+    ret_code_t ret = RET_INT_ERROR;
 
-    if (PERIODIC_EVERY_1_SG < timers || !cllbck || !arg)
+    if (!name_task || LOG_MAX_LEVEL < level_debug || !info)
     {
-        return NULL;
+        return ret;
     }
 
-    periodic_id_t periodic_id = periodic_driver_register(timers, cllbck, arg);
-    return periodic_id;
+    return log_conductor_new_msg(name_task, level_debug, info);
 }
 
 //--------------------------------------------------------------------------------------------------
-ret_code_t periodic_unregister(periodic_id_t periodic_id)
+char *itoa(int i, char b[])
 {
-    if (!periodic_id)
+    char const digit[] = "0123456789";
+    char *p = b;
+
+    if (0 > i)
     {
-        return NULL;
+        *p++ = '-';
+        i *= -1;
     }
 
-    return periodic_driver_unregister(periodic_id);
-}
+    int shifter = i;
 
-//--------------------------------------------------------------------------------------------------
-ret_code_t periodic_start(periodic_id_t periodic_id)
-{
-    if (!periodic_id)
+    do
+    { // Move to where representation ends
+        ++p;
+        shifter = shifter / 10;
+    } while (shifter);
+
+    *p = '\0';
+
+    // Move back, inserting digits as u go
+    do
     {
-        return NULL;
-    }
+        *--p = digit[i % 10];
+        i = i / 10;
+    } while (i);
 
-    return periodic_driver_enable_function(periodic_id, 1);
-}
-
-//--------------------------------------------------------------------------------------------------
-ret_code_t periodic_stop(periodic_id_t periodic_id)
-{
-    if (!periodic_id)
-    {
-        return NULL;
-    }
-
-    return periodic_driver_enable_function(periodic_id, 0);
+    return b;
 }
 
 /**

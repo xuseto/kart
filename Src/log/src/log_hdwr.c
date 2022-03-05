@@ -1,68 +1,32 @@
 /***************************************************************************************************
- * @file system_api.h
+ * @file log_hdwr.c
  * @author jnieto
  * @version 1.0.0.0.0
- * @date Creation: 24/11/2021
- * @date Last modification 28/11/2021 by jnieto
- * @brief All System of the Kart
+ * @date Creation: 27/02/2022
+ * @date Last modification 27/02/2022 by jnieto
+ * @brief LOG functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup SYSTEM_API
+    @addtogroup LOG_HDWR
     @{
 
 */
-
 /* Includes --------------------------------------------------------------------------------------*/
-#include "system/system_api.h"
-#include "system/src/system_obj.h"
-
-#include "heartbeat/heartbeat_api.h"
-#include "hdwr/gpio_api.h"
-#include "periodic/periodic_api.h"
-#include "log/log_api.h"
-
-#include "cmsis_os2.h"
-#include "def_common.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
+/* Typedefs --------------------------------------------------------------------------------------*/
+
 /* Private values --------------------------------------------------------------------------------*/
-gpio_out_t gpio = LED_BLUE; /**< Fixed the GPIO of LED */
 
 /* Private functions declaration -----------------------------------------------------------------*/
 
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-void system_init(void)
-{
-
-    gpio_on(gpio);
-
-    /* init LOGs */
-    ret_code_t ret = log_init();
-
-    /* Init periodic module */
-    ret = (RET_SUCCESS == ret) ? periodic_init() : ret;
-
-    osDelay(300);
-
-    /* Init heartbeat module */
-    ret = (RET_SUCCESS == ret) ? heartbeat_init(&heartbeat) : ret;
-    osDelay(300);
-    osDelay(300);
-
-    /* Init flight controller module */
-    ret = (RET_SUCCESS == ret) ? flight_controller_init(&flight_controller_cfg) : ret;
-    osDelay(300);
-    if (RET_SUCCESS == ret)
-    {
-        gpio_off(gpio);
-    }
-}
 
 /**
  * @}

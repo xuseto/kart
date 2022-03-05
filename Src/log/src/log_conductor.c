@@ -1,42 +1,39 @@
 /***************************************************************************************************
- * @file periodic_conductor.c
+ * @file LOG_conductor.c
  * @author jnieto
  * @version 1.0.0.0.0
- * @date Creation: 05/02/2022
- * @date Last modification 05/02/2022 by jnieto
- * @brief periodic functions
+ * @date Creation: 27/02/2022
+ * @date Last modification 27/02/2022 by jnieto
+ * @brief LOG functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup PERIODIC_CONDUCTOR
+    @addtogroup LOG_CONDUCTOR
     @{
 
 */
 /* Includes --------------------------------------------------------------------------------------*/
-#include "periodic_conductor.h"
-#include "periodic_driver.h"
-
+#include "log_conductor.h"
 #include "cmsis_os2.h"
-#include <stdlib.h>
 #include <def_common.h>
-#include <stdio.h>
-#include "log/log_api.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** Definitions for defaultTask */
-osThreadAttr_t periodic_task_attributes =
+osThreadAttr_t log_task_attributes =
     {
-        .priority = (osPriority_t)osPriorityNormal,
-        .name = "PERIODIC",
-        .stack_size = 1024,
+        .priority = (osPriority_t)osPriorityLow,
+        .name = "LOG",
+        .stack_size = 3072,
 };
 
+/** ID for thread */
+osThreadId_t thread_id;
+
 /* Private values --------------------------------------------------------------------------------*/
-uint32_t tick = 0x00;
 
 /* Private functions declaration -----------------------------------------------------------------*/
 /**
@@ -44,52 +41,41 @@ uint32_t tick = 0x00;
  *
  * @param argument \ref NULL
  */
-void periodic_task(void *argument);
+void log_task(void *argument);
 
 /* Private functions -----------------------------------------------------------------------------*/
-void periodic_task(void *argument)
+void log_task(void *argument)
 {
     while (1)
     {
-        osThreadFlagsWait(0x00, osFlagsWaitAny, 100);
-
-        tick += 100;
-
-        // Task every 100 ms
-        periodic_driver_every_100ms();
-
-        // Task every 200 ms
-        if (!(tick % 200))
-        {
-            periodic_driver_every_200ms();
-        }
-
-        // Task every 500 ms
-        if (!(tick % 500))
-        {
-            periodic_driver_every_500ms();
-        }
-
-        // Task every 1000 ms
-        if (!(tick % 1000))
-        {
-            periodic_driver_every_1000ms();
-        }
+        osThreadFlagsWait(0x00, osFlagsWaitAny, osWaitForever);
     }
 }
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t periodic_conductor_init(void)
+ret_code_t log_conductor_init(void)
 {
-    if (osThreadNew(periodic_task, NULL, &periodic_task_attributes))
+    thread_id = osThreadNew(log_task, NULL, &log_task_attributes);
+
+    char msg[] = "CREATED";
+
+    if (thread_id)
     {
-
-        char msg[] = "CREATED";
-
-        return (log_new_msg(periodic_task_attributes.name, LOG_DEBUG, msg));
+        return log_conductor_new_msg(log_task_attributes.name, LOG_DEBUG, msg);
     }
 
     return RET_INT_ERROR;
+}
+
+//--------------------------------------------------------------------------------------------------
+ret_code_t log_conductor_new_msg(const char *name_task, log_level_debug_t level_debug, const char *info)
+{
+
+    ret_code_t ret = log_driver_create_new_message(name_task, level_debug, info);
+
+    ret = (RET_SUCCESS == ret && thread_id) ? osThreadResume(thread_id) : RET_INT_ERROR;
+
+    return ret;
 }
 
 /**
