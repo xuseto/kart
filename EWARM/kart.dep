@@ -1150,10 +1150,6 @@
             <name>$PROJ_DIR$\kart\Exe\kart.out</name>
             <outputs>
                 <tool>
-                    <name>OBJCOPY</name>
-                    <file> 61</file>
-                </tool>
-                <tool>
                     <name>ILINK</name>
                     <file> 175</file>
                 </tool>

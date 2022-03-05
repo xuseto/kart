@@ -252,7 +252,7 @@
                     <item>log_msg</item>
                     <item>flight_controller</item>
                     <item>ret</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>
