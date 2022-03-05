@@ -16,6 +16,7 @@
 */
 /* Includes --------------------------------------------------------------------------------------*/
 #include "log_conductor.h"
+#include "log_driver.h"
 #include "cmsis_os2.h"
 #include <def_common.h>
 
@@ -73,7 +74,10 @@ ret_code_t log_conductor_new_msg(const char *name_task, log_level_debug_t level_
 
     ret_code_t ret = log_driver_create_new_message(name_task, level_debug, info);
 
-    ret = (RET_SUCCESS == ret && thread_id) ? osThreadResume(thread_id) : RET_INT_ERROR;
+    if (RET_SUCCESS == ret && thread_id)
+    {
+      osThreadResume(thread_id);
+    }
 
     return ret;
 }

@@ -22,6 +22,8 @@
 #define __LOG_DRIVER_H
 
 /* Includes --------------------------------------------------------------------------------------*/
+#include <def_common.h>
+#include <log/log_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -34,6 +36,15 @@
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
+/**
+ * @brief Add new msg to log modules
+ *
+ * @param name_task name of task add new message
+ * @param level_debug \ref log_level_debug_t
+ * @param info message
+ * @return \ref ret_code_t
+ */
+ret_code_t log_driver_create_new_message(const char *name_task, log_level_debug_t level_debug, const char *info);
 
 #endif /* __LOG_DRIVER_H */
 
