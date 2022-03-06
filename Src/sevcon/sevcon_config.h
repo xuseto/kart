@@ -25,7 +25,7 @@
 
 /* Defines ---------------------------------------------------------------------------------------*/
 /** MAX of functions callback regsiter every SEVCON */
-#define MAX_SEVCON_CLLBCK 3
+#define SEVCON_MAX_DRIVERS 4
 
 #endif /* __SEVCON_CONFIG_H */
 

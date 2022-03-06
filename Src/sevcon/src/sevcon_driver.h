@@ -23,6 +23,7 @@
 
 /* Includes --------------------------------------------------------------------------------------*/
 #include <sevcon/sevcon_api.h>
+#include <def_common.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -35,6 +36,13 @@
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
+/**
+ * @brief Log init sevcon
+ *
+ * @param sevcon \ref sevcon_t
+ * @return \ref ret_code_t
+ */
+ret_code_t sevcon_driver_log_init(sevcon_t *sevcon);
 
 #endif /* __SEVCON_DRIVER_H */
 

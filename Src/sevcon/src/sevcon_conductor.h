@@ -23,6 +23,7 @@
 
 /* Includes --------------------------------------------------------------------------------------*/
 #include <def_common.h>
+#include <sevcon/sevcon_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -35,6 +36,13 @@
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
+/**
+ * @brief Init high level of sevcon
+ *
+ * @param cfg \ref sevcon_cfg_t
+ * @return \ref ret_code_t
+ */
+ret_code_t sevcon_conductor_init(sevcon_cfg_t *cfg);
 
 #endif /* __SEVCON_CONDUCTOR_H */
 

@@ -71,7 +71,7 @@ ret_code_t flight_controller_conductor_init(flight_controller_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
 
-    flight_controller_t *flight_controller = (flight_controller_t *)calloc(1, sizeof(flight_controller_t));
+    flight_controller_t *flight_controller = calloc(1, sizeof(flight_controller_t));
     ret = (flight_controller) ? RET_SUCCESS : RET_INT_ERROR;
 
     if (RET_SUCCESS == ret)

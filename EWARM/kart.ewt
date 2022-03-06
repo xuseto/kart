@@ -1576,6 +1576,45 @@
             </file>
         </group>
         <group>
+            <name>sevcon</name>
+            <group>
+                <name>src</name>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_api.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_conductor.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_conductor.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_driver.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_driver.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_driver_dictionary.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_driver_dictionary.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_hdwr.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_hdwr.h</name>
+                </file>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\Src\sevcon\sevcon_api.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\sevcon\sevcon_config.h</name>
+            </file>
+        </group>
+        <group>
             <name>system</name>
             <group>
                 <name>src</name>

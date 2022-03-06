@@ -22,6 +22,7 @@
 #include <hdwr/adc_api.h>
 #include <hdwr/can_api.h>
 #include <periodic/periodic_api.h>
+#include <sevcon/sevcon_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -87,6 +88,14 @@ can_cfg_t can_cfg =
         .assignament_can = CAN_1,
         .type = CAN_TYPE_STD,
         .filter = NULL,
+};
+
+/** Struct of SEVCON */
+sevcon_cfg_t sevcon_cfg =
+    {
+        .fifo_cfg = {
+            .num_msg = 20,
+        },
 };
 
 /** Struct of the DAC */

@@ -29,8 +29,46 @@
 /** Maximum length of the data of a CAN message */
 #define MAX_CAN_MSG_LENGTH 8
 
-/* Typedefs --------------------------------------------------------------------------------------*/
+/** MOVE TO CANOPEN LIBRARY */
+/* Parametros de comunicacion del BUS CAN   */
+/** Direcciones del campo CAN-ID del protocolo CANpen */
+#define EMCY_ID 0x80
+#define TPDO1 0x180
+#define RPDO1 0x200
+#define TPDO2 0x280
+#define RPDO2 0x300
+#define TPDO3 0x480
+#define RPDO3 0x400
+#define TPDO4 0x580
+#define RPDO4 0x500
+#define TSDO 0x580
+#define RSDO 0x600
+#define MNT 0x700
 
+/** Modo de acceso a una entrada del diccionario de objetos, READ*/
+#define OD_READ 0x40
+#define OD_READ_4BYTES 0x43
+#define OD_READ_2BYTES 0x4B
+#define OD_READ_1BYTES 0x4F
+
+/** Modo de acceso a una entrada del diccionario de objetos, WRITE*/
+#define OD_WRITE 0x20
+#define OD_WRITE_4BYTES 0x23
+#define OD_WRITE_2BYTES 0x2B
+#define OD_WRITE_1BYTES 0x2F
+
+#define OD_ERROR 0x80
+#define OD_ANSWER 0x60
+
+/** Struct of dictionary */
+typedef struct dictionary_canopen_s
+{
+    uint16_t mode_access; /** Mode de access READ o WRITE */
+    uint16_t index;       /** Index of dictionary */
+    uint16_t subindex;    /** Subindex of dictionary */
+} dictionary_canopen_t;
+
+/* Typedefs --------------------------------------------------------------------------------------*/
 /** CAN bus config number CAN */
 typedef enum CAN_NUMBER
 {

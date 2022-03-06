@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * @file sevcon_driver.c
+ * @file sevcon_driver_dictionay.c
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 06/03/2022
@@ -10,35 +10,32 @@
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup SEVCON_DRIVER
+    @addtogroup SEVCON_DRIVER_DICTIONARY
     @{
 
 */
 /* Includes --------------------------------------------------------------------------------------*/
-#include "sevcon_driver.h"
-#include "sevcon_hdwr.h"
+#include "sevcon_driver_dictionary.h"
 
-#include <def_common.h>
-#include <log/log_api.h>
-#include <stdio.h>
+#include <hdwr/can_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 
 /* Private values --------------------------------------------------------------------------------*/
+static dictionary_canopen_t dictionary_canopen[] =
+    {
+        [VELOCITY] = {OD_READ, 0x606C, 0x00},
+        [MOTOR_TEMPERATURE_1] = {OD_READ, 0x4600, 0x03},
+        [ERROR_SEVCON] = {OD_READ, 0x5320, 0x00},
+        [MAX_DICTIONARY] = {0xFF, 0xFFFF, 0xFFFF}
+
+};
 
 /* Private functions declaration -----------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t sevcon_driver_log_init(sevcon_t *sevcon)
-{
-    char msg[20];
-
-    sprintf(msg, "CREATED 0x%x", sevcon);
-
-    return (log_new_msg(sevcon->name, LOG_DEBUG, msg));
-}
 
 /**
  * @}

@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * @file sevcon_driver.c
+ * @file sevcon_hdwr.c
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 06/03/2022
@@ -10,17 +10,14 @@
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup SEVCON_DRIVER
+    @addtogroup SEVCON_HDWR
     @{
 
 */
 /* Includes --------------------------------------------------------------------------------------*/
-#include "sevcon_driver.h"
 #include "sevcon_hdwr.h"
 
-#include <def_common.h>
-#include <log/log_api.h>
-#include <stdio.h>
+#include <hdwr/can_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -31,13 +28,13 @@
 /* Private functions declaration -----------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t sevcon_driver_log_init(sevcon_t *sevcon)
+ret_code_t sevcon_hdwr_init(sevcon_cfg_t *cfg, sevcon_t *data)
 {
-    char msg[20];
+    cfg->fifo_cfg.size_msg = sizeof(can_msg_t);
 
-    sprintf(msg, "CREATED 0x%x", sevcon);
+    data->fifo_id = fifo_create_queue(&cfg->fifo_cfg);
 
-    return (log_new_msg(sevcon->name, LOG_DEBUG, msg));
+    return ((data->fifo_id) ? RET_SUCCESS : RET_INT_ERROR);
 }
 
 /**
