@@ -1469,6 +1469,9 @@
                     <name>$PROJ_DIR$\..\Src\hdwr\src\adc_api.c</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\Src\hdwr\src\can_api.c</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Src\hdwr\src\fifo_api.c</name>
                 </file>
                 <file>
@@ -1483,6 +1486,9 @@
             </group>
             <file>
                 <name>$PROJ_DIR$\..\Src\hdwr\adc_api.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\hdwr\can_api.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Src\hdwr\fifo_api.h</name>
@@ -1633,6 +1639,9 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_exti.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_fdcan.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_flash.c</name>

@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 24/11/2021
- * @date Last modification 28/11/2021 by jnieto
+ * @date Last modification 05/03/2021 by jnieto
  * @brief All System of the Kart
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -52,6 +52,9 @@ void system_init(void)
 
     /* Init heartbeat module */
     ret = (RET_SUCCESS == ret) ? heartbeat_init(&heartbeat) : ret;
+    /* Init CAN module */
+    ret = (RET_SUCCESS == ret) ? can_create(&can_cfg) : ret;
+
     osDelay(300);
     osDelay(300);
 
