@@ -66,17 +66,6 @@ void can_task(void *aguments)
 {
     can_cfg_t *can = (can_cfg_t *)aguments;
 
-    can_msg_t msg;
-
-    for (uint8_t I = 0; I < MAX_CAN_MSG_LENGTH; I++)
-    {
-        msg.data[I] = I + 10;
-    }
-    msg.id_frame = 0x200;
-    msg.length = MAX_CAN_MSG_LENGTH;
-
-    can_tx(CAN_1, &msg);
-
     osThreadFlagsWait(NULL, osFlagsWaitAny, osWaitForever);
 }
 
@@ -161,7 +150,7 @@ ret_code_t can_tx(can_number_t can_id, can_msg_t *msg)
 
     while (HAL_FDCAN_IsTxBufferMessagePending(handle, mailbox))
         ;
-    
+
     return ret;
 }
 
