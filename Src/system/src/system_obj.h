@@ -26,11 +26,13 @@
 /* Includes --------------------------------------------------------------------------------------*/
 #include <def_common.h>
 #include <heartbeat/heartbeat_api.h>
+#include <hdwr/can_api.h>
 #include "flight_controller/flight_controller_api.h"
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 extern heartbeat_cfg_t heartbeat;
 extern flight_controller_cfg_t flight_controller_cfg;
+extern can_cfg_t can_cfg;
 
 /* Public Function -------------------------------------------------------------------------------*/
 

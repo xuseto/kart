@@ -21,13 +21,13 @@
     <StLinkDriver>
         <stlinkserialNo>0672FF545150898367081839</stlinkserialNo>
         <stlinkfoundProbes />
-        <stlinkResetStyle>0</stlinkResetStyle>
-        <stlinkResetStrategy>2</stlinkResetStrategy>
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
         <CStepIntDis>_ 0</CStepIntDis>
+        <stlinkResetStyle>0</stlinkResetStyle>
+        <stlinkResetStrategy>2</stlinkResetStrategy>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>3307160007</Checksum>
+        <Checksum>3756094931</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -62,6 +62,10 @@
         <ITMportsLogFile>0</ITMportsLogFile>
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
+    <struct_types>
+        <Fmt0>can_msg_t-id_frame	4	0</Fmt0>
+        <Fmt1>can_msg_t-length	4	0</Fmt1>
+    </struct_types>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
@@ -135,7 +139,7 @@
     <Breakpoints2>
         <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\stm32l5xx_it.c}.1.1" 0 0 1 "" 0 "" 0</Bp0>
         <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\stm32l5xx_it.c}.1.1" 0 0 1 "" 0 "" 0</Bp1>
-        <Bp2>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\stm32l5xx_it.c}.172.3" 0 0 1 "" 0 "" 0</Bp2>
+        <Bp2>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\stm32l5xx_it.c}.173.3" 0 0 1 "" 0 "" 0</Bp2>
         <Bp3>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\flight_controller\src\flight_controller_driver.c}.1.1" 0 0 1 "" 0 "" 0</Bp3>
         <Count>4</Count>
     </Breakpoints2>

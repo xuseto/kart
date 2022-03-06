@@ -20,6 +20,7 @@
 #include <heartbeat/heartbeat_api.h>
 //#include "flight_controller/flight_controller_api.h"
 #include <hdwr/adc_api.h>
+#include <hdwr/can_api.h>
 #include <periodic/periodic_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
@@ -77,6 +78,15 @@ flight_controller_cfg_t flight_controller_cfg =
                 },
 
             },
+};
+
+/** Struct of the CAN BUS */
+can_cfg_t can_cfg =
+    {
+        .num_msg = 16,
+        .assignament_can = CAN_1,
+        .type = CAN_TYPE_STD,
+        .filter = NULL,
 };
 
 /** Struct of the DAC */
