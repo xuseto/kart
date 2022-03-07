@@ -253,18 +253,92 @@ ret_code_t can_unsuscribe_rx_fifo(fifo_t *fifo_rx)
 }
 
 /* CANOPEN ---------------------------------------------------------------------------------------*/
-/*
-uint16_t canopen_get_mode_acces(can_msg_t *msg_can)
+uint16_t canopen_get_mode_access(can_msg_t *msg_can)
 {
     if (!msg_can)
     {
         return OD_ERROR;
     }
-    msg_canopen_t *msg_canopen = msg_can->data;
 
-    return
+    msg_canopen_t *msg_canopen = (msg_canopen_t *)msg_can->data;
+
+    return msg_canopen->idx_canopen.byte.mode_access;
 }
-*/
+
+//--------------------------------------------------------------------------------------------------
+uint16_t canopen_get_index(can_msg_t *msg_can)
+{
+    if (!msg_can)
+    {
+        return UINT16_MAX;
+    }
+
+    msg_canopen_t *msg_canopen = (msg_canopen_t *)msg_can->data;
+
+    return (((uint16_t)msg_canopen->idx_canopen.byte.index << 8) 
+            + (uint16_t)msg_canopen->idx_canopen.byte.index);
+}
+
+//--------------------------------------------------------------------------------------------------
+uint16_t canopen_get_subindex(can_msg_t *msg_can)
+{
+    if (!msg_can)
+    {
+        return UINT16_MAX;
+    }
+
+    msg_canopen_t *msg_canopen = (msg_canopen_t *)msg_can->data;
+
+    return msg_canopen->idx_canopen.byte.subindex;
+}
+
+//--------------------------------------------------------------------------------------------------
+uint32_t canopen_get_data(can_msg_t *msg_can)
+{
+
+    uint32_t ret = NULL;
+
+    if (!msg_can)
+    {
+        return ret;
+    }
+
+    msg_canopen_t *msg_canopen = (msg_canopen_t *)msg_can->data;
+
+    switch (msg_canopen->idx_canopen.byte.mode_access)
+    {
+    case OD_READ:
+    case OD_WRITE:
+    case OD_READ_4BYTES:
+    {
+        ret = 0x000000FF & (uint32_t)(msg_canopen->data.byte.data_1);
+        ret = 0x0000FFFF & (((uint32_t)(msg_canopen->data.byte.data_2) << 8) + ret);
+        ret = 0x00FFFFFF & (((uint32_t)(msg_canopen->data.byte.data_3) << 16) + ret);
+        ret = 0xFFFFFFFF & (((uint32_t)(msg_canopen->data.byte.data_4) << 24) + ret);
+        break;
+    } // END case 4 Bytes
+
+    case OD_READ_2BYTES:
+    case OD_WRITE_2BYTES:
+    {
+        ret = 0x000000FF & (uint32_t)(msg_canopen->data.byte.data_1);
+        ret = 0x0000FFFF & (((uint32_t)(msg_canopen->data.byte.data_2) << 8) + ret);
+        break;
+    } // END case 2 Bytes
+
+    case OD_READ_1BYTES:
+    case OD_WRITE_1BYTES:
+    {
+        ret = 0x000000FF & (uint32_t)(msg_canopen->data.byte.data_1);
+        break;
+    } // END case 1 Bytes
+
+    default:
+        ret = 0xFFFFFFFF;
+    } // END switch
+
+    return ret;
+}
 
 /* ISR -------------------------------------------------------------------------------------------*/
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
