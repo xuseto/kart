@@ -27,6 +27,7 @@
 #include <string.h>
 #include <def_common.h>
 #include <log/log_api.h>
+#include <hdwr/fifo_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 /** Offset to indicate data length \ref FDCAN_data_length_code */
@@ -52,6 +53,36 @@ osThreadAttr_t can_task_attributes =
         .stack_size = 1024,
 };
 
+/** FIFO RX subscribe to CAN */
+fifo_t can_fifo_subscribe[CAN_MAX_MODULES_SUBSCRIBE];
+
+/** Structure for CAN Open */
+typedef struct msg_canopen_s
+{
+    union
+    {
+        uint64_t all;
+        struct
+        {
+            uint64_t mode_access : 16;     /* Access Mode (OD_READ or OD_WRITE)*/
+            uint64_t index : 16;           /* Index */
+            uint64_t index_highlevel : 16; /* Index high level */
+            uint64_t subindex : 16;        /* Subindex */
+        } byte;
+    } idx_canopen;
+    union
+    {
+        uint64_t all;
+        struct
+        {
+            uint64_t data_1 : 16;
+            uint64_t data_2 : 16;
+            uint64_t data_3 : 16;
+            uint64_t data_4 : 16;
+        } byte;
+    } data;
+} msg_canopen_t;
+
 /* Private functions declaration -----------------------------------------------------------------*/
 /**
  * @brief Run Thread
@@ -60,13 +91,44 @@ osThreadAttr_t can_task_attributes =
  */
 void can_task(void *aguments);
 
-can_msg_t msg;
+/**
+ * @brief Enqueue new message CAN recived by CAN
+ *
+ */
+void can_enqueue_new_message(void *handle, uint32_t fifo_can);
+
 /* Private functions -----------------------------------------------------------------------------*/
 void can_task(void *aguments)
 {
     can_cfg_t *can = (can_cfg_t *)aguments;
 
     osThreadFlagsWait(NULL, osFlagsWaitAny, osWaitForever);
+}
+
+//--------------------------------------------------------------------------------------------------
+void can_enqueue_new_message(void *handle, uint32_t fifo_can)
+{
+    FDCAN_RxHeaderTypeDef pRxHeader;
+    uint8_t data[MAX_CAN_MSG_LENGTH];
+    can_msg_t msg;
+
+    if (HAL_OK == HAL_FDCAN_GetRxMessage(handle, fifo_can, &pRxHeader, data))
+    {
+        msg.id_frame = pRxHeader.Identifier;
+        msg.length = pRxHeader.DataLength >> OFFSET_BITS_DLC;
+        for (uint16_t i = 0x00; i < msg.length; i++)
+        {
+            msg.data[i] = data[i];
+        }
+
+        for (uint8_t i = 0x00; i < CAN_MAX_MODULES_SUBSCRIBE; i++)
+        {
+            if (can_fifo_subscribe[i])
+            {
+                fifo_enqueue_msg(can_fifo_subscribe[i], &msg);
+            }
+        }
+    }
 }
 
 /* Public functions ------------------------------------------------------------------------------*/
@@ -152,6 +214,143 @@ ret_code_t can_tx(can_number_t can_id, can_msg_t *msg)
         ;
 
     return ret;
+}
+
+//--------------------------------------------------------------------------------------------------
+ret_code_t can_suscribe_rx_fifo(fifo_t *fifo_rx)
+{
+    ret_code_t ret = RET_PARAM_ERROR;
+
+    for (uint8_t i = 0x00; i < CAN_MAX_MODULES_SUBSCRIBE; i++)
+    {
+        if (!can_fifo_subscribe[i])
+        {
+            can_fifo_subscribe[i] = fifo_rx;
+            ret = RET_SUCCESS;
+            i = CAN_MAX_MODULES_SUBSCRIBE + 1;
+        }
+    }
+
+    return ret;
+}
+
+//--------------------------------------------------------------------------------------------------
+ret_code_t can_unsuscribe_rx_fifo(fifo_t *fifo_rx)
+{
+    ret_code_t ret = RET_PARAM_ERROR;
+
+    for (uint8_t i = 0x00; i < CAN_MAX_MODULES_SUBSCRIBE; i++)
+    {
+        if (can_fifo_subscribe[i] == fifo_rx)
+        {
+            can_fifo_subscribe[i] = NULL;
+            ret = RET_SUCCESS;
+            i = CAN_MAX_MODULES_SUBSCRIBE + 1;
+        }
+    }
+
+    return ret;
+}
+
+/* CANOPEN ---------------------------------------------------------------------------------------*/
+uint16_t canopen_get_mode_access(can_msg_t *msg_can)
+{
+    if (!msg_can)
+    {
+        return OD_ERROR;
+    }
+
+    msg_canopen_t *msg_canopen = (msg_canopen_t *)msg_can->data;
+
+    return msg_canopen->idx_canopen.byte.mode_access;
+}
+
+//--------------------------------------------------------------------------------------------------
+uint16_t canopen_get_index(can_msg_t *msg_can)
+{
+    if (!msg_can)
+    {
+        return UINT16_MAX;
+    }
+
+    msg_canopen_t *msg_canopen = (msg_canopen_t *)msg_can->data;
+
+    return (((uint16_t)msg_canopen->idx_canopen.byte.index << 8) 
+            + (uint16_t)msg_canopen->idx_canopen.byte.index);
+}
+
+//--------------------------------------------------------------------------------------------------
+uint16_t canopen_get_subindex(can_msg_t *msg_can)
+{
+    if (!msg_can)
+    {
+        return UINT16_MAX;
+    }
+
+    msg_canopen_t *msg_canopen = (msg_canopen_t *)msg_can->data;
+
+    return msg_canopen->idx_canopen.byte.subindex;
+}
+
+//--------------------------------------------------------------------------------------------------
+uint32_t canopen_get_data(can_msg_t *msg_can)
+{
+
+    uint32_t ret = NULL;
+
+    if (!msg_can)
+    {
+        return ret;
+    }
+
+    msg_canopen_t *msg_canopen = (msg_canopen_t *)msg_can->data;
+
+    switch (msg_canopen->idx_canopen.byte.mode_access)
+    {
+    case OD_READ:
+    case OD_WRITE:
+    case OD_READ_4BYTES:
+    {
+        ret = 0x000000FF & (uint32_t)(msg_canopen->data.byte.data_1);
+        ret = 0x0000FFFF & (((uint32_t)(msg_canopen->data.byte.data_2) << 8) + ret);
+        ret = 0x00FFFFFF & (((uint32_t)(msg_canopen->data.byte.data_3) << 16) + ret);
+        ret = 0xFFFFFFFF & (((uint32_t)(msg_canopen->data.byte.data_4) << 24) + ret);
+        break;
+    } // END case 4 Bytes
+
+    case OD_READ_2BYTES:
+    case OD_WRITE_2BYTES:
+    {
+        ret = 0x000000FF & (uint32_t)(msg_canopen->data.byte.data_1);
+        ret = 0x0000FFFF & (((uint32_t)(msg_canopen->data.byte.data_2) << 8) + ret);
+        break;
+    } // END case 2 Bytes
+
+    case OD_READ_1BYTES:
+    case OD_WRITE_1BYTES:
+    {
+        ret = 0x000000FF & (uint32_t)(msg_canopen->data.byte.data_1);
+        break;
+    } // END case 1 Bytes
+
+    default:
+        ret = 0xFFFFFFFF;
+    } // END switch
+
+    return ret;
+}
+
+/* ISR -------------------------------------------------------------------------------------------*/
+void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
+{
+    can_enqueue_new_message(hfdcan, FDCAN_RX_FIFO0);
+}
+
+//--------------------------------------------------------------------------------------------------
+void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
+{
+
+    can_enqueue_new_message(hfdcan, FDCAN_RX_FIFO1);
 }
 
 /**

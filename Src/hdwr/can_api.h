@@ -29,6 +29,9 @@
 /** Maximum length of the data of a CAN message */
 #define MAX_CAN_MSG_LENGTH 8
 
+/** Maximum modules can use the can */
+#define CAN_MAX_MODULES_SUBSCRIBE 1
+
 /** MOVE TO CANOPEN LIBRARY */
 /* Parametros de comunicacion del BUS CAN   */
 /** Direcciones del campo CAN-ID del protocolo CANpen */
@@ -67,6 +70,8 @@ typedef struct dictionary_canopen_s
     uint16_t index;       /** Index of dictionary */
     uint16_t subindex;    /** Subindex of dictionary */
 } dictionary_canopen_t;
+
+/* Typedefs --------------------------------------------------------------------------------------*/
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** CAN bus config number CAN */
@@ -183,6 +188,33 @@ ret_code_t can_register_rx_queue(can_number_t can_id, fifo_t queue_id);
  * @return \ref ret_code_t
  */
 ret_code_t can_tx(can_number_t can_id, can_msg_t *msg);
+
+/**
+ * @brief Register fifos queue when recived a message CAN
+ *
+ * @param fifo_rx \ref fifo_t
+ * @return \ref ret_code_t
+ */
+ret_code_t can_suscribe_rx_fifo(fifo_t *fifo_rx);
+
+/**
+ * @brief Delete register fifos queue when recived a message CAN
+ *
+ * @param fifo_rx \ref fifo_t
+ * @return \ref ret_code_t
+ */
+ret_code_t can_unsuscribe_rx_fifo(fifo_t *fifo_rx);
+
+uint16_t canopen_get_mode_access(can_msg_t *msg_can);
+
+//--------------------------------------------------------------------------------------------------
+uint16_t canopen_get_index(can_msg_t *msg_can);
+
+//--------------------------------------------------------------------------------------------------
+uint16_t canopen_get_subindex(can_msg_t *msg_can);
+
+//--------------------------------------------------------------------------------------------------
+uint32_t canopen_get_data(can_msg_t *msg_can);
 
 #endif /* _CAN_API_H */
        /**
