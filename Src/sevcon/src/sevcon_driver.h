@@ -44,6 +44,13 @@
  */
 ret_code_t sevcon_driver_log_init(sevcon_t *sevcon);
 
+/**
+ * @brief while 1
+ *
+ * @param arg \ref sevcon_t
+ */
+void sevcon_driver_get_msg(void *arg);
+
 #endif /* __SEVCON_DRIVER_H */
 
 /**

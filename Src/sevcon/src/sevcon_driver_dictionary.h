@@ -47,6 +47,14 @@ typedef enum idx_dictionary_canopen_s
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
+/**
+ * @brief Get index of enum of dictionary canopen
+ *
+ * @param idx index of dictionary
+ * @param subidx subindex of dictionary
+ * @return uint16_t \ref idx_dictionary_canopen_t
+ */
+uint16_t sevcon_dictionary_found_id(uint16_t idx, uint16_t subidx);
 
 #endif /* __SEVCON_DRIVER_DICTIONARY_H */
 

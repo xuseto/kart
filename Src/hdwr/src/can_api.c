@@ -61,24 +61,24 @@ typedef struct msg_canopen_s
 {
     union
     {
-        uint64_t all;
+        uint32_t all;
         struct
         {
-            uint64_t mode_access : 16;     /* Access Mode (OD_READ or OD_WRITE)*/
-            uint64_t index : 16;           /* Index */
-            uint64_t index_highlevel : 16; /* Index high level */
-            uint64_t subindex : 16;        /* Subindex */
+            uint32_t mode_access : 8;     /* Access Mode (OD_READ or OD_WRITE)*/
+            uint32_t index : 8;           /* Index */
+            uint32_t index_highlevel : 8; /* Index high level */
+            uint32_t subindex : 8;        /* Subindex */
         } byte;
     } idx_canopen;
     union
     {
-        uint64_t all;
+        uint32_t all;
         struct
         {
-            uint64_t data_1 : 16;
-            uint64_t data_2 : 16;
-            uint64_t data_3 : 16;
-            uint64_t data_4 : 16;
+            uint32_t data_1 : 8;
+            uint32_t data_2 : 8;
+            uint32_t data_3 : 8;
+            uint32_t data_4 : 8;
         } byte;
     } data;
 } msg_canopen_t;
@@ -108,9 +108,9 @@ void can_task(void *aguments)
 //--------------------------------------------------------------------------------------------------
 void can_enqueue_new_message(void *handle, uint32_t fifo_can)
 {
+    can_msg_t msg;
     FDCAN_RxHeaderTypeDef pRxHeader;
     uint8_t data[MAX_CAN_MSG_LENGTH];
-    can_msg_t msg;
 
     if (HAL_OK == HAL_FDCAN_GetRxMessage(handle, fifo_can, &pRxHeader, data))
     {
@@ -255,12 +255,14 @@ ret_code_t can_unsuscribe_rx_fifo(fifo_t *fifo_rx)
 /* CANOPEN ---------------------------------------------------------------------------------------*/
 uint16_t canopen_get_mode_access(can_msg_t *msg_can)
 {
+    msg_canopen_t *msg_canopen;
     if (!msg_can)
     {
         return OD_ERROR;
     }
 
-    msg_canopen_t *msg_canopen = (msg_canopen_t *)msg_can->data;
+    msg_canopen = (msg_canopen_t *)msg_can->data;
+    printf("0x%x >> 0x%x \n", msg_can->data[0], msg_canopen->idx_canopen.byte.mode_access);
 
     return msg_canopen->idx_canopen.byte.mode_access;
 }
@@ -275,8 +277,7 @@ uint16_t canopen_get_index(can_msg_t *msg_can)
 
     msg_canopen_t *msg_canopen = (msg_canopen_t *)msg_can->data;
 
-    return (((uint16_t)msg_canopen->idx_canopen.byte.index << 8) 
-            + (uint16_t)msg_canopen->idx_canopen.byte.index);
+    return (((uint16_t)msg_canopen->idx_canopen.byte.index_highlevel << 8) + (uint16_t)msg_canopen->idx_canopen.byte.index);
 }
 
 //--------------------------------------------------------------------------------------------------

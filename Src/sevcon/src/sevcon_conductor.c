@@ -47,6 +47,10 @@ void sevcon_task(void *argument);
 /* Private functions -----------------------------------------------------------------------------*/
 void sevcon_task(void *argument)
 {
+    if (argument)
+    {
+        sevcon_driver_get_msg(argument);
+    }
 }
 
 /* Public functions ------------------------------------------------------------------------------*/
@@ -55,12 +59,13 @@ ret_code_t sevcon_conductor_init(sevcon_cfg_t *cfg)
     ret_code_t ret = RET_INT_ERROR;
 
     sevcon_t *sevcon = calloc(1, sizeof(sevcon_t));
-    ret = (sevcon) ? RET_SUCCESS : RET_INT_ERROR;
     if (sevcon)
     {
         sevcon->name = sevcon_task_attributes.name;
+        osThreadId_t id = osThreadNew(sevcon_task, sevcon, &sevcon_task_attributes);
+        ret = (id) ? RET_SUCCESS : RET_INT_ERROR;
     }
-
+    
     ret = (RET_SUCCESS == ret) ? sevcon_hdwr_init(cfg, sevcon) : ret;
 
     ret = (RET_SUCCESS == ret) ? sevcon_driver_log_init(sevcon) : ret;

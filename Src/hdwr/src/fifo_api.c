@@ -57,21 +57,15 @@ ret_code_t fifo_enqueue_msg(fifo_t fifo, void *msg)
 }
 
 //--------------------------------------------------------------------------------------------------
-void *fifo_dequeue_msg(fifo_t fifo)
+ret_code_t fifo_dequeue_msg(fifo_t fifo, void *msg)
 {
-    void *msg = {0};
-
-    if (!fifo)
+    ret_code_t ret = RET_INT_ERROR;
+    if (!fifo || !msg)
     {
-        return NULL;
+        return ret;
     }
-
-    if (osOK != osMessageQueueGet(fifo, msg, NULL, NULL))
-    {
-        msg = NULL;
-    }
-
-    return msg;
+    ret = (osOK == osMessageQueueGet(fifo, msg, NULL, osWaitForever)) ? RET_SUCCESS : RET_INT_ERROR;
+    return ret;
 }
 
 //--------------------------------------------------------------------------------------------------

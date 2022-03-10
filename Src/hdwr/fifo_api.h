@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 28/11/2021
- * @date Last modification 28/11/2021 by jnieto
+ * @date Last modification 07/03/2021 by jnieto
  * @brief Cretated FIFOs with CMSIS
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -51,7 +51,7 @@ fifo_t fifo_create_queue(fifo_cfg_t *cfg);
  *
  * @param fifo \ref osMessageQueueId_t
  * @param msg pointer of new message
- * @return ret_code_t \ref ret_code_t
+ * @return \ref ret_code_t
  */
 ret_code_t fifo_enqueue_msg(fifo_t fifo, void *msg);
 
@@ -59,9 +59,10 @@ ret_code_t fifo_enqueue_msg(fifo_t fifo, void *msg);
  * @brief  Dequeue message from FIFO
  *
  * @param fifo \ref osMessageQueueId_t
- * @return void* Pointer of message FIFO
+ * @param msg pointer of new message
+ * @return \ref ret_code_t
  */
-void *fifo_dequeue_msg(fifo_t fifo);
+ret_code_t fifo_dequeue_msg(fifo_t fifo, void *msg);
 
 /**
  * @brief Get number of available slots for messages

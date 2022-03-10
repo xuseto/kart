@@ -36,6 +36,21 @@ static dictionary_canopen_t dictionary_canopen[] =
 /* Private functions declaration -----------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
+uint16_t sevcon_dictionary_found_id(uint16_t idx, uint16_t subidx)
+{
+    uint16_t ret = MAX_DICTIONARY;
+
+    for (uint16_t i = 0; i <= MAX_DICTIONARY; i++)
+    {
+        if (dictionary_canopen[i].index == idx && dictionary_canopen[i].subindex == subidx)
+        {
+            ret = i;
+            i = MAX_DICTIONARY;
+        }
+    }
+
+    return ret;
+}
 
 /**
  * @}
