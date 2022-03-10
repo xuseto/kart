@@ -23,6 +23,7 @@
 #include "hdwr/gpio_api.h"
 #include "periodic/periodic_api.h"
 #include "log/log_api.h"
+#include "sevcon/sevcon_api.h"
 
 #include "cmsis_os2.h"
 #include "def_common.h"
@@ -47,16 +48,12 @@ void system_init(void)
 
     /* Init periodic module */
     ret = (RET_SUCCESS == ret) ? periodic_init() : ret;
-
-    osDelay(300);
-
     /* Init heartbeat module */
     ret = (RET_SUCCESS == ret) ? heartbeat_init(&heartbeat) : ret;
     /* Init CAN module */
     ret = (RET_SUCCESS == ret) ? can_create(&can_cfg) : ret;
-
-    osDelay(300);
-    osDelay(300);
+    /* Init Sevcon */
+    ret = (RET_SUCCESS == ret) ? sevcon_init(&sevcon_cfg) : ret;
 
     /* Init flight controller module */
     ret = (RET_SUCCESS == ret) ? flight_controller_init(&flight_controller_cfg) : ret;

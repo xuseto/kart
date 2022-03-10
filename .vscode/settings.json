@@ -29,7 +29,9 @@
         "stm32l5xx_hal_fdcan.h": "c",
         "can_api.h": "c",
         "adc_api.h": "c",
-        "sevcon_driver.h": "c"
+        "sevcon_driver.h": "c",
+        "log_api.h": "c"
+        "sevcon_api.h": "c"
     },
     "cortex-debug.armToolchainPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.10\\bin",
     "cortex-debug.openocdPath": "C:\\xpack-openocd-0.11.0-2\\bin\\openocd",

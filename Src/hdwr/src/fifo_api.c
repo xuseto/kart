@@ -1,10 +1,10 @@
 
 /***************************************************************************************************
- * @file fifo_api.c 
+ * @file fifo_api.c
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 28/11/2021
- * @date Last modification 28/11/2021 by jnieto
+ * @date Last modification 06/03/2021 by jnieto
  * @brief Cretated FIFOs with CMSIS
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -25,11 +25,6 @@
 #include <stdio.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
-/** Maximum char for name fifos */
-#define FIFO_MAX_NAME 20
-
-/** Init name queue fifos */
-#define FIFO_INIT_NAME "FIFO_"
 
 /* Private values --------------------------------------------------------------------------------*/
 
@@ -40,23 +35,12 @@
 /* Public functions ------------------------------------------------------------------------------*/
 fifo_t fifo_create_queue(fifo_cfg_t *cfg)
 {
-    osMessageQueueAttr_t attr;
-    char name_fifo[FIFO_MAX_NAME];
-
     if (!cfg)
     {
         return NULL;
     }
 
-    /* Create name fifo */
-    strncat(name_fifo, FIFO_INIT_NAME, sizeof(FIFO_INIT_NAME) - 1);
-    if (cfg->name)
-    {
-        strncat(name_fifo, cfg->name, sizeof(cfg->name));
-    }
-    attr.name = name_fifo;
-
-    return (osMessageQueueNew(cfg->num_msg, cfg->size_msg, &attr));
+    return (osMessageQueueNew(cfg->num_msg, cfg->size_msg, NULL));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -73,21 +57,15 @@ ret_code_t fifo_enqueue_msg(fifo_t fifo, void *msg)
 }
 
 //--------------------------------------------------------------------------------------------------
-void *fifo_dequeue_msg(fifo_t fifo)
+ret_code_t fifo_dequeue_msg(fifo_t fifo, void *msg)
 {
-  void *msg = {0};
-
-    if (!fifo)
+    ret_code_t ret = RET_INT_ERROR;
+    if (!fifo || !msg)
     {
-        return NULL;
+        return ret;
     }
-
-    if (osOK != osMessageQueueGet(fifo, msg, NULL, NULL))
-    {
-        msg = NULL;
-    }
-
-    return msg;
+    ret = (osOK == osMessageQueueGet(fifo, msg, NULL, osWaitForever)) ? RET_SUCCESS : RET_INT_ERROR;
+    return ret;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -115,7 +93,7 @@ ret_code_t fifo_reset(fifo_t fifo)
 }
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/
