@@ -44,7 +44,7 @@ char name_fifo_can[10] = "CAN_FIFO_";
 char name_thread_can[5] = "CAN_";
 
 /** ID of thread */
-osThreadId_t id_thread;
+static osThreadId_t id_thread;
 
 /** Definitions for defaultTask */
 osThreadAttr_t can_task_attributes =

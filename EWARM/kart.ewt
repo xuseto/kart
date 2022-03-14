@@ -1483,6 +1483,9 @@
                 <file>
                     <name>$PROJ_DIR$\..\Src\hdwr\src\spi_api.c</name>
                 </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\hdwr\src\uart_api.c</name>
+                </file>
             </group>
             <file>
                 <name>$PROJ_DIR$\..\Src\hdwr\adc_api.h</name>
@@ -1501,6 +1504,9 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Src\hdwr\spi_api.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\hdwr\uart_api.h</name>
             </file>
         </group>
         <group>
@@ -1732,6 +1738,12 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_tim_ex.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_uart.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Drivers\STM32L5xx_HAL_Driver\Src\stm32l5xx_hal_uart_ex.c</name>
             </file>
         </group>
     </group>

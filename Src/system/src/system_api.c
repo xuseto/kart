@@ -23,6 +23,7 @@
 #include "hdwr/gpio_api.h"
 #include "periodic/periodic_api.h"
 #include "log/log_api.h"
+#include "hdwr/uart_api.h"
 #include "sevcon/sevcon_api.h"
 
 #include "cmsis_os2.h"
@@ -50,8 +51,12 @@ void system_init(void)
     ret = (RET_SUCCESS == ret) ? periodic_init() : ret;
     /* Init heartbeat module */
     ret = (RET_SUCCESS == ret) ? heartbeat_init(&heartbeat) : ret;
+    /* INIT COMMS */
     /* Init CAN module */
     ret = (RET_SUCCESS == ret) ? can_create(&can_cfg) : ret;
+    /* Init USART */
+    ret = (RET_SUCCESS == ret) ? uart_create(&uart_cfg) : ret;
+    /* INIT PERIPHERALS */
     /* Init Sevcon */
     ret = (RET_SUCCESS == ret) ? sevcon_init(&sevcon_cfg) : ret;
 
