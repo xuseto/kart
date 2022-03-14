@@ -29,7 +29,7 @@
 #define SEVCON_MAX_DRIVERS 4
 
 /** Define type message RX of the CANOpen */
-#define OD_TYPE_MSG_CAN RSDO
+#define OD_TYPE_MSG_CAN TPDO4
 
 /** define ID of every motor */
 #define MOTOR_UP_LEFT 0

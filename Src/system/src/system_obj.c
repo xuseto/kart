@@ -23,6 +23,7 @@
 #include <hdwr/can_api.h>
 #include <periodic/periodic_api.h>
 #include <sevcon/sevcon_api.h>
+#include <hdwr/uart_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -96,6 +97,13 @@ sevcon_cfg_t sevcon_cfg =
         .fifo_cfg = {
             .num_msg = 20,
         },
+};
+
+/** Struct of USART3 */
+uart_cfg_t uart_cfg =
+    {
+        .assignament_uart = UART_3,
+        .num_msg = 1,
 };
 
 /** Struct of the DAC */
