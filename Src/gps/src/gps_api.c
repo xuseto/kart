@@ -1,78 +1,47 @@
 /***************************************************************************************************
- * @file sevcon_conductor.c
+ * @file gps_api.c
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 06/03/2022
  * @date Last modification 06/03/2022 by jnieto
- * @brief SEVCON functions
+ * @brief gps functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup SEVCON_CONDUCTOR
+    @addtogroup GPS_API
     @{
 
 */
 /* Includes --------------------------------------------------------------------------------------*/
+#include <gps/gps_api.h>
 #include <def_common.h>
-#include <stdlib.h>
-#include <string.h>
 
-#include "sevcon_conductor.h"
-#include "sevcon_driver.h"
-#include "sevcon_hdwr.h"
+#include "gps_conductor.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Typedefs --------------------------------------------------------------------------------------*/
-/** Definitions for defaultTask */
-osThreadAttr_t sevcon_task_attributes =
-    {
-        .priority = (osPriority_t)osPriorityNormal,
-        .name = "SEVCON",
-        .stack_size = 1024,
-};
 
 /* Private values --------------------------------------------------------------------------------*/
 
 /* Private functions declaration -----------------------------------------------------------------*/
-/**
- * @brief Run thread
- *
- * @param argument \ref NULL
- */
-void sevcon_task(void *argument);
 
 /* Private functions -----------------------------------------------------------------------------*/
-void sevcon_task(void *argument)
-{
-    if (argument)
-    {
-        sevcon_driver_get_msg(argument);
-    }
-}
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t sevcon_conductor_init(sevcon_cfg_t *cfg)
+ret_code_t gps_init(gps_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
 
-    sevcon_t *sevcon = calloc(1, sizeof(sevcon_t));
-    if (sevcon)
+    if (!cfg)
     {
-        sevcon->name = sevcon_task_attributes.name;
-        osThreadId_t id = osThreadNew(sevcon_task, sevcon, &sevcon_task_attributes);
-        ret = (id) ? RET_SUCCESS : RET_INT_ERROR;
+        return ret;
     }
 
-    ret = (RET_SUCCESS == ret) ? sevcon_hdwr_init(cfg, sevcon) : ret;
-
-    ret = (RET_SUCCESS == ret) ? sevcon_driver_log_init(sevcon) : ret;
-
-    return ret;
+    return gps_conductor_init(cfg);
 }
-
 /**
  * @}
  */

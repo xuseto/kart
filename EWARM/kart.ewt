@@ -1462,6 +1462,39 @@
             </file>
         </group>
         <group>
+            <name>gps</name>
+            <group>
+                <name>src</name>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\gps\src\gps_api.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\gps\src\gps_conductor.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\gps\src\gps_conductor.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\gps\src\gps_driver.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\gps\src\gps_driver.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\gps\src\gps_hdwr.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\gps\src\gps_hdwr.h</name>
+                </file>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\Src\gps\gps_api.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\gps\gps_config.h</name>
+            </file>
+        </group>
+        <group>
             <name>hdwr</name>
             <group>
                 <name>src</name>

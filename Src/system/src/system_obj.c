@@ -24,6 +24,7 @@
 #include <periodic/periodic_api.h>
 #include <sevcon/sevcon_api.h>
 #include <hdwr/uart_api.h>
+#include <gps/gps_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -104,6 +105,15 @@ uart_cfg_t uart_cfg =
     {
         .assignament_uart = UART_3,
         .num_msg = 1,
+};
+
+/** Struct of GPS */
+gps_cfg_t gps_cfg =
+    {
+        .fifo_cfg = {
+            .num_msg = 2,
+        },
+        .uart_number = UART_3,
 };
 
 /** Struct of the DAC */

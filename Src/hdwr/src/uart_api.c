@@ -33,8 +33,6 @@ extern UART_HandleTypeDef huart3;
 #define SIZEOF_UART_RX 20
 
 /* Private values --------------------------------------------------------------------------------*/
-/** Sen new data */
-bool tx_completed = false;
 
 /** Name for fifo queue */
 char name_fifo_uart[10] = "UART_FIFO_";
@@ -49,11 +47,13 @@ static osThreadId_t id_thread;
 osThreadAttr_t uart_task_attributes =
     {
         .priority = (osPriority_t)osPriorityNormal,
-        .stack_size = 1024,
+        .stack_size = 512,
 };
 
 /** FIFO RX subscribe to UART */
 fifo_t uart_fifo_subscribe[UART_MAX_MODULES_SUBSCRIBE];
+/** FIFO RX size to UART */
+uint16_t uart_fifo_size[UART_MAX_MODULES_SUBSCRIBE];
 
 /** FIFO RX */
 uint8_t uart_rx[SIZEOF_UART_RX] = {0};
@@ -144,10 +144,11 @@ ret_code_t uart_suscribe_rx_fifo(fifo_t *fifo_rx, uint16_t size, uart_number_t u
         if (!uart_fifo_subscribe[i])
         {
             uart_fifo_subscribe[i] = fifo_rx;
+            uart_fifo_size[i] = size;
             ret = RET_SUCCESS;
             i = UART_MAX_MODULES_SUBSCRIBE + 1;
 
-            HAL_UART_Receive_IT(get_handle(uart), (uint8_t *)uart_rx, size);
+            HAL_UART_Receive_IT(&huart3, uart_rx, size);
         }
     }
 
@@ -164,6 +165,7 @@ ret_code_t uart_unsuscribe_rx_fifo(fifo_t *fifo_rx)
         if (uart_fifo_subscribe[i] == fifo_rx)
         {
             uart_fifo_subscribe[i] = NULL;
+            uart_fifo_size[i] = NULL;
             ret = RET_SUCCESS;
             i = UART_MAX_MODULES_SUBSCRIBE + 1;
         }
@@ -175,17 +177,20 @@ ret_code_t uart_unsuscribe_rx_fifo(fifo_t *fifo_rx)
 //* ISR --------------------------------------------------------------------------------------------
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
 {
-    HAL_UART_Receive_IT(UartHandle, uart_rx, 1);
-
-    printf("%s: %d \n", __FUNCTION__, UartHandle->TxXferSize);
+    for (uint8_t i = 0x00; i < UART_MAX_MODULES_SUBSCRIBE; i++)
+    {
+        if (uart_fifo_subscribe[i])
+        {
+            fifo_enqueue_msg(uart_fifo_subscribe[i], &uart_rx);
+            HAL_UART_Receive_IT(&huart3, uart_rx, uart_fifo_size[i]);
+        }
+    }
 }
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *UartHandle)
 {
     /* Set transmission flag: transfer complete */
-    // UartReady = SET;
     printf("Send new data\n");
-    tx_completed = true;
 }
 
 /**
