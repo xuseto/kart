@@ -1,42 +1,42 @@
 /***************************************************************************************************
- * @file periodic_conductor.c
+ * @file GPS_conductor.c
  * @author jnieto
  * @version 1.0.0.0.0
- * @date Creation: 05/02/2022
- * @date Last modification 05/02/2022 by jnieto
- * @brief periodic functions
+ * @date Creation: 15/03/2022
+ * @date Last modification 15/03/2022 by jnieto
+ * @brief gps functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup PERIODIC_CONDUCTOR
+    @addtogroup GPS_CONDUCTOR
     @{
 
 */
 /* Includes --------------------------------------------------------------------------------------*/
-#include "periodic_conductor.h"
-#include "periodic_driver.h"
-
-#include "cmsis_os2.h"
-#include <stdlib.h>
 #include <def_common.h>
-#include <stdio.h>
-#include "log/log_api.h"
+#include <stdlib.h>
+#include <string.h>
+#include <cmsis_os2.h>
+
+#include "gps_conductor.h"
+#include "gps_driver.h"
+#include "gps_hdwr.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** Definitions for defaultTask */
-osThreadAttr_t periodic_task_attributes =
+osThreadAttr_t gps_task_attributes =
     {
         .priority = (osPriority_t)osPriorityNormal,
-        .name = "PERIODIC",
+        .name = "GPS",
         .stack_size = 512,
 };
 
 /* Private values --------------------------------------------------------------------------------*/
-uint32_t tick = 0x00;
+gps_t *gps;
 
 /* Private functions declaration -----------------------------------------------------------------*/
 /**
@@ -44,52 +44,41 @@ uint32_t tick = 0x00;
  *
  * @param argument \ref NULL
  */
-void periodic_task(void *argument);
+void gps_task(void *argument);
 
 /* Private functions -----------------------------------------------------------------------------*/
-void periodic_task(void *argument)
+void gps_task(void *argument)
 {
-    while (1)
+    if (argument)
     {
-        osThreadFlagsWait(0x00, osFlagsWaitAny, 100);
-
-        tick += 100;
-
-        // Task every 100 ms
-        periodic_driver_every_100ms();
-
-        // Task every 200 ms
-        if (!(tick % 200))
-        {
-            periodic_driver_every_200ms();
-        }
-
-        // Task every 500 ms
-        if (!(tick % 500))
-        {
-            periodic_driver_every_500ms();
-        }
-
-        // Task every 1000 ms
-        if (!(tick % 1000))
-        {
-            periodic_driver_every_1000ms();
-        }
+        gps_driver_get_msg(argument);
     }
 }
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t periodic_conductor_init(void)
+ret_code_t gps_conductor_init(gps_cfg_t *cfg)
 {
-    if (osThreadNew(periodic_task, NULL, &periodic_task_attributes))
+    ret_code_t ret = RET_INT_ERROR;
+
+    gps = calloc(1, sizeof(gps_t));
+    if (gps)
     {
-
-        char msg[] = "CREATED";
-
-        return (log_new_msg(periodic_task_attributes.name, LOG_DEBUG, msg));
+        gps->name = gps_task_attributes.name;
+        gps->id_thread = osThreadNew(gps_task, gps, &gps_task_attributes);
+        ret = (gps->id_thread) ? RET_SUCCESS : RET_INT_ERROR;
     }
 
-    return RET_INT_ERROR;
+    ret = (RET_SUCCESS == ret) ? gps_hdwr_init(cfg, gps) : ret;
+
+    ret = (RET_SUCCESS == ret) ? gps_driver_log_init(gps) : ret;
+
+    return ret;
+}
+
+//--------------------------------------------------------------------------------------------------
+gps_t *gps_getter_instace()
+{
+    return gps;
 }
 
 /**

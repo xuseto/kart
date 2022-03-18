@@ -1,8 +1,8 @@
 
 /***************************************************************************************************
- * @file spi_api.h 
+ * @file spi_api.h
  * @author jnieto
- * @version 1.0.0.0.0 
+ * @version 1.0.0.0.0
  * @date Creation: 11/11/2021
  * @date Last modification 11/11/2021 by jnieto
  * @brief SPI
@@ -40,7 +40,7 @@ __attribute__((weak)) extern SPI_HandleTypeDef hspi3;
 osThreadAttr_t spi_task_attributes =
     {
         .priority = (osPriority_t)osPriorityNormal,
-        .stack_size = 1024};
+        .stack_size = 100};
 
 /** define all falgs */
 #define SPI_TX (0x01U << 0)
@@ -83,7 +83,7 @@ typedef struct spi_s
 /* Private functions declaration -----------------------------------------------------------------*/
 /**
  * @brief Run Thread
- * 
+ *
  * @param aguments \ref spi_t
  */
 void spi_task(void *aguments);
@@ -152,7 +152,7 @@ ret_code_t spi_enqueue(void *arg)
         return ret;
     }
 
-    //jnieto encolar el mensaje a enviar
+    // jnieto encolar el mensaje a enviar
 
     ret = !(osThreadFlagsSet(spi->id_thread, SPI_TX))
               ? RET_SUCCESS
@@ -161,7 +161,7 @@ ret_code_t spi_enqueue(void *arg)
     return ret;
 }
 /**
-  * @}
-  */
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

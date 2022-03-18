@@ -50,7 +50,7 @@ static osThreadId_t id_thread;
 osThreadAttr_t can_task_attributes =
     {
         .priority = (osPriority_t)osPriorityNormal,
-        .stack_size = 1024,
+        .stack_size = 512,
 };
 
 /** FIFO RX subscribe to CAN */
