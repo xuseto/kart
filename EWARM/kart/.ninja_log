@@ -224,3 +224,11 @@
 8	357	6691703450673957	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/gps/src/gps_hdwr.o	46ee7655b8e7e3da
 362	534	6691703452457561	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.out	d883e6fe76378fd0
 560	574	6691703453017226	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.hex	1a28f39f6fcada30
+3	875	6693280056244682	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/gps/src/gps_api.o	cfe92f69f0f6d5f
+170	899	6693280056324489	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/gps/src/gps_hdwr.o	46ee7655b8e7e3da
+166	905	6693280056504000	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/gps/src/gps_driver.o	205c9f394aed7e22
+827	1236	6693280059876767	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/system/src/system_obj.o	963426d8eb374818
+885	1255	6693280060046315	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/system/src/system_api.o	7efccfcd17117002
+3	264	6693280170613249	D:/Proyectos/STM32/kart/EWARM/kart/Obj/Application/gps/src/gps_conductor.o	501dbb4142566d4e
+272	1983	6693280187598701	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.out	d883e6fe76378fd0
+2019	2117	6693280189245236	D:/Proyectos/STM32/kart/EWARM/kart/Exe/kart.hex	1a28f39f6fcada30

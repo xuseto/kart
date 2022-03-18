@@ -145,6 +145,26 @@ void gps_driver_get_msg(void *arg)
     }
 }
 
+//--------------------------------------------------------------------------------------------------
+float gps_driver_get_velocity_north_axis(gps_t *arg)
+{
+
+    return (arg) ? arg->velned_north_axis : NULL;
+}
+
+//--------------------------------------------------------------------------------------------------
+float gps_driver_get_velocity_east_axis(gps_t *arg)
+{
+
+    return (arg) ? arg->velned_east_axis : NULL;
+}
+
+//--------------------------------------------------------------------------------------------------
+float gps_driver_get_velocity_down_axis(gps_t *arg)
+{
+    return (arg) ? arg->velned_down_axis : NULL;
+}
+
 /**
  * @}
  */

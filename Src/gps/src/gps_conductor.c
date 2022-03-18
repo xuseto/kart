@@ -36,6 +36,7 @@ osThreadAttr_t gps_task_attributes =
 };
 
 /* Private values --------------------------------------------------------------------------------*/
+gps_t *gps;
 
 /* Private functions declaration -----------------------------------------------------------------*/
 /**
@@ -59,7 +60,7 @@ ret_code_t gps_conductor_init(gps_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
 
-    gps_t *gps = calloc(1, sizeof(gps_t));
+    gps = calloc(1, sizeof(gps_t));
     if (gps)
     {
         gps->name = gps_task_attributes.name;
@@ -72,6 +73,12 @@ ret_code_t gps_conductor_init(gps_cfg_t *cfg)
     ret = (RET_SUCCESS == ret) ? gps_driver_log_init(gps) : ret;
 
     return ret;
+}
+
+//--------------------------------------------------------------------------------------------------
+gps_t *gps_getter_instace()
+{
+    return gps;
 }
 
 /**

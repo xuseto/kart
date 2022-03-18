@@ -262,6 +262,15 @@ typedef struct gps_s
  */
 ret_code_t gps_init(gps_cfg_t *cfg);
 
+/**
+ * @brief Getter values reads by GPS
+ *
+ * @return float
+ */
+float gps_get_velocity_north_axis();
+float gps_get_velocity_east_axis();
+float gps_get_velocity_down_axis();
+
 #endif /* __GPS_API_H */
 
 /**

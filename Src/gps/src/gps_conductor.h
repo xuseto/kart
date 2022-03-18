@@ -44,6 +44,13 @@
  */
 ret_code_t gps_conductor_init(gps_cfg_t *cfg);
 
+/**
+ * @brief Getter instace
+ *
+ * @return \ref gps_t
+ */
+gps_t *gps_getter_instace(void);
+
 #endif /* __GPS_CONDUCTOR_H */
 
 /**

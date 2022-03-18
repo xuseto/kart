@@ -42,6 +42,25 @@ ret_code_t gps_init(gps_cfg_t *cfg)
 
     return gps_conductor_init(cfg);
 }
+
+//--------------------------------------------------------------------------------------------------
+float gps_get_velocity_north_axis()
+{
+    return gps_driver_get_velocity_north_axis(gps_getter_instace());
+}
+
+//--------------------------------------------------------------------------------------------------
+float gps_get_velocity_east_axis()
+{
+    return gps_driver_get_velocity_east_axis(gps_getter_instace());
+}
+
+//--------------------------------------------------------------------------------------------------
+float gps_get_velocity_down_axis()
+{
+    return gps_driver_get_velocity_down_axis(gps_getter_instace());
+}
+
 /**
  * @}
  */

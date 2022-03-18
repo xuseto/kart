@@ -59,6 +59,16 @@ ret_code_t gps_driver_log_init(gps_t *gps);
  */
 void gps_driver_get_msg(void *arg);
 
+/**
+ * @brief Return actual value of the GPS
+ *
+ * @param \ref gps_t arg
+ * @return float
+ */
+float gps_driver_get_velocity_north_axis(gps_t *arg);
+float gps_driver_get_velocity_east_axis(gps_t *arg);
+float gps_driver_get_velocity_down_axis(gps_t *arg);
+
 #endif /* __GPS_DRIVER_H */
 
 /**
