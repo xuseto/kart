@@ -19,6 +19,7 @@
 #include <def_common.h>
 
 #include "gps_conductor.h"
+#include "gps_driver.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
