@@ -77,7 +77,7 @@ ret_code_t log_driver_create_new_message(const char *name_task, log_level_debug_
     // ticks
     log_msg[id_msg_rx].tick = HAL_GetTick();
 
-    printf("%d [ %s ] %s: %s\n", log_msg[id_msg_rx].tick, log_msg[id_msg_rx].name_task, log_get_string_level(log_msg[id_msg_rx].level_debug), log_msg[id_msg_rx].info);
+    // printf("%d [ %s ] %s: %s\n", log_msg[id_msg_rx].tick, log_msg[id_msg_rx].name_task, log_get_string_level(log_msg[id_msg_rx].level_debug), log_msg[id_msg_rx].info);
 
     id_msg_rx++;
     id_msg_rx = (id_msg_rx >= LOG_MAX_MSG) ? 0x00 : id_msg_rx;
