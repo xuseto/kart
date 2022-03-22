@@ -9,6 +9,8 @@ D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_it.pbi:
   D:\Proyectos\STM32\kart\EWARM\..\Inc\FreeRTOSConfig.h \
   D:\Proyectos\STM32\kart\EWARM\..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
   D:\Proyectos\STM32\kart\EWARM\..\Inc\stm32l5xx_it.h \
+  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_uart_ex.h \
+  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_uart.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_tim_ex.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_tim.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_spi_ex.h \
@@ -23,6 +25,7 @@ D:\Proyectos\STM32\kart\EWARM\kart\BrowseInfo\Application\User\stm32l5xx_it.pbi:
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_flash_ramfunc.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_flash_ex.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_flash.h \
+  D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_fdcan.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_exti.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_hal_adc_ex.h \
   D:\Proyectos\STM32\kart\EWARM\..\Drivers\STM32L5xx_HAL_Driver\Inc\stm32l5xx_ll_adc.h \

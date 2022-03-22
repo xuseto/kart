@@ -71,7 +71,7 @@ ret_code_t flight_controller_conductor_init(flight_controller_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
 
-    flight_controller_t *flight_controller = (flight_controller_t *)calloc(1, sizeof(flight_controller_t));
+    flight_controller_t *flight_controller = calloc(1, sizeof(flight_controller_t));
     ret = (flight_controller) ? RET_SUCCESS : RET_INT_ERROR;
 
     if (RET_SUCCESS == ret)
@@ -79,9 +79,12 @@ ret_code_t flight_controller_conductor_init(flight_controller_cfg_t *cfg)
         flight_controller->cfg = cfg;
 
         ret = flight_controller_driver_init(flight_controller);
+    }
 
-        ret = (RET_SUCCESS == ret) ? flight_controller_hdwr_init(flight_controller) : ret;
+    ret = (RET_SUCCESS == ret) ? flight_controller_hdwr_init(flight_controller) : ret;
 
+    if (RET_SUCCESS == ret)
+    {
         flight_controller_task_attributes.name = cfg->name ? cfg->name : "unknown";
 
         flight_controller->thread_id =
@@ -91,6 +94,8 @@ ret_code_t flight_controller_conductor_init(flight_controller_cfg_t *cfg)
 
         ret = (flight_controller->thread_id != NULL) ? RET_SUCCESS : RET_INT_ERROR;
     }
+
+    ret = (RET_SUCCESS == ret) ? flight_controller_driver_log_init(flight_controller) : ret;
 
     return ret;
 }

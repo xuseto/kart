@@ -1,74 +1,89 @@
 /***************************************************************************************************
- * @file dac_api.h 
+ * @file LOG_conductor.c
  * @author jnieto
- * @version 1.0.0.0.0 
- * @date Creation: 17/11/2021
- * @date Last modification 17/11/2021 by jnieto
- * @brief dac 
+ * @version 1.0.0.0.0
+ * @date Creation: 27/02/2022
+ * @date Last modification 27/02/2022 by jnieto
+ * @brief LOG functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup DAC_API
+    @addtogroup LOG_CONDUCTOR
     @{
 
 */
 /* Includes --------------------------------------------------------------------------------------*/
+#include "log_conductor.h"
+#include "log_driver.h"
 #include "cmsis_os2.h"
-#include <stdlib.h>
 #include <def_common.h>
-#include <stdio.h>
-
-#include <dac/dac_api.h>
-#include "dac_thread.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** Definitions for defaultTask */
-osThreadAttr_t dac_task_attributes = {
-    .priority = (osPriority_t)osPriorityLow,
-    .stack_size = 1024};
+osThreadAttr_t log_task_attributes =
+    {
+        .priority = (osPriority_t)osPriorityLow,
+        .name = "LOG",
+        .stack_size = 3072,
+};
+
+/** ID for thread */
+osThreadId_t thread_id;
 
 /* Private values --------------------------------------------------------------------------------*/
 
 /* Private functions declaration -----------------------------------------------------------------*/
 /**
  * @brief Run thread
- * 
- * @param argument \ref dac_t
+ *
+ * @param argument \ref NULL
  */
-void dac_task(void *argument);
+void log_task(void *argument);
 
 /* Private functions -----------------------------------------------------------------------------*/
-void dac_task(void *argument)
+void log_task(void *argument)
 {
-    dac_t *dac = (dac_t *)argument;
-
-    printf("Enter thread of DAC \n");
     while (1)
     {
-        osThreadFlagsWait(0x00, osFlagsWaitAny, 500);
-
-        spi_enqueue(dac->obj_com);
+        osThreadFlagsWait(0x00, osFlagsWaitAny, osWaitForever);
     }
 }
+
 /* Public functions ------------------------------------------------------------------------------*/
-osThreadId_t dac_create_thread(dac_cfg_t *cfg, void *arg)
+ret_code_t log_conductor_init(void)
 {
-    osThreadId_t ret = NULL;
+    thread_id = osThreadNew(log_task, NULL, &log_task_attributes);
 
-    if (!cfg || !arg)
-        return ret;
+    char msg[] = "CREATED";
 
-    // Make thread
-    dac_task_attributes.name = cfg->name ? cfg->name : "unknown";
-    return (osThreadNew(dac_task, arg, &dac_task_attributes));
+    if (thread_id)
+    {
+        return log_conductor_new_msg(log_task_attributes.name, LOG_DEBUG, msg);
+    }
+
+    return RET_INT_ERROR;
+}
+
+//--------------------------------------------------------------------------------------------------
+ret_code_t log_conductor_new_msg(const char *name_task, log_level_debug_t level_debug, const char *info)
+{
+
+    ret_code_t ret = log_driver_create_new_message(name_task, level_debug, info);
+
+    if (RET_SUCCESS == ret && thread_id)
+    {
+      osThreadResume(thread_id);
+    }
+
+    return ret;
 }
 
 /**
-  * @}
-*/
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/

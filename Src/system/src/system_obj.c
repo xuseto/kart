@@ -20,7 +20,11 @@
 #include <heartbeat/heartbeat_api.h>
 //#include "flight_controller/flight_controller_api.h"
 #include <hdwr/adc_api.h>
+#include <hdwr/can_api.h>
 #include <periodic/periodic_api.h>
+#include <sevcon/sevcon_api.h>
+#include <hdwr/uart_api.h>
+#include <gps/gps_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -30,7 +34,7 @@ heartbeat_cfg_t heartbeat =
     {
         .delay_ms = PERIODIC_EVERY_1_SG, // 1 sg
         .gpio = LED_GREEN,
-        .name = "HeartBeat",
+        .name = "HEARTBEAT",
 };
 
 /** Struct of the flight controller */
@@ -76,7 +80,41 @@ flight_controller_cfg_t flight_controller_cfg =
 
                 },
 
-            }};
+            },
+};
+
+/** Struct of the CAN BUS */
+can_cfg_t can_cfg =
+    {
+        .num_msg = 16,
+        .assignament_can = CAN_1,
+        .type = CAN_TYPE_STD,
+        .filter = NULL,
+};
+
+/** Struct of SEVCON */
+sevcon_cfg_t sevcon_cfg =
+    {
+        .fifo_cfg = {
+            .num_msg = 20,
+        },
+};
+
+/** Struct of USART3 */
+uart_cfg_t uart_cfg =
+    {
+        .assignament_uart = UART_3,
+        .num_msg = 1,
+};
+
+/** Struct of GPS */
+gps_cfg_t gps_cfg =
+    {
+        .fifo_cfg = {
+            .num_msg = 2,
+        },
+        .uart_number = UART_3,
+};
 
 /** Struct of the DAC */
 

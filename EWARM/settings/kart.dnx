@@ -15,32 +15,32 @@
         <FirstRun>0</FirstRun>
         <MemConfigValue>C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\CONFIG\debugger\ST\STM32L552ZE.ddf</MemConfigValue>
     </PlDriver>
-    <ArmDriver>
-        <EnableCache>0</EnableCache>
-    </ArmDriver>
     <StLinkDriver>
         <stlinkserialNo>0672FF545150898367081839</stlinkserialNo>
         <stlinkfoundProbes />
-        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
-        <CStepIntDis>_ 0</CStepIntDis>
         <stlinkResetStyle>0</stlinkResetStyle>
         <stlinkResetStrategy>2</stlinkResetStrategy>
+        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
+        <CStepIntDis>_ 0</CStepIntDis>
     </StLinkDriver>
+    <ArmDriver>
+        <EnableCache>0</EnableCache>
+    </ArmDriver>
     <DebugChecksum>
-        <Checksum>1090998706</Checksum>
+        <Checksum>2820450346</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
         <StopOnThrow>_ 0</StopOnThrow>
     </Exceptions>
-    <Disassembly>
-        <MixedMode>1</MixedMode>
-        <InstrCount>0</InstrCount>
-    </Disassembly>
     <Trace1>
         <Enabled>0</Enabled>
         <ShowSource>1</ShowSource>
     </Trace1>
+    <Disassembly>
+        <MixedMode>1</MixedMode>
+        <InstrCount>0</InstrCount>
+    </Disassembly>
     <CallStack>
         <ShowArgs>0</ShowArgs>
     </CallStack>
@@ -62,6 +62,9 @@
         <ITMportsLogFile>0</ITMportsLogFile>
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
+    <watch_formats>
+        <Fmt0>{W}1:msg_canopen	4	0</Fmt0>
+    </watch_formats>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
@@ -133,11 +136,15 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\periodic\src\periodic_driver.c}.211.9" 0 0 1 "" 0 "" 0</Bp0>
+        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\stm32l5xx_it.c}.1.1" 0 0 1 "" 0 "" 0</Bp0>
         <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\stm32l5xx_it.c}.1.1" 0 0 1 "" 0 "" 0</Bp1>
-        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\stm32l5xx_it.c}.1.1" 0 0 1 "" 0 "" 0</Bp2>
-        <Bp3>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\stm32l5xx_it.c}.172.3" 0 0 1 "" 0 "" 0</Bp3>
-        <Count>4</Count>
+        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\flight_controller\src\flight_controller_driver.c}.1.1" 0 0 1 "" 0 "" 0</Bp2>
+        <Bp3>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\stm32l5xx_it.c}.217.3" 0 0 1 "" 0 "" 0</Bp3>
+        <Bp4>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\hdwr\src\uart_api.c}.1.1" 0 0 1 "" 0 "" 0</Bp4>
+        <Bp5>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\gps\src\gps_driver.c}.90.1" 0 0 1 "" 0 "" 0</Bp5>
+        <Bp6>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\gps\src\gps_driver.c}.96.1" 0 0 1 "" 0 "" 0</Bp6>
+        <Bp7>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\gps\src\gps_driver.c}.100.1" 0 0 1 "" 0 "" 0</Bp7>
+        <Count>8</Count>
     </Breakpoints2>
     <Aliases>
         <Count>0</Count>

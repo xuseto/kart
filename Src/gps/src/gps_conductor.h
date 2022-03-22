@@ -1,30 +1,33 @@
 /***************************************************************************************************
- * @file dac_thread.h 
+ * @file gps_conductor.h
  * @author jnieto
- * @version 1.0.0.0.0 
- * @date Creation: 17/11/2021
- * @date Last modification 17/11/2021 by jnieto
- * @brief dac 
+ * @version 1.0.0.0.0
+ * @date Creation: 15/03/2022
+ * @date Last modification 15/03/2022 by jnieto
+ * @brief gps
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
- ****************************************************************************************************
+ ***************************************************************************************************
 
-    @addtogroup DAC_THREAD
+    @defgroup GPS_CONDUCTOR  gps object
     @{
+    @brief
+    @details
 
-*/
+***************************************************************************************************/
+
+/* Define to prevent recursive inclusion ---------------------------------------------------------*/
+#ifndef __GPS_CONDUCTOR_H
+#define __GPS_CONDUCTOR_H
+
 /* Includes --------------------------------------------------------------------------------------*/
+#include <def_common.h>
+#include <gps/gps_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
 /* Typedefs --------------------------------------------------------------------------------------*/
-/** Object of configuration of dac */ 
-typedef struct  
-{
-  osThreadId_t id_thread; /**< ID of thread */
-  void *obj_com;           /**< Obj of SPI */
-} dac_t;
 
 /* Private values --------------------------------------------------------------------------------*/
 
@@ -34,16 +37,24 @@ typedef struct
 
 /* Public functions ------------------------------------------------------------------------------*/
 /**
- * @brief Create the thread for dac
- * 
- * @param cfg \ref dac_cfg_t
- * @param arg \ref dac_t
- * @return osThreadId_t 
+ * @brief Init high level of gps
+ *
+ * @param cfg \ref gps_cfg_t
+ * @return \ref ret_code_t
  */
-osThreadId_t dac_create_thread (dac_cfg_t *cfg, void *arg);
+ret_code_t gps_conductor_init(gps_cfg_t *cfg);
 
 /**
-  * @}
-*/
+ * @brief Getter instace
+ *
+ * @return \ref gps_t
+ */
+gps_t *gps_getter_instace(void);
+
+#endif /* __GPS_CONDUCTOR_H */
+
+/**
+ * @}
+ */
 
 /************************* (C) COPYRIGHT ****** END OF FILE ***************************************/
