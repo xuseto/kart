@@ -25,7 +25,26 @@
 #include <stdbool.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
-#define CLOCK_FREQ 110000000 // 110 MHz
+/*
+  Set timer period when it have reset
+  First you have to know max value for timer
+  In our case it is 16bit = 65535
+  To get your frequency for PWM, equation is simple
+
+  PWM_frequency = timer_tick_frequency / (TIM_Period + 1)
+
+  If you know your PWM frequency you want to have timer period set correct
+
+  TIM_Period = timer_tick_frequency / PWM_frequency - 1
+
+  In our case, for 10Khz PWM_frequency, set Period to
+
+  TIM_Period = 84000000 / 10000 - 1 = 8399
+
+  If you get TIM_Period larger than max timer value (in our case 65535),
+  you have to choose larger prescaler and slow down timer tick frequency
+*/
+#define TIMER_TICK_FREQ 84000000
 
 /* Private values --------------------------------------------------------------------------------*/
 extern TIM_HandleTypeDef htim1 __attribute__((weak));
@@ -154,17 +173,12 @@ pwm_id_t pwm_create(pwm_cfg_t *cfg)
     if (pwm->htim)
     {
         /** Calculate frequency */
-        pwm->freq = CLOCK_FREQ / cfg->frequency;
-        uint32_t new_duty = pwm->freq * (uint32_t)((float)cfg->duty / 100.0);
+        pwm->freq = TIMER_TICK_FREQ / (cfg->frequency - 1);
+        uint32_t new_duty = ((pwm->freq + 1) * cfg->duty) / 100.0;
 
         __HAL_TIM_SET_AUTORELOAD(pwm->htim, pwm->freq);
-
         __HAL_TIM_SET_COMPARE(pwm->htim, pwm->channel, new_duty);
     }
-    // HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-
-    //__HAL_TIM_SET_COMPARE(pwm->htim, TIM_CHANNEL_1, new_duty);
-
     ret = pwm && pwm->htim ? (pwm_id_t)pwm : NULL;
     return ret;
 }
@@ -192,7 +206,11 @@ ret_code_t pwm_set_new_duty(pwm_id_t arg, uint16_t duty)
 
     pwm_hal_t *pwm = (pwm_hal_t *)arg;
 
-    __HAL_TIM_SET_COMPARE(pwm->htim, pwm->channel, duty);
+    uint32_t new_duty = pwm->freq * ((float)duty / 100.0);
+
+    new_duty = (new_duty > pwm->freq) ? pwm->freq : new_duty;
+
+    __HAL_TIM_SET_COMPARE(pwm->htim, pwm->channel, new_duty);
 
     return RET_SUCCESS;
 }

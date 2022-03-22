@@ -43,6 +43,7 @@ osThreadAttr_t flight_controller_task_attributes =
  */
 static void fligth_controller_thread(void *arg);
 
+uint16_t send_duty = 20;
 /* Private functions -----------------------------------------------------------------------------*/
 static void fligth_controller_thread(void *arg)
 {
@@ -58,7 +59,16 @@ static void fligth_controller_thread(void *arg)
 
     while (1)
     {
-        osThreadFlagsWait(0x00, osFlagsWaitAny, osWaitForever);
+        osThreadFlagsWait(0x00, osFlagsWaitAny, 50); // osWaitForever);
+
+        pwm_set_new_duty(fligth_ctrl_thread->dac_id[0], send_duty);
+        pwm_set_new_duty(fligth_ctrl_thread->dac_id[1], send_duty);
+        pwm_set_new_duty(fligth_ctrl_thread->dac_id[2], send_duty);
+        pwm_set_new_duty(fligth_ctrl_thread->dac_id[3], send_duty);
+
+        send_duty += 10;
+        if (send_duty > 120)
+            send_duty = 0x00;
 
         if (flight_controller_hdwr_check_adc(fligth_ctrl_thread))
         {
@@ -104,7 +114,7 @@ void flight_controller_conductor_resume_thread(flight_controller_t *arg)
 {
     if (arg->thread_id)
     {
-        osThreadResume(arg->thread_id);
+        // osThreadResume(arg->thread_id);
     }
 }
 

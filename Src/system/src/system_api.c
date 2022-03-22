@@ -42,29 +42,26 @@ gpio_out_t gpio = LED_BLUE; /**< Fixed the GPIO of LED */
 /* Public functions ------------------------------------------------------------------------------*/
 void system_init(void)
 {
+ret_code_t ret = RET_SUCCESS;
+    //gpio_on(gpio);
 
     gpio_on(gpio);
-
     /* init LOGs */
-    ret_code_t ret = log_init();
-
+    ret = log_init();
+    
     /* Init periodic module */
     ret = (RET_SUCCESS == ret) ? periodic_init() : ret;
-    osDelay (200);
     /* Init heartbeat module */
     ret = (RET_SUCCESS == ret) ? heartbeat_init(&heartbeat) : ret;
     /* Init Sevcon */
     ret = (RET_SUCCESS == ret) ? sevcon_init(&sevcon_cfg) : ret;
-    osDelay (200);
-    osDelay (200);osDelay (200);osDelay (200);
-    osDelay (200);osDelay (200);osDelay (200);
 
     /* INIT COMMS */
     /* Init CAN module */
     ret = (RET_SUCCESS == ret) ? can_create(&can_cfg) : ret;
     /* Init USART */
     ret = (RET_SUCCESS == ret) ? uart_create(&uart_cfg) : ret;
-osDelay (200);osDelay (200);
+
     /* INIT PERIPHERALS */
     /* Init GPS */
     gps_cfg.output_fields.ins.all = 0x00;
@@ -72,8 +69,6 @@ osDelay (200);osDelay (200);
     ret = (RET_SUCCESS == ret) ? gps_init(&gps_cfg) : ret;
     /* Init flight controller module */
     ret = (RET_SUCCESS == ret) ? flight_controller_init(&flight_controller_cfg) : ret;
-
-    osDelay(300);
 
     if (RET_SUCCESS == ret)
     {
