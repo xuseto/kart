@@ -30,7 +30,7 @@
 osThreadAttr_t flight_controller_task_attributes =
     {
         .priority = (osPriority_t)osPriorityNormal,
-        .stack_size = 2048,
+        .stack_size = 1024,
 };
 
 /* Private values --------------------------------------------------------------------------------*/
@@ -91,7 +91,6 @@ ret_code_t flight_controller_conductor_init(flight_controller_cfg_t *cfg)
             (RET_SUCCESS == ret) ? osThreadNew(fligth_controller_thread, flight_controller,
                                                &flight_controller_task_attributes)
                                  : NULL;
-
         ret = (flight_controller->thread_id != NULL) ? RET_SUCCESS : RET_INT_ERROR;
     }
 

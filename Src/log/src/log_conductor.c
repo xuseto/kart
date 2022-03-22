@@ -28,7 +28,7 @@ osThreadAttr_t log_task_attributes =
     {
         .priority = (osPriority_t)osPriorityLow,
         .name = "LOG",
-        .stack_size = 3072,
+        .stack_size = 2048,
 };
 
 /** ID for thread */
@@ -76,7 +76,7 @@ ret_code_t log_conductor_new_msg(const char *name_task, log_level_debug_t level_
 
     if (RET_SUCCESS == ret && thread_id)
     {
-      osThreadResume(thread_id);
+        osThreadResume(thread_id);
     }
 
     return ret;
