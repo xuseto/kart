@@ -75,7 +75,7 @@ ret_code_t log_driver_create_new_message(const char *name_task, log_level_debug_
     memcpy(&log_msg[id_msg_rx].info, info, sizeof(log_msg[id_msg_rx].info));
     log_msg[id_msg_rx].level_debug = level_debug;
     // ticks
-    log_msg[id_msg_rx].tick = osKernelGetTickCount();
+    log_msg[id_msg_rx].tick = HAL_GetTick();
 
     printf("%d [ %s ] %s: %s\n", log_msg[id_msg_rx].tick, log_msg[id_msg_rx].name_task, log_get_string_level(log_msg[id_msg_rx].level_debug), log_msg[id_msg_rx].info);
 
