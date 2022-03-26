@@ -67,6 +67,13 @@ ret_code_t flight_controller_driver_stop_periodic(flight_controller_t *arg);
  */
 ret_code_t flight_controller_driver_log_init(flight_controller_t *arg);
 
+/**
+ * @brief Calcualte new PWM
+ *
+ * @param arg \ref flight_controller_t
+ */
+void flight_controller_driver_update_dac(flight_controller_t *arg);
+
 #endif /* __FLIGHT_CONTROLLER_DRIVER_H */
 
 /**

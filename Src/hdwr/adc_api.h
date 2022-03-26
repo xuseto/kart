@@ -31,10 +31,10 @@
 /** Enum ADCs configurated */
 typedef enum
 {
-    ADC_IN1,
-    ADC_IN2,
-    ADC_IN4,
-    ADC_IN5,
+    ADC_A0,
+    ADC_A1,
+    ADC_A2,
+    ADC_A3,
     ADC_T_MICRO,
     ADC_MAX
 } adc_stm32_t;

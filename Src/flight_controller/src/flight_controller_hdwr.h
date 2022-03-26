@@ -65,11 +65,11 @@ ret_code_t flight_controller_hdwr_start(flight_controller_t *arg);
 /**
  * @brief Update value DAC
  *
- * @param arg \ref flight_controller_t
+ * @param arg \ref pwm_id_t
  * @param value_dac new valure from DAC
  * @return \ref ret_code_t
  */
-ret_code_t flight_controller_hdwr_set_dac(flight_controller_t *arg, uint16_t value_dac);
+ret_code_t flight_controller_hdwr_set_dac(pwm_id_t arg, uint16_t value_dac);
 
 #endif /* __FLIGHT_CONTROLLER_HDWR_H */
 

@@ -20,15 +20,24 @@
 #include <flight_controller/flight_controller_config.h>
 #include <def_common.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include "hdwr/adc_api.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
-
+#define DIFF_ADC_SET_NEW_VALUE 0.1
 /* Typedefs --------------------------------------------------------------------------------------*/
 
-/* Private values --------------------------------------------------------------------------------*/
+/* Private values declaration --------------------------------------------------------------------*/
+static float getter_diff_abs(float value1, float value2);
 
-/* Private functions declaration -----------------------------------------------------------------*/
+/* Private functions -----------------------------------------------------------------------------*/
+static float getter_diff_abs(float value1, float value2)
+{
+
+    return ((value1 > value2) ? value1 - value2 : value2 - value1);
+}
+
+/* Public functions ------------------------------------------------------------------------------*/
 ret_code_t flight_controller_hdwr_init(flight_controller_t *arg)
 {
     ret_code_t ret = RET_SUCCESS;
@@ -45,14 +54,13 @@ ret_code_t flight_controller_hdwr_init(flight_controller_t *arg)
 //--------------------------------------------------------------------------------------------------
 bool flight_controller_hdwr_check_adc(flight_controller_t *arg)
 {
-    float adc_temp = 0.0;
     bool ret = false;
 
     for (uint8_t i = 0; i < MAX_NUM_CONTROLLER; i++)
     {
-        adc_temp = adc_get_value(arg->cfg->adc_channel[i]);
+        float adc_temp = adc_get_value(arg->cfg->adc_channel[i]) - arg->adc_offset[i];
 
-        if (adc_temp != arg->adc_values[i])
+        if (getter_diff_abs(adc_temp, arg->adc_values[i]) > DIFF_ADC_SET_NEW_VALUE)
         {
             arg->adc_values[i] = adc_temp;
             ret = true;
@@ -69,6 +77,7 @@ ret_code_t flight_controller_hdwr_start(flight_controller_t *arg)
 
     for (uint8_t i = 0x00; i < MAX_NUM_CONTROLLER && RET_SUCCESS == ret; i++)
     {
+        arg->adc_offset[i] = adc_get_value(arg->cfg->adc_channel[i]);
         ret = (RET_SUCCESS == pwm_start(arg->dac_id[i])) ? RET_SUCCESS : RET_INT_ERROR;
     }
 
@@ -76,9 +85,9 @@ ret_code_t flight_controller_hdwr_start(flight_controller_t *arg)
 }
 
 //--------------------------------------------------------------------------------------------------
-ret_code_t flight_controller_hdwr_set_dac(flight_controller_t *arg, uint16_t value_dac)
+ret_code_t flight_controller_hdwr_set_dac(pwm_id_t arg, uint16_t value_dac)
 {
-    return pwm_set_new_duty(*arg->dac_id, value_dac);
+    return pwm_set_new_duty(arg, value_dac);
 }
 /**
  * @}
