@@ -84,8 +84,10 @@ void flight_controller_driver_update_dac(flight_controller_t *arg)
 {
     for (uint8_t i = 0x00; i < MAX_NUM_CONTROLLER; i++)
     {
-        arg->dac_values[i] = (uint16_t)(arg->adc_values[i] * 3.3) / 100;
-        flight_controller_hdwr_set_dac(arg, arg->dac_values[i]);
+        arg->dac_values[i] = (uint16_t)((arg->adc_values[i] * 100.0) / 3.0);
+        // Inverter PWM
+        arg->dac_values[i] = 100 - arg->dac_values[i];
+        flight_controller_hdwr_set_dac(arg->dac_id[i], arg->dac_values[i]);
     }
 }
 

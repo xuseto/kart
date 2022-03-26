@@ -43,10 +43,10 @@ flight_controller_cfg_t flight_controller_cfg =
         .name = "FLIGHT_CONTROLLER",
         .adc_channel =
             {
-                [0] = ADC_IN1,
-                [1] = ADC_IN2,
-                [2] = ADC_IN4,
-                [3] = ADC_IN5,
+                [0] = ADC_A0,
+                [1] = ADC_A1,
+                [2] = ADC_A2,
+                [3] = ADC_A3,
             },
         .periodic_timer = PERIODIC_EVERY_100_MS,
         .dac_cfg =
@@ -55,28 +55,28 @@ flight_controller_cfg_t flight_controller_cfg =
                     .frequency = 10000, // 10KHz
                     .duty = 80,         // 0%
                     .pwm = PWM_3,
-                    .channel = PWM_CHANNEL_1,
+                    .channel = PWM_CHANNEL_2,
 
                 },
                 [1] = {
                     .frequency = 10000, // 10KHz
                     .duty = 80,         // 0%
                     .pwm = PWM_3,
-                    .channel = PWM_CHANNEL_2,
+                    .channel = PWM_CHANNEL_3,
 
                 },
                 [2] = {
                     .frequency = 10000, // 10KHz
                     .duty = 80,         // 0%
                     .pwm = PWM_3,
-                    .channel = PWM_CHANNEL_3,
+                    .channel = PWM_CHANNEL_4,
 
                 },
                 [3] = {
                     .frequency = 10000, // 10KHz
                     .duty = 80,         // 0%
                     .pwm = PWM_3,
-                    .channel = PWM_CHANNEL_4,
+                    .channel = PWM_CHANNEL_1,
 
                 },
 
