@@ -30,6 +30,8 @@
 #include <hdwr/uart_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
+/** Pontier of struct of GPS */
+typedef uint32_t gps_id_t;
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** OutputGroup */
@@ -260,16 +262,16 @@ typedef struct gps_s
  * @param cfg \ref gps_cfg_t
  * @return \ref ret_code_t
  */
-ret_code_t gps_init(gps_cfg_t *cfg);
+gps_id_t gps_init(gps_cfg_t *cfg);
 
 /**
  * @brief Getter values reads by GPS
  *
  * @return float
  */
-float gps_get_velocity_north_axis();
-float gps_get_velocity_east_axis();
-float gps_get_velocity_down_axis();
+float gps_get_velocity_north_axis(gps_id_t id);
+float gps_get_velocity_east_axis(gps_id_t id);
+float gps_get_velocity_down_axis(gps_id_t id);
 
 #endif /* __GPS_API_H */
 

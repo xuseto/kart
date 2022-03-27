@@ -25,6 +25,7 @@
 #include <def_common.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 #include <def_common.h>
 #include <log/log_api.h>
 #include <hdwr/fifo_api.h>

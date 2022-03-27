@@ -56,7 +56,7 @@ void gps_task(void *argument)
 }
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t gps_conductor_init(gps_cfg_t *cfg)
+gps_id_t gps_conductor_init(gps_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
 
@@ -72,7 +72,7 @@ ret_code_t gps_conductor_init(gps_cfg_t *cfg)
 
     ret = (RET_SUCCESS == ret) ? gps_driver_log_init(gps) : ret;
 
-    return ret;
+    return ((RET_SUCCESS == ret) ? (gps_id_t)gps : NULL);
 }
 
 //--------------------------------------------------------------------------------------------------

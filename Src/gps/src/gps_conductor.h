@@ -40,9 +40,9 @@
  * @brief Init high level of gps
  *
  * @param cfg \ref gps_cfg_t
- * @return \ref ret_code_t
+ * @return \ref gps_id_t
  */
-ret_code_t gps_conductor_init(gps_cfg_t *cfg);
+gps_id_t gps_conductor_init(gps_cfg_t *cfg);
 
 /**
  * @brief Getter instace

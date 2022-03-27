@@ -16,6 +16,7 @@
 */
 /* Includes --------------------------------------------------------------------------------------*/
 #include "sevcon_hdwr.h"
+#include <stdint.h>
 
 #include <hdwr/can_api.h>
 #include <sevcon/sevcon_config.h>

@@ -57,18 +57,6 @@ static void fligth_controller_thread(void *arg)
     flight_controller_driver_start_periodic(fligth_ctrl_thread);
     flight_controller_hdwr_start(fligth_ctrl_thread);
 
-    send_duty = 0;
-    pwm_set_new_duty(fligth_ctrl_thread->dac_id[0], send_duty);
-
-    send_duty = 25;
-    pwm_set_new_duty(fligth_ctrl_thread->dac_id[1], send_duty);
-
-    send_duty = 50;
-    pwm_set_new_duty(fligth_ctrl_thread->dac_id[2], send_duty);
-
-    send_duty = 75;
-    pwm_set_new_duty(fligth_ctrl_thread->dac_id[3], send_duty);
-
     while (1)
     {
         osThreadFlagsWait(0x00, osFlagsWaitAny, 5000); // osWaitForever);

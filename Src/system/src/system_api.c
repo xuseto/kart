@@ -65,8 +65,6 @@ void system_init(void)
     ret = (RET_SUCCESS == ret) ? adc_init() : ret;
 
     /* INIT PERIPHERALS */
-    /* Init GPS */
-    ret = (RET_SUCCESS == ret) ? gps_init(&gps_cfg) : ret;
     /* Init flight controller module */
     ret = (RET_SUCCESS == ret) ? flight_controller_init(&flight_controller_cfg) : ret;
 

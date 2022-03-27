@@ -68,6 +68,9 @@ typedef struct
  */
 ret_code_t flight_controller_init(flight_controller_cfg_t *cfg);
 
+void flight_controller_decrease(uint16_t idx_flight_controller, uint16_t value);
+void flight_controller_increase(uint16_t idx_flight_controller, uint16_t value);
+
 #endif /* __FLIGHT_CONTROLLER_API_H */
 
 /**

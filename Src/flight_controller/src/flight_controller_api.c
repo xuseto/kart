@@ -41,6 +41,23 @@ ret_code_t flight_controller_init(flight_controller_cfg_t *cfg)
     return flight_controller_conductor_init(cfg);
 }
 
+//--------------------------------------------------------------------------------------------------
+void flight_controller_decrease(uint16_t idx_flight_controller, uint16_t value)
+{
+    if (MAX_NUM_CONTROLLER > idx_flight_controller)
+    {
+        flight_controller_driver_decrease(idx_flight_controller, value);
+    }
+}
+//--------------------------------------------------------------------------------------------------
+void flight_controller_increase(uint16_t idx_flight_controller, uint16_t value)
+{
+    if (MAX_NUM_CONTROLLER > idx_flight_controller)
+    {
+        flight_controller_driver_increase(idx_flight_controller, value);
+    }
+}
+
 /**
  * @}
  */

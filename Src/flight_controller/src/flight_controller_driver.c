@@ -29,6 +29,7 @@
 /* Typedefs --------------------------------------------------------------------------------------*/
 
 /* Private values --------------------------------------------------------------------------------*/
+uint16_t decrease_max_percent_working[MAX_NUM_CONTROLLER];
 
 /* Private functions declaration -----------------------------------------------------------------*/
 /**
@@ -36,7 +37,8 @@
  *
  * @param arg \ref flight_controller_t
  */
-static void flight_controller_driver_periodic(void *arg);
+static void
+flight_controller_driver_periodic(void *arg);
 
 /* Private functions -----------------------------------------------------------------------------*/
 static void flight_controller_driver_periodic(void *arg)
@@ -85,6 +87,8 @@ void flight_controller_driver_update_dac(flight_controller_t *arg)
     for (uint8_t i = 0x00; i < MAX_NUM_CONTROLLER; i++)
     {
         arg->dac_values[i] = (uint16_t)((arg->adc_values[i] * 100.0) / 3.0);
+        // Add max percent working
+        arg->dac_values[i] -= decrease_max_percent_working[i];
         // Inverter PWM
         arg->dac_values[i] = 100 - arg->dac_values[i];
         flight_controller_hdwr_set_dac(arg->dac_id[i], arg->dac_values[i]);
@@ -101,6 +105,21 @@ ret_code_t flight_controller_driver_log_init(flight_controller_t *arg)
     return (log_new_msg(arg->cfg->name, LOG_DEBUG, msg));
 }
 
+//--------------------------------------------------------------------------------------------------
+void flight_controller_driver_decrease(uint16_t id, uint16_t value)
+{
+    decrease_max_percent_working[id] += value;
+    if (decrease_max_percent_working[id] > 100)
+    {
+        decrease_max_percent_working[id] = 100;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+void flight_controller_driver_increase(uint16_t id, uint16_t value)
+{
+    decrease_max_percent_working[id] = (decrease_max_percent_working[id] > value) ? decrease_max_percent_working[id] - value : 0;
+}
 /**
  * @}
  */
