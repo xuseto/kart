@@ -149,20 +149,20 @@ void gps_driver_get_msg(void *arg)
 float gps_driver_get_velocity_north_axis(gps_t *arg)
 {
 
-    return (arg) ? arg->velned_north_axis : NULL;
+    return (arg) ? arg->velned_north_axis : 0.0;
 }
 
 //--------------------------------------------------------------------------------------------------
 float gps_driver_get_velocity_east_axis(gps_t *arg)
 {
 
-    return (arg) ? arg->velned_east_axis : NULL;
+    return (arg) ? arg->velned_east_axis : 0.0;
 }
 
 //--------------------------------------------------------------------------------------------------
 float gps_driver_get_velocity_down_axis(gps_t *arg)
 {
-    return (arg) ? arg->velned_down_axis : NULL;
+    return (arg) ? arg->velned_down_axis : 0.0;
 }
 
 /**

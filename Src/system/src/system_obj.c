@@ -98,6 +98,12 @@ sevcon_cfg_t sevcon_cfg =
         .fifo_cfg = {
             .num_msg = 20,
         },
+        .gps_cfg = {
+            .fifo_cfg = {
+                .num_msg = 2,
+            },
+            .uart_number = UART_3,
+        },
 };
 
 /** Struct of USART3 */
@@ -105,15 +111,6 @@ uart_cfg_t uart_cfg =
     {
         .assignament_uart = UART_3,
         .num_msg = 1,
-};
-
-/** Struct of GPS */
-gps_cfg_t gps_cfg =
-    {
-        .fifo_cfg = {
-            .num_msg = 2,
-        },
-        .uart_number = UART_3,
 };
 
 /** Struct of the DAC */

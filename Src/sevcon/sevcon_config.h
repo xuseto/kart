@@ -29,7 +29,7 @@
 #define SEVCON_MAX_DRIVERS 4
 
 /** Define type message RX of the CANOpen */
-#define OD_TYPE_MSG_CAN TPDO4
+#define OD_TYPE_MSG_CAN MNT
 
 /** define ID of every motor */
 #define MOTOR_UP_LEFT 0
@@ -42,6 +42,17 @@
 #define MOTOR_OPPOSITE_UP_RIGHT 0
 #define MOTOR_OPPOSITE_DOWN_LEFT 3
 #define MOTOR_OPPOSITE_DOWN_RIGHT 2
+
+/** Define parameters of kart */
+#define WHEEL_SPOKE (float)0.829 // meters
+#define CONTS_RPM_WHEEL_AXLE (float)0.0166665
+
+/** Define levels security */
+#define WRN_TEMP_LEVEL_1 80                  //ºC
+#define WRN_TEMP_LEVEL_2 100                 //ºC
+#define WRN_DECREASE_MOTOR_WORKING_LVL_1 20  //%
+#define WRN_DECREASE_MOTOR_WORKING_LVL_2 80  //%
+#define WRN_DECREASE_MOTOR_WORKING_ERROR 100 //%
 
 #endif /* __SEVCON_CONFIG_H */
 

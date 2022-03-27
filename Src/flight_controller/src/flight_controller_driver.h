@@ -74,6 +74,10 @@ ret_code_t flight_controller_driver_log_init(flight_controller_t *arg);
  */
 void flight_controller_driver_update_dac(flight_controller_t *arg);
 
+void flight_controller_driver_decrease(uint16_t id, uint16_t value);
+
+void flight_controller_driver_increase(uint16_t id, uint16_t value);
+
 #endif /* __FLIGHT_CONTROLLER_DRIVER_H */
 
 /**

@@ -32,34 +32,39 @@
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t gps_init(gps_cfg_t *cfg)
+gps_id_t gps_init(gps_cfg_t *cfg)
 {
-    ret_code_t ret = RET_INT_ERROR;
 
     if (!cfg)
     {
-        return ret;
+        return NULL;
     }
 
     return gps_conductor_init(cfg);
 }
 
 //--------------------------------------------------------------------------------------------------
-float gps_get_velocity_north_axis()
+float gps_get_velocity_north_axis(gps_id_t id)
 {
-    return gps_driver_get_velocity_north_axis(gps_getter_instace());
+    gps_t *obj = (gps_t *)id;
+
+    return gps_driver_get_velocity_north_axis(obj);
 }
 
 //--------------------------------------------------------------------------------------------------
-float gps_get_velocity_east_axis()
+float gps_get_velocity_east_axis(gps_id_t id)
 {
-    return gps_driver_get_velocity_east_axis(gps_getter_instace());
+    gps_t *obj = (gps_t *)id;
+
+    return gps_driver_get_velocity_east_axis(obj);
 }
 
 //--------------------------------------------------------------------------------------------------
-float gps_get_velocity_down_axis()
+float gps_get_velocity_down_axis(gps_id_t id)
 {
-    return gps_driver_get_velocity_down_axis(gps_getter_instace());
+    gps_t *obj = (gps_t *)id;
+
+    return gps_driver_get_velocity_down_axis(obj);
 }
 
 /**

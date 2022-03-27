@@ -70,6 +70,13 @@ ret_code_t sevcon_conductor_init(sevcon_cfg_t *cfg)
 
     ret = (RET_SUCCESS == ret) ? sevcon_driver_log_init(sevcon) : ret;
 
+    /* Init GPS */
+    if (RET_SUCCESS == ret)
+    {
+        sevcon->gps = gps_init(&cfg->gps_cfg);
+        ret = (sevcon->gps) ? RET_SUCCESS : RET_INT_ERROR;
+    }
+
     return ret;
 }
 
