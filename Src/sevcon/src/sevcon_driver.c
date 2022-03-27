@@ -127,7 +127,7 @@ static void sevcon_proccess_temperature(sevcon_t *sevcon, uint16_t id_sevcon, ui
         }
         else if (driver->temperature > WRN_TEMP_LEVEL_2)
         {
-            uint16_t lvl_decrease = WRN_DECREASE_MOTOR_WORKING_LVL_1 - WRN_DECREASE_MOTOR_WORKING_LVL_2;
+            int16_t lvl_decrease = WRN_DECREASE_MOTOR_WORKING_LVL_1 - WRN_DECREASE_MOTOR_WORKING_LVL_2;
             flight_controller_decrease(id_sevcon, lvl_decrease);
             flight_controller_decrease(opposite_motor, lvl_decrease);
             driver->warning_temp = lvl_decrease;

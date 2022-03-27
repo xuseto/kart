@@ -337,15 +337,27 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_driver.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 39</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 128 37 207 224 38 107 226 28 130 124 64 77 233 5 95 7 86 126 112 102 74 56 67 58 87 66 6 25 221 96 82 10 118 208 103 78 68 16 89 121 203 63 129 216 44 101 214 187 11 33 106 94 30 61 243 254 246 258 165 146 147 143 153 140</file>
+                    <file> 128 37 207 224 38 107 226 28 130 124 64 77 233 5 95 7 86 126 112 102 74 56 67 58 87 66 6 25 221 96 82 10 118 208 103 78 68 16 89 121 203 63 129 216 44 101 214 187 11 33 106 94 30 61 266 263 243 253 254 246 255 258 165 158 146 147 143 153 140</file>
                 </tool>
             </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_api.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 114</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
@@ -370,6 +382,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_hdwr.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 20</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
@@ -439,6 +457,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\system\src\system_obj.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 222</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
@@ -463,6 +487,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_conductor.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 111</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
@@ -541,6 +571,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\sevcon\src\sevcon_driver_dictionary.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 19</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
@@ -550,6 +586,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\system\src\system_api.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 70</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
