@@ -101,7 +101,7 @@ void can_enqueue_new_message(void *handle, uint32_t fifo_can);
 /* Private functions -----------------------------------------------------------------------------*/
 void can_task(void *aguments)
 {
-    can_cfg_t *can = (can_cfg_t *)aguments;
+    //can_cfg_t *can = (can_cfg_t *)aguments;
 
     osThreadFlagsWait(NULL, osFlagsWaitAny, osWaitForever);
 }
@@ -155,27 +155,29 @@ ret_code_t can_create(can_cfg_t *cfg)
     can_task_attributes.name = name_thread_can;
     id_thread = osThreadNew(can_task, cfg, &can_task_attributes);
 
-    /* Start the FDCAN module */
-    HAL_StatusTypeDef ret_hal = HAL_FDCAN_Start(cfg->handle);
-    ret = (HAL_OK == ret_hal) ? RET_SUCCESS : RET_INT_ERROR;
-
-    char msg[20];
-    if (HAL_OK == ret_hal)
+    if (id_thread)
     {
-        /** Activate ISR FIFO 0 and FIFO 1 */
-        HAL_FDCAN_ActivateNotification(cfg->handle, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
-        HAL_FDCAN_ActivateNotification(cfg->handle, FDCAN_IT_RX_FIFO0_MESSAGE_LOST, 0);
-        HAL_FDCAN_ActivateNotification(cfg->handle, FDCAN_IT_RX_FIFO1_NEW_MESSAGE, 0);
-        HAL_FDCAN_ActivateNotification(cfg->handle, FDCAN_IT_RX_FIFO1_MESSAGE_LOST, 0);
+      /* Start the FDCAN module */
+      HAL_StatusTypeDef ret_hal = HAL_FDCAN_Start(cfg->handle);
+      ret = (HAL_OK == ret_hal) ? RET_SUCCESS : RET_INT_ERROR;
 
-        sprintf(msg, "CREATED CAN %d", cfg->assignament_can);
+      char msg[20];
+      if (HAL_OK == ret_hal)
+      {
+          /** Activate ISR FIFO 0 and FIFO 1 */
+          HAL_FDCAN_ActivateNotification(cfg->handle, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+          HAL_FDCAN_ActivateNotification(cfg->handle, FDCAN_IT_RX_FIFO0_MESSAGE_LOST, 0);
+          HAL_FDCAN_ActivateNotification(cfg->handle, FDCAN_IT_RX_FIFO1_NEW_MESSAGE, 0);
+          HAL_FDCAN_ActivateNotification(cfg->handle, FDCAN_IT_RX_FIFO1_MESSAGE_LOST, 0);
 
-        return (log_new_msg(can_task_attributes.name, LOG_DEBUG, msg));
+          sprintf(msg, "CREATED CAN %d", cfg->assignament_can);
+
+          return (log_new_msg(can_task_attributes.name, LOG_DEBUG, msg));
+      }
+
+      sprintf(msg, "FAIL CREATED CAN %d", cfg->assignament_can);
+      log_new_msg(can_task_attributes.name, LOG_DEBUG, msg);
     }
-
-    sprintf(msg, "FAIL CREATED CAN %d", cfg->assignament_can);
-    log_new_msg(can_task_attributes.name, LOG_DEBUG, msg);
-
     return ret;
 }
 
@@ -189,7 +191,7 @@ ret_code_t can_tx(can_number_t can_id, can_msg_t *msg)
         return ret;
     }
 
-    uint32_t mailbox; // required by the current HAL
+    uint32_t mailbox = 0; // required by the current HAL
     FDCAN_TxHeaderTypeDef tx_msg;
     FDCAN_HandleTypeDef *handle;
 
@@ -263,7 +265,6 @@ uint16_t canopen_get_mode_access(can_msg_t *msg_can)
     }
 
     msg_canopen = (msg_canopen_t *)msg_can->data;
-    printf("0x%x >> 0x%x \n", msg_can->data[0], msg_canopen->idx_canopen.byte.mode_access);
 
     return msg_canopen->idx_canopen.byte.mode_access;
 }

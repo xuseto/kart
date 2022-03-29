@@ -36,7 +36,7 @@ uint16_t get_lenght_fields_lenght(output_fields_t field);
 uint16_t get_lenght_msg(gps_cfg_t *arg)
 {
     uint16_t ret = HEADER_SIZE + CRC_SIZE;
-    
+
     ret += get_lenght_fields_lenght(arg->output_fields);
 
     return ret;
@@ -59,7 +59,7 @@ uint16_t get_lenght_fields_lenght(output_fields_t field)
     ret += (ins_lenght.bit.lineal_accel_ecef) * 12;
     ret += (ins_lenght.bit.pos_u) * 4;
     ret += (ins_lenght.bit.vel_u) * 4;
-    
+
     return ret;
 }
 
@@ -69,7 +69,8 @@ ret_code_t gps_hdwr_init(gps_cfg_t *cfg, gps_t *data)
     ret_code_t ret = RET_INT_ERROR;
 
     cfg->fifo_cfg.size_msg = get_lenght_msg(cfg);
- 
+    data->length_msg = cfg->fifo_cfg.size_msg;
+
     data->fifo_id = fifo_create_queue(&cfg->fifo_cfg);
 
     ret = (data->fifo_id) ? uart_suscribe_rx_fifo(data->fifo_id, cfg->fifo_cfg.size_msg, cfg->uart_number) : ret;
