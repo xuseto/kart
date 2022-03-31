@@ -104,7 +104,6 @@ void spi_task(void *arguments)
 
             if (flag_thread == SPI_TX)
             {
-                printf("Send new message SPI\n");
                 HAL_SPI_Transmit(spi->driver_hal, &data[0], sizeof(data), 0x00);
             }
         }
@@ -134,8 +133,6 @@ void *spi_init(spi_cfg_t *cfg)
         spi->id_thread = osThreadNew(spi_task, spi, &spi_task_attributes);
 
         spi->id_fifo = fifo_create_queue(&cfg->spi_fifo);
-
-        printf("Created SPI : %s (0x%x)\n", spi->name, spi);
     }
 
     return spi;

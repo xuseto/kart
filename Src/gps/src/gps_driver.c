@@ -24,8 +24,10 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h> /* atof */
+#include <stdbool.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
+#define CRC_OK 0x1A8C
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 typedef union
@@ -43,18 +45,35 @@ typedef union
  * @param gps \ref gps_t
  * @param msg ptr to void
  */
-static void gps_proccess_message(gps_t *gps, void *msg);
+void gps_proccess_message(gps_t *gps, void *msg);
 static void proccess_message_ins(gps_t *gps, void *msg);
+bool checksum(unsigned char data[], unsigned int length);
 
 static float convert_string_to_float(uint8_t *data_convert);
 /* Private functions -----------------------------------------------------------------------------*/
-static void
-gps_proccess_message(gps_t *gps, void *msg)
+bool checksum(unsigned char data[], unsigned int length)
+{
+    unsigned int i;
+    unsigned short crc = 0;
+    for (i = 0; i < length; i++)
+    {
+        crc = (unsigned char)(crc >> 8) | (crc << 8);
+        crc ^= data[i];
+        crc ^= (unsigned char)(crc & 0xff) >> 4;
+        crc ^= crc << 12;
+        crc ^= (crc & 0x00ff) << 5;
+    }
+
+    return (crc == CRC_OK) ? true : false;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gps_proccess_message(gps_t *gps, void *msg)
 {
     uint8_t *new_msg = (uint8_t *)msg;
     output_group_t group;
 
-    if (new_msg[POS_HEADER_SYNC] == HEADER_SYNC)
+    if (new_msg[POS_HEADER_SYNC] == HEADER_SYNC && checksum((char *)msg, gps->length_msg))
     {
         group.all = new_msg[POS_HEADER_GROUP];
         if (group.bit.commom)
@@ -79,7 +98,6 @@ gps_proccess_message(gps_t *gps, void *msg)
         }
         else if (group.bit.ins)
         {
-            printf("%s: ins\n", __FUNCTION__);
             proccess_message_ins(gps, msg);
         }
         else if (group.bit.gsnn2)
@@ -90,11 +108,11 @@ gps_proccess_message(gps_t *gps, void *msg)
 }
 
 //--------------------------------------------------------------------------------------------------
-output_fields_ins_t fields;
 static void proccess_message_ins(gps_t *gps, void *msg)
 {
 
     uint8_t *ins_msg = (uint8_t *)msg;
+    output_fields_ins_t fields;
 
     fields.all = ((uint16_t)ins_msg[POS_HEADER_FIELDS_MSB] << 4) + ins_msg[POS_HEADER_FIELDS_LSB];
 

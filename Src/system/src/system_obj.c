@@ -98,12 +98,13 @@ sevcon_cfg_t sevcon_cfg =
         .fifo_cfg = {
             .num_msg = 20,
         },
-        .gps_cfg = {
-            .fifo_cfg = {
-                .num_msg = 2,
-            },
-            .uart_number = UART_3,
-        },
+        .gps_cfg = {.fifo_cfg = {
+                        .num_msg = 2,
+                    },
+                    .uart_number = UART_3,
+                    .output_fields = {
+                        .ins.bit.vel_ned = 1,
+                    }},
 };
 
 /** Struct of USART3 */
