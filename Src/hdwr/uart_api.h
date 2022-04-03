@@ -27,7 +27,7 @@
 
 /* Defines ---------------------------------------------------------------------------------------*/
 /** Maximum modules uart use the uart */
-#define UART_MAX_MODULES_SUBSCRIBE 1
+#define UART_MAX_MODULES_SUBSCRIBE 2
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 

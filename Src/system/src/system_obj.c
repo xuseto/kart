@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 24/11/2021
- * @date Last modification 24/11/2021 by jnieto
+ * @date Last modification 03/04/2021 by jnieto
  * @brief Define all objets of the system Kart
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -25,6 +25,7 @@
 #include <sevcon/sevcon_api.h>
 #include <hdwr/uart_api.h>
 #include <gps/gps_api.h>
+#include <user/user_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -112,6 +113,14 @@ uart_cfg_t uart_cfg =
     {
         .assignament_uart = UART_3,
         .num_msg = 1,
+};
+
+/** Struct of USER */
+user_cfg_t user_cfg =
+    {
+        .uart_number = UART_1,
+        .fifo_cfg = {
+            .num_msg = 3},
 };
 
 /** Struct of the DAC */

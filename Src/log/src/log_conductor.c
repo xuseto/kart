@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 27/02/2022
- * @date Last modification 27/02/2022 by jnieto
+ * @date Last modification 31/03/2022 by jnieto
  * @brief LOG functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -28,7 +28,7 @@ osThreadAttr_t log_task_attributes =
     {
         .priority = (osPriority_t)osPriorityLow,
         .name = "LOG",
-        .stack_size = 2048,
+        .stack_size = 1024,
 };
 
 /** ID for thread */
