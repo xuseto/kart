@@ -263,7 +263,7 @@
                     <item>data[1]</item>
                     <item>count_msg</item>
                     <item>count_msg</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>

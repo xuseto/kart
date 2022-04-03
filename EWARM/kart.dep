@@ -469,6 +469,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\user\src\user_api.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 68</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
@@ -643,6 +649,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Src\user\src\user_conductor.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 10</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
