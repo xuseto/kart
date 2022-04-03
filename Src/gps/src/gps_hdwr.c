@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 15/03/2022
- * @date Last modification 15/03/2022 by jnieto
+ * @date Last modification 31/03/2022 by jnieto
  * @brief gps functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -29,11 +29,11 @@
 uint8_t msg[SIZEOF_MSG_GPS];
 
 /* Private functions declaration -----------------------------------------------------------------*/
-uint16_t get_lenght_msg(gps_cfg_t *arg);
-uint16_t get_lenght_fields_lenght(output_fields_t field);
+static uint16_t get_lenght_msg(gps_cfg_t *arg);
+static uint16_t get_lenght_fields_lenght(output_fields_t field);
 
 /* Private functions -----------------------------------------------------------------------------*/
-uint16_t get_lenght_msg(gps_cfg_t *arg)
+static uint16_t get_lenght_msg(gps_cfg_t *arg)
 {
     uint16_t ret = HEADER_SIZE + CRC_SIZE;
 
@@ -43,7 +43,7 @@ uint16_t get_lenght_msg(gps_cfg_t *arg)
 }
 
 //--------------------------------------------------------------------------------------------------
-uint16_t get_lenght_fields_lenght(output_fields_t field)
+static uint16_t get_lenght_fields_lenght(output_fields_t field)
 {
     uint16_t ret = 0;
     output_fields_ins_t ins_lenght = field.ins;
@@ -73,6 +73,7 @@ ret_code_t gps_hdwr_init(gps_cfg_t *cfg, gps_t *data)
 
     data->fifo_id = fifo_create_queue(&cfg->fifo_cfg);
 
+    printf ("gps_hdwr_init %d\n", cfg->uart_number);
     ret = (data->fifo_id) ? uart_suscribe_rx_fifo(data->fifo_id, cfg->fifo_cfg.size_msg, cfg->uart_number) : ret;
 
     return ret;

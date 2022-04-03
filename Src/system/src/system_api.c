@@ -26,6 +26,7 @@
 #include "hdwr/uart_api.h"
 #include "sevcon/sevcon_api.h"
 #include "gps/gps_api.h"
+#include "user/user_api.h"
 
 #include "cmsis_os2.h"
 #include "def_common.h"
@@ -67,6 +68,8 @@ void system_init(void)
     /* INIT PERIPHERALS */
     /* Init flight controller module */
     ret = (RET_SUCCESS == ret) ? flight_controller_init(&flight_controller_cfg) : ret;
+    /* Init user module */
+    ret = (RET_SUCCESS == ret) ? user_init(&user_cfg) : ret;
 
     if (RET_SUCCESS == ret)
     {

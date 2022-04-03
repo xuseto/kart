@@ -1686,6 +1686,33 @@
                 <name>$PROJ_DIR$\..\Src\stm32l5xx_it.c</name>
             </file>
         </group>
+        <group>
+            <name>user</name>
+            <group>
+                <name>src</name>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\user\src\user_api.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\user\src\user_conductor.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\user\src\user_conductor.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\user\src\user_hdwr.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Src\user\src\user_hdwr.h</name>
+                </file>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\Src\user\user_api.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\user\user_config.h</name>
+            </file>
+        </group>
     </group>
     <group>
         <name>Drivers</name>
