@@ -45,6 +45,14 @@
  */
 ret_code_t user_hdwr_init(user_t *obj, user_cfg_t *cfg);
 
+/**
+ * @brief dequeue msg uart
+ * 
+ * @param obj 
+ * @return void* 
+ */
+void *user_hdwr_get_msg (user_t *obj);
+
 #endif /* __USER_HDWR_H */
 
 /**

@@ -47,6 +47,17 @@ typedef struct
     fifo_t id_fifo;
     uint16_t length_msg_tx;
     uint16_t length_msg_rx;
+    uint32_t ratio_front_axle;
+    uint32_t ratio_rear_axle;
+    float max_front_slip;
+    float max_rear_slip;
+    float id_p_front;
+    float id_i_front;
+    float id_d_front;
+    float id_p_rear;
+    float id_i_rear;
+    float id_d_rear;
+    float inhibition_system;
 } user_t;
 
 /* Private values --------------------------------------------------------------------------------*/

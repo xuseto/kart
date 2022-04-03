@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 31/03/2022
- * @date Last modification 31/03/2022 by jnieto
+ * @date Last modification 02/04/2022 by jnieto
  * @brief USER functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -49,9 +49,9 @@ void user_task(void *argument);
 /* Private functions -----------------------------------------------------------------------------*/
 void user_task(void *argument)
 {
-    while (1)
+    if (argument)
     {
-        osThreadFlagsWait(0x00, osFlagsWaitAny, osWaitForever);
+        user_driver_get_msg(argument);
     }
 }
 

@@ -1,23 +1,25 @@
 /***************************************************************************************************
- * @file log_driver.c
+ * @file user_driver.c
  * @author jnieto
  * @version 1.0.0.0.0
- * @date Creation: 27/02/2022
- * @date Last modification 27/02/2022 by jnieto
- * @brief LOG functions
+ * @date Creation: 31/03/2022
+ * @date Last modification 02/04/2022 by jnieto
+ * @brief USER functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ****************************************************************************************************
 
-    @addtogroup LOG_DRIVER
+    @addtogroup USER_DRIVER
     @{
 
 */
 /* Includes --------------------------------------------------------------------------------------*/
-#include "log_driver.h"
-#include <log/log_api.h>
-#include <log/log_config.h>
+#include "user_driver.h"
+#include "user_hdwr.h"
+#include <user/user_api.h>
+#include <user/user_config.h>
+#include <hdwr/ieee754.h>
 
 #include <stdint.h>
 #include <string.h>
@@ -25,65 +27,106 @@
 #include "cmsis_os2.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
+#define SHIFT_BYTE 8
 
 /* Typedefs --------------------------------------------------------------------------------------*/
-/** struct the message for Debug */
-typedef struct log_msg_s
-{
-    uint32_t tick;
-    char name_task[LOG_MAX_NAME_TASK];
-    log_level_debug_t level_debug;
-    char info[LOG_MAX_INFO_MSG];
-} log_msg_t;
-
-log_msg_t log_msg[LOG_MAX_MSG];
-/** Index array log_msg */
-uint16_t id_msg_rx = 0x00, id_msg_tx = 0x00;
 
 /* Private values --------------------------------------------------------------------------------*/
 
 /* Private functions declaration -----------------------------------------------------------------*/
-static const char *log_get_string_level(log_level_debug_t level_debug);
+void proccess_message (user_t *obj, uint8_t *data);
+void set_data_on_object (user_t *obj, uint8_t *data);
+uint32_t get_value_data (uint8_t *data);
 
 /* Private functions -----------------------------------------------------------------------------*/
-static const char *log_get_string_level(log_level_debug_t level_debug)
+void proccess_message (user_t *obj, uint8_t *data)
 {
-    switch (level_debug)
+    if (data[0] == USER_HEADER)
     {
-    case (LOG_DEBUG):
-        return "DEBUG";
-        break;
-    case (LOG_INFO):
-        return "INFO";
-        break;
-    case (LOG_WARNING):
-        return "WARNING";
-        break;
-    case (LOG_ERROR):
-        return "ERROR";
-        break;
-    default:
-        return "UNKNOW";
-        break;
+        uint16_t count_msg = USER_SIZE_HEADER;
+        do {
+            set_data_on_object (obj, &data[count_msg]);
+            count_msg += USER_SIZE_PAYLOAD;
+        }while (count_msg < obj->length_msg_rx);
     }
 }
 
-/* Public functions ------------------------------------------------------------------------------*/
-ret_code_t log_driver_create_new_message(const char *name_task, log_level_debug_t level_debug, const char *info)
+//--------------------------------------------------------------------------------------------------
+void set_data_on_object (user_t *obj, uint8_t *data)
 {
-    memcpy(&log_msg[id_msg_rx].name_task, name_task, sizeof(log_msg[id_msg_rx].name_task));
-    memcpy(&log_msg[id_msg_rx].info, info, sizeof(log_msg[id_msg_rx].info));
-    log_msg[id_msg_rx].level_debug = level_debug;
-    // ticks
-    log_msg[id_msg_rx].tick = HAL_GetTick();
+    if (!data) return;
+    uint32_t value = get_value_data (data);
 
-    // printf("%d [ %s ] %s: %s\n", log_msg[id_msg_rx].tick, log_msg[id_msg_rx].name_task, log_get_string_level(log_msg[id_msg_rx].level_debug), log_msg[id_msg_rx].info);
+    switch ((user_ids_t)data[0])
+    {
+        case (USER_ID_RATIO_FRONT_AXLE):
+        obj->ratio_front_axle = (uint32_t)(unpack754_32 (&value));
+        break;
+        case (USER_ID_RATIO_REAR_AXLE):
+        obj->ratio_rear_axle = (uint32_t)(unpack754_32 (&value));
+        break;
+        case (USER_ID_MAX_FRONT_SLIP):
+        obj->max_front_slip = (unpack754_32 (&value));
+        break;
+        case (USER_ID_MAX_REAR_SLIP):
+        obj->max_rear_slip = (unpack754_32 (&value));
+        break;
+        case (USER_ID_P_REAR):
+        obj->id_p_front = (unpack754_32 (&value));
+        break;
+        case (USER_ID_I_REAR):
+        obj->id_i_front = (unpack754_32 (&value));
+        break;
+        case (USER_ID_D_REAR):
+        obj->id_d_front = (unpack754_32 (&value));
+        break;
+        case (USER_ID_P_FRONT):
+        obj->id_p_rear = (unpack754_32 (&value));
+        break;
+        case (USER_ID_I_FRONT):
+        obj->id_i_rear = (unpack754_32 (&value));
+        break;
+        case (USER_ID_D_FRONT):
+        obj->id_d_rear = (unpack754_32 (&value));
+        break;
+        case (USER_ID_INHIBITION_SYSTEM):
+        obj->inhibition_system = (unpack754_32 (&value));
+        break;
+    }
 
-    id_msg_rx++;
-    id_msg_rx = (id_msg_rx >= LOG_MAX_MSG) ? 0x00 : id_msg_rx;
-
-    return RET_SUCCESS;
 }
+
+    uint8_t idx, i;
+//--------------------------------------------------------------------------------------------------
+uint32_t get_value_data (uint8_t *data)
+{
+    uint32_t ret = 0, lv_data;
+
+    for (i = 0; i < (USER_SIZE_PAYLOAD-1); i ++)
+    {
+        idx = (USER_SIZE_PAYLOAD-1)-i;
+        lv_data = data[idx];
+        ret += (lv_data << (SHIFT_BYTE*i));
+    }
+    return ret;
+}
+/* Public functions ------------------------------------------------------------------------------*/
+void user_driver_get_msg (void *arg)
+{
+    user_t *obj = (user_t *)arg;
+    void *msg;
+
+    while (1)
+    {   
+        msg = user_hdwr_get_msg (obj);
+
+        if (msg)
+        {
+            proccess_message (obj, msg);
+        }
+    }
+}
+
 /**
  * @}
  */

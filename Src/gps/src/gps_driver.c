@@ -45,7 +45,7 @@ typedef union
  * @param gps \ref gps_t
  * @param msg ptr to void
  */
-void gps_proccess_message(gps_t *gps, void *msg);
+static void gps_proccess_message(gps_t *gps, void *msg);
 static void proccess_message_ins(gps_t *gps, void *msg);
 bool checksum(unsigned char data[], unsigned int length);
 
@@ -68,7 +68,7 @@ bool checksum(unsigned char data[], unsigned int length)
 }
 
 //--------------------------------------------------------------------------------------------------
-void gps_proccess_message(gps_t *gps, void *msg)
+static void gps_proccess_message(gps_t *gps, void *msg)
 {
     uint8_t *new_msg = (uint8_t *)msg;
     output_group_t group;

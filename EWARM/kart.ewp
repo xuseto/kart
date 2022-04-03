@@ -660,7 +660,7 @@
       <data>
         <extensions></extensions>
         <cmdline></cmdline>
-        <hasPrio>176</hasPrio>
+        <hasPrio>1</hasPrio>
         <buildSequence>inputOutputBased</buildSequence>
       </data>
     </settings>
@@ -1148,6 +1148,9 @@
           <name>$PROJ_DIR$\..\Src\hdwr\src\gpio_api.c</name>
         </file>
         <file>
+          <name>$PROJ_DIR$\..\Src\hdwr\src\ieee754.c</name>
+        </file>
+        <file>
           <name>$PROJ_DIR$\..\Src\hdwr\src\pwm_api.c</name>
         </file>
         <file>
@@ -1168,6 +1171,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\Src\hdwr\gpio_api.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Src\hdwr\ieee754.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\Src\hdwr\pwm_api.h</name>
@@ -1335,6 +1341,12 @@
         </file>
         <file>
           <name>$PROJ_DIR$\..\Src\user\src\user_conductor.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Src\user\src\user_driver.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Src\user\src\user_driver.h</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\Src\user\src\user_hdwr.c</name>

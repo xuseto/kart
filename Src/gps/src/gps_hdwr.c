@@ -73,7 +73,6 @@ ret_code_t gps_hdwr_init(gps_cfg_t *cfg, gps_t *data)
 
     data->fifo_id = fifo_create_queue(&cfg->fifo_cfg);
 
-    printf ("gps_hdwr_init %d\n", cfg->uart_number);
     ret = (data->fifo_id) ? uart_suscribe_rx_fifo(data->fifo_id, cfg->fifo_cfg.size_msg, cfg->uart_number) : ret;
 
     return ret;
