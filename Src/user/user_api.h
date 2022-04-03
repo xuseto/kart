@@ -75,6 +75,18 @@ typedef struct
  */
 ret_code_t user_init(user_cfg_t *cfg);
 
+uint32_t user_get_ratio_front_axle(void);
+uint32_t user_get_ratio_rear_axle(void);
+float user_get_max_front_slip(void);
+float user_get_max_rear_slip(void);
+float user_get_id_p_front(void);
+float user_get_id_i_front(void);
+float user_get_id_d_front(void);
+float user_get_id_p_rear(void);
+float user_get_id_i_rear(void);
+float user_get_id_d_rear(void);
+float user_get_inhibition_system(void);
+
 #endif /* __USER_API_H */
 
 /**

@@ -34,12 +34,12 @@
 /* Private values --------------------------------------------------------------------------------*/
 
 /* Private functions declaration -----------------------------------------------------------------*/
-void proccess_message (user_t *obj, uint8_t *data);
-void set_data_on_object (user_t *obj, uint8_t *data);
-uint32_t get_value_data (uint8_t *data);
+static void proccess_message (user_t *obj, uint8_t *data);
+static void set_data_on_object (user_t *obj, uint8_t *data);
+static uint32_t get_value_data (uint8_t *data);
 
 /* Private functions -----------------------------------------------------------------------------*/
-void proccess_message (user_t *obj, uint8_t *data)
+static void proccess_message (user_t *obj, uint8_t *data)
 {
     if (data[0] == USER_HEADER)
     {
@@ -52,7 +52,7 @@ void proccess_message (user_t *obj, uint8_t *data)
 }
 
 //--------------------------------------------------------------------------------------------------
-void set_data_on_object (user_t *obj, uint8_t *data)
+static void set_data_on_object (user_t *obj, uint8_t *data)
 {
     if (!data) return;
     uint32_t value = get_value_data (data);
@@ -96,11 +96,12 @@ void set_data_on_object (user_t *obj, uint8_t *data)
 
 }
 
-    uint8_t idx, i;
+    
 //--------------------------------------------------------------------------------------------------
-uint32_t get_value_data (uint8_t *data)
+static uint32_t get_value_data (uint8_t *data)
 {
     uint32_t ret = 0, lv_data;
+    uint8_t idx, i;
 
     for (i = 0; i < (USER_SIZE_PAYLOAD-1); i ++)
     {

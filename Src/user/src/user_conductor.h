@@ -1,16 +1,16 @@
 /***************************************************************************************************
- * @file log_conductor.h
+ * @file user_conductor.h
  * @author jnieto
  * @version 1.0.0.0.0
- * @date Creation: 27/02/2022
- * @date Last modification 27/02/2022 by jnieto
- * @brief LOG
+ * @date Creation: 31/03/2022
+ * @date Last modification 02/04/2022 by jnieto
+ * @brief USER
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
  *  All rights reserved
  ***************************************************************************************************
 
-    @defgroup LOG_CONDUCTOR  LOG object
+    @defgroup USER_CONDUCTOR  USER object
     @{
     @brief
     @details
@@ -18,12 +18,12 @@
 ***************************************************************************************************/
 
 /* Define to prevent recursive inclusion ---------------------------------------------------------*/
-#ifndef __LOG_CONDUCTOR_H
-#define __LOG_CONDUCTOR_H
+#ifndef __USER_CONDUCTOR_H
+#define __USER_CONDUCTOR_H
 
 /* Includes --------------------------------------------------------------------------------------*/
 #include <def_common.h>
-#include <log/log_api.h>
+#include <user/user_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -41,19 +41,11 @@
  * @return \ref ret_code_t
  *
  */
-ret_code_t log_conductor_init(void);
+ret_code_t user_conductor_init(user_cfg_t *cfg);
 
-/**
- * @brief Save log and wake up the thread
- *
- * @param name_task show name of the task like add new log
- * @param level_debug \ref log_level_debug_t
- * @param info show info he cause of the log
- * @return \ref ret_code_t
- */
-ret_code_t log_conductor_new_msg(const char *name_task, log_level_debug_t level_debug, const char *info);
+user_t *user_conductor_getter_get_obj (void);
 
-#endif /* __LOG_CONDUCTOR_H */
+#endif /* __USER_CONDUCTOR_H */
 
 /**
  * @}

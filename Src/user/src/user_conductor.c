@@ -72,6 +72,12 @@ ret_code_t user_conductor_init(user_cfg_t *cfg)
     return ret;
 }
 
+//--------------------------------------------------------------------------------------------------
+user_t *user_conductor_getter_get_obj ()
+{
+    return obj;
+}
+
 /**
  * @}
  */
