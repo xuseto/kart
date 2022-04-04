@@ -8,7 +8,7 @@
 ![Diagram](https://github.com/xuseto/kart/blob/develop/diagram/heartbeat_diagram.PNG)
 
 ## sevcon_diagram
-![Diagram](https://github.com/xuseto/kart/blob/develop/diagram/Sevcon_diagram.PNG)
+![Diagram](https://github.com/xuseto/kart/blob/develop/diagram/Sevcon_module.PNG)
 
 ## gps_diagram
 ![Diagram](https://github.com/xuseto/kart/blob/develop/diagram/gps_diagram.PNG)
