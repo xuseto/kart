@@ -1,40 +1,39 @@
-@startuml sevcon
+@startuml flight_controller
 
 
 skinparam actorStyle awesome
 actor user as programmer
 
 package Public {
-    usecase "sevcon_api"    as module_public1
-    usecase "sevcon_config" as module_public2
+    usecase "flight_controller_api"    as module_public1
+    usecase "flight_controller_config" as module_public2
 
 note left of (module_public1)
     Functions publics:
-    - sevcon_init : Configure sevcon module
+    - flight_controller_init : Configure flight_controller module
+    - flight_controller_decrease: Decrease max working of DACs
+    - flight_controller_increase: Increase max working of DACs
 end note
 note left of (module_public2)
     Configure the module:
-    * Max number of drivers.
-    * Index of motor and opposite motor.
-    * Max temperature and max percent´s work every motor
+    * Max number of flight controller
 end note
 }
 
 package Private {
-    usecase "sevcon_conductor" as module_private1
-    usecase "sevcon_driver"    as module_private2
-    usecase "sevcon_hdwr"      as module_private3
+    usecase "flight_controller_conductor" as module_private1
+    usecase "flight_controller_driver"    as module_private2
+    usecase "flight_controller_hdwr"      as module_private3
 
 note left of (module_private1)
-    Thread 
-    Init GPS module
+    Thread
 end note
 note left of (module_private2)
-    Proccess messages
     Logic and save dates
 end note
 note left of (module_private3)
-    Controller dirver CAN
+    Get values ADCs
+    Controller DACs
 end note
 }
 
