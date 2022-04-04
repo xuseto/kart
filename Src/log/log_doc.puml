@@ -1,6 +1,5 @@
 @startuml log
 
-
 skinparam actorStyle awesome
 actor user as programmer
 
