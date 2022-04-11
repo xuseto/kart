@@ -64,10 +64,10 @@ void system_init(void)
     ret = (RET_SUCCESS == ret) ? adc_init() : ret;
 
     /* INIT PERIPHERALS */
-    /* Init flight controller module */
-    ret = (RET_SUCCESS == ret) ? flight_controller_init(&flight_controller_cfg) : ret;
     /* Init user module */
     ret = (RET_SUCCESS == ret) ? user_init(&user_cfg) : ret;
+    /* Init flight controller module */
+    ret = (RET_SUCCESS == ret) ? flight_controller_init(&flight_controller_cfg) : ret;
 
     if (RET_SUCCESS == ret)
     {

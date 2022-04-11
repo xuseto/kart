@@ -31,8 +31,25 @@
 #include "hdwr/uart_api.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
+typedef void *ptr_obj_t;
 
 /* Typedefs --------------------------------------------------------------------------------------*/
+typedef struct
+{
+    void (*ratio_front_axle)(ptr_obj_t arg, float data);
+    void (*ratio_rear_axle)(ptr_obj_t arg, float data);
+    void (*max_front_slip)(ptr_obj_t arg, float data);
+    void (*max_rear_slip)(ptr_obj_t arg, float data);
+    void (*id_p_front)(ptr_obj_t arg, float data);
+    void (*id_i_front)(ptr_obj_t arg, float data);
+    void (*id_d_front)(ptr_obj_t arg, float data);
+    void (*id_p_rear)(ptr_obj_t arg, float data);
+    void (*id_i_rear)(ptr_obj_t arg, float data);
+    void (*id_d_rear)(ptr_obj_t arg, float data);
+    void (*inhibition_system)(ptr_obj_t arg, float data);
+
+} user_api_t;
+
 /** Struct cfg by user module */
 typedef struct
 {
@@ -43,12 +60,14 @@ typedef struct
 /** Struct data by user module */
 typedef struct
 {
+    user_api_t api;
+    ptr_obj_t ptr_data_api;
     osThreadId_t id_thread; /** ID for thread */
     fifo_t id_fifo;
     uint16_t length_msg_tx;
     uint16_t length_msg_rx;
-    uint32_t ratio_front_axle;
-    uint32_t ratio_rear_axle;
+    float ratio_front_axle;
+    float ratio_rear_axle;
     float max_front_slip;
     float max_rear_slip;
     float id_p_front;
@@ -75,8 +94,10 @@ typedef struct
  */
 ret_code_t user_init(user_cfg_t *cfg);
 
-uint32_t user_get_ratio_front_axle(void);
-uint32_t user_get_ratio_rear_axle(void);
+ret_code_t user_init_api(void *obj, user_api_t *api);
+
+float user_get_ratio_front_axle(void);
+float user_get_ratio_rear_axle(void);
 float user_get_max_front_slip(void);
 float user_get_max_rear_slip(void);
 float user_get_id_p_front(void);

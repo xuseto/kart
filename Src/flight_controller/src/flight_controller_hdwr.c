@@ -24,19 +24,99 @@
 #include "hdwr/adc_api.h"
 #include "gps/gps_api.h"
 #include "sevcon/sevcon_api.h"
+#include "user/user_api.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 #define DIFF_ADC_SET_NEW_VALUE 0.1
+
 /* Typedefs --------------------------------------------------------------------------------------*/
+user_api_t flight_controller_api_user;
 
 /* Private values declaration --------------------------------------------------------------------*/
-static float getter_diff_abs(float value1, float value2);
+float getter_diff_abs(float value1, float value2);
+static void flight_controller_ratio_front_axle(ptr_obj_t arg, float data);
+static void flight_controller_ratio_rear_axle(ptr_obj_t arg, float data);
+static void flight_controller_max_front_slip(ptr_obj_t arg, float data);
+static void flight_controller_max_rear_slip(ptr_obj_t arg, float data);
+static void flight_controller_id_p_front(ptr_obj_t arg, float data);
+static void flight_controller_id_i_front(ptr_obj_t arg, float data);
+static void flight_controller_id_d_front(ptr_obj_t arg, float data);
+static void flight_controller_id_p_rear(ptr_obj_t arg, float data);
+static void flight_controller_id_i_rear(ptr_obj_t arg, float data);
+static void flight_controller_id_d_rear(ptr_obj_t arg, float data);
+static void flight_controller_inhibition_system(ptr_obj_t arg, float data);
 
 /* Private functions -----------------------------------------------------------------------------*/
-static float getter_diff_abs(float value1, float value2)
+float getter_diff_abs(float value1, float value2)
 {
 
     return ((value1 > value2) ? value1 - value2 : value2 - value1);
+}
+
+static void flight_controller_ratio_front_axle(ptr_obj_t arg, float data)
+{
+    flight_controller_t *obj = (flight_controller_t *)arg;
+    obj->ratio_axle[POS_FRONT] = data;
+}
+
+static void flight_controller_ratio_rear_axle(ptr_obj_t arg, float data)
+{
+    flight_controller_t *obj = (flight_controller_t *)arg;
+    obj->ratio_axle[POS_REAR] = data;
+}
+
+static void flight_controller_max_front_slip(ptr_obj_t arg, float data)
+{
+    flight_controller_t *obj = (flight_controller_t *)arg;
+    obj->max_slip[POS_FRONT] = data;
+}
+
+static void flight_controller_max_rear_slip(ptr_obj_t arg, float data)
+{
+    flight_controller_t *obj = (flight_controller_t *)arg;
+    obj->max_slip[POS_REAR] = data;
+}
+
+static void flight_controller_id_p_front(ptr_obj_t arg, float data)
+{
+    flight_controller_t *obj = (flight_controller_t *)arg;
+    obj->id_p[POS_FRONT] = data;
+}
+
+static void flight_controller_id_i_front(ptr_obj_t arg, float data)
+{
+    flight_controller_t *obj = (flight_controller_t *)arg;
+    obj->id_i[POS_FRONT] = data;
+}
+
+static void flight_controller_id_d_front(ptr_obj_t arg, float data)
+{
+    flight_controller_t *obj = (flight_controller_t *)arg;
+    obj->id_d[POS_FRONT] = data;
+}
+
+static void flight_controller_id_p_rear(ptr_obj_t arg, float data)
+{
+    flight_controller_t *obj = (flight_controller_t *)arg;
+    obj->id_p[POS_REAR] = data;
+}
+
+static void flight_controller_id_i_rear(ptr_obj_t arg, float data)
+{
+    flight_controller_t *obj = (flight_controller_t *)arg;
+    obj->id_i[POS_REAR] = data;
+}
+
+static void flight_controller_id_d_rear(ptr_obj_t arg, float data)
+{
+    flight_controller_t *obj = (flight_controller_t *)arg;
+    obj->id_d[POS_REAR] = data;
+}
+
+static void flight_controller_inhibition_system(ptr_obj_t arg, float data)
+{
+    flight_controller_t *obj = (flight_controller_t *)arg;
+    obj->inhibition_system = data;
 }
 
 /* Public functions ------------------------------------------------------------------------------*/
@@ -52,10 +132,12 @@ ret_code_t flight_controller_hdwr_init(flight_controller_t *arg)
 
     if (ret == RET_SUCCESS)
     {
-        arg->gps = gps_init (&arg->cfg->gps_cfg);
-        arg->sevcon = sevcon_init (&arg->cfg->sevcon_cfg);
+        arg->gps = gps_init(&arg->cfg->gps_cfg);
+        arg->sevcon = sevcon_init(&arg->cfg->sevcon_cfg);
         ret = (arg->gps && arg->sevcon) ? RET_SUCCESS : RET_INT_ERROR;
     }
+
+    ret = (RET_SUCCESS == ret) ? user_init_api(arg, &flight_controller_api_user) : ret;
 
     return ret;
 }
@@ -98,6 +180,21 @@ ret_code_t flight_controller_hdwr_set_dac(pwm_id_t arg, uint16_t value_dac)
 {
     return pwm_set_new_duty(arg, value_dac);
 }
+
+user_api_t flight_controller_api_user = {
+    .ratio_front_axle = flight_controller_ratio_front_axle,
+    .ratio_rear_axle = flight_controller_ratio_rear_axle,
+    .max_front_slip = flight_controller_max_front_slip,
+    .max_rear_slip = flight_controller_max_rear_slip,
+    .id_p_front = flight_controller_id_p_front,
+    .id_i_front = flight_controller_id_i_front,
+    .id_d_front = flight_controller_id_d_front,
+    .id_p_rear = flight_controller_id_p_rear,
+    .id_i_rear = flight_controller_id_i_rear,
+    .id_d_rear = flight_controller_id_d_rear,
+    .inhibition_system = flight_controller_inhibition_system,
+};
+
 /**
  * @}
  */

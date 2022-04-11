@@ -41,14 +41,28 @@ ret_code_t user_init(user_cfg_t *cfg)
     return NULL;
 }
 
-uint32_t user_get_ratio_front_axle(void)
+ret_code_t user_init_api (void *obj, user_api_t *api)
+{
+    if (!obj ) return RET_INT_ERROR;
+
+    ret_code_t ret = RET_SUCCESS;
+    user_t *obj_lv = user_conductor_getter_get_obj ();
+
+    obj_lv->api = *api;
+    obj_lv->ptr_data_api = obj;
+
+    return ret;
+}
+
+//--------------------------------------------------------------------------------------------------
+float user_get_ratio_front_axle(void)
 {
     user_t *obj = user_conductor_getter_get_obj ();
     return obj->ratio_front_axle;
 }
 
 //--------------------------------------------------------------------------------------------------
-uint32_t user_get_ratio_rear_axle(void)
+float user_get_ratio_rear_axle(void)
 {
     user_t *obj = user_conductor_getter_get_obj ();
     return obj->ratio_rear_axle;

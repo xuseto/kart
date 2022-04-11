@@ -69,10 +69,8 @@ sevcon_id_t sevcon_conductor_init(sevcon_cfg_t *cfg)
     ret = (RET_SUCCESS == ret) ? sevcon_hdwr_init(cfg, sevcon) : ret;
 
     ret = (RET_SUCCESS == ret) ? sevcon_driver_log_init(sevcon) : ret;
-    
-    printf ("%d >> %p\n", ret, sevcon);
 
-    return (RET_SUCCESS == ret)? (sevcon_id_t)sevcon : NULL;
+    return (RET_SUCCESS == ret) ? (sevcon_id_t)sevcon : NULL;
 }
 
 /**

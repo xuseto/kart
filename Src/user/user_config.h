@@ -27,13 +27,12 @@
 // HEADER
 #define USER_HEADER 0x1A
 #define USER_SIZE_HEADER 1
-// END 
+// END
 #define USER_SIZE_END_PAYLOAD 1
 
-
 // PAYLOAD
-#define USER_NUMBER_PAYLOAD 2
-#define USER_SIZE_PAYLOAD   5 // ID (1 BYTE) + PAYLOAD (4 BYTES)
+#define USER_NUMBER_PAYLOAD 1
+#define USER_SIZE_PAYLOAD 5 // ID (1 BYTE) + PAYLOAD (4 BYTES)
 
 typedef enum
 {
@@ -48,7 +47,7 @@ typedef enum
     USER_ID_I_FRONT,
     USER_ID_D_FRONT,
     USER_ID_INHIBITION_SYSTEM
-}user_ids_t;
+} user_ids_t;
 
 #endif /* __USER_CONFIG_H */
 

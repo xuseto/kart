@@ -32,6 +32,9 @@
 #include <sevcon/sevcon_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
+#define POS_FRONT 0
+#define POS_REAR 1
+#define POS_MAX 2
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** Struct configurated this module */
@@ -57,6 +60,13 @@ typedef struct
     pwm_id_t dac_id[MAX_NUM_CONTROLLER];     /** ID form PWM for DACs */
     gps_id_t gps; /** Struct of GPS */
     sevcon_id_t sevcon; /** Struct of GPS */
+    float ratio_axle[POS_MAX];
+    float max_slip[POS_MAX];
+    float max_rear_slip;
+    float id_p[POS_MAX];
+    float id_i[POS_MAX];
+    float id_d[POS_MAX];
+    float inhibition_system;
 } flight_controller_t;
 
 /* Private values --------------------------------------------------------------------------------*/
