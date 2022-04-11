@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 24/11/2021
- * @date Last modification 03/04/2021 by jnieto
+ * @date Last modification 11/04/2021 by jnieto
  * @brief Define all objets of the system Kart
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -82,6 +82,25 @@ flight_controller_cfg_t flight_controller_cfg =
                 },
 
             },
+        .gps_cfg = 
+            {
+            .fifo_cfg = 
+                {
+                    .num_msg = 2,
+                },
+                .uart_number = UART_3,
+                .output_fields = 
+                {
+                    .ins.bit.vel_ned = 1,
+                }
+            },
+        .sevcon_cfg =
+            {
+            .fifo_cfg =
+                {  
+                    .num_msg = 20,      
+                }
+            },
 };
 
 /** Struct of the CAN BUS */
@@ -91,21 +110,6 @@ can_cfg_t can_cfg =
         .assignament_can = CAN_1,
         .type = CAN_TYPE_STD,
         .filter = NULL,
-};
-
-/** Struct of SEVCON */
-sevcon_cfg_t sevcon_cfg =
-    {
-        .fifo_cfg = {
-            .num_msg = 20,
-        },
-        .gps_cfg = {.fifo_cfg = {
-                        .num_msg = 2,
-                    },
-                    .uart_number = UART_3,
-                    .output_fields = {
-                        .ins.bit.vel_ned = 1,
-                    }},
 };
 
 /** Struct of USART3 */

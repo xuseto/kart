@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 14/02/2022
- * @date Last modification 14/02/2022 by jnieto
+ * @date Last modification 11/04/2021 by jnieto
  * @brief flight controller
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -28,6 +28,8 @@
 #include <hdwr/adc_api.h>
 #include <periodic/periodic_api.h>
 #include <hdwr/pwm_api.h>
+#include <gps/gps_api.h>
+#include <sevcon/sevcon_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -39,6 +41,8 @@ typedef struct
     adc_stm32_t adc_channel[MAX_NUM_CONTROLLER]; /** Cfg numer of channel ADC input */
     periodic_timers_t periodic_timer;            /** Cfg timeout for periodic module */
     pwm_cfg_t dac_cfg[MAX_NUM_CONTROLLER];
+    gps_cfg_t gps_cfg;
+    sevcon_cfg_t sevcon_cfg;
 } flight_controller_cfg_t;
 
 /** Struct object data this module */
@@ -51,6 +55,8 @@ typedef struct
     float adc_offset[MAX_NUM_CONTROLLER];    /** Values initial of de ADCs 0 - 3.3V */
     uint16_t dac_values[MAX_NUM_CONTROLLER]; /** Values of de DACs */
     pwm_id_t dac_id[MAX_NUM_CONTROLLER];     /** ID form PWM for DACs */
+    gps_id_t gps; /** Struct of GPS */
+    sevcon_id_t sevcon; /** Struct of GPS */
 } flight_controller_t;
 
 /* Private values --------------------------------------------------------------------------------*/

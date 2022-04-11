@@ -29,10 +29,11 @@
 #include <stdbool.h>
 
 #include <hdwr/fifo_api.h>
-#include <gps/gps_api.h>
 #include <sevcon/sevcon_config.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
+/** Pontier of struct of GPS */
+typedef uint32_t sevcon_id_t;
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** Data every driver secvon */
@@ -49,7 +50,6 @@ typedef struct driver_data_s
 typedef struct sevcon_cfg_s
 {
     fifo_cfg_t fifo_cfg;
-    gps_cfg_t gps_cfg;
 } sevcon_cfg_t;
 
 /** Data of secvon */
@@ -58,7 +58,6 @@ typedef struct sevcon_s
     char const *name;
     fifo_t fifo_id;
     driver_data_t driver[SEVCON_MAX_DRIVERS];
-    gps_id_t gps; /** Struct of GPS */
 } sevcon_t;
 
 /* Private values --------------------------------------------------------------------------------*/
@@ -74,7 +73,7 @@ typedef struct sevcon_s
  * @param cfg \ref sevcon_cfg_t
  * @return \ref ret_code_t
  */
-ret_code_t sevcon_init(sevcon_cfg_t *cfg);
+sevcon_id_t sevcon_init(sevcon_cfg_t *cfg);
 
 #endif /* __SEVCON_API_H */
 

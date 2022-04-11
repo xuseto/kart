@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 14/02/2022
- * @date Last modification 17/02/2022 by jnieto
+ * @date Last modification 11/04/2021 by jnieto
  * @brief FLIGHT_CONTROLLER functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -59,7 +59,7 @@ static void fligth_controller_thread(void *arg)
 
     while (1)
     {
-        osThreadFlagsWait(0x00, osFlagsWaitAny, 5000); // osWaitForever);
+        osThreadFlagsWait(0x00, osFlagsWaitAny, 100);
 
         if (flight_controller_hdwr_check_adc(fligth_ctrl_thread))
         {

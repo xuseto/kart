@@ -22,6 +22,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include "hdwr/adc_api.h"
+#include "gps/gps_api.h"
+#include "sevcon/sevcon_api.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 #define DIFF_ADC_SET_NEW_VALUE 0.1
@@ -46,6 +48,13 @@ ret_code_t flight_controller_hdwr_init(flight_controller_t *arg)
     {
         arg->dac_id[i] = pwm_create(&arg->cfg->dac_cfg[i]);
         ret = (arg->dac_id[i]) ? RET_SUCCESS : RET_INT_ERROR;
+    }
+
+    if (ret == RET_SUCCESS)
+    {
+        arg->gps = gps_init (&arg->cfg->gps_cfg);
+        arg->sevcon = sevcon_init (&arg->cfg->sevcon_cfg);
+        ret = (arg->gps && arg->sevcon) ? RET_SUCCESS : RET_INT_ERROR;
     }
 
     return ret;
