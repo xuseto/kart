@@ -56,15 +56,18 @@ static void fligth_controller_thread(void *arg)
 
     flight_controller_driver_start_periodic(fligth_ctrl_thread);
     flight_controller_hdwr_start(fligth_ctrl_thread);
+    fligth_ctrl_thread->mutex_flag_thread = false;
 
     while (1)
     {
-        osThreadFlagsWait(0x00, osFlagsWaitAny, 100);
+        osThreadFlagsWait(0x00, osFlagsWaitAny, osWaitForever);
 
         if (flight_controller_hdwr_check_adc(fligth_ctrl_thread))
         {
             flight_controller_driver_update_dac(fligth_ctrl_thread);
         }
+
+        fligth_ctrl_thread->mutex_flag_thread = false;
     }
 }
 
@@ -104,9 +107,10 @@ ret_code_t flight_controller_conductor_init(flight_controller_cfg_t *cfg)
 //--------------------------------------------------------------------------------------------------
 void flight_controller_conductor_resume_thread(flight_controller_t *arg)
 {
-    if (arg->thread_id)
+    if (arg && arg->thread_id && arg->mutex_flag_thread == false)
     {
-        // osThreadResume(arg->thread_id);
+        arg->mutex_flag_thread = true;
+        osThreadResume(arg->thread_id);
     }
 }
 
