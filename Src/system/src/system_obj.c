@@ -49,7 +49,7 @@ flight_controller_cfg_t flight_controller_cfg =
                 [2] = ADC_A2,
                 [3] = ADC_A3,
             },
-        .periodic_timer = PERIODIC_EVERY_100_MS,
+        .periodic_timer = PERIODIC_EVERY_200_MS,
         .dac_cfg =
             {
                 [0] = {
@@ -82,25 +82,17 @@ flight_controller_cfg_t flight_controller_cfg =
                 },
 
             },
-        .gps_cfg = 
-            {
-            .fifo_cfg = 
-                {
-                    .num_msg = 2,
-                },
-                .uart_number = UART_3,
-                .output_fields = 
-                {
-                    .ins.bit.vel_ned = 1,
-                }
-            },
-        .sevcon_cfg =
-            {
-            .fifo_cfg =
-                {  
-                    .num_msg = 20,      
-                }
-            },
+        .gps_cfg = {.fifo_cfg = {
+                        .num_msg = 2,
+                    },
+                    .uart_number = UART_3,
+                    .output_fields = {
+                        .ins.bit.vel_ned = 1,
+                    }},
+        .sevcon_cfg = {.fifo_cfg = {
+                           .num_msg = 20,
+                       }},
+        .com = UART_1,
 };
 
 /** Struct of the CAN BUS */

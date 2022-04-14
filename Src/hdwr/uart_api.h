@@ -89,6 +89,13 @@ ret_code_t uart_suscribe_rx_fifo(fifo_t *fifo_rx, uint16_t size, uart_number_t u
  */
 ret_code_t uart_unsuscribe_rx_fifo(fifo_t *fifo_rx);
 
+/**
+ * @brief Send new message uart
+ *
+ * @return \ref ret_code_t
+ */
+ret_code_t uart_tx(uart_number_t uart, uint8_t *value_tx, uint16_t size);
+
 #endif /* _uart_API_H */
        /**
         * @}

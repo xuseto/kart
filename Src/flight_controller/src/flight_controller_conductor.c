@@ -112,6 +112,8 @@ void flight_controller_conductor_resume_thread(flight_controller_t *arg)
         arg->mutex_flag_thread = true;
         osThreadResume(arg->thread_id);
     }
+
+    flight_controller_driver_loop_send_values(arg);
 }
 
 /**

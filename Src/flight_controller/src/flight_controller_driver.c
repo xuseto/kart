@@ -22,6 +22,7 @@
 #include "flight_controller_hdwr.h"
 
 #include "log/log_api.h"
+#include "hdwr/ieee754.h"
 #include <stdio.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
@@ -30,6 +31,7 @@
 
 /* Private values --------------------------------------------------------------------------------*/
 uint16_t decrease_max_percent_working[MAX_NUM_CONTROLLER];
+uint16_t delay_tx_msg, tx_front_rear = 0;
 
 /* Private functions declaration -----------------------------------------------------------------*/
 /**
@@ -120,6 +122,51 @@ void flight_controller_driver_increase(uint16_t id, uint16_t value)
 {
     decrease_max_percent_working[id] = (decrease_max_percent_working[id] > value) ? decrease_max_percent_working[id] - value : 0;
 }
+
+//--------------------------------------------------------------------------------------------------
+void flight_controller_driver_loop_send_values(flight_controller_t *arg)
+{
+    if (delay_tx_msg % 2 == 0)
+    {
+        uint32_t value_send[4] = {0};
+        uint8_t frame_tx[MAX_SIZEOF_TX_VALUES], j = 2;
+        frame_tx[0] = FLIGTH_CONTROLLER_HEAD;
+        // Send fast values
+        if (delay_tx_msg < 8)
+        {
+            frame_tx[1] = FLIGTH_CONTROLLER_ID_DATA_SLIPT;
+            for (uint8_t i = 0; i < MAX_NUM_CONTROLLER; i++)
+            {
+                value_send[i] = pack754_32(&arg->slip[i]);
+            }
+        }
+        // Send slow values
+        else
+        {
+            delay_tx_msg = 1;
+            frame_tx[1] = (tx_front_rear == POS_FRONT) ? FLIGTH_CONTROLLER_ID_DATA_FRONT : FLIGTH_CONTROLLER_ID_DATA_REAR;
+            value_send[0] = pack754_32(&arg->id_p[tx_front_rear]);
+            value_send[1] = pack754_32(&arg->id_i[tx_front_rear]);
+            value_send[2] = pack754_32(&arg->id_d[tx_front_rear]);
+            value_send[3] = pack754_32(&arg->max_slip[tx_front_rear]);
+            tx_front_rear = (tx_front_rear == POS_FRONT) ? POS_REAR : POS_FRONT;
+        }
+        // convert uint32 to char
+        for (uint8_t i = 0; i < MAX_NUM_CONTROLLER; i++)
+        {
+            for (uint8_t z = 0; z < 4; z++)
+            {
+                frame_tx[j + z] = value_send[i] & 0x000000FF;
+                value_send[i] = value_send[i] >> 8;
+            }
+            j += 4;
+        }
+
+        uart_tx(arg->cfg->com, frame_tx, MAX_SIZEOF_TX_VALUES);
+    }
+    delay_tx_msg++;
+}
+
 /**
  * @}
  */

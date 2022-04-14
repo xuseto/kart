@@ -39,6 +39,8 @@ typedef enum
     ADC_MAX
 } adc_stm32_t;
 
+typedef void (*adc_cllbk)(void *arg); /** Pointer callback when adc finish conversion*/
+
 /* Private values --------------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
@@ -56,6 +58,15 @@ ret_code_t adc_init(void);
  * @return float 0-3.3 V
  */
 float adc_get_value(adc_stm32_t adc_ch);
+
+/**
+ * @brief Register fifos queue when recived a message CAN
+ *
+ * @param cllback \ref adc_cllbk
+ * @param arg ptr data
+ * @return \ref ret_code_t
+ */
+ret_code_t adc_suscribe(adc_cllbk cllbck, void *arg);
 
 #endif
 

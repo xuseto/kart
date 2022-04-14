@@ -28,6 +28,7 @@
 #include <hdwr/adc_api.h>
 #include <periodic/periodic_api.h>
 #include <hdwr/pwm_api.h>
+#include <hdwr/uart_api.h>
 #include <gps/gps_api.h>
 #include <sevcon/sevcon_api.h>
 
@@ -46,6 +47,7 @@ typedef struct
     pwm_cfg_t dac_cfg[MAX_NUM_CONTROLLER];
     gps_cfg_t gps_cfg;
     sevcon_cfg_t sevcon_cfg;
+    uart_number_t com; /** Port UART send data */
 } flight_controller_cfg_t;
 
 /** Struct object data this module */
@@ -57,6 +59,7 @@ typedef struct
     float adc_values[MAX_NUM_CONTROLLER];    /** Values of de ADCs 0 - 3.3V */
     float adc_offset[MAX_NUM_CONTROLLER];    /** Values initial of de ADCs 0 - 3.3V */
     uint16_t dac_values[MAX_NUM_CONTROLLER]; /** Values of de DACs */
+    float slip[MAX_NUM_CONTROLLER];          /** Slip every motor */
     pwm_id_t dac_id[MAX_NUM_CONTROLLER];     /** ID form PWM for DACs */
     gps_id_t gps;                            /** Struct of GPS */
     sevcon_id_t sevcon;                      /** Struct of GPS */

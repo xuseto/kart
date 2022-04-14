@@ -27,7 +27,8 @@
 #include <stdbool.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
-extern UART_HandleTypeDef hlpuart1;;
+extern UART_HandleTypeDef hlpuart1;
+;
 extern UART_HandleTypeDef huart3;
 
 /** Size FIFO RX */
@@ -55,8 +56,8 @@ typedef struct
 {
     fifo_t uart_fifo_subscribe; /** FIFO RX subscribe to UART */
     uint16_t uart_fifo_size;    /** FIFO RX size to UART */
-    UART_HandleTypeDef *handle;  /** Handle uart */
-}uart_subscribe_t;
+    UART_HandleTypeDef *handle; /** Handle uart */
+} uart_subscribe_t;
 
 uart_subscribe_t uart_subscribe[UART_MAX_MODULES_SUBSCRIBE];
 
@@ -76,7 +77,7 @@ UART_HandleTypeDef *get_handle(uart_number_t uart);
 /* Private functions -----------------------------------------------------------------------------*/
 void uart_task(void *aguments)
 {
-    //uart_cfg_t *uart = (uart_cfg_t *)aguments;
+    // uart_cfg_t *uart = (uart_cfg_t *)aguments;
 
     osThreadFlagsWait(NULL, osFlagsWaitAny, osWaitForever);
 }
@@ -84,7 +85,7 @@ void uart_task(void *aguments)
 //--------------------------------------------------------------------------------------------------
 UART_HandleTypeDef *get_handle(uart_number_t uart)
 {
-  UART_HandleTypeDef *handle = NULL;
+    UART_HandleTypeDef *handle = NULL;
     if (uart == UART_1)
     {
         handle = &hlpuart1;
@@ -123,7 +124,6 @@ ret_code_t uart_create(uart_cfg_t *cfg)
         return (log_new_msg(uart_task_attributes.name, LOG_DEBUG, msg));
     }
 
-
     log_new_msg(uart_task_attributes.name, LOG_DEBUG, msg);
 
     return ret;
@@ -145,7 +145,7 @@ ret_code_t uart_suscribe_rx_fifo(fifo_t *fifo_rx, uint16_t size, uart_number_t u
 
             if (uart_subscribe[i].handle)
             {
-              HAL_UART_Receive_IT(uart_subscribe[i].handle, uart_rx, size);
+                HAL_UART_Receive_IT(uart_subscribe[i].handle, uart_rx, size);
             }
             i = UART_MAX_MODULES_SUBSCRIBE + 1;
         }
@@ -174,6 +174,21 @@ ret_code_t uart_unsuscribe_rx_fifo(fifo_t *fifo_rx)
     return ret;
 }
 
+//--------------------------------------------------------------------------------------------------
+ret_code_t uart_tx(uart_number_t uart, uint8_t *value_tx, uint16_t size)
+{
+    ret_code_t ret = RET_INT_ERROR;
+
+    if (!value_tx || uart >= UART_MAX)
+    {
+        return ret;
+    }
+
+    ret = (HAL_OK == HAL_UART_Transmit(get_handle(uart), value_tx, size, UINT16_MAX)) ? RET_SUCCESS : RET_INT_ERROR;
+
+    return ret;
+}
+
 //* ISR --------------------------------------------------------------------------------------------
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
 {
@@ -182,7 +197,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
         if (uart_subscribe[i].uart_fifo_subscribe && uart_subscribe[i].handle == UartHandle)
         {
             fifo_enqueue_msg(uart_subscribe[i].uart_fifo_subscribe, &uart_rx);
-            HAL_UART_Receive_IT(uart_subscribe[i].handle, uart_rx, uart_subscribe[i].uart_fifo_size);
+            HAL_UART_Receive_IT(uart_subscribe[i].handle, uart_rx,
+                                uart_subscribe[i].uart_fifo_size);
         }
     }
 }

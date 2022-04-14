@@ -27,7 +27,7 @@
         <EnableCache>0</EnableCache>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>3485540987</Checksum>
+        <Checksum>3464364841</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -132,7 +132,8 @@
         <Bp9>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\user\src\user_driver.c}.82.13" 0 0 1 "" 0 "" 0</Bp9>
         <Bp10>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\stm32l5xx_it.c}.189.3" 0 0 1 "" 0 "" 0</Bp10>
         <Bp11>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\stm32l5xx_it.c}.203.3" 0 0 1 "" 0 "" 0</Bp11>
-        <Count>12</Count>
+        <Bp12>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\flight_controller\src\flight_controller_driver.c}.153.20" 0 0 1 "" 0 "" 0</Bp12>
+        <Count>13</Count>
     </Breakpoints2>
     <TermIOLog>
         <LoggingEnabled>_ 0</LoggingEnabled>
