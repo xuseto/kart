@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 06/03/2022
- * @date Last modification 06/03/2022 by jnieto
+ * @date Last modification 11/04/2021 by jnieto
  * @brief SEVCON
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -40,9 +40,9 @@
  * @brief Init high level of sevcon
  *
  * @param cfg \ref sevcon_cfg_t
- * @return \ref ret_code_t
+ * @return \ref sevcon_id_t
  */
-ret_code_t sevcon_conductor_init(sevcon_cfg_t *cfg);
+sevcon_id_t sevcon_conductor_init(sevcon_cfg_t *cfg);
 
 #endif /* __SEVCON_CONDUCTOR_H */
 

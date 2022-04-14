@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 24/11/2021
- * @date Last modification 24/11/2021 by jnieto
+ * @date Last modification 11/04/2021 by jnieto
  * @brief Define all objets of the system Kart
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -37,7 +37,6 @@
 extern heartbeat_cfg_t heartbeat;
 extern flight_controller_cfg_t flight_controller_cfg;
 extern can_cfg_t can_cfg;
-extern sevcon_cfg_t sevcon_cfg;
 extern uart_cfg_t uart_cfg;
 extern user_cfg_t user_cfg;
 

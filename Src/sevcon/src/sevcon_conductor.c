@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 06/03/2022
- * @date Last modification 06/03/2022 by jnieto
+ * @date Last modification 11/04/2021 by jnieto
  * @brief SEVCON functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -54,7 +54,7 @@ void sevcon_task(void *argument)
 }
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t sevcon_conductor_init(sevcon_cfg_t *cfg)
+sevcon_id_t sevcon_conductor_init(sevcon_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
 
@@ -70,14 +70,7 @@ ret_code_t sevcon_conductor_init(sevcon_cfg_t *cfg)
 
     ret = (RET_SUCCESS == ret) ? sevcon_driver_log_init(sevcon) : ret;
 
-    /* Init GPS */
-    if (RET_SUCCESS == ret)
-    {
-        sevcon->gps = gps_init(&cfg->gps_cfg);
-        ret = (sevcon->gps) ? RET_SUCCESS : RET_INT_ERROR;
-    }
-
-    return ret;
+    return (RET_SUCCESS == ret) ? (sevcon_id_t)sevcon : NULL;
 }
 
 /**

@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 24/11/2021
- * @date Last modification 05/03/2021 by jnieto
+ * @date Last modification 11/04/2021 by jnieto
  * @brief All System of the Kart
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -54,8 +54,6 @@ void system_init(void)
     ret = (RET_SUCCESS == ret) ? periodic_init() : ret;
     /* Init heartbeat module */
     ret = (RET_SUCCESS == ret) ? heartbeat_init(&heartbeat) : ret;
-    /* Init Sevcon */
-    ret = (RET_SUCCESS == ret) ? sevcon_init(&sevcon_cfg) : ret;
 
     /* INIT COMMS */
     /* Init CAN module */
@@ -66,10 +64,10 @@ void system_init(void)
     ret = (RET_SUCCESS == ret) ? adc_init() : ret;
 
     /* INIT PERIPHERALS */
-    /* Init flight controller module */
-    ret = (RET_SUCCESS == ret) ? flight_controller_init(&flight_controller_cfg) : ret;
     /* Init user module */
     ret = (RET_SUCCESS == ret) ? user_init(&user_cfg) : ret;
+    /* Init flight controller module */
+    ret = (RET_SUCCESS == ret) ? flight_controller_init(&flight_controller_cfg) : ret;
 
     if (RET_SUCCESS == ret)
     {

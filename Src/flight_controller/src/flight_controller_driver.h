@@ -78,6 +78,8 @@ void flight_controller_driver_decrease(uint16_t id, uint16_t value);
 
 void flight_controller_driver_increase(uint16_t id, uint16_t value);
 
+void flight_controller_driver_loop_send_values(flight_controller_t *arg);
+
 #endif /* __FLIGHT_CONTROLLER_DRIVER_H */
 
 /**

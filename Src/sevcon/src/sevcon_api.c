@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 06/03/2022
- * @date Last modification 06/03/2022 by jnieto
+ * @date Last modification 11/04/2021 by jnieto
  * @brief SEVCON functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -31,7 +31,7 @@
 /* Private functions -----------------------------------------------------------------------------*/
 
 /* Public functions ------------------------------------------------------------------------------*/
-ret_code_t sevcon_init(sevcon_cfg_t *cfg)
+sevcon_id_t sevcon_init(sevcon_cfg_t *cfg)
 {
     ret_code_t ret = RET_INT_ERROR;
 

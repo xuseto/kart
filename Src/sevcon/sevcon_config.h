@@ -32,16 +32,16 @@
 #define OD_TYPE_MSG_CAN MNT
 
 /** define ID of every motor */
-#define MOTOR_UP_LEFT 0
-#define MOTOR_UP_RIGHT 1
-#define MOTOR_DOWN_LEFT 2
-#define MOTOR_DOWN_RIGHT 3
+#define MOTOR_FORNT_LEFT 0
+#define MOTOR_FORNT_RIGHT 1
+#define MOTOR_REAR_LEFT 2
+#define MOTOR_REAR_RIGHT 3
 
 /** Define opposite motor */
-#define MOTOR_OPPOSITE_UP_LEFT 1
-#define MOTOR_OPPOSITE_UP_RIGHT 0
-#define MOTOR_OPPOSITE_DOWN_LEFT 3
-#define MOTOR_OPPOSITE_DOWN_RIGHT 2
+#define MOTOR_OPPOSITE_FRONT_LEFT 1
+#define MOTOR_OPPOSITE_FRONT_RIGHT 0
+#define MOTOR_OPPOSITE_REAR_LEFT 3
+#define MOTOR_OPPOSITE_REAR_RIGHT 2
 
 /** Define parameters of kart */
 #define WHEEL_SPOKE (float)0.829 // meters

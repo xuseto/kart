@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <def_common.h>
 #include <flight_controller/src/flight_controller_conductor.h>
+#include <flight_controller/src/flight_controller_driver.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
