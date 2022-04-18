@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 06/03/2022
- * @date Last modification 06/03/2022 by jnieto
+ * @date Last modification 18/04/2022 by jnieto
  * @brief SEVCON functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -118,27 +118,28 @@ static void sevcon_proccess_temperature(sevcon_t *sevcon, uint16_t id_sevcon, ui
         uint16_t opposite_motor = sevcon_hdwr_get_opposite_motor(id_sevcon);
 
         driver->temperature = data;
-
+#if 0
         if (driver->temperature > WRN_TEMP_LEVEL_1 && !driver->warning_temp)
         {
-            flight_controller_decrease(id_sevcon, WRN_DECREASE_MOTOR_WORKING_LVL_1);
-            flight_controller_decrease(opposite_motor, WRN_DECREASE_MOTOR_WORKING_LVL_1);
+            flight_controller_increase(id_sevcon, WRN_DECREASE_MOTOR_WORKING_LVL_1);
+            flight_controller_increase(opposite_motor, WRN_DECREASE_MOTOR_WORKING_LVL_1);
             driver->warning_temp = WRN_DECREASE_MOTOR_WORKING_LVL_1;
         }
         else if (driver->temperature > WRN_TEMP_LEVEL_2)
         {
             int16_t lvl_decrease = WRN_DECREASE_MOTOR_WORKING_LVL_1 - WRN_DECREASE_MOTOR_WORKING_LVL_2;
-            flight_controller_decrease(id_sevcon, lvl_decrease);
-            flight_controller_decrease(opposite_motor, lvl_decrease);
+            flight_controller_increase(id_sevcon, lvl_decrease);
+            flight_controller_increase(opposite_motor, lvl_decrease);
             driver->warning_temp = lvl_decrease;
         }
         else if (driver->warning_temp)
         {
             driver->warning_temp = false;
-            flight_controller_increase(id_sevcon, driver->warning_temp);
-            flight_controller_increase(opposite_motor, driver->warning_temp);
+            flight_controller_decrease(id_sevcon, driver->warning_temp);
+            flight_controller_decrease(opposite_motor, driver->warning_temp);
             driver->warning_temp = 0;
         }
+#endif
     }
 }
 
@@ -152,15 +153,15 @@ static void sevcon_proccess_error(sevcon_t *sevcon, uint16_t id_sevcon, uint32_t
     if (data)
     {
         driver->error = data;
-        flight_controller_decrease(id_sevcon, WRN_DECREASE_MOTOR_WORKING_ERROR);
-        flight_controller_decrease(opposite_motor, WRN_DECREASE_MOTOR_WORKING_ERROR);
+        flight_controller_increase(id_sevcon, WRN_DECREASE_MOTOR_WORKING_ERROR);
+        flight_controller_increase(opposite_motor, WRN_DECREASE_MOTOR_WORKING_ERROR);
     }
     // Sevcon withou error now, but Sevcon has a error
     else if (driver->error)
     {
         driver->error = 0;
-        flight_controller_increase(id_sevcon, WRN_DECREASE_MOTOR_WORKING_ERROR);
-        flight_controller_increase(opposite_motor, WRN_DECREASE_MOTOR_WORKING_ERROR);
+        flight_controller_decrease(id_sevcon, WRN_DECREASE_MOTOR_WORKING_ERROR);
+        flight_controller_decrease(opposite_motor, WRN_DECREASE_MOTOR_WORKING_ERROR);
     }
 }
 
@@ -188,6 +189,12 @@ void sevcon_driver_get_msg(void *arg)
             sevcon_proccess_message(sevcon, msg);
         }
     }
+}
+
+//--------------------------------------------------------------------------------------------------
+float sevcon_driver_get_velocity(sevcon_t *obj, uint16_t num_driver)
+{
+    return (obj->driver[num_driver].vel_m_s);
 }
 
 /**

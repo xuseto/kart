@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 14/02/2022
- * @date Last modification 11/04/2021 by jnieto
+ * @date Last modification 18/04/2021 by jnieto
  * @brief flight controller
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -33,9 +33,7 @@
 #include <sevcon/sevcon_api.h>
 
 /* Defines ---------------------------------------------------------------------------------------*/
-#define POS_FRONT 0
-#define POS_REAR 1
-#define POS_MAX 2
+#define POS_MAX MAX_WHEEL_DRIVE
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** Struct configurated this module */
@@ -59,7 +57,8 @@ typedef struct
     float adc_values[MAX_NUM_CONTROLLER];    /** Values of de ADCs 0 - 3.3V */
     float adc_offset[MAX_NUM_CONTROLLER];    /** Values initial of de ADCs 0 - 3.3V */
     uint16_t dac_values[MAX_NUM_CONTROLLER]; /** Values of de DACs */
-    float slip[MAX_NUM_CONTROLLER];          /** Slip every motor */
+    float slip[MAX_NUM_CONTROLLER];          /** Slip every motor in % */
+    float last_error[MAX_NUM_CONTROLLER];    /**last error calculate in the PID */
     pwm_id_t dac_id[MAX_NUM_CONTROLLER];     /** ID form PWM for DACs */
     gps_id_t gps;                            /** Struct of GPS */
     sevcon_id_t sevcon;                      /** Struct of GPS */

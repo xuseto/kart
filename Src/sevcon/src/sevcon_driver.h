@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 06/03/2022
- * @date Last modification 06/03/2022 by jnieto
+ * @date Last modification 18/04/2022 by jnieto
  * @brief SEVCON
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -50,6 +50,8 @@ ret_code_t sevcon_driver_log_init(sevcon_t *sevcon);
  * @param arg \ref sevcon_t
  */
 void sevcon_driver_get_msg(void *arg);
+
+float sevcon_driver_get_velocity(sevcon_t *obj, uint16_t num_driver);
 
 #endif /* __SEVCON_DRIVER_H */
 

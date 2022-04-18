@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 06/03/2022
- * @date Last modification 06/03/2022 by jnieto
+ * @date Last modification 18/04/2022 by jnieto
  * @brief SEVCON
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -34,6 +34,11 @@
 /* Defines ---------------------------------------------------------------------------------------*/
 /** Pontier of struct of GPS */
 typedef uint32_t sevcon_id_t;
+
+// Define wheels driver
+#define FRONT_WHEEL_DRIVE 0
+#define REAR_WHEEL_DRIVE 1
+#define MAX_WHEEL_DRIVE 2
 
 /* Typedefs --------------------------------------------------------------------------------------*/
 /** Data every driver secvon */
@@ -74,6 +79,10 @@ typedef struct sevcon_s
  * @return \ref ret_code_t
  */
 sevcon_id_t sevcon_init(sevcon_cfg_t *cfg);
+
+float sevcon_get_velocity_in_m_s(sevcon_id_t arg, uint16_t num_driver);
+
+uint16_t sevcon_get_position_wheel_driver(sevcon_id_t arg, uint16_t num_driver);
 
 #endif /* __SEVCON_API_H */
 

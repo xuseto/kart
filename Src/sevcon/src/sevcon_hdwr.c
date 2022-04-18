@@ -90,10 +90,10 @@ uint16_t sevcon_hdwr_get_opposite_motor(uint16_t id_motor)
     uint16_t ret = UINT16_MAX;
     switch (id_motor)
     {
-    case MOTOR_FORNT_LEFT:
+    case MOTOR_FRONT_LEFT:
         ret = MOTOR_OPPOSITE_FRONT_LEFT;
         break;
-    case MOTOR_FORNT_RIGHT:
+    case MOTOR_FRONT_RIGHT:
         ret = MOTOR_OPPOSITE_FRONT_RIGHT;
         break;
     case MOTOR_REAR_LEFT:

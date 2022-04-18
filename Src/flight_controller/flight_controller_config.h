@@ -19,6 +19,16 @@
 /* Defines ---------------------------------------------------------------------------------------*/
 #define MAX_NUM_CONTROLLER 4
 
+// Cofing SLPIT and PID b default values
+#define FLIGTH_CONTROLLER_SLIP_FRONT_DEFAULT 10.0 //%
+#define FLIGTH_CONTROLLER_SLIP_REAR_DEFAULT 10.0  //%
+#define FLIGTH_CONTROLLER_P_FRONT_DEFAULT 1
+#define FLIGTH_CONTROLLER_I_FRONT_DEFAULT 0
+#define FLIGTH_CONTROLLER_D_FRONT_DEFAULT 0.05
+#define FLIGTH_CONTROLLER_P_REAR_DEFAULT 1
+#define FLIGTH_CONTROLLER_I_REAR_DEFAULT 0
+#define FLIGTH_CONTROLLER_D_REAR_DEFAULT 0.05
+
 // 1 byte head + 1 byte id frame + 4*4 frame
 #define MAX_SIZEOF_TX_VALUES 18
 #define FLIGTH_CONTROLLER_HEAD 0x2A
