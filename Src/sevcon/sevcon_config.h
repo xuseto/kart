@@ -32,8 +32,8 @@
 #define OD_TYPE_MSG_CAN MNT
 
 /** define ID of every motor */
-#define MOTOR_FORNT_LEFT 0
-#define MOTOR_FORNT_RIGHT 1
+#define MOTOR_FRONT_LEFT 0
+#define MOTOR_FRONT_RIGHT 1
 #define MOTOR_REAR_LEFT 2
 #define MOTOR_REAR_RIGHT 3
 

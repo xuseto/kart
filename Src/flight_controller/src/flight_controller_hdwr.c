@@ -56,61 +56,61 @@ float getter_diff_abs(float value1, float value2)
 static void flight_controller_ratio_front_axle(ptr_obj_t arg, float data)
 {
     flight_controller_t *obj = (flight_controller_t *)arg;
-    obj->ratio_axle[POS_FRONT] = data;
+    obj->ratio_axle[FRONT_WHEEL_DRIVE] = data;
 }
 
 static void flight_controller_ratio_rear_axle(ptr_obj_t arg, float data)
 {
     flight_controller_t *obj = (flight_controller_t *)arg;
-    obj->ratio_axle[POS_REAR] = data;
+    obj->ratio_axle[REAR_WHEEL_DRIVE] = data;
 }
 
 static void flight_controller_max_front_slip(ptr_obj_t arg, float data)
 {
     flight_controller_t *obj = (flight_controller_t *)arg;
-    obj->max_slip[POS_FRONT] = data;
+    obj->max_slip[FRONT_WHEEL_DRIVE] = data;
 }
 
 static void flight_controller_max_rear_slip(ptr_obj_t arg, float data)
 {
     flight_controller_t *obj = (flight_controller_t *)arg;
-    obj->max_slip[POS_REAR] = data;
+    obj->max_slip[REAR_WHEEL_DRIVE] = data;
 }
 
 static void flight_controller_id_p_front(ptr_obj_t arg, float data)
 {
     flight_controller_t *obj = (flight_controller_t *)arg;
-    obj->id_p[POS_FRONT] = data;
+    obj->id_p[FRONT_WHEEL_DRIVE] = data;
 }
 
 static void flight_controller_id_i_front(ptr_obj_t arg, float data)
 {
     flight_controller_t *obj = (flight_controller_t *)arg;
-    obj->id_i[POS_FRONT] = data;
+    obj->id_i[FRONT_WHEEL_DRIVE] = data;
 }
 
 static void flight_controller_id_d_front(ptr_obj_t arg, float data)
 {
     flight_controller_t *obj = (flight_controller_t *)arg;
-    obj->id_d[POS_FRONT] = data;
+    obj->id_d[FRONT_WHEEL_DRIVE] = data;
 }
 
 static void flight_controller_id_p_rear(ptr_obj_t arg, float data)
 {
     flight_controller_t *obj = (flight_controller_t *)arg;
-    obj->id_p[POS_REAR] = data;
+    obj->id_p[REAR_WHEEL_DRIVE] = data;
 }
 
 static void flight_controller_id_i_rear(ptr_obj_t arg, float data)
 {
     flight_controller_t *obj = (flight_controller_t *)arg;
-    obj->id_i[POS_REAR] = data;
+    obj->id_i[REAR_WHEEL_DRIVE] = data;
 }
 
 static void flight_controller_id_d_rear(ptr_obj_t arg, float data)
 {
     flight_controller_t *obj = (flight_controller_t *)arg;
-    obj->id_d[POS_REAR] = data;
+    obj->id_d[REAR_WHEEL_DRIVE] = data;
 }
 
 static void flight_controller_inhibition_system(ptr_obj_t arg, float data)

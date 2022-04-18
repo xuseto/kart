@@ -3,7 +3,7 @@
  * @author jnieto
  * @version 1.0.0.0.0
  * @date Creation: 14/02/2022
- * @date Last modification 14/02/2022 by jnieto
+ * @date Last modification 18/04/2022 by jnieto
  * @brief FLIGHT_CONTROLLER functions
  * @par
  *  COPYRIGHT NOTICE: (c) jnieto
@@ -58,6 +58,16 @@ ret_code_t flight_controller_driver_init(flight_controller_t *arg)
                                          flight_controller_driver_periodic,
                                          arg);
 
+    // Set default values
+    arg->max_slip[FRONT_WHEEL_DRIVE] = FLIGTH_CONTROLLER_SLIP_FRONT_DEFAULT;
+    arg->max_slip[REAR_WHEEL_DRIVE] = FLIGTH_CONTROLLER_SLIP_REAR_DEFAULT;
+    arg->id_p[FRONT_WHEEL_DRIVE] = FLIGTH_CONTROLLER_P_FRONT_DEFAULT;
+    arg->id_i[FRONT_WHEEL_DRIVE] = FLIGTH_CONTROLLER_I_FRONT_DEFAULT;
+    arg->id_d[FRONT_WHEEL_DRIVE] = FLIGTH_CONTROLLER_D_FRONT_DEFAULT;
+    arg->id_p[REAR_WHEEL_DRIVE] = FLIGTH_CONTROLLER_P_REAR_DEFAULT;
+    arg->id_i[REAR_WHEEL_DRIVE] = FLIGTH_CONTROLLER_I_REAR_DEFAULT;
+    arg->id_d[REAR_WHEEL_DRIVE] = FLIGTH_CONTROLLER_D_REAR_DEFAULT;
+
     return (arg->periodic_id ? RET_SUCCESS : RET_INT_ERROR);
 }
 
@@ -86,15 +96,43 @@ ret_code_t flight_controller_driver_stop_periodic(flight_controller_t *arg)
 //--------------------------------------------------------------------------------------------------
 void flight_controller_driver_update_dac(flight_controller_t *arg)
 {
-    for (uint8_t i = 0x00; i < MAX_NUM_CONTROLLER; i++)
+    float breakout = 1.0;
+
+    // Get value velocity real
+    float v_real = gps_get_velocity_north_axis(arg->gps);
+
+    for (uint8_t idx_motor = 0x00; idx_motor < MAX_NUM_CONTROLLER; idx_motor++)
     {
-        arg->dac_values[i] = (uint16_t)((arg->adc_values[i] * 100.0) / 3.0);
+        // Get position wheel driver FRONT O REAR
+        uint16_t wheel_driver = sevcon_get_position_wheel_driver(arg->sevcon, idx_motor);
+
+        // Calculate slip every motor in % over velocity real
+        float measured = sevcon_get_velocity_in_m_s(arg->sevcon, idx_motor);
+        arg->slip[idx_motor] = (v_real > 0.0) ? (100.0 * measured) / v_real : 0.0; //%
+
+        if (wheel_driver != UINT16_MAX && arg->slip[idx_motor] < arg->max_slip[wheel_driver])
+        {
+            // get error
+            float error = measured - v_real;
+            float derivative = error - arg->last_error[idx_motor];
+            // Calculate PID
+            breakout = (arg->id_p[wheel_driver] * error + arg->id_d[wheel_driver] * derivative) / 100.0;
+            // update values
+            arg->last_error[idx_motor] = error;
+        } // END if wheel_driver
+        else
+        {
+            // No control
+            breakout = 1.0;
+        }
+
+        arg->dac_values[idx_motor] = (uint16_t)(((arg->adc_values[idx_motor] * 100.0) / 3.0) * breakout);
         // Add max percent working
-        arg->dac_values[i] -= decrease_max_percent_working[i];
+        arg->dac_values[idx_motor] = (arg->dac_values[idx_motor] > decrease_max_percent_working[idx_motor]) ? decrease_max_percent_working[idx_motor] : arg->dac_values[idx_motor];
         // Inverter PWM
-        arg->dac_values[i] = 100 - arg->dac_values[i];
-        flight_controller_hdwr_set_dac(arg->dac_id[i], arg->dac_values[i]);
-    }
+        arg->dac_values[idx_motor] = 100 - arg->dac_values[idx_motor];
+        flight_controller_hdwr_set_dac(arg->dac_id[idx_motor], arg->dac_values[idx_motor]);
+    } // END for
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -144,12 +182,12 @@ void flight_controller_driver_loop_send_values(flight_controller_t *arg)
         else
         {
             delay_tx_msg = 1;
-            frame_tx[1] = (tx_front_rear == POS_FRONT) ? FLIGTH_CONTROLLER_ID_DATA_FRONT : FLIGTH_CONTROLLER_ID_DATA_REAR;
+            frame_tx[1] = (tx_front_rear == FRONT_WHEEL_DRIVE) ? FLIGTH_CONTROLLER_ID_DATA_FRONT : FLIGTH_CONTROLLER_ID_DATA_REAR;
             value_send[0] = pack754_32(&arg->id_p[tx_front_rear]);
             value_send[1] = pack754_32(&arg->id_i[tx_front_rear]);
             value_send[2] = pack754_32(&arg->id_d[tx_front_rear]);
             value_send[3] = pack754_32(&arg->max_slip[tx_front_rear]);
-            tx_front_rear = (tx_front_rear == POS_FRONT) ? POS_REAR : POS_FRONT;
+            tx_front_rear = (tx_front_rear == FRONT_WHEEL_DRIVE) ? REAR_WHEEL_DRIVE : FRONT_WHEEL_DRIVE;
         }
         // convert uint32 to char
         for (uint8_t i = 0; i < MAX_NUM_CONTROLLER; i++)
