@@ -255,7 +255,7 @@
                     <item>value_tx</item>
                     <item>size</item>
                     <item>idx</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>

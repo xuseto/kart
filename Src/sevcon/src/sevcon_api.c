@@ -19,6 +19,7 @@
 #include <def_common.h>
 
 #include "sevcon_conductor.h"
+#include "sevcon_driver.h"
 
 /* Defines ---------------------------------------------------------------------------------------*/
 
@@ -61,10 +62,9 @@ uint16_t sevcon_get_position_wheel_driver(sevcon_id_t arg, uint16_t num_driver)
 {
     if (!arg || num_driver > SEVCON_MAX_DRIVERS)
     {
-        return UINT32_MAX;
+        return UINT16_MAX;
     }
-
-    sevcon_t *obj = (sevcon_t *)arg;
+    
     uint16_t ret = UINT16_MAX;
 
     switch (num_driver)

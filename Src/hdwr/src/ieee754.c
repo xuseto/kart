@@ -84,12 +84,12 @@ uint32_t pack754_32 ( float *f )
 //--------------------------------------------------------------------------------------------------
  float unpack754_32( uint32_t *floatingToIntValue )
  {
-   UFloatingPointIEEE754 ieee754;    
+   UFloatingPointIEEE754 ieee754 = {0};    
    unsigned int mantissa = 0;
    unsigned int exponent = 0 ;
    unsigned int sign = 0;    
    
-   sign = NTH_BIT(*floatingToIntValue, 31);
+   sign  = NTH_BIT(*floatingToIntValue, 31);
   
    for( int ix=0; ix<8; ix++)
   {

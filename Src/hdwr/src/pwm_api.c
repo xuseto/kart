@@ -174,7 +174,7 @@ pwm_id_t pwm_create(pwm_cfg_t *cfg)
     {
         /** Calculate frequency */
         pwm->freq = TIMER_TICK_FREQ / (cfg->frequency - 1);
-        uint32_t new_duty = ((pwm->freq + 1) * cfg->duty) / 100.0;
+        uint32_t new_duty = (uint32_t)(((pwm->freq + 1) * cfg->duty) / 100.0);
 
         __HAL_TIM_SET_AUTORELOAD(pwm->htim, pwm->freq);
         __HAL_TIM_SET_COMPARE(pwm->htim, pwm->channel, new_duty);
@@ -206,7 +206,7 @@ ret_code_t pwm_set_new_duty(pwm_id_t arg, uint16_t duty)
 
     pwm_hal_t *pwm = (pwm_hal_t *)arg;
 
-    uint32_t new_duty = pwm->freq * ((float)duty / 100.0);
+    uint32_t new_duty = (uint32_t)(pwm->freq * ((float)duty / 100.0));
 
     new_duty = (new_duty > pwm->freq) ? pwm->freq : new_duty;
 

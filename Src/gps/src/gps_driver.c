@@ -73,7 +73,7 @@ static void gps_proccess_message(gps_t *gps, void *msg)
     uint8_t *new_msg = (uint8_t *)msg;
     output_group_t group;
 
-    if (new_msg[POS_HEADER_SYNC] == HEADER_SYNC && checksum((char *)msg, gps->length_msg))
+    if (new_msg[POS_HEADER_SYNC] == HEADER_SYNC && checksum((unsigned char *)msg, gps->length_msg))
     {
         group.all = new_msg[POS_HEADER_GROUP];
         if (group.bit.commom)
