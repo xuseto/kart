@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=IN_GND Pin=P9-1
+Removed Pin From Net: NetName=DAC4 Pin=P9-2
+Removed Pin From Net: NetName=DAC3 Pin=P9-3
+Removed Pin From Net: NetName=DAC2 Pin=P9-4
+Removed Pin From Net: NetName=DAC1 Pin=P9-5
+Change Component Designator: OldDesignator=P9 NewDesignator=P11
+Added Pin To Net: NetName=DAC1 Pin=P11-1
+Added Pin To Net: NetName=DAC2 Pin=P11-2
+Added Pin To Net: NetName=IN_GND Pin=P11-3
+Added Pin To Net: NetName=DAC3 Pin=P11-4
+Added Pin To Net: NetName=DAC4 Pin=P11-5
+Added Member To Class: ClassName=DAC_OUT Member=Component P11 MHDR1X5

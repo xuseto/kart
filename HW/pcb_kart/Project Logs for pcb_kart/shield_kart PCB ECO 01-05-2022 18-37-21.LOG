@@ -1,0 +1,73 @@
+Change Component Designator: OldDesignator=CN?7 NewDesignator=CN7
+Added Component: Designator=C1(C0402)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Alternate_Manufacturer"; Value = "MURATA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Alternate_Manufacturer_Part_Number"; Value = "GCM155R71C104KA55D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://tunmcdsvn.tun.st.com/Component_Datasheet_Library/Trunk/Capacitors/Yageo_Multilayer_Capacitor_X7R_series_100pF_to_22uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Internal_Part_Number"; Value = "MCD-00102"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "YAGEO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "CC0402KRX7R7BB104"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "C0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part_Type"; Value = "Capacitor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Provided_By"; Value = "SUBCO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Status"; Value = "Released"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Added Component: Designator=C2(C0402)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Alternate_Manufacturer"; Value = "MURATA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Alternate_Manufacturer_Part_Number"; Value = "GCM155R71C104KA55D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://tunmcdsvn.tun.st.com/Component_Datasheet_Library/Trunk/Capacitors/Yageo_Multilayer_Capacitor_X7R_series_100pF_to_22uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Internal_Part_Number"; Value = "MCD-00102"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "YAGEO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "CC0402KRX7R7BB104"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "C0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part_Type"; Value = "Capacitor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Provided_By"; Value = "SUBCO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Status"; Value = "Released"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Added Component: Designator=C3(C0402)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Alternate_Manufacturer"; Value = "MURATA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Alternate_Manufacturer_Part_Number"; Value = "GCM155R71C104KA55D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://tunmcdsvn.tun.st.com/Component_Datasheet_Library/Trunk/Capacitors/Yageo_Multilayer_Capacitor_X7R_series_100pF_to_22uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Internal_Part_Number"; Value = "MCD-00102"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "YAGEO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "CC0402KRX7R7BB104"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "C0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part_Type"; Value = "Capacitor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Provided_By"; Value = "SUBCO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Status"; Value = "Released"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Added Component: Designator=C4(C0402)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Alternate_Manufacturer"; Value = "MURATA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Alternate_Manufacturer_Part_Number"; Value = "GCM155R71C104KA55D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://tunmcdsvn.tun.st.com/Component_Datasheet_Library/Trunk/Capacitors/Yageo_Multilayer_Capacitor_X7R_series_100pF_to_22uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Internal_Part_Number"; Value = "MCD-00102"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "YAGEO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "CC0402KRX7R7BB104"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "C0402"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part_Type"; Value = "Capacitor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Provided_By"; Value = "SUBCO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Status"; Value = "Released"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=+3V3 Pin=C1-2
+Added Pin To Net: NetName=IN_GND Pin=C2-1
+Added Pin To Net: NetName=Vcc_uart Pin=C2-2
+Added Pin To Net: NetName=GND Pin=C3-1
+Added Pin To Net: NetName=+3V3 Pin=C3-2
+Added Pin To Net: NetName=IN_GND Pin=C4-1
+Added Pin To Net: NetName=Vcc_uart Pin=C4-2
+Added Member To Class: ClassName=COM_UART Member=Component C1 Capacitor
+Added Member To Class: ClassName=COM_UART Member=Component C2 Capacitor
+Added Member To Class: ClassName=COM_UART Member=Component C3 Capacitor
+Added Member To Class: ClassName=COM_UART Member=Component C4 Capacitor

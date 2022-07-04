@@ -1,0 +1,80 @@
+Added Component: Designator=U1(ICC_LQFP144_20X20_P050)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "BMS_Part_Number"; Value = "9175310"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://tunmcdsvn.tun.st.com/Component_Datasheet_Library/Trunk/IC/STM_STM32L552ZET6QU"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ECCN_EU"; Value = "NEC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ECCN_US"; Value = "3A991A2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Internal_Part_Number"; Value = "MCD-01055"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "STMICROELECTRONICS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "STM32L552ZET6QU"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "LQFP144"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part_Type"; Value = "IC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Provided_By"; Value = "SUBCO with ST control"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Status"; Value = "Released"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "STM32L552ZET6QU"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=SWO Pin=U1-2
+Added Pin To Net: NetName=ADC_uP3 Pin=U1-13
+Added Pin To Net: NetName=GND Pin=U1-16
+Added Pin To Net: NetName=+3V3 Pin=U1-17
+Added Pin To Net: NetName=AGND Pin=U1-30
+Added Pin To Net: NetName=+3V3 Pin=U1-31
+Added Pin To Net: NetName=+3V3 Pin=U1-32
+Added Pin To Net: NetName=NetR9_1 Pin=U1-33
+Added Pin To Net: NetName=NetR9_2 Pin=U1-34
+Added Pin To Net: NetName=GND Pin=U1-37
+Added Pin To Net: NetName=+3V3 Pin=U1-38
+Added Pin To Net: NetName=GND Pin=U1-48
+Added Pin To Net: NetName=+3V3 Pin=U1-49
+Added Pin To Net: NetName=PC14-OSC32_IN Pin=U1-53
+Added Pin To Net: NetName=PC15-OSC32_OUT Pin=U1-54
+Added Pin To Net: NetName=GND Pin=U1-58
+Added Pin To Net: NetName=+3V3 Pin=U1-59
+Added Pin To Net: NetName=+3V3 Pin=U1-68
+Added Pin To Net: NetName=VLX Pin=U1-69
+Added Pin To Net: NetName=GND Pin=U1-70
+Added Pin To Net: NetName=GND Pin=U1-71
+Added Pin To Net: NetName=V15_COUT Pin=U1-72
+Added Pin To Net: NetName=+3V3 Pin=U1-73
+Added Pin To Net: NetName=SWDIO Pin=U1-82
+Added Pin To Net: NetName=GND Pin=U1-83
+Added Pin To Net: NetName=+3V3 Pin=U1-84
+Added Pin To Net: NetName=SWCLK Pin=U1-85
+Added Pin To Net: NetName=PH0-OSC_IN Pin=U1-88
+Added Pin To Net: NetName=PH1-OSC_OUT Pin=U1-89
+Added Pin To Net: NetName=NRST Pin=U1-91
+Added Pin To Net: NetName=NetR3_1 Pin=U1-93
+Added Pin To Net: NetName=GND Pin=U1-94
+Added Pin To Net: NetName=+3V3 Pin=U1-95
+Added Pin To Net: NetName=IN5 Pin=U1-96
+Added Pin To Net: NetName=IN6 Pin=U1-97
+Added Pin To Net: NetName=IN7 Pin=U1-98
+Added Pin To Net: NetName=IN8 Pin=U1-99
+Added Pin To Net: NetName=GPS_TX Pin=U1-100
+Added Pin To Net: NetName=GPS_RX Pin=U1-101
+Added Pin To Net: NetName=+3V3 Pin=U1-106
+Added Pin To Net: NetName=GND Pin=U1-107
+Added Pin To Net: NetName=+3V3 Pin=U1-108
+Added Pin To Net: NetName=NetR1_2 Pin=U1-114
+Added Pin To Net: NetName=ADC_uP6 Pin=U1-115
+Added Pin To Net: NetName=ADC_uP2 Pin=U1-116
+Added Pin To Net: NetName=ADC_uP1 Pin=U1-117
+Added Pin To Net: NetName=ADC_uP7 Pin=U1-118
+Added Pin To Net: NetName=GND Pin=U1-120
+Added Pin To Net: NetName=+3V3 Pin=U1-121
+Added Pin To Net: NetName=ADC_uP8 Pin=U1-122
+Added Pin To Net: NetName=ADC_uP5 Pin=U1-123
+Added Pin To Net: NetName=GND Pin=U1-126
+Added Pin To Net: NetName=GND Pin=U1-127
+Added Pin To Net: NetName=GND Pin=U1-129
+Added Pin To Net: NetName=+3V3 Pin=U1-130
+Added Pin To Net: NetName=IN1 Pin=U1-132
+Added Pin To Net: NetName=IN2 Pin=U1-133
+Added Pin To Net: NetName=IN3 Pin=U1-134
+Added Pin To Net: NetName=IN4 Pin=U1-135
+Added Pin To Net: NetName=USER_RX Pin=U1-137
+Added Pin To Net: NetName=ADC_uP4 Pin=U1-140
+Added Pin To Net: NetName=GND Pin=U1-142
+Added Pin To Net: NetName=V15_COUT Pin=U1-143
+Added Pin To Net: NetName=+3V3 Pin=U1-144
+Added Member To Class: ClassName=U_STM32_microcontroller_IOs Member=Component U1 STM32L552ZET6QU

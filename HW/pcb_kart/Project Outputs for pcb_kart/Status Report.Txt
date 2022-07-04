@@ -1,0 +1,29 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [pcb_kart.PrjPcb]
+   Generated File[shield_kart.GTO]
+   Generated File[shield_kart.GTP]
+   Generated File[shield_kart.GTS]
+   Generated File[shield_kart.GTL]
+   Generated File[shield_kart.GBL]
+   Generated File[shield_kart.GBS]
+   Generated File[shield_kart.GBP]
+   Generated File[shield_kart.GBO]
+   Generated File[shield_kart.GM1]
+   Generated File[shield_kart.GM12]
+   Generated File[shield_kart.GM13]
+   Generated File[shield_kart.GM14]
+   Generated File[shield_kart.GM15]
+   Generated File[shield_kart.GM16]
+   Generated File[shield_kart.GKO]
+   Generated File[shield_kart.GPT]
+   Generated File[shield_kart.GPB]
+   Generated File[shield_kart.RUL]
+   Generated File[shield_kart.EXTREP]
+   Generated File[shield_kart.REP]
+
+
+Files Generated   : 20
+Documents Printed : 0
+
+Finished Output Generation At 17:37:08 On 20/05/2022

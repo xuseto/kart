@@ -1,0 +1,40 @@
+Added Pin To Net: NetName=ADC_IN1 Pin=R11_1-2
+Added Pin To Net: NetName=ADC_IN1 Pin=R13_1-1
+Added Pin To Net: NetName=ADC_IN1 Pin=U10_1-4
+Added Net: Name=ADC_IN1
+Added Pin To Net: NetName=ADC_IN2 Pin=R11_2-2
+Added Pin To Net: NetName=ADC_IN2 Pin=R13_2-1
+Added Pin To Net: NetName=ADC_IN2 Pin=U10_2-4
+Added Net: Name=ADC_IN2
+Added Pin To Net: NetName=ADC_IN3 Pin=R11_3-2
+Added Pin To Net: NetName=ADC_IN3 Pin=R13_3-1
+Added Pin To Net: NetName=ADC_IN3 Pin=U10_3-4
+Added Net: Name=ADC_IN3
+Added Pin To Net: NetName=ADC_IN4 Pin=R11_4-2
+Added Pin To Net: NetName=ADC_IN4 Pin=R13_4-1
+Added Pin To Net: NetName=ADC_IN4 Pin=U10_4-4
+Added Net: Name=ADC_IN4
+Added Pin To Net: NetName=ADC_IN5 Pin=R11_5-2
+Added Pin To Net: NetName=ADC_IN5 Pin=R13_5-1
+Added Pin To Net: NetName=ADC_IN5 Pin=U10_5-4
+Added Net: Name=ADC_IN5
+Added Pin To Net: NetName=ADC_IN6 Pin=R11_6-2
+Added Pin To Net: NetName=ADC_IN6 Pin=R13_6-1
+Added Pin To Net: NetName=ADC_IN6 Pin=U10_6-4
+Added Net: Name=ADC_IN6
+Added Pin To Net: NetName=ADC_IN7 Pin=R11_7-2
+Added Pin To Net: NetName=ADC_IN7 Pin=R13_7-1
+Added Pin To Net: NetName=ADC_IN7 Pin=U10_7-4
+Added Net: Name=ADC_IN7
+Added Pin To Net: NetName=ADC_IN8 Pin=R11_8-2
+Added Pin To Net: NetName=ADC_IN8 Pin=R13_8-1
+Added Pin To Net: NetName=ADC_IN8 Pin=U10_8-4
+Added Net: Name=ADC_IN8
+Added Member To Class: ClassName=ADC_IN[1..8] Member=Element[1]: ADC_IN
+Added Member To Class: ClassName=ADC_IN[1..8] Member=Element[2]: ADC_IN
+Added Member To Class: ClassName=ADC_IN[1..8] Member=Element[3]: ADC_IN
+Added Member To Class: ClassName=ADC_IN[1..8] Member=Element[4]: ADC_IN
+Added Member To Class: ClassName=ADC_IN[1..8] Member=Element[5]: ADC_IN
+Added Member To Class: ClassName=ADC_IN[1..8] Member=Element[6]: ADC_IN
+Added Member To Class: ClassName=ADC_IN[1..8] Member=Element[7]: ADC_IN
+Added Member To Class: ClassName=ADC_IN[1..8] Member=Element[8]: ADC_IN

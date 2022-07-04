@@ -1,0 +1,9 @@
+Added Pin To Net: NetName=PWM_IN1 Pin=R16_9-1
+Added Pin To Net: NetName=PWM_IN2 Pin=R16_10-1
+Added Pin To Net: NetName=PWM_IN3 Pin=R16_11-1
+Added Pin To Net: NetName=PWM_IN4 Pin=R16_12-1
+Added Pin To Net: NetName=PWM_IN5 Pin=R16_13-1
+Added Pin To Net: NetName=PWM_IN6 Pin=R16_14-1
+Added Pin To Net: NetName=PWM_IN7 Pin=R16_15-1
+Added Pin To Net: NetName=PWM_IN8 Pin=R16_16-1
+Added Class: Name=PWM_OUT[1..8]

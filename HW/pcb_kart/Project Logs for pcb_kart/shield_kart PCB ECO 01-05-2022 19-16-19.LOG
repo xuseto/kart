@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=ADC_OUT8 Pin=CN9-1
+Removed Pin From Net: NetName=ADC_OUT7 Pin=CN9-3
+Removed Pin From Net: NetName=ADC_OUT6 Pin=CN9-5
+Removed Pin From Net: NetName=ADC_OUT5 Pin=CN9-7
+Added Pin To Net: NetName=ADC_OUT5 Pin=CN9-1
+Added Pin To Net: NetName=ADC_OUT6 Pin=CN9-3
+Added Pin To Net: NetName=ADC_OUT7 Pin=CN9-5
+Added Pin To Net: NetName=ADC_OUT8 Pin=CN9-7
+Added Member To Class: ClassName=DAC_OUT Member=Component P9 MHDR1X5

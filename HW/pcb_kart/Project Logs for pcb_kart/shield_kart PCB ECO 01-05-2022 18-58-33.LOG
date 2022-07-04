@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=ADC_OUT1 Pin=CN9-1
+Removed Pin From Net: NetName=ADC_OUT2 Pin=CN9-3
+Removed Pin From Net: NetName=ADC_OUT3 Pin=CN9-5
+Removed Pin From Net: NetName=ADC_OUT4 Pin=CN9-7
+Removed Pin From Net: NetName=ADC_OUT5 Pin=CN9-9
+Removed Pin From Net: NetName=ADC_OUT6 Pin=CN9-11
+Removed Pin From Net: NetName=ADC_OUT7 Pin=CN10-7
+Removed Pin From Net: NetName=ADC_OUT8 Pin=CN10-9
+Added Pin To Net: NetName=ADC_OUT8 Pin=CN9-1
+Added Pin To Net: NetName=ADC_OUT7 Pin=CN9-3
+Added Pin To Net: NetName=ADC_OUT6 Pin=CN9-5
+Added Pin To Net: NetName=ADC_OUT5 Pin=CN9-7
+Added Pin To Net: NetName=ADC_OUT4 Pin=CN9-9
+Added Pin To Net: NetName=ADC_OUT3 Pin=CN9-11
+Added Pin To Net: NetName=ADC_OUT2 Pin=CN10-7
+Added Pin To Net: NetName=ADC_OUT1 Pin=CN10-9

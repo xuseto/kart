@@ -1,0 +1,40 @@
+Added Pin To Net: NetName=PWM_OUT1 Pin=R11_9-2
+Added Pin To Net: NetName=PWM_OUT1 Pin=R13_9-1
+Added Pin To Net: NetName=PWM_OUT1 Pin=U10_9-4
+Added Net: Name=PWM_OUT1
+Added Pin To Net: NetName=PWM_OUT2 Pin=R11_10-2
+Added Pin To Net: NetName=PWM_OUT2 Pin=R13_10-1
+Added Pin To Net: NetName=PWM_OUT2 Pin=U10_10-4
+Added Net: Name=PWM_OUT2
+Added Pin To Net: NetName=PWM_OUT3 Pin=R11_11-2
+Added Pin To Net: NetName=PWM_OUT3 Pin=R13_11-1
+Added Pin To Net: NetName=PWM_OUT3 Pin=U10_11-4
+Added Net: Name=PWM_OUT3
+Added Pin To Net: NetName=PWM_OUT4 Pin=R11_12-2
+Added Pin To Net: NetName=PWM_OUT4 Pin=R13_12-1
+Added Pin To Net: NetName=PWM_OUT4 Pin=U10_12-4
+Added Net: Name=PWM_OUT4
+Added Pin To Net: NetName=PWM_OUT5 Pin=R11_13-2
+Added Pin To Net: NetName=PWM_OUT5 Pin=R13_13-1
+Added Pin To Net: NetName=PWM_OUT5 Pin=U10_13-4
+Added Net: Name=PWM_OUT5
+Added Pin To Net: NetName=PWM_OUT6 Pin=R11_14-2
+Added Pin To Net: NetName=PWM_OUT6 Pin=R13_14-1
+Added Pin To Net: NetName=PWM_OUT6 Pin=U10_14-4
+Added Net: Name=PWM_OUT6
+Added Pin To Net: NetName=PWM_OUT7 Pin=R11_15-2
+Added Pin To Net: NetName=PWM_OUT7 Pin=R13_15-1
+Added Pin To Net: NetName=PWM_OUT7 Pin=U10_15-4
+Added Net: Name=PWM_OUT7
+Added Pin To Net: NetName=PWM_OUT8 Pin=R11_16-2
+Added Pin To Net: NetName=PWM_OUT8 Pin=R13_16-1
+Added Pin To Net: NetName=PWM_OUT8 Pin=U10_16-4
+Added Net: Name=PWM_OUT8
+Added Member To Class: ClassName=PWM_OUT[1..8] Member=Element[1]: PWM_OUT
+Added Member To Class: ClassName=PWM_OUT[1..8] Member=Element[2]: PWM_OUT
+Added Member To Class: ClassName=PWM_OUT[1..8] Member=Element[3]: PWM_OUT
+Added Member To Class: ClassName=PWM_OUT[1..8] Member=Element[4]: PWM_OUT
+Added Member To Class: ClassName=PWM_OUT[1..8] Member=Element[5]: PWM_OUT
+Added Member To Class: ClassName=PWM_OUT[1..8] Member=Element[6]: PWM_OUT
+Added Member To Class: ClassName=PWM_OUT[1..8] Member=Element[7]: PWM_OUT
+Added Member To Class: ClassName=PWM_OUT[1..8] Member=Element[8]: PWM_OUT

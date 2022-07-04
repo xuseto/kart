@@ -1,0 +1,6 @@
+Change Component Footprint: Designator=C6 Old Footprint=C0402 New Footprint=C0603
+Change Component Footprint: Designator=C7 Old Footprint=C0402 New Footprint=C0603
+Change Component Footprint: Designator=C8 Old Footprint=C0402 New Footprint=C0603
+Change Component Footprint: Designator=C9 Old Footprint=C0402 New Footprint=C0603
+Change Component Footprint: Designator=C11 Old Footprint=C0402 New Footprint=C0603
+Change Component Description : Designator=X1 Old Description=Crystal 16 MHz, 8pF, -+20 PPM, R=200O, SMD New Description=Crystal 16 MHz, 8pF, -+20 PPM, R=200O, SMD

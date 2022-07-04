@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=Vcc_uart Pin=SB_3v-1
+Removed Pin From Net: NetName=VDD Pin=SB_3v-2
+Removed Member From Class: ClassName=COM_UART Member=SB_3v

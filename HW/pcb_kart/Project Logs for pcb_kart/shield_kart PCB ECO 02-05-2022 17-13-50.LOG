@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=DAC1 Pin=P11-1
+Removed Pin From Net: NetName=DAC2 Pin=P11-2
+Removed Pin From Net: NetName=DAC3 Pin=P11-4
+Removed Pin From Net: NetName=DAC4 Pin=P11-5
+Added Pin To Net: NetName=PWM_OUT1 Pin=P11-1
+Added Pin To Net: NetName=PWM_OUT2 Pin=P11-2
+Added Pin To Net: NetName=PWM_OUT3 Pin=P11-4
+Added Pin To Net: NetName=PWM_OUT4 Pin=P11-5
+Added Member To Class: ClassName=DAC_OUT Member=Component P9 MHDR1X5

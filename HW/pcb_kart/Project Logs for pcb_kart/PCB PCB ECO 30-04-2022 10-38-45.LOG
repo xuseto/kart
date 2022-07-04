@@ -1,0 +1,9 @@
+Change Net Name : Old Net Name=IN1 New Net Name=PWM_IN1
+Change Net Name : Old Net Name=IN2 New Net Name=PWM_IN2
+Change Net Name : Old Net Name=IN3 New Net Name=PWM_IN3
+Change Net Name : Old Net Name=IN4 New Net Name=PWM_IN4
+Change Net Name : Old Net Name=IN5 New Net Name=PWM_IN5
+Change Net Name : Old Net Name=IN6 New Net Name=PWM_IN6
+Change Net Name : Old Net Name=IN7 New Net Name=PWM_IN7
+Change Net Name : Old Net Name=IN8 New Net Name=PWM_IN8
+Added Class: Name=PWM_IN[1..8]

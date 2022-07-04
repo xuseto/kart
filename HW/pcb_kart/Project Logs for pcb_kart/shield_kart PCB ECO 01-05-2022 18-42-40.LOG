@@ -1,0 +1,23 @@
+Removed Pin From Net: NetName=Vcc_uart Pin=W1-1
+Removed Pin From Net: NetName=+5 Pin=W1-2
+Removed Pin From Net: NetName=Vcc_uart Pin=W2-1
+Removed Pin From Net: NetName=VDD Pin=W2-2
+Removed Member From Class: ClassName=COM_UART Member=W1
+Removed Member From Class: ClassName=COM_UART Member=W2
+Change Component Designator: OldDesignator=SB? NewDesignator=SB_5v
+Added Component: Designator=SB_3v(SOLDER-BRIDGE_R0603-0R)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ECCN_EU"; Value = "n/a"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ECCN_US"; Value = "n/a"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Initial_Board_Reference"; Value = "MB1274"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Internal_Part_Number"; Value = "MCD-00071"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part_Type"; Value = "Mechanical"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Provided_By"; Value = "Subcon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Status"; Value = "Released"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Vcc_uart Pin=SB_3v-1
+Added Pin To Net: NetName=VDD Pin=SB_3v-2
+Added Pin To Net: NetName=Vcc_uart Pin=SB_5v-1
+Added Pin To Net: NetName=+5 Pin=SB_5v-2
+Added Member To Class: ClassName=COM_UART Member=Component SB_3v 

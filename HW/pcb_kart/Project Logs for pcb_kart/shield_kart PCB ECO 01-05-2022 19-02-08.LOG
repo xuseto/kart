@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=PWM_IN7 Pin=CN9-16
+Removed Pin From Net: NetName=PWM_IN6 Pin=CN9-18
+Removed Pin From Net: NetName=PWM_IN5 Pin=CN9-20
+Removed Pin From Net: NetName=PWM_IN8 Pin=CN9-22
+Added Pin To Net: NetName=PWM_IN6 Pin=CN9-16
+Added Pin To Net: NetName=PWM_IN7 Pin=CN9-18
+Added Pin To Net: NetName=PWM_IN8 Pin=CN9-20
+Added Pin To Net: NetName=PWM_IN5 Pin=CN9-22

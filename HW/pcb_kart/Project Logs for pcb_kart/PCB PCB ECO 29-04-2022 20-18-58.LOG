@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=GND Pin=U2-4
+Removed Pin From Net: NetName=GND Pin=U2-7
+Removed Pin From Net: NetName=GND Pin=U2-8
+Removed Member From Class: ClassName=U_STM32_microcontroller_IOs Member=U2
+Change Component Footprint: Designator=C1 Old Footprint=C0402 New Footprint=C0603
+Change Component Footprint: Designator=C2 Old Footprint=C0402 New Footprint=C0603
+Change Component Footprint: Designator=C3 Old Footprint=C0402 New Footprint=C0603
+Change Component Footprint: Designator=C4 Old Footprint=C0402 New Footprint=C0603

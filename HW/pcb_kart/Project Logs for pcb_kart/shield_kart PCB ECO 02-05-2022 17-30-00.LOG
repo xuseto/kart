@@ -1,0 +1,3 @@
+Removed Member From Class: ClassName=PWM_IN[1..8] Member=PWM_IN1
+Added Pin To Net: NetName=PWM_IN2 Pin=CN10-28
+Added Pin To Net: NetName=PWM_IN2 Pin=R16_9-1

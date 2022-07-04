@@ -1,0 +1,12 @@
+Added Component: Designator=SB?(SOLDER-BRIDGE_R0603-0R)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ECCN_EU"; Value = "n/a"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ECCN_US"; Value = "n/a"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Initial_Board_Reference"; Value = "MB1274"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Internal_Part_Number"; Value = "MCD-00071"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part_Type"; Value = "Mechanical"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Provided_By"; Value = "Subcon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Status"; Value = "Released"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=COM_UART Member=Component SB? 

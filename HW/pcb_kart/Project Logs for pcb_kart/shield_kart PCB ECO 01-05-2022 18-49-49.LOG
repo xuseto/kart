@@ -1,0 +1,2 @@
+Removed Pin From Net: NetName=GND Pin=CN7-8
+Removed Member From Class: ClassName=U_STM32_microcontroller_IOs Member=CN7

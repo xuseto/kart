@@ -1,0 +1,32 @@
+Change Component Designator: OldDesignator=U?_OPTO1 NewDesignator=U10_OPTO1
+Change Component Designator: OldDesignator=U?_OPTO2 NewDesignator=U10_OPTO2
+Change Component Designator: OldDesignator=U?_OPTO3 NewDesignator=U10_OPTO3
+Change Component Designator: OldDesignator=U?_OPTO4 NewDesignator=U10_OPTO4
+Change Component Designator: OldDesignator=U?_OPTO5 NewDesignator=U10_OPTO5
+Change Component Designator: OldDesignator=U?_OPTO6 NewDesignator=U10_OPTO6
+Change Component Designator: OldDesignator=U?_OPTO7 NewDesignator=U10_OPTO7
+Change Component Designator: OldDesignator=U?_OPTO8 NewDesignator=U10_OPTO8
+Change Component Designator: OldDesignator=U?_OPTO9 NewDesignator=U10_OPTO9
+Change Component Designator: OldDesignator=U?_OPTO10 NewDesignator=U10_OPTO10
+Change Component Designator: OldDesignator=U?_OPTO11 NewDesignator=U10_OPTO11
+Change Component Designator: OldDesignator=U?_OPTO12 NewDesignator=U10_OPTO12
+Change Component Designator: OldDesignator=U?_OPTO13 NewDesignator=U10_OPTO13
+Change Component Designator: OldDesignator=U?_OPTO14 NewDesignator=U10_OPTO14
+Change Component Designator: OldDesignator=U?_OPTO15 NewDesignator=U10_OPTO15
+Change Component Designator: OldDesignator=U?_OPTO16 NewDesignator=U10_OPTO16
+Change Net Name : Old Net Name=NetU?_OPTO1_4 New Net Name=NetU10_OPTO1_4
+Change Net Name : Old Net Name=NetU?_OPTO2_4 New Net Name=NetU10_OPTO2_4
+Change Net Name : Old Net Name=NetU?_OPTO3_4 New Net Name=NetU10_OPTO3_4
+Change Net Name : Old Net Name=NetU?_OPTO4_4 New Net Name=NetU10_OPTO4_4
+Change Net Name : Old Net Name=NetU?_OPTO5_4 New Net Name=NetU10_OPTO5_4
+Change Net Name : Old Net Name=NetU?_OPTO6_4 New Net Name=NetU10_OPTO6_4
+Change Net Name : Old Net Name=NetU?_OPTO7_4 New Net Name=NetU10_OPTO7_4
+Change Net Name : Old Net Name=NetU?_OPTO8_4 New Net Name=NetU10_OPTO8_4
+Change Net Name : Old Net Name=NetU?_OPTO9_4 New Net Name=NetU10_OPTO9_4
+Change Net Name : Old Net Name=NetU?_OPTO10_4 New Net Name=NetU10_OPTO10_4
+Change Net Name : Old Net Name=NetU?_OPTO11_4 New Net Name=NetU10_OPTO11_4
+Change Net Name : Old Net Name=NetU?_OPTO12_4 New Net Name=NetU10_OPTO12_4
+Change Net Name : Old Net Name=NetU?_OPTO13_4 New Net Name=NetU10_OPTO13_4
+Change Net Name : Old Net Name=NetU?_OPTO14_4 New Net Name=NetU10_OPTO14_4
+Change Net Name : Old Net Name=NetU?_OPTO15_4 New Net Name=NetU10_OPTO15_4
+Change Net Name : Old Net Name=NetU?_OPTO16_4 New Net Name=NetU10_OPTO16_4

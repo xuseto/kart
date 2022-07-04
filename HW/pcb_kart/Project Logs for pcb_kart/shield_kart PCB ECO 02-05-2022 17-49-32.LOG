@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=+5 Pin=C41-2
+Removed Pin From Net: NetName=+5 Pin=P3-1
+Removed Pin From Net: NetName=+5 Pin=P5-1
+Removed Pin From Net: NetName=+5 Pin=SB_5v-2
+Removed Pin From Net: NetName=+5 Pin=U7-16
+Added Pin To Net: NetName=5V_IN Pin=C41-2
+Added Pin To Net: NetName=5V_IN Pin=P3-1
+Added Pin To Net: NetName=5V_IN Pin=P5-1
+Added Pin To Net: NetName=5V_IN Pin=SB_5v-2
+Added Pin To Net: NetName=5V_IN Pin=U7-16
+Added Member To Class: ClassName=FILTER5 Member=Component U9_5 (U9A) LM358D
